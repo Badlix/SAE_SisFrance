@@ -1,0 +1,216 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"da595190-7947-42af-8a01-4a422acc4853\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2QmWoyd7pmbUuAhMAI10iAEpV8H\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"HelloApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.sae_sisfrance.HelloApplication\" />\r\n      <module name=\"SAE_SisFrance\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.sae_sisfrance.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.HelloApplication\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"da595190-7947-42af-8a01-4a422acc4853\" name=\"Changes\" comment=\"\" />\r\n      <created>1685959416147</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1685959416147</updated>\r\n      <workItem from=\"1685959417229\" duration=\"1000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,35 +4,91 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="da595190-7947-42af-8a01-4a422acc4853" name="Changes" comment="" />
++    <list default="true" id="da595190-7947-42af-8a01-4a422acc4853" name="Changes" comment="test commit github">
++      <change afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/CSVReader.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sae_sisfrance/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloApplication.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/sae_sisfrance/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/sae_sisfrance/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="MavenImportPreferences">
++    <option name="generalSettings">
++      <MavenGeneralSettings>
++        <option name="mavenHome" value="Use Maven wrapper" />
++        <option name="useMavenConfig" value="true" />
++      </MavenGeneralSettings>
++    </option>
++  </component>
+   <component name="ProjectId" id="2QmWoyd7pmbUuAhMAI10iAEpV8H" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "C:/Users/Alexandre/Documents/dev/IHM/SAE_SisFrance/src/main/resources/com/example/sae_sisfrance",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
+-  <component name="RunManager">
++}]]></component>
++  <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\Alexandre\Documents\dev\IHM\SAE_SisFrance\src\main\resources\com\example\sae_sisfrance" />
++    </key>
++  </component>
++  <component name="RunManager" selected="Application.fr.groupeF.sae_sisfrance.HelloApplication">
+     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.example.sae_sisfrance.HelloApplication" />
+       <module name="SAE_SisFrance" />
+       <extension name="coverage">
+         <pattern>
+           <option name="PATTERN" value="com.example.sae_sisfrance.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="fr.groupeF.sae_sisfrance.HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.HelloApplication" />
++      <module name="SAE_SisFrance" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -42,6 +98,7 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.fr.groupeF.sae_sisfrance.HelloApplication" />
+         <item itemvalue="Application.HelloApplication" />
+       </list>
+     </recent_temporary>
+@@ -55,10 +112,46 @@
+       <option name="presentableId" value="Default" />
+       <updated>1685959416147</updated>
+       <workItem from="1685959417229" duration="1000" />
++      <workItem from="1685967300887" duration="1155000" />
+     </task>
++    <task id="LOCAL-00001" summary="test commit github">
++      <created>1685967471034</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1685967471034</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="origin/main" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="test commit github" />
++    <option name="LAST_COMMIT_MESSAGE" value="test commit github" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: src/main/resources/com/example/sae_sisfrance/hello-view.fxml
+===================================================================
+diff --git a/src/main/resources/com/example/sae_sisfrance/hello-view.fxml b/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml
+rename from src/main/resources/com/example/sae_sisfrance/hello-view.fxml
+rename to src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml
+--- a/src/main/resources/com/example/sae_sisfrance/hello-view.fxml	
++++ b/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml	
+@@ -6,7 +6,7 @@
+ 
+ <?import javafx.scene.control.Button?>
+ <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+-      fx:controller="com.example.sae_sisfrance.HelloController">
++      fx:controller="fr.groupeF.sae_sisfrance.HelloController">
+     <padding>
+         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+     </padding>
+Index: src/main/java/com/example/sae_sisfrance/HelloApplication.java
+===================================================================
+diff --git a/src/main/java/com/example/sae_sisfrance/HelloApplication.java b/src/main/java/fr/groupeF/sae_sisfrance/HelloApplication.java
+rename from src/main/java/com/example/sae_sisfrance/HelloApplication.java
+rename to src/main/java/fr/groupeF/sae_sisfrance/HelloApplication.java
+--- a/src/main/java/com/example/sae_sisfrance/HelloApplication.java	
++++ b/src/main/java/fr/groupeF/sae_sisfrance/HelloApplication.java	
+@@ -1,4 +1,4 @@
+-package com.example.sae_sisfrance;
++package fr.groupeF.sae_sisfrance;
+ 
+ import javafx.application.Application;
+ import javafx.fxml.FXMLLoader;
+@@ -10,6 +10,7 @@
+ public class HelloApplication extends Application {
+     @Override
+     public void start(Stage stage) throws IOException {
++        CSVReader.read("src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv");
+         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+         stage.setTitle("Hello!");
+Index: src/main/java/com/example/sae_sisfrance/HelloController.java
+===================================================================
+diff --git a/src/main/java/com/example/sae_sisfrance/HelloController.java b/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java
+rename from src/main/java/com/example/sae_sisfrance/HelloController.java
+rename to src/main/java/fr/groupeF/sae_sisfrance/HelloController.java
+--- a/src/main/java/com/example/sae_sisfrance/HelloController.java	
++++ b/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java	
+@@ -1,4 +1,4 @@
+-package com.example.sae_sisfrance;
++package fr.groupeF.sae_sisfrance;
+ 
+ import javafx.fxml.FXML;
+ import javafx.scene.control.Label;

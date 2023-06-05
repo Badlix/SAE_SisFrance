@@ -1,0 +1,158 @@
+Index: src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv
+===================================================================
+diff --git a/src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv b/src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv
+new file mode 100644
+--- /dev/null	
++++ b/src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv	
+@@ -0,0 +1,79 @@
++Identifiant,"Date (AAAA/MM/JJ)",Heure,Nom,"Région épicentrale",Choc,"X RGF93/L93","Y RGF93/L93","Latitude en WGS 84","Longitude en WGS 84","Intensité épicentrale","Qualité intensité épicentrale"
++240004,2000/02/23,"15 h 46 min 40 sec","RIBERACOIS (CHAMPAGNE-ET-FONTAINE)",AQUITAINE,,495317.86,6481234.51,45.40,0.38,5,SURE
++640562,2000/03/13,"4 h 16 min 8 sec","PAYS BASQUE (LOHITZUN-OYHERCQ)","PYRENEES OCCIDENTALES",,382038.76,6250571.66,43.28,-0.92,5,SURE
++570021,2000/06/14,"2 h 25 min 21 sec","BASSIN SARROIS (HAM-SOUS-VARSBERG)",LORRAINE,,962397.92,6904159.49,49.18,6.60,4.5,"ASSEZ SURE"
++740155,2000/08/19,"8 h 37 min 26 sec","FAUCIGNY (MAGLAND)","ALPES SAVOYARDES",,982127.11,6556548.13,46.05,6.65,4.5,SURE
++1120283,2000/11/13,"16 h 30 min 41 sec","JURA SUISSE (SOLOTHURN)",SUISSE,,1042901.99,6689442.72,47.22,7.53,5,"INFORMATION ISOLÉE"
++60170,2000/12/19,"14 h 20 min 50 sec","ALPES NICOISES (LA TRINITE)","ALPES MARITIMES",,1048807.89,6305978.60,43.77,7.33,4,SURE
++60171,2000/12/20,"5 h 45 min 15 sec","ALPES NICOISES (CONTES)","ALPES MARITIMES",REPLIQUE,1049842.19,6311600.24,43.82,7.35,3.5,"ASSEZ SURE"
++1120281,2001/02/23,"22 h 19 min 54 sec","VALAIS (MARTIGNY)",SUISSE,,1015210.67,6565581.75,46.12,7.08,5,INCERTAINE
++1130568,2001/02/25,"18 h 34 min 44 sec","MEDITERRANEE (S-E NICE)","ALPES MARITIMES",,1044447.28,6287191.03,43.60,7.27,5.5,INCERTAINE
++570022,2001/03/16,"10 h 13 min 55 sec","BASSIN SARROIS (FORBACH)",LORRAINE,,980786.72,6901315.93,49.15,6.85,4.5,"ASSEZ SURE"
++790045,2001/04/05,"17 h 26 min 59 sec","MELLOIS (SEPVRET)",POITOU,,464014.80,6582372.27,46.30,-0.07,5,SURE
++850058,2001/06/08,"13 h 26 min 53 sec","BOCAGE VENDEEN (CHANTONNAY)","PAYS NANTAIS ET VENDEEN",,386673.93,6626645.90,46.67,-1.10,5,SURE
++570023,2001/06/21,"19 h 55 min 49 sec","BASSIN SARROIS (ROSBRUCK)",LORRAINE,,980786.72,6901315.93,49.15,6.85,5.5,"ASSEZ SURE"
++170117,2001/06/25,"6 h 49 min 18 sec","ILE D'OLERON",CHARENTES,,369450.92,6544152.34,45.92,-1.27,4,INCERTAINE
++40207,2001/07/01,"19 h 37 min 25 sec","UBAYE (LARCHE)","ALPES PROVENCALES",,1006234.87,6379794.78,44.45,6.85,3.5,"INFORMATION ISOLÉE"
++640563,2001/12/12,"12 h 10 min 52 sec","PAYS BASQUE (E. MENDIVE)","PYRENEES OCCIDENTALES",,371818.94,6236244.87,43.15,-1.03,4.5,"ASSEZ SURE"
++120017,2002/02/18,"6 h 11 min 44 sec","LEVEZOU (N-W. MILLAU)",QUERCY-ROUERGUE,,695999.07,6337148.78,44.13,2.95,4.5,"ASSEZ SURE"
++850060,2002/03/14,"13 h 32 min 47 sec","BOCAGE VENDEEN (BOURNEZEAU)","PAYS NANTAIS ET VENDEEN",,382564.67,6621300.25,46.62,-1.15,4,SURE
++290040,2002/04/23,"6 h 45 min 38 sec","CORNOUAILLE (MELGVEN)",BRETAGNE,,185247.36,6779868.50,47.92,-3.90,4,SURE
++650500,2002/05/16,"14 h 56 min 35 sec","LAVEDAN (AUCUN)","PYRENEES CENTRALES",,440117.03,6212716.53,42.97,-0.18,6,"ASSEZ SURE"
++650501,2002/05/16,"15 h 14 min 46 sec","LAVEDAN (SIREIX)","PYRENEES CENTRALES",,444343.84,6216256.76,43.00,-0.13,5,SURE
++370032,2002/08/06,"17 h 25 min 14 sec","VALLEE DE LA LOIRE (LANGEAIS)",TOURAINE,,506325.94,6699406.93,47.37,0.43,4,SURE
++640564,2002/09/05,"20 h 42 min 16 sec","OSSAU (ARUDY)","PYRENEES OCCIDENTALES",,421800.88,6230175.21,43.12,-0.42,5,SURE
++560053,2002/09/30,"6 h 44 min 48 sec","VANNETAIS (HENNEBONT-BRANDERION)",BRETAGNE,,235240.19,6764557.06,47.82,-3.22,5.5,SURE
++650499,2002/12/09,"13 h 44 min 54 sec","BIGORRE (BAGNERES-DE-BIGORRE)","PYRENEES CENTRALES",,468943.46,6219035.85,43.03,0.17,3.5,"ASSEZ SURE"
++640565,2002/12/11,"20 h 9 min 53 sec","OSSAU (ARUDY)","PYRENEES OCCIDENTALES",,421800.88,6230175.21,43.12,-0.42,5,SURE
++640566,2002/12/12,"17 h 59 min 51 sec","BEARN (ARTHEZ-D'ASSON)","PYRENEES OCCIDENTALES",,432420.01,6224160.25,43.07,-0.28,5,SURE
++640567,2003/01/21,"18 h 1 min 1 sec","OSSAU (LOUVIE-JUZON)","PYRENEES OCCIDENTALES",,427068.70,6226239.79,43.08,-0.35,5,SURE
++850061,2003/02/14,"4 h 49 min 17 sec","PLAINE VENDEENNE (S.S-O. FONTENAY-LE-COMTE)","PAYS NANTAIS ET VENDEEN",,407890.07,6590371.98,46.35,-0.80,5,SURE
++880077,2003/02/22,"20 h 41 min 6 sec","PAYS FORESTIER SOUS-VOSGIEN (RAMBERVILLERS)",VOSGES,,974108.31,6810091.69,48.33,6.70,6.5,SURE
++730223,2003/05/25,"23 h 3 min 32 sec","MAURIENNE (S.S-E. ST-JEAN-DE-MAURIENNE)","ALPES SAVOYARDES",,977669.12,6454440.80,45.13,6.53,4,INCERTAINE
++630096,2003/08/19,"19 h 53 min 40 sec","COMBRAILLE (PONTAUMUR)",AUVERGNE,,683226.44,6542645.99,45.98,2.78,4,SURE
++1130569,2003/09/01,"19 h 28 min 13 sec","PIEMONT (ENTRACQUE)",ITALIE,,1051074.56,6361744.89,44.27,7.40,4,INCERTAINE
++1140125,2004/02/03,"21 h 16 min 13 sec",RIBAGORZA,ESPAGNE,,519181.94,6167364.05,42.58,0.80,4.5,INCERTAINE
++250038,2004/02/23,"17 h 31 min 21 sec","JURA (S. BAUME-LES-DAMES)",FRANCHE-COMTE,,949290.24,6694063.33,47.30,6.30,5.5,SURE
++1130570,2004/06/12,"4 h 44 min 34 sec","VAL D'AOSTE (E. PETIT SAINT-BERNARD)",ITALIE,,1001695.27,6525982.23,45.77,6.88,4.5,ARBITRAIRE
++1120295,2004/06/21,"23 h 10 min 1 sec","JURA SUISSE (BALE)",SUISSE,,1051007.44,6723297.49,47.52,7.67,5,INCERTAINE
++310038,2004/07/18,"2 h 16 min 2 sec",HAUT-COMMINGES,"PYRENEES CENTRALES",,520163.06,6202569.44,42.90,0.80,4,"ASSEZ SURE"
++560060,2004/07/18,"14 h 23 min 9 sec","ATLANTIQUE (ILE DE GROIX)",BRETAGNE,,211640.66,6751601.58,47.68,-3.52,4,"ASSEZ SURE"
++1140127,2004/09/18,"12 h 52 min 18 sec","NAVARRE (E. PAMPLUNE)",ESPAGNE,,338483.54,6199056.47,42.80,-1.42,5,"ASSEZ SURE"
++1140126,2004/09/21,"15 h 48 min 2 sec",CERDAGNE,ESPAGNE,,631207.24,6137395.82,42.33,2.17,6,INCERTAINE
++560061,2004/11/04,"13 h 58 min 35 sec","PAYS DE REDON (LA GACILLY)",BRETAGNE,,316869.32,6751262.79,47.75,-2.12,4,"ASSEZ SURE"
++1110221,2004/12/05,"1 h 52 min 39 sec","BADEN-WURTTEMBERG (WALDKIRCH)",ALLEMAGNE,,1069585.70,6787511.21,48.08,7.97,6,INCERTAINE
++1140128,2005/01/15,"7 h 13 min 7 sec","VAL D'ARAN (N. VIELLA)",ESPAGNE,,517019.69,6187824.10,42.77,0.77,4.5,INCERTAINE
++240005,2005/01/31,"6 h 55 min 41 sec","RIBERACOIS (SW. NONTRON)",GUYENNE,,498166.57,6488548.36,45.47,0.42,4,"ASSEZ SURE"
++1140129,2005/02/26,"20 h 36 min 50 sec","VAL D'ARAN",ESPAGNE,,526377.22,6180148.86,42.70,0.88,4.5,INCERTAINE
++170132,2005/04/04,"17 h 7 min 55 sec","ILE D'OLERON",CHARENTES,,364291.29,6544433.59,45.92,-1.33,4,"ASSEZ SURE"
++730224,2005/04/10,"8 h 4 min 39 sec","TARENTAISE (MOUTIERS)","ALPES SAVOYARDES",,980336.19,6482353.80,45.38,6.58,4,"ASSEZ SURE"
++170131,2005/04/18,"6 h 42 min 50 sec","ILE D'OLERON",CHARENTES,,364392.81,6546281.57,45.93,-1.33,4.5,"ASSEZ SURE"
++1120297,2005/05/12,"1 h 38 min 6 sec","JURA SUISSE (N.E SOLOTHURN)",SUISSE,,1054943.44,6699419.98,47.30,7.70,4,INCERTAINE
++850063,2005/06/22,"19 h 41 min 38 sec","ILE DE NOIRMOUTIER","PAYS NANTAIS ET VENDEEN",,303647.63,6664925.91,46.97,-2.22,4.5,"ASSEZ SURE"
++740157,2005/09/08,"11 h 27 min 18 sec","MASSIF DU MONT-BLANC (VALLORCINE)","ALPES SAVOYARDES",,1002814.60,6555687.09,46.03,6.92,5,SURE
++370035,2005/09/09,"21 h 37 min 37 sec","PLATEAU DE SAINTE-MAURE (W. LES ORMES)",TOURAINE,,513862.96,6658418.77,47.00,0.55,4,SURE
++1110223,2005/09/22,"19 h 43 min 59 sec","SAARE (N-W. SAARBRUCKEN)",ALLEMAGNE,,980821.55,6925448.08,49.37,6.87,4,ARBITRAIRE
++740158,2005/10/31,"3 h 39 min 59 sec","VALLEE DE L'ARLY (N. ALBERTVILLE)","ALPES SAVOYARDES",,964409.11,6518702.98,45.72,6.40,5,INCERTAINE
++650503,2005/11/05,"0 h 30 min 9 sec","BIGORRE (BAGNERES-DE-BIGORRE)","PYRENEES CENTRALES",,469142.90,6224591.59,43.08,0.17,4.5,INCERTAINE
++1120298,2005/11/12,"19 h 31 min 16 sec","JURA SUISSE (N-E. AARAU)",SUISSE,,1087433.29,6723709.51,47.50,8.15,5,INCERTAINE
++10038,2006/01/11,"10 h 32 min 8 sec","BUGEY (N-O. BELLEY)","BRESSE ET JURA BRESSAN",,891160.62,6538205.73,45.92,5.47,4.5,"ASSEZ SURE"
++660098,2006/02/07,"14 h 59 min 19 sec","PAYS DE MONTLOUIS (E. MONTLOUIS)","PYRENEES ORIENTALES",,597106.73,6156389.51,42.50,1.75,3.5,INCERTAINE
++640570,2006/05/04,"9 h 42 min 6 sec","BEARN (E. ARETTE)","PYRENEES OCCIDENTALES",,395684.70,6223938.52,43.05,-0.73,4,"ASSEZ SURE"
++110018,2006/05/08,"21 h 47 min 57 sec","PLATEAUX DE SAULT ET DE QUERIGUT (MAZUBY)",LANGUEDOC,,618083.24,6187608.48,42.78,2.00,3,INCERTAINE
++650504,2006/05/20,"5 h 36 min 6 sec","BIGORRE (E. ARGELES-GAZOST)","PYRENEES CENTRALES",,460723.39,6217481.82,43.02,0.07,4.5,INCERTAINE
++160050,2006/08/24,"20 h 0 min 59 sec","SAINTONGE (E. MATHA)",CHARENTES,,453027.84,6532795.26,45.85,-0.18,5,SURE
++1130572,2006/09/02,"1 h 21 min 31 sec","PIEMONT (N. SAN REMO)",ITALIE,,1067835.04,6325603.87,43.93,7.58,4.5,INCERTAINE
++230045,2006/09/13,"13 h 5 min 3 sec","HAUTE-MARCHE (N-E. LA SOUTERRAINE)",LIMOUSIN,,585763.51,6575160.52,46.27,1.52,4,SURE
++640571,2006/11/04,"16 h 44 min 57 sec","BEARN (E. ARUDY)","PYRENEES OCCIDENTALES",,427304.48,6231793.88,43.13,-0.35,4,"ASSEZ SURE"
++490105,2006/11/05,"0 h 37 min 40 sec","SAUMUROIS (CANDES-SAINT-MARTIN)",ANJOU,,475530.36,6683814.02,47.22,0.03,4,SURE
++650505,2006/11/17,"18 h 19 min 50 sec","BIGORRE (GAZOST)","PYRENEES CENTRALES",,,,,,6,SURE
++680137,2006/12/08,"16 h 48 min 39 sec","PLAINE DE HAUTE ALSACE (HUNINGUE)",ALSACE,,1044209.44,6732172.61,47.60,7.58,4,INCERTAINE
++650506,2006/12/16,"8 h 17 min 1 sec","BIGORRE (W. ARGELES-GAZOST)","PYRENEES CENTRALES",,444343.84,6216256.76,43.00,-0.13,5,"ASSEZ SURE"
++370036,2007/01/08,"11 h 36 min 55 sec","CHINONAIS (S-E. CHINON)",TOURAINE,,502775.52,6668034.02,47.08,0.40,3.5,"ASSEZ SURE"
++880083,2007/05/26,"13 h 40 min 23 sec","PAYS FORESTIER SOUS-VOSGIEN (RAMBERVILLERS)",VOSGES,,977809.71,6810266.43,48.33,6.75,3.5,"ASSEZ SURE"
++850065,2007/07/22,"13 h 29 min 57 sec","BOCAGE VENDEEN (N-E. LA ROCHE-SUR-YON)","PAYS NANTAIS ET VENDEEN",,365007.65,6650057.72,46.87,-1.40,4,"ASSEZ SURE"
++880084,2007/08/19,"7 h 32 min 55 sec","PAYS FORESTIER SOUS-VOSGIEN (RAMBERVILLERS)",VOSGES,,974195.08,6808241.35,48.32,6.70,4,SURE
++50103,2007/10/05,"6 h 5 min 22 sec","BRIANCONNAIS (N-O. BRIANCON)","ALPES DAUPHINOISES",,978248.72,6441496.54,45.02,6.53,3.5,ARBITRAIRE
++850066,2007/10/28,"13 h 48 min 53 sec","MARAIS BRETON (S-O. NANTES)","PAYS NANTAIS ET VENDEEN",,339547.90,6649677.58,46.85,-1.73,3,"ASSEZ SURE"
++650508,2007/11/15,"13 h 47 min 35 sec","BIGORRE (E. ARGELES-GAZOST)","PYRENEES CENTRALES",,452570.17,6217790.01,43.02,-0.03,5,"ASSEZ SURE"
++640572,2007/11/24,"5 h 24 min 53 sec","PAYS BASQUE (S-E. SAINT-JEAN-PIED-DE-PORT)","PYRENEES OCCIDENTALES",,370368.98,6234463.70,43.13,-1.05,4,"ASSEZ SURE"
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>com.example</groupId>\r\n    <artifactId>SAE_SisFrance</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n    <name>SAE_SisFrance</name>\r\n\r\n    <properties>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n        <junit.version>5.8.2</junit.version>\r\n    </properties>\r\n\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-controls</artifactId>\r\n            <version>18.0.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.openjfx</groupId>\r\n            <artifactId>javafx-fxml</artifactId>\r\n            <version>18.0.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.controlsfx</groupId>\r\n            <artifactId>controlsfx</artifactId>\r\n            <version>11.1.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.kordamp.bootstrapfx</groupId>\r\n            <artifactId>bootstrapfx-core</artifactId>\r\n            <version>0.4.0</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter-api</artifactId>\r\n            <version>${junit.version}</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.junit.jupiter</groupId>\r\n            <artifactId>junit-jupiter-engine</artifactId>\r\n            <version>${junit.version}</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n    <build>\r\n        <plugins>\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-compiler-plugin</artifactId>\r\n                <version>3.10.1</version>\r\n                <configuration>\r\n                    <source>18</source>\r\n                    <target>18</target>\r\n                </configuration>\r\n            </plugin>\r\n            <plugin>\r\n                <groupId>org.openjfx</groupId>\r\n                <artifactId>javafx-maven-plugin</artifactId>\r\n                <version>0.0.8</version>\r\n                <executions>\r\n                    <execution>\r\n                        <!-- Default configuration for running with: mvn clean javafx:run -->\r\n                        <id>default-cli</id>\r\n                        <configuration>\r\n                            <mainClass>com.example.sae_sisfrance/com.example.sae_sisfrance.HelloApplication</mainClass>\r\n                            <launcher>app</launcher>\r\n                            <jlinkZipName>app</jlinkZipName>\r\n                            <jlinkImageName>app</jlinkImageName>\r\n                            <noManPages>true</noManPages>\r\n                            <stripDebug>true</stripDebug>\r\n                            <noHeaderFiles>true</noHeaderFiles>\r\n                        </configuration>\r\n                    </execution>\r\n                </executions>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	
++++ b/pom.xml	
+@@ -69,7 +69,7 @@
+                         <!-- Default configuration for running with: mvn clean javafx:run -->
+                         <id>default-cli</id>
+                         <configuration>
+-                            <mainClass>com.example.sae_sisfrance/com.example.sae_sisfrance.HelloApplication</mainClass>
++                            <mainClass>com.example.sae_sisfrance/fr.groupeF.sae_sisfrance.HelloApplication</mainClass>
+                             <launcher>app</launcher>
+                             <jlinkZipName>app</jlinkZipName>
+                             <jlinkImageName>app</jlinkImageName>
+Index: src/main/java/fr/groupeF/sae_sisfrance/CSVReader.java
+===================================================================
+diff --git a/src/main/java/fr/groupeF/sae_sisfrance/CSVReader.java b/src/main/java/fr/groupeF/sae_sisfrance/CSVReader.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/fr/groupeF/sae_sisfrance/CSVReader.java	
+@@ -0,0 +1,26 @@
++package fr.groupeF.sae_sisfrance;
++import java.io.BufferedReader;
++import java.io.FileReader;
++import java.io.IOException;
++
++public class CSVReader {
++    public static void read(String csvFile) {
++
++        String line;
++        String csvSeparator = ",";
++
++        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
++            while ((line = br.readLine()) != null) {
++                String[] data = line.split(csvSeparator);
++                // Process the data
++                for (String value : data) {
++                    System.out.print(value + " ");
++                }
++                System.out.println();
++            }
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++    }
++}
++
+Index: src/main/java/module-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module com.example.sae_sisfrance {\r\n    requires javafx.controls;\r\n    requires javafx.fxml;\r\n\r\n    requires org.controlsfx.controls;\r\n    requires org.kordamp.bootstrapfx.core;\r\n\r\n    opens com.example.sae_sisfrance to javafx.fxml;\r\n    exports com.example.sae_sisfrance;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/module-info.java b/src/main/java/module-info.java
+--- a/src/main/java/module-info.java	
++++ b/src/main/java/module-info.java	
+@@ -5,6 +5,6 @@
+     requires org.controlsfx.controls;
+     requires org.kordamp.bootstrapfx.core;
+ 
+-    opens com.example.sae_sisfrance to javafx.fxml;
+-    exports com.example.sae_sisfrance;
++    opens fr.groupeF.sae_sisfrance to javafx.fxml;
++    exports fr.groupeF.sae_sisfrance;
+ }
+\ No newline at end of file
