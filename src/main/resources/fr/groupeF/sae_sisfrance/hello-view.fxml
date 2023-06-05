@@ -17,21 +17,29 @@
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
+          <Menu mnemonicParsing="false">
+               <graphic>
+                  <DatePicker promptText="Date" />
+               </graphic>
           </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <TextField promptText="Rechercher" />
+               </graphic>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
    <center>
       <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="Date" />
-          <TableColumn prefWidth="75.0" text="Région" />
-            <TableColumn prefWidth="75.0" text="Intensité" />
+          <TableColumn prefWidth="150.0" text="Date" />
+          <TableColumn prefWidth="250.0" text="Région" />
+            <TableColumn prefWidth="200.0" text="Intensité" />
         </columns>
       </TableView>
    </center>
+   <bottom>
+      <Button mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
