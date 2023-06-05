@@ -5,6 +5,6 @@ module com.example.sae_sisfrance {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.sae_sisfrance to javafx.fxml;
-    exports com.example.sae_sisfrance;
+    opens fr.groupeF.sae_sisfrance to javafx.fxml;
+    exports fr.groupeF.sae_sisfrance;
 }

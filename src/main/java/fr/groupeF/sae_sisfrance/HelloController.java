@@ -1,4 +1,4 @@
-package com.example.sae_sisfrance;
+package fr.groupeF.sae_sisfrance;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
