@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da595190-7947-42af-8a01-4a422acc4853" name="Changes" comment="changement de page avec boutons">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml" afterDir="false" />
-    </list>
-    <list id="a589ce0c-ddb2-4dd8-8897-db583dac75ba" name="Changes by d22010349" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml" afterDir="false" />
-    </list>
-    <list id="5edb301f-90f5-4506-a42d-d7c5f904f84f" name="Changes by l22011431" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_06_2023_14_35__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_05_06_2023_14_35__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_06_2023_14_48__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_06_2023_15_42__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_06_2023_09_17__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/filePickerPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/filePickerPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,21 +25,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml">
-      <ranges>
-        <range start1="7" end1="8" start2="7" end2="8" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="10" end1="40" start2="10" end2="11" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="80" end1="81" start2="51" end2="52" changelist="a589ce0c-ddb2-4dd8-8897-db583dac75ba" />
-        <range start1="83" end1="84" start2="54" end2="56" changelist="a589ce0c-ddb2-4dd8-8897-db583dac75ba" />
-        <range start1="86" end1="87" start2="58" end2="58" changelist="a589ce0c-ddb2-4dd8-8897-db583dac75ba" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2QmWoyd7pmbUuAhMAI10iAEpV8H" />
+  <component name="ProjectId" id="2Qq9199zVJZSQDF0irJkeWLvaFb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,24 +36,16 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="Push.Settings">
-    <force-push-targets>
-      <force-push-target remote-path="origin" branch="main" />
-    </force-push-targets>
-  </component>
   <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.HelloApplication" />
@@ -87,65 +69,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="da595190-7947-42af-8a01-4a422acc4853" name="Changes" comment="" />
-      <created>1685959416147</created>
+      <changelist id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="" />
+      <created>1686070028960</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1685959416147</updated>
-      <workItem from="1685959417229" duration="1000" />
-      <workItem from="1686040993565" duration="13536000" />
+      <updated>1686070028960</updated>
+      <workItem from="1686070032687" duration="2599000" />
     </task>
-    <task id="LOCAL-00001" summary="changement minime sur les fichiers fxml">
-      <created>1686036900675</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1686036900675</updated>
-    </task>
-    <task id="LOCAL-00002" summary="pb git">
-      <created>1686039178816</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1686039178816</updated>
-    </task>
-    <task id="LOCAL-00003" summary="commit fin de seance code with me">
-      <created>1686046330510</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1686046330510</updated>
-    </task>
-    <task id="LOCAL-00004" summary="filtres régions">
-      <created>1686062313281</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1686062313281</updated>
-    </task>
-    <task id="LOCAL-00005" summary="changement de page avec boutons">
-      <created>1686064198190</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1686064198190</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="changement minime sur les fichiers fxml" />
-    <MESSAGE value="pb git" />
-    <MESSAGE value="commit fin de seance code with me" />
-    <MESSAGE value="filtres régions" />
-    <MESSAGE value="changement de page avec boutons" />
-    <option name="LAST_COMMIT_MESSAGE" value="changement de page avec boutons" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

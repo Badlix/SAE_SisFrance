@@ -2,40 +2,44 @@ package fr.groupeF.sae_sisfrance;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+
+import javafx.scene.control.Button;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+
 import javafx.stage.Stage;
 
 public class HelloController extends BorderPane implements Initializable {
 
     @FXML
-    TableView table;
+    TableView<Earthquake> table;
     @FXML
-    TableColumn dateColumn;
+    TableColumn<Object, Object> dateColumn;
     @FXML
-    TableColumn regionColumn;
+    TableColumn<Object, Object> regionColumn;
     @FXML
-    TableColumn intensiteColumn;
-    @FXML
-    VBox map;
+    TableColumn<Object, Object> intensiteColumn;
+
     @FXML
     Menu regionMenu;
+    @FXML
+    Button uploadButton;
 
     private ObservableList<Earthquake> earthquakes;
     private ObservableList<Earthquake> filteredEarthquakes;
@@ -43,9 +47,28 @@ public class HelloController extends BorderPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String path = "src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv";
+//        this.earthquakes = FXCollections.observableArrayList();
+//                uploadButton.setOnAction(event -> {
+//            // Ouvrir une boîte de dialogue de sélection de fichier
+//            FileChooser fileChooser = new FileChooser();
+//            Stage stage = (Stage) uploadButton.getScene().getWindow();
+//            fileChooser.setTitle("Sélectionner un fichier");
+//            fileChooser.getExtensionFilters().addAll(
+//                    new FileChooser.ExtensionFilter("Fichiers texte", "*.txt"),
+//                    new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
+//            );
+//            // Obtenir le fichier sélectionné
+//            File selectedFile = fileChooser.showOpenDialog(stage);
+//            if (selectedFile != null) {
+//                System.out.println("Fichier sélectionné : ");
+//                // Traitement du fichier sélectionné
+//                this.earthquakes = FXCollections.observableArrayList(DataImporter.read(selectedFile.getPath()));
+//            }
+//        });
 
+        String path = "src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv";
         this.earthquakes = FXCollections.observableArrayList(DataImporter.read(path));
+
         this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
         isRegionFiltered = false;
         table.setItems(filteredEarthquakes);
@@ -72,6 +95,7 @@ public class HelloController extends BorderPane implements Initializable {
 //        mapView.setZoom(5);
 //        mapView.flyTo(0, mapPoint, 0.1);
 //        map.getChildren().add(mapView);
+        //FilteredList<Earthquake> filteredList = new FilteredList<>();
     }
     @FXML
     private void changingPageButton(ActionEvent event) {

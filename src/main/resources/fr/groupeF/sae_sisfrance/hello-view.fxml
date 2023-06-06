@@ -28,7 +28,7 @@
           </Menu>
           <Menu mnemonicParsing="false">
            <graphic>
-              <TextField fx:id="rechercherTextField" promptText="Rechercher" onAction="#searchBar"/>
+              <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
            </graphic>
           </Menu>
       </MenuBar>
@@ -44,14 +44,14 @@
    </center>
    <bottom>
        <HBox alignment="CENTER">
-            <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="changement" onAction="#changingPageButton"/>
+            <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="changement" fx:id="uploadButton"/>
             <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
        </HBox>
    </bottom>
-   <right>
-      <ImageView fitHeight="500.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@France.png" />
-         </image></ImageView>
-   </right>
+<!--   <right>-->
+<!--&lt;!&ndash;      <ImageView fitHeight="500.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">&ndash;&gt;-->
+<!--&lt;!&ndash;         <image>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <Image url="@France.png" />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;         </image></ImageView>&ndash;&gt;-->
+<!--   </right>-->
 </BorderPane>

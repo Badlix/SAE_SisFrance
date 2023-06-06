@@ -1,18 +1,18 @@
 package fr.groupeF.sae_sisfrance;
 
 public class Earthquake {
-    private String identifiant; // Identifiant du tremblement de terre
-    private String date; // Date du tremblement de terre
-    private String hour; // Heure du tremblement de terre
-    private String name; // Nom du tremblement de terre
-    private String region; // endroit où le tremblement de terre s'est produit
-    private String shock; // Type de choc causé par le tremblement de terre
-    private String xRGF; // Coordonnée X (système de référence géographique)
-    private String yRGF; // Coordonnée Y (système de référence géographique)
-    private String latitude; // Latitude du lieu du tremblement de terre
-    private String longitude; // Longitude du lieu du tremblement de terre
-    private String intensity; // Intensité du tremblement de terre
-    private String quality; // Qualité des données relatives au tremblement de terre
+    private final String identifiant; // Identifiant du tremblement de terre
+    private final String date; // Date du tremblement de terre
+    private final String hour; // Heure du tremblement de terre
+    private final String name; // Nom du tremblement de terre
+    private final String region; // endroit où le tremblement de terre s'est produit
+    private final String shock; // Type de choc causé par le tremblement de terre
+    private final String xRGF; // Coordonnée X (système de référence géographique)
+    private final String yRGF; // Coordonnée Y (système de référence géographique)
+    private final String latitude; // Latitude du lieu du tremblement de terre
+    private final String longitude; // Longitude du lieu du tremblement de terre
+    private final String intensity; // Intensité du tremblement de terre
+    private final String quality; // Qualité des données relatives au tremblement de terre
 
     // Constructeur de la classe Earthquake
 public Earthquake(String[] data) {
