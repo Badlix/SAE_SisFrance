@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da595190-7947-42af-8a01-4a422acc4853" name="Changes" comment="filtres régions">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java" afterDir="false" />
+    <list default="true" id="da595190-7947-42af-8a01-4a422acc4853" name="Changes" comment="changement de page avec boutons">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml" afterDir="false" />
     </list>
     <list id="a589ce0c-ddb2-4dd8-8897-db583dac75ba" name="Changes by d22010349" comment="">
@@ -27,30 +25,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java">
-      <ranges>
-        <range start1="7" end1="7" start2="7" end2="8" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="8" end1="8" start2="9" end2="12" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="12" end1="12" start2="16" end2="17" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="15" end1="15" start2="20" end2="25" changelist="5edb301f-90f5-4506-a42d-d7c5f904f84f" />
-        <range start1="26" end1="27" start2="36" end2="44" changelist="5edb301f-90f5-4506-a42d-d7c5f904f84f" />
-        <range start1="38" end1="40" start2="55" end2="77" changelist="5edb301f-90f5-4506-a42d-d7c5f904f84f" />
-        <range start1="41" end1="41" start2="78" end2="90" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="56" end1="56" start2="105" end2="116" changelist="5edb301f-90f5-4506-a42d-d7c5f904f84f" />
-      </ranges>
-    </file>
     <file path="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml">
       <ranges>
-        <range start1="10" end1="11" start2="10" end2="10" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="12" end1="13" start2="11" end2="11" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="41" end1="42" start2="39" end2="39" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="44" end1="45" start2="41" end2="41" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="46" end1="51" start2="42" end2="46" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="57" end1="63" start2="52" end2="62" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="75" end1="79" start2="74" end2="78" changelist="da595190-7947-42af-8a01-4a422acc4853" />
-        <range start1="81" end1="82" start2="80" end2="81" changelist="a589ce0c-ddb2-4dd8-8897-db583dac75ba" />
-        <range start1="84" end1="85" start2="83" end2="85" changelist="a589ce0c-ddb2-4dd8-8897-db583dac75ba" />
-        <range start1="87" end1="88" start2="87" end2="87" changelist="a589ce0c-ddb2-4dd8-8897-db583dac75ba" />
+        <range start1="7" end1="8" start2="7" end2="8" changelist="da595190-7947-42af-8a01-4a422acc4853" />
+        <range start1="10" end1="40" start2="10" end2="11" changelist="da595190-7947-42af-8a01-4a422acc4853" />
+        <range start1="80" end1="81" start2="51" end2="52" changelist="a589ce0c-ddb2-4dd8-8897-db583dac75ba" />
+        <range start1="83" end1="84" start2="54" end2="56" changelist="a589ce0c-ddb2-4dd8-8897-db583dac75ba" />
+        <range start1="86" end1="87" start2="58" end2="58" changelist="a589ce0c-ddb2-4dd8-8897-db583dac75ba" />
       </ranges>
     </file>
   </component>
@@ -112,7 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1685959416147</updated>
       <workItem from="1685959417229" duration="1000" />
-      <workItem from="1686040993565" duration="13220000" />
+      <workItem from="1686040993565" duration="13536000" />
     </task>
     <task id="LOCAL-00001" summary="changement minime sur les fichiers fxml">
       <created>1686036900675</created>
@@ -142,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686062313281</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="changement de page avec boutons">
+      <created>1686064198190</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686064198190</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +141,8 @@
     <MESSAGE value="pb git" />
     <MESSAGE value="commit fin de seance code with me" />
     <MESSAGE value="filtres régions" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtres régions" />
+    <MESSAGE value="changement de page avec boutons" />
+    <option name="LAST_COMMIT_MESSAGE" value="changement de page avec boutons" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

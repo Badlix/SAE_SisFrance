@@ -5,39 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:controller="fr.groupeF.sae_sisfrance.HelloController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane stylesheets="@style.css" fx:controller="fr.groupeF.sae_sisfrance.HelloController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
-          <Menu mnemonicParsing="false" text="Région" fx:id="regionMenu">
-<!--                <MenuItem mnemonicParsing="false" text="AQUITAINE"  fx:id="AQUITAINE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="PYRENEES OCCIDENTALES"  fx:id="PYRENEES OCCIDENTALES" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="LORRAINE"  fx:id="LORRAINE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="ALPES SAVOYARDES"  fx:id="ALPESSAVOYARDES" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="SUISSE"  fx:id="SUISSE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="ALPES MARITIMES"  fx:id="ALPESMARITIMES" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="POITOU"  fx:id="POITOU" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="PAYS NANTAIS ET VENDEEN"  fx:id="PAYSNANTAISETVENDEEN" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="CHARENTES"  fx:id="CHARENTES" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="ALPES PROVENCALES"  fx:id="ALPESPROVENCALES" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="QUERCY-ROUERGUE"  fx:id="QUERCYROUERGUE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="BRETAGNE"  fx:id="BRETAGNE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="PYRENEES CENTRALES"  fx:id="PYRENEESCENTRALES" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="TOURAINE"  fx:id="TOURAINE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="VOSGES"  fx:id="VOSGES" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="AUVERGNE"  fx:id="AUVERGNE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="ITALIE"  fx:id="ITALIE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="ESPAGNE"  fx:id="ESPAGNE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="FRANCHE-COMTE"  fx:id="FRANCHECOMTE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="ALLEMAGNE"  fx:id="ALLEMAGNE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="GUYENNE"  fx:id="GUYENNE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="BRESSE ET JURA BRESSAN"  fx:id="BRESSEETJURABRESSAN" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="PYRENEES ORIENTALES"  fx:id="PYRENEESORIENTALES" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="LANGUEDOC"  fx:id="LANGUEDOC" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="LIMOUSIN"  fx:id="LIMOUSIN" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="ANJOU"  fx:id="ANJOU" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="ALSACE"  fx:id="ALSACE" onAction="#buttonFilterRegion"/>-->
-<!--                <MenuItem mnemonicParsing="false" text="ALPES DAUPHINOISES"  fx:id="ALPESDAUPHINOISES" onAction="#buttonFilterRegion"/>-->
-          </Menu>
+          <Menu mnemonicParsing="false" text="Région" fx:id="regionMenu" />
           <Menu mnemonicParsing="false" text="Coordonnées">
               <MenuItem mnemonicParsing="false" text="Longitude" />
               <SeparatorMenuItem mnemonicParsing="false" />
