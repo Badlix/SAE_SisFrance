@@ -13,7 +13,6 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         System.setProperty("http.agent", "Gluon Mobile/1.0.3");
         ArrayList<Earthquake> earthquakes = DataImporter.read("src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv");
-        System.out.println(earthquakes.get(1).getName());
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 500);
         stage.setTitle("Hello!");

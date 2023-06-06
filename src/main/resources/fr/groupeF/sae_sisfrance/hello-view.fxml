@@ -9,10 +9,36 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Région">
+          <Menu mnemonicParsing="false" text="Région" fx:id="regionMenu">
             <items>
-              <MenuItem mnemonicParsing="false" text="Département" />
-              <MenuItem mnemonicParsing="false" text="SUISSE"  fx:id="SUISSE" onAction="#buttonFilterRegion"/>
+<!--                <MenuItem mnemonicParsing="false" text="AQUITAINE"  fx:id="AQUITAINE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="PYRENEES OCCIDENTALES"  fx:id="PYRENEES OCCIDENTALES" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="LORRAINE"  fx:id="LORRAINE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="ALPES SAVOYARDES"  fx:id="ALPESSAVOYARDES" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="SUISSE"  fx:id="SUISSE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="ALPES MARITIMES"  fx:id="ALPESMARITIMES" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="POITOU"  fx:id="POITOU" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="PAYS NANTAIS ET VENDEEN"  fx:id="PAYSNANTAISETVENDEEN" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="CHARENTES"  fx:id="CHARENTES" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="ALPES PROVENCALES"  fx:id="ALPESPROVENCALES" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="QUERCY-ROUERGUE"  fx:id="QUERCYROUERGUE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="BRETAGNE"  fx:id="BRETAGNE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="PYRENEES CENTRALES"  fx:id="PYRENEESCENTRALES" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="TOURAINE"  fx:id="TOURAINE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="VOSGES"  fx:id="VOSGES" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="AUVERGNE"  fx:id="AUVERGNE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="ITALIE"  fx:id="ITALIE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="ESPAGNE"  fx:id="ESPAGNE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="FRANCHE-COMTE"  fx:id="FRANCHECOMTE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="ALLEMAGNE"  fx:id="ALLEMAGNE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="GUYENNE"  fx:id="GUYENNE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="BRESSE ET JURA BRESSAN"  fx:id="BRESSEETJURABRESSAN" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="PYRENEES ORIENTALES"  fx:id="PYRENEESORIENTALES" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="LANGUEDOC"  fx:id="LANGUEDOC" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="LIMOUSIN"  fx:id="LIMOUSIN" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="ANJOU"  fx:id="ANJOU" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="ALSACE"  fx:id="ALSACE" onAction="#buttonFilterRegion"/>-->
+<!--                <MenuItem mnemonicParsing="false" text="ALPES DAUPHINOISES"  fx:id="ALPESDAUPHINOISES" onAction="#buttonFilterRegion"/>-->
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Coordonnées">
@@ -31,7 +57,7 @@
           </Menu>
             <Menu mnemonicParsing="false">
                <graphic>
-                  <TextField fx:id="rechercherTextField" promptText="Rechercher" />
+                  <TextField fx:id="rechercherTextField" promptText="Rechercher" onAction="#searchBar"/>
                </graphic>
             </Menu>
         </menus>
