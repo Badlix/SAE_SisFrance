@@ -19,8 +19,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import com.gluonhq.maps.MapPoint;
+import com.gluonhq.maps.MapView;
+
 
 
 import javafx.stage.Stage;
@@ -40,6 +44,8 @@ public class HelloController extends BorderPane implements Initializable {
     Menu regionMenu;
     @FXML
     Button uploadButton;
+    @FXML
+    VBox map;
 
     private ObservableList<Earthquake> earthquakes;
     private ObservableList<Earthquake> filteredEarthquakes;
@@ -88,14 +94,17 @@ public class HelloController extends BorderPane implements Initializable {
             menuItem.setOnAction(this::buttonFilterRegion);
             regionMenu.getItems().add(menuItem);
         }
+        initMapView();
+    }
 
-
-//        MapView mapView = new MapView();
-//        MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
-//        mapView.setZoom(5);
-//        mapView.flyTo(0, mapPoint, 0.1);
-//        map.getChildren().add(mapView);
-        //FilteredList<Earthquake> filteredList = new FilteredList<>();
+    public void initMapView() {
+        System.setProperty("javafx.platform", "desktop");
+        System.setProperty("http.agent", "Gluon Mobile/1.0.3");
+        MapView mapView = new MapView();
+        //MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
+        mapView.setZoom(5);
+        //mapView.flyTo(0, mapPoint, 0.1);
+        map.getChildren().add(mapView);
     }
     @FXML
     private void changingPageButton(ActionEvent event) {

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<BorderPane stylesheets="@style.css" fx:controller="fr.groupeF.sae_sisfrance.HelloController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.HelloController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
-          <Menu mnemonicParsing="false" text="Région" fx:id="regionMenu" />
+          <Menu fx:id="regionMenu" mnemonicParsing="false" text="Région" />
           <Menu mnemonicParsing="false" text="Coordonnées">
               <MenuItem mnemonicParsing="false" text="Longitude" />
               <SeparatorMenuItem mnemonicParsing="false" />
@@ -28,30 +26,31 @@
           </Menu>
           <Menu mnemonicParsing="false">
            <graphic>
-              <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
+              <TextField fx:id="rechercherTextField" promptText="Rechercher" />
            </graphic>
           </Menu>
       </MenuBar>
    </top>
    <center>
-      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="dateColumn" prefWidth="140.0" text="Date" />
-          <TableColumn fx:id="regionColumn" prefWidth="268.0" text="Région" />
-            <TableColumn fx:id="intensiteColumn" minWidth="0.0" prefWidth="141.0" text="Intensité" />
+          <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
+          <TableColumn fx:id="regionColumn" prefWidth="200.0" text="Région" />
+            <TableColumn fx:id="intensiteColumn" minWidth="0.0" prefWidth="100.0" text="Intensité" />
         </columns>
       </TableView>
    </center>
    <bottom>
        <HBox alignment="CENTER">
-            <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="changement" fx:id="uploadButton"/>
+            <Button fx:id="uploadButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="changement" />
             <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
        </HBox>
    </bottom>
-<!--   <right>-->
+   <right>
 <!--&lt;!&ndash;      <ImageView fitHeight="500.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">&ndash;&gt;-->
 <!--&lt;!&ndash;         <image>&ndash;&gt;-->
 <!--&lt;!&ndash;&lt;!&ndash;            <Image url="@France.png" />&ndash;&gt;&ndash;&gt;-->
 <!--&lt;!&ndash;         </image></ImageView>&ndash;&gt;-->
-<!--   </right>-->
+       <VBox fx:id="map" prefWidth="600.0" />
+   </right>
 </BorderPane>
