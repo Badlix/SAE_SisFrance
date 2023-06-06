@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class HelloController extends BorderPane implements Initializable {
 
@@ -29,7 +32,14 @@ public class HelloController extends BorderPane implements Initializable {
     TableColumn regionColumn;
     @FXML
     TableColumn intensiteColumn;
-    ArrayList<ArrayList<String>> eartquakes;
+    @FXML
+    VBox map;
+    @FXML
+    Menu regionMenu;
+
+    private ObservableList<Earthquake> earthquakes;
+    private ObservableList<Earthquake> filteredEarthquakes;
+    private boolean isRegionFiltered = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,8 +51,27 @@ public class HelloController extends BorderPane implements Initializable {
         table.setItems(filteredEarthquakes);
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
-        intensiteColumn.setCellValueFactory(new PropertyValueFactory<>("intensite"));
-//        updateTable();
+        intensiteColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
+
+        ArrayList<String> regions = new ArrayList<>();
+        for (Earthquake earthquake : earthquakes) {
+            if (!regions.contains(earthquake.getRegion()))
+                regions.add(earthquake.getRegion());
+        }
+        regions.sort(String::compareToIgnoreCase);
+        for (String region : regions) {
+            MenuItem menuItem = new MenuItem(region);
+            menuItem.setId(region.replace(" ", "").replace("_",""));
+            menuItem.setOnAction(this::buttonFilterRegion);
+            regionMenu.getItems().add(menuItem);
+        }
+
+
+//        MapView mapView = new MapView();
+//        MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
+//        mapView.setZoom(5);
+//        mapView.flyTo(0, mapPoint, 0.1);
+//        map.getChildren().add(mapView);
     }
     @FXML
     private void changingPageButton(ActionEvent event) {

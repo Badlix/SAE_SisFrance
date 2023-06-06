@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class DataImporter {
     public static ArrayList<Earthquake> read(String csvFile) {
-
         String line;
         ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();
 

@@ -1,10 +1,7 @@
 .menu-bar {
     -fx-background-color: #4CAF50; /* Green */
 }
-.table-view {
-    -fx-background-color: #0000FF;
-}
 
 .cell{
-    -fx-background-color: #0000FF;
+    -fx-background-color: #0000FF; /* Couleur du fond des cellules du table view */
 }
