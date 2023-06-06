@@ -2,6 +2,8 @@ package fr.groupeF.sae_sisfrance;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +44,9 @@ public class HelloController extends BorderPane implements Initializable {
 
     @FXML
     Menu regionMenu;
+    @FXML
+    TextField rechercherTextField;
+
     @FXML
     Button uploadButton;
     @FXML
@@ -95,6 +100,7 @@ public class HelloController extends BorderPane implements Initializable {
             regionMenu.getItems().add(menuItem);
         }
         initMapView();
+        searchBar();
     }
 
     public void initMapView() {
@@ -130,6 +136,31 @@ public class HelloController extends BorderPane implements Initializable {
     }
 
     @FXML
-    public void searchBar(ActionEvent actionEvent) {
+    public void searchBar() {
+        FilteredList<Earthquake> filteredList = new FilteredList<>(earthquakes, element -> true);
+        rechercherTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(element -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true; // Afficher tous les éléments si la recherche est vide
+                }
+
+                String rechercheTexte = newValue.toLowerCase();
+
+                if (element.getDate().toLowerCase().indexOf(rechercheTexte) > -1) {
+                    return true;
+                } else if (element.getRegion().toLowerCase().indexOf(rechercheTexte) > -1) {
+                    return true;
+                } else if (element.getIntensity().toLowerCase().indexOf(rechercheTexte) > -1) {
+                    return true;
+                } else
+                    return false;
+            });
+        });
+
+        SortedList<Earthquake> sortedList = new SortedList<>(filteredList);
+
+        sortedList.comparatorProperty().bind(table.comparatorProperty());
+
+        table.setItems(sortedList);
     }
-}
+    }
