@@ -9,27 +9,27 @@ public class Earthquake {
     private String name;
     private String region;
     private String shock;
-    private String x;
-    private String y;
+    private String xRGF;
+    private String yRGF;
     private String latitude;
     private String longitude;
     private String intensity;
     private String quality;
 
-public Earthquake(String identifiant, String date, String hour, String name, String region, String shock, String x, String y, String latitude, String longitude, String intensity, String quality) {
-        this.identifiant = identifiant;
-        this.date = date;
-        this.hour = hour;
-        this.name = name;
-        this.region = region;
-        this.shock = shock;
-        this.x = x;
-        this.y = y;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.intensity = intensity;
-        this.quality = quality;
-    }
+public Earthquake(String[] data) {
+    this.identifiant = data[0];
+    this.date = data[1];
+    this.hour = data[2];
+    this.name = data[3];
+    this.region = data[4];
+    this.shock = data[5];
+    this.xRGF = data[6];
+    this.yRGF = data[7];
+    this.latitude = data[8];
+    this.longitude = data[9];
+    this.intensity = data[10];
+    this.quality = data[11];
+}
 
     public String getIdentifiant() {
         return identifiant;
@@ -55,12 +55,12 @@ public Earthquake(String identifiant, String date, String hour, String name, Str
         return shock;
     }
 
-    public String getX() {
-        return x;
+    public String getxRGF() {
+        return xRGF;
     }
 
-    public String getY() {
-        return y;
+    public String getyRGF() {
+        return yRGF;
     }
 
     public String getLatitude() {

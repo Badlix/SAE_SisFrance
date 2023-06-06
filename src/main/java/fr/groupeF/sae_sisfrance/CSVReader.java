@@ -2,26 +2,28 @@ package fr.groupeF.sae_sisfrance;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class CSVReader {
-    public static void read(String csvFile) {
+    public static ArrayList<Earthquake> read(String csvFile) {
 
         String line;
-
+        ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            br.readLine();
             while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
+                String[] data = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                 // Process the data
-                for (int i = 0; i < data.length; i++) {
-
-                }
-                System.out.println();
+                Earthquake earthquake = new Earthquake(data);
+                earthquakes.add(earthquake);
             }
+            return earthquakes;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
 

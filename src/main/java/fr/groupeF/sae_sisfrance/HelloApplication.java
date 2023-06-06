@@ -6,11 +6,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        CSVReader.read("src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv");
+        ArrayList<Earthquake> earthquakes = CSVReader.read("src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv");
+        System.out.println(earthquakes.get(1).getName());
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 500);
         stage.setTitle("Hello!");
