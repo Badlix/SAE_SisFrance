@@ -12,6 +12,7 @@
           <Menu mnemonicParsing="false" text="Région">
             <items>
               <MenuItem mnemonicParsing="false" text="Département" />
+              <MenuItem mnemonicParsing="false" text="SUISSE"  fx:id="SUISSE" onAction="#buttonFilterRegion"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Coordonnées">

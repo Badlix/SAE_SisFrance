@@ -1,34 +1,33 @@
 package fr.groupeF.sae_sisfrance;
 
 public class Earthquake {
+    private String identifiant; // Identifiant du tremblement de terre
+    private String date; // Date du tremblement de terre
+    private String hour; // Heure du tremblement de terre
+    private String name; // Nom du tremblement de terre
+    private String region; // endroit où le tremblement de terre s'est produit
+    private String shock; // Type de choc causé par le tremblement de terre
+    private String xRGF; // Coordonnée X (système de référence géographique)
+    private String yRGF; // Coordonnée Y (système de référence géographique)
+    private String latitude; // Latitude du lieu du tremblement de terre
+    private String longitude; // Longitude du lieu du tremblement de terre
+    private String intensity; // Intensité du tremblement de terre
+    private String quality; // Qualité des données relatives au tremblement de terre
 
-
-    private String identifiant;
-    private String date;
-    private String hour;
-    private String name;
-    private String region;
-    private String shock;
-    private String xRGF;
-    private String yRGF;
-    private String latitude;
-    private String longitude;
-    private String intensity;
-    private String quality;
-
+    // Constructeur de la classe Earthquake
 public Earthquake(String[] data) {
-    this.identifiant = data[0];
-    this.date = data[1];
-    this.hour = data[2];
-    this.name = data[3];
-    this.region = data[4];
-    this.shock = data[5];
-    this.xRGF = data[6];
-    this.yRGF = data[7];
-    this.latitude = data[8];
-    this.longitude = data[9];
-    this.intensity = data[10];
-    this.quality = data[11];
+    this.identifiant = data[0].replace("\"", "");
+    this.date = data[1].replace("\"", "");
+    this.hour = data[2].replace("\"", "");
+    this.name = data[3].replace("\"", "");
+    this.region = data[4].replace("\"", "");
+    this.shock = data[5].replace("\"", "");
+    this.xRGF = data[6].replace("\"", "");
+    this.yRGF = data[7].replace("\"", "");
+    this.latitude = data[8].replace("\"", "");
+    this.longitude = data[9].replace("\"", "");
+    this.intensity = data[10].replace("\"", "");
+    this.quality = data[11].replace("\"", "");
 }
 
     public String getIdentifiant() {
@@ -77,6 +76,23 @@ public Earthquake(String[] data) {
 
     public String getQuality() {
         return quality;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Earthquake)) {
+            return false;
+        }
+        Earthquake e = (Earthquake) o;
+        return e.getIdentifiant().equals(this.getIdentifiant());
+    }
+
+    public boolean is_between_dates(String date1, String date2) {
+        return this.getDate().compareTo(date1) >= 0 && this.getDate().compareTo(date2) <= 0;
     }
 }
 
