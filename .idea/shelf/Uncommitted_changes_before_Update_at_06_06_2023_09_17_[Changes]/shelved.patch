@@ -1,0 +1,117 @@
+Index: src/main/resources/fr/groupeF/sae_sisfrance/menu.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/fr/groupeF/sae_sisfrance/menu.fxml b/src/main/resources/fr/groupeF/sae_sisfrance/menu.fxml
+new file mode 100644
+--- /dev/null	(date 1685972531052)
++++ b/src/main/resources/fr/groupeF/sae_sisfrance/menu.fxml	(date 1685972531052)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import javafx.scene.control.*?>
++<?import javafx.scene.layout.*?>
++
++
++<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
++   <center>
++      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
++         <children>
++            <VBox alignment="CENTER">
++               <children>
++                  <Label text="Selectionner un fichier csv :" />
++               </children>
++            </VBox>
++         </children>
++      </HBox>
++   </center>
++</BorderPane>
+Index: src/main/java/fr/groupeF/sae_sisfrance/HelloController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package fr.groupeF.sae_sisfrance;\r\n\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Label;\r\n\r\npublic class HelloController {\r\n    @FXML\r\n    private Label welcomeText;\r\n\r\n    @FXML\r\n    protected void onHelloButtonClick() {\r\n        welcomeText.setText(\"test changement\");\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java b/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java
+--- a/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java	(revision 604fd18dff544b91bed952273ee01d3c7217da47)
++++ b/src/main/java/fr/groupeF/sae_sisfrance/HelloController.java	(date 1685972531050)
+@@ -11,4 +11,5 @@
+     protected void onHelloButtonClick() {
+         welcomeText.setText("test changement");
+     }
+-}
+\ No newline at end of file
++}
++//jhyvfbdsqoninccc
+\ No newline at end of file
+Index: src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.geometry.Insets?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.layout.VBox?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<VBox alignment=\"CENTER\" spacing=\"20.0\" xmlns:fx=\"http://javafx.com/fxml\"\r\n      fx:controller=\"fr.groupeF.sae_sisfrance.HelloController\">\r\n    <padding>\r\n        <Insets bottom=\"20.0\" left=\"20.0\" right=\"20.0\" top=\"20.0\"/>\r\n    </padding>\r\n\r\n    <Label fx:id=\"welcomeText\"/>\r\n    <Button text=\"Hello!\" onAction=\"#onHelloButtonClick\"/>\r\n</VBox>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml b/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml
+--- a/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml	(revision 604fd18dff544b91bed952273ee01d3c7217da47)
++++ b/src/main/resources/fr/groupeF/sae_sisfrance/hello-view.fxml	(date 1685972531051)
+@@ -1,16 +1,45 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+-<?import javafx.geometry.Insets?>
+-<?import javafx.scene.control.Label?>
+-<?import javafx.scene.layout.VBox?>
++<?import javafx.scene.control.*?>
++<?import javafx.scene.layout.*?>
+ 
+-<?import javafx.scene.control.Button?>
+-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+-      fx:controller="fr.groupeF.sae_sisfrance.HelloController">
+-    <padding>
+-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+-    </padding>
+-
+-    <Label fx:id="welcomeText"/>
+-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+-</VBox>
++<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
++   <top>
++      <MenuBar BorderPane.alignment="CENTER">
++        <menus>
++          <Menu mnemonicParsing="false" text="Région">
++            <items>
++              <MenuItem mnemonicParsing="false" text="Close" />
++            </items>
++          </Menu>
++          <Menu mnemonicParsing="false" text="Coordonnées">
++            <items>
++              <MenuItem mnemonicParsing="false" text="Delete" />
++            </items>
++          </Menu>
++          <Menu mnemonicParsing="false">
++               <graphic>
++                  <DatePicker promptText="Date" />
++               </graphic>
++          </Menu>
++            <Menu mnemonicParsing="false">
++               <graphic>
++                  <TextField promptText="Rechercher" />
++               </graphic>
++            </Menu>
++        </menus>
++      </MenuBar>
++   </top>
++   <center>
++      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
++        <columns>
++          <TableColumn prefWidth="150.0" text="Date" />
++          <TableColumn prefWidth="250.0" text="Région" />
++            <TableColumn prefWidth="200.0" text="Intensité" />
++        </columns>
++      </TableView>
++   </center>
++   <bottom>
++      <Button mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
++   </bottom>
++</BorderPane>
