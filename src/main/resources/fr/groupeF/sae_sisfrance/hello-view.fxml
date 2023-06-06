@@ -8,9 +8,7 @@
 <BorderPane fx:controller="fr.groupeF.sae_sisfrance.HelloController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
-        <menus>
           <Menu mnemonicParsing="false" text="Région" fx:id="regionMenu">
-            <items>
 <!--                <MenuItem mnemonicParsing="false" text="AQUITAINE"  fx:id="AQUITAINE" onAction="#buttonFilterRegion"/>-->
 <!--                <MenuItem mnemonicParsing="false" text="PYRENEES OCCIDENTALES"  fx:id="PYRENEES OCCIDENTALES" onAction="#buttonFilterRegion"/>-->
 <!--                <MenuItem mnemonicParsing="false" text="LORRAINE"  fx:id="LORRAINE" onAction="#buttonFilterRegion"/>-->
@@ -39,28 +37,29 @@
 <!--                <MenuItem mnemonicParsing="false" text="ANJOU"  fx:id="ANJOU" onAction="#buttonFilterRegion"/>-->
 <!--                <MenuItem mnemonicParsing="false" text="ALSACE"  fx:id="ALSACE" onAction="#buttonFilterRegion"/>-->
 <!--                <MenuItem mnemonicParsing="false" text="ALPES DAUPHINOISES"  fx:id="ALPESDAUPHINOISES" onAction="#buttonFilterRegion"/>-->
-            </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Coordonnées">
-            <items>
               <MenuItem mnemonicParsing="false" text="Longitude" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Latitude" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Rayon" />
-            </items>
+              <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" text="Latitude" />
+              <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" text="Rayon" />
           </Menu>
           <Menu mnemonicParsing="false">
                <graphic>
                   <DatePicker promptText="Date" />
                </graphic>
           </Menu>
-            <Menu mnemonicParsing="false">
-               <graphic>
-                  <TextField fx:id="rechercherTextField" promptText="Rechercher" onAction="#searchBar"/>
-               </graphic>
-            </Menu>
-        </menus>
+          <Menu mnemonicParsing="false">
+            <graphic>
+                <DatePicker promptText="Date" />
+            </graphic>
+          </Menu>
+          <Menu mnemonicParsing="false">
+           <graphic>
+              <TextField fx:id="rechercherTextField" promptText="Rechercher" onAction="#searchBar"/>
+           </graphic>
+          </Menu>
       </MenuBar>
    </top>
    <center>
@@ -73,10 +72,10 @@
       </TableView>
    </center>
    <bottom>
-      <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font></Button>
+       <HBox alignment="CENTER">
+            <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="changement" onAction="#changingPageButton"/>
+            <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
+       </HBox>
    </bottom>
    <right>
       <ImageView fitHeight="500.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
