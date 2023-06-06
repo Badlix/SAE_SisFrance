@@ -1,10 +1,14 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.SubScene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
@@ -26,19 +30,16 @@ public class HelloController extends BorderPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // faire le lien avec CSV Reader
-            // ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();
-        eartquakes = new ArrayList<ArrayList<String>>();
-        eartquakes.add(new ArrayList<>(Arrays.asList("date 1", "ville 1", "2")));
-        eartquakes.add(new ArrayList<>(Arrays.asList("date 2", "ville 2", "7")));
-        eartquakes.add(new ArrayList<>(Arrays.asList("date 3", "ville 3", "5")));
-        updateTable();
+        String path = "src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv";
+        ObservableList<Earthquake> earthquakes = FXCollections.observableArrayList(CSVReader.read(path));
+//        table.setItems(earthquakes);
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
+        intensiteColumn.setCellValueFactory(new PropertyValueFactory<>("intensite"));
+//        updateTable();
     }
 
     public void updateTable() {
-//        dateColumn.getColumns().clear();
-//        regionColumn.getColumns().clear();
-//        intensiteColumn.getColumns().clear();
         for (ArrayList<String> eartquake : eartquakes) {
             dateColumn.getColumns().add(eartquake.get(0));
             regionColumn.getColumns().add(eartquake.get(1));
