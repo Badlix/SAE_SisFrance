@@ -43,18 +43,17 @@ public class DataPageController extends BorderPane implements Initializable {
     Label fileReadable;
     @FXML
     VBox map;
-
+    private String filePath;
     private ObservableList<Earthquake> earthquakes;
     private ObservableList<Earthquake> filteredEarthquakes;
     private boolean isRegionFiltered = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String path = "src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv";
-        this.earthquakes = FXCollections.observableArrayList(DataImporter.read(path));
+        filePath = "src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv";
+
+        this.earthquakes = FXCollections.observableArrayList(DataImporter.readCSV(filePath));
         this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
-
-
         isRegionFiltered = false;
         table.setItems(filteredEarthquakes);
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -126,4 +125,7 @@ public class DataPageController extends BorderPane implements Initializable {
 
         table.setItems(sortedList);
     }
+    public void setEarthquakes(ArrayList<Earthquake> earthquakes) {
+        this.earthquakes.setAll(earthquakes);
     }
+}

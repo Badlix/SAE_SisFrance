@@ -8,12 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UploadPageController extends HBox {
     @FXML
@@ -22,7 +22,8 @@ public class UploadPageController extends HBox {
     Button changingFXMLButton;
     @FXML
     Label fileReadableLabel;
-    private String filePath;
+    public static ArrayList<Earthquake> earthquakes;
+
     @FXML
     public void upload(){
         // Ouvrir une boîte de dialogue de sélection de fichier
@@ -37,9 +38,15 @@ public class UploadPageController extends HBox {
         // Obtenir le fichier sélectionné
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            fileReadableLabel.setText("file uploaded");
-            fileReadableLabel.setStyle("-fx-text-fill: green");
-            filePath = selectedFile.getPath();
+            earthquakes = new DataImporter().readCSV(selectedFile);
+            if(earthquakes.size() > 0) {
+                fileReadableLabel.setText("file uploaded");
+                fileReadableLabel.setStyle("-fx-text-fill: green");
+
+//                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("src/main/resources/fr/groupeF/sae_sisfrance/DataPage.fxml"));
+//                DataPageController controller = loader.getController();
+//                controller.setEarthquakes(data);
+            }
         }else{
             fileReadableLabel.setText("file not uploaded");
             fileReadableLabel.setStyle("-fx-text-fill: red");
@@ -58,7 +65,4 @@ public class UploadPageController extends HBox {
         }
     }
 
-    public String getFile() {
-        return filePath;
-    }
 }
