@@ -6,32 +6,20 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 
-
-
-import javafx.stage.Stage;
-
-public class HelloController extends BorderPane implements Initializable {
+public class DataPageController extends BorderPane implements Initializable {
 
     @FXML
     TableView<Earthquake> table;
@@ -50,6 +38,10 @@ public class HelloController extends BorderPane implements Initializable {
     @FXML
     Button uploadButton;
     @FXML
+    Button changingFXMLButton;
+    @FXML
+    Label fileReadable;
+    @FXML
     VBox map;
 
     private ObservableList<Earthquake> earthquakes;
@@ -58,29 +50,11 @@ public class HelloController extends BorderPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        this.earthquakes = FXCollections.observableArrayList();
-//                uploadButton.setOnAction(event -> {
-//            // Ouvrir une boîte de dialogue de sélection de fichier
-//            FileChooser fileChooser = new FileChooser();
-//            Stage stage = (Stage) uploadButton.getScene().getWindow();
-//            fileChooser.setTitle("Sélectionner un fichier");
-//            fileChooser.getExtensionFilters().addAll(
-//                    new FileChooser.ExtensionFilter("Fichiers texte", "*.txt"),
-//                    new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
-//            );
-//            // Obtenir le fichier sélectionné
-//            File selectedFile = fileChooser.showOpenDialog(stage);
-//            if (selectedFile != null) {
-//                System.out.println("Fichier sélectionné : ");
-//                // Traitement du fichier sélectionné
-//                this.earthquakes = FXCollections.observableArrayList(DataImporter.read(selectedFile.getPath()));
-//            }
-//        });
-
         String path = "src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv";
         this.earthquakes = FXCollections.observableArrayList(DataImporter.read(path));
-
         this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
+
+
         isRegionFiltered = false;
         table.setItems(filteredEarthquakes);
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -111,18 +85,7 @@ public class HelloController extends BorderPane implements Initializable {
         mapView.setZoom(5);
         //mapView.flyTo(0, mapPoint, 0.1);
         map.getChildren().add(mapView);
-    }
-    @FXML
-    private void changingPageButton(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("filePickerPage.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 500);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
     @FXML
     public void buttonFilterRegion(ActionEvent actionEvent) {

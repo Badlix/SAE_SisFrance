@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER" fx:controller="fr.groupeF.sae_sisfrance.UploadPageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+      <VBox alignment="CENTER">
+            <Label text="Selectionnez un fichier csv :" />
+            <Button fx:id="uploadButton" text="Upload" onAction="#upload"/>
+            <Label text="" fx:id="fileReadableLabel"/>
+            <Button fx:id="changingFXMLButton" text="next" onAction="#changingFXML"/>
+      </VBox>
+</HBox>

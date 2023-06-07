@@ -7,11 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         System.setProperty("http.agent", "Gluon Mobile/1.0.3");
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UploadPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 500);
         stage.setTitle("Hello!");
         stage.setScene(scene);

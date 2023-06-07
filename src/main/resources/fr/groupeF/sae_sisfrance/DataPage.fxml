@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
           <Menu fx:id="regionMenu" mnemonicParsing="false" text="Région" />
@@ -42,8 +42,8 @@
    </center>
    <bottom>
        <HBox alignment="CENTER">
-            <Button fx:id="uploadButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="changement" />
             <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
+
        </HBox>
    </bottom>
    <right>
