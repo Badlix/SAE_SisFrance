@@ -7,15 +7,17 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.controlsfx.tools.Borders;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class UploadPageController extends HBox {
+public class UploadPageController extends BorderPane {
     @FXML
     Button uploadButton;
     @FXML
@@ -46,8 +48,11 @@ public class UploadPageController extends HBox {
 //                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("src/main/resources/fr/groupeF/sae_sisfrance/DataPage.fxml"));
 //                DataPageController controller = loader.getController();
 //                controller.setEarthquakes(data);
+            }else {
+                fileReadableLabel.setText("invalid file");
+                fileReadableLabel.setStyle("-fx-text-fill: red");
             }
-        }else{
+        }else {
             fileReadableLabel.setText("file not uploaded");
             fileReadableLabel.setStyle("-fx-text-fill: red");
         }

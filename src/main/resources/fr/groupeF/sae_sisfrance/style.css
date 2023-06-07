@@ -1,7 +1,14 @@
 .menu-bar {
     -fx-background-color: #4CAF50; /* Green */
+    -fx-alignment: center;
 }
-
-.cell{
+.hbox{
+    -fx-background-color: #5784BA;
+}
+.filter {
+    -fx-background-color: #9AC8EB; /* Green */
+    -fx-animated: true;
+}
+.table-view .cell {
     -fx-background-color: #00FFFF; /* Couleur du fond des cellules du table view */
 }

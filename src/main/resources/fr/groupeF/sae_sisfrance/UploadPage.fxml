@@ -3,11 +3,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="CENTER" fx:controller="fr.groupeF.sae_sisfrance.UploadPageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-      <VBox alignment="CENTER">
-            <Label text="Selectionnez un fichier csv :" />
-            <Button fx:id="uploadButton" text="Upload" onAction="#upload"/>
-            <Label text="" fx:id="fileReadableLabel"/>
-            <Button fx:id="changingFXMLButton" text="next" onAction="#changingFXML"/>
-      </VBox>
-</HBox>
+<?import com.sun.javafx.scene.control.DatePickerContent?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<BorderPane stylesheets="@style.css" styleClass="uploadPage" fx:controller="fr.groupeF.sae_sisfrance.UploadPageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+      <left>
+            <HBox alignment="CENTER" styleClass="hbox" prefWidth="400">
+                  <VBox alignment="CENTER" spacing="10">
+                        <ComboBox prefHeight="30" prefWidth="300" promptText="Region" styleClass="filter">
+                              <items >
+                                    <FXCollections fx:factory="observableArrayList" >
+                                          <String fx:value="Option 1" />
+                                          <String fx:value="Option 2" />
+                                          <String fx:value="Option 3" />
+                                    </FXCollections>
+                              </items>
+                        </ComboBox>
+                        <TextField promptText="Région" styleClass="filter"/>
+                        <TextField promptText="coordonnée" styleClass="filter"/>
+                        <HBox spacing="10" prefWidth="300">
+                              <DatePicker promptText="De" styleClass="filter"/>
+                              <DatePicker promptText="A" styleClass="filter"/>
+                        </HBox>
+
+
+                        <Button fx:id="changingFXMLButton" text="Rechercher" onAction="#changingFXML"/>
+                  </VBox>
+            </HBox>
+      </left>
+      <center>
+            <HBox alignment="CENTER" >
+                  <VBox alignment="CENTER" spacing="10">
+                        <Label text="Selectionnez un fichier csv :" />
+                        <Button fx:id="uploadButton" text="Upload" onAction="#upload"/>
+                        <Label text="" fx:id="fileReadableLabel"/>
+                  </VBox>
+            </HBox>
+      </center>
+</BorderPane>

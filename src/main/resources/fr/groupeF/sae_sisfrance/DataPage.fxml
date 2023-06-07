@@ -5,30 +5,31 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
-          <Menu fx:id="regionMenu" mnemonicParsing="false" text="Région" />
-          <Menu mnemonicParsing="false" text="Coordonnées">
-              <MenuItem mnemonicParsing="false" text="Longitude" />
-              <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem mnemonicParsing="false" text="Latitude" />
-              <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem mnemonicParsing="false" text="Rayon" />
-          </Menu>
-          <Menu mnemonicParsing="false">
+      <MenuBar>
+
+              <Menu fx:id="regionMenu" mnemonicParsing="false" text="Région"/>
+              <Menu mnemonicParsing="false" text="Coordonnées">
+                  <MenuItem mnemonicParsing="false" text="Longitude" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Latitude" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Rayon" />
+              </Menu>
+              <Menu mnemonicParsing="false">
+                   <graphic>
+                      <DatePicker promptText="Date" />
+                   </graphic>
+              </Menu>
+              <Menu mnemonicParsing="false">
+                <graphic>
+                    <DatePicker promptText="Date" />
+                </graphic>
+              </Menu>
+              <Menu mnemonicParsing="false">
                <graphic>
-                  <DatePicker promptText="Date" />
+                  <TextField fx:id="rechercherTextField" promptText="Rechercher" />
                </graphic>
-          </Menu>
-          <Menu mnemonicParsing="false">
-            <graphic>
-                <DatePicker promptText="Date" />
-            </graphic>
-          </Menu>
-          <Menu mnemonicParsing="false">
-           <graphic>
-              <TextField fx:id="rechercherTextField" promptText="Rechercher" />
-           </graphic>
-          </Menu>
+              </Menu>
       </MenuBar>
    </top>
    <center>
