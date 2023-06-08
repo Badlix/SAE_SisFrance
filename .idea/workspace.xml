@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Coordinate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +59,7 @@
       <recent name="fr.groupeF.sae_sisfrance" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DataFilterTest.testSomeMethod">
+  <component name="RunManager" selected="JUnit.DataFilterTest.testUpdateFilter">
     <configuration name="DataFilterTest.testCoordinateFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SAE_SisFrance" />
       <extension name="coverage">
@@ -73,22 +71,6 @@
       <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
       <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.DataFilterTest" />
       <option name="METHOD_NAME" value="testCoordinateFilter" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataFilterTest.testManyFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SAE_SisFrance" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
-      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.DataFilterTest" />
-      <option name="METHOD_NAME" value="testManyFilter" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -126,6 +108,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DataFilterTest.testUpdateFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SAE_SisFrance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
+      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.DataFilterTest" />
+      <option name="METHOD_NAME" value="testUpdateFilter" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DataFilterTest.testintensityFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SAE_SisFrance" />
       <extension name="coverage">
@@ -144,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataFilterTest.testUpdateFilter" />
         <item itemvalue="JUnit.DataFilterTest.testSomeMethod" />
         <item itemvalue="JUnit.DataFilterTest.testRegionFilter" />
         <item itemvalue="JUnit.DataFilterTest.testCoordinateFilter" />
         <item itemvalue="JUnit.DataFilterTest.testintensityFilter" />
-        <item itemvalue="JUnit.DataFilterTest.testManyFilter" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686236193985</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fin des tests de DataFilter -&gt; tous les tests sont passés">
+      <created>1686239055991</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686239055991</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +231,7 @@
     <MESSAGE value="css menu principal" />
     <MESSAGE value="Mise en Place des boutons de filtrage" />
     <MESSAGE value="Mise en place d'un fichier de test pour DataFilter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mise en place d'un fichier de test pour DataFilter" />
+    <MESSAGE value="Fin des tests de DataFilter -&gt; tous les tests sont passés" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fin des tests de DataFilter -&gt; tous les tests sont passés" />
   </component>
 </project>

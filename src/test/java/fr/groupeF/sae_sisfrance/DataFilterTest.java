@@ -72,4 +72,21 @@ class DataFilterTest {
         expectedList.add(testEartquakeList().get(5));
         assertEquals(expectedList, data.getFilteredEarthquakes());
     }
+
+    @Test
+    public void testUpdateFilter() {
+        DataFilter data = new DataFilter(testEartquakeList());
+        data.setRegionFilter("BOUCHE DU RHONE");
+        data.setIntensityMin(7);
+        data.setIntensityMax(10);
+        ObservableList<Earthquake> expectedList = FXCollections.observableArrayList();
+        expectedList.add(testEartquakeList().get(5));
+        data.setRegionFilter("BOUCHE DU RHONE");
+        data.setLatitude(45.00);
+        data.setLongitude(0.37);
+        data.setRayon(50);
+        data.setIntensityMin(4);
+        data.setIntensityMax(4);
+        assertEquals(expectedList, data.getFilteredEarthquakes());
+    }
 }
