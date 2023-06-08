@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,6 +26,11 @@ public class UploadPageController extends BorderPane {
     @FXML
     Label fileReadableLabel;
     public static ArrayList<Earthquake> earthquakes;
+    private FXMLLoader loader;
+    public void initialize() throws IOException {
+        this.loader = new FXMLLoader(Main.class.getResource("DataPage.fxml"));
+        loader.load();
+    }
 
     @FXML
     public void upload(){
@@ -45,9 +51,8 @@ public class UploadPageController extends BorderPane {
                 fileReadableLabel.setText("file uploaded");
                 fileReadableLabel.setStyle("-fx-text-fill: green");
 
-//                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("src/main/resources/fr/groupeF/sae_sisfrance/DataPage.fxml"));
-//                DataPageController controller = loader.getController();
-//                controller.setEarthquakes(data);
+                DataPageController controller = loader.getController();
+                controller.setEarthquakes(earthquakes);
             }else {
                 fileReadableLabel.setText("invalid file");
                 fileReadableLabel.setStyle("-fx-text-fill: red");
@@ -58,16 +63,12 @@ public class UploadPageController extends BorderPane {
         }
     };
     @FXML
-    public void changingFXML(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("DataPage.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 500);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void changingFXML(ActionEvent event) throws IOException {
+        Parent root = this.loader.getRoot();
+        Scene scene = new Scene(root, 1000, 500);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

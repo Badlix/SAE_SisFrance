@@ -51,27 +51,29 @@ public class DataPageController extends BorderPane implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         filePath = "src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv";
-
         this.earthquakes = FXCollections.observableArrayList(DataImporter.readCSV(filePath));
+
+//        this.earthquakes = FXCollections.observableArrayList();
         this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
+
         isRegionFiltered = false;
         table.setItems(filteredEarthquakes);
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
         intensiteColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
 
-        ArrayList<String> regions = new ArrayList<>();
-        for (Earthquake earthquake : earthquakes) {
-            if (!regions.contains(earthquake.getRegion()))
-                regions.add(earthquake.getRegion());
-        }
-        regions.sort(String::compareToIgnoreCase);
-        for (String region : regions) {
-            MenuItem menuItem = new MenuItem(region);
-            menuItem.setId(region.replace(" ", "").replace("_",""));
-            menuItem.setOnAction(this::buttonFilterRegion);
-            regionMenu.getItems().add(menuItem);
-        }
+//        ArrayList<String> regions = new ArrayList<>();
+//        for (Earthquake earthquake : earthquakes) {
+//            if (!regions.contains(earthquake.getRegion()))
+//                regions.add(earthquake.getRegion());
+//        }
+//        regions.sort(String::compareToIgnoreCase);
+//        for (String region : regions) {
+//            MenuItem menuItem = new MenuItem(region);
+//            menuItem.setId(region.replace(" ", "").replace("_",""));
+//            menuItem.setOnAction(this::buttonFilterRegion);
+//            regionMenu.getItems().add(menuItem);
+//        }
         initMapView();
         searchBar();
     }
@@ -125,7 +127,8 @@ public class DataPageController extends BorderPane implements Initializable {
 
         table.setItems(sortedList);
     }
-    public void setEarthquakes(ArrayList<Earthquake> earthquakes) {
-        this.earthquakes.setAll(earthquakes);
+    public void setEarthquakes(ArrayList<Earthquake> data) {
+        this.earthquakes.setAll(data);
+        this.filteredEarthquakes.setAll(data);
     }
 }
