@@ -16,6 +16,7 @@ public class Main extends Application {
         uploadPageLoader.load();
         UploadPageController uploadPageController = uploadPageLoader.getController();
 
+        //load of all FXML files to get loader and controllers
         FXMLLoader dataPageLoader = new FXMLLoader(Main.class.getResource("DataPage.fxml"));
         dataPageLoader.load();
         DataPageController dataPageController = dataPageLoader.getController();
@@ -24,14 +25,17 @@ public class Main extends Application {
         graphicsPageLoader.load();
         GraphicsPageController graphicsPageController = graphicsPageLoader.getController();
 
+        //creation of all scenes
         Scene uploadPageScene = new Scene(uploadPageLoader.getRoot(), 1000, 500);
         Scene dataPageScene = new Scene(dataPageLoader.getRoot(), 1000, 500);
         Scene graphicsPageScene = new Scene(graphicsPageLoader.getRoot(), 1000, 500);
 
+        //set of all scenes to controllers
         dataPageController.setGraphicsPageScene(graphicsPageScene);
         graphicsPageController.setDataPageScene(dataPageScene);
         uploadPageController.setDataPageScene(dataPageScene);
 
+        //set of all loaders to controllers
         uploadPageController.setDataPageLoad(dataPageLoader);
         uploadPageController.setGraphicsPageLoad(graphicsPageLoader);
         dataPageController.setUploadPageLoad(uploadPageLoader);
@@ -39,14 +43,13 @@ public class Main extends Application {
         graphicsPageController.setUploadPageLoad(uploadPageLoader);
         graphicsPageController.setDataPageLoad(dataPageLoader);
 
+        //link all list to each other (earthquakes, filteredEarthquakes, filtersList) through all controllers
         dataPageController.getEarthquakes().setItems(uploadPageController.getEarthquakes());
         graphicsPageController.getEarthquakes().setItems(uploadPageController.getEarthquakes());
         Bindings.bindContentBidirectional(dataPageController.getFilteredEarthquakes(), uploadPageController.getFilteredEarthquakes());
         Bindings.bindContentBidirectional(graphicsPageController.getFilteredEarthquakes(), uploadPageController.getFilteredEarthquakes());
         Bindings.bindContentBidirectional(dataPageController.getFiltersList(), uploadPageController.getFiltersList());
         Bindings.bindContentBidirectional(graphicsPageController.getFiltersList(), uploadPageController.getFiltersList());
-
-
 
         stage.setTitle("Hello!");
         stage.setScene(uploadPageScene);

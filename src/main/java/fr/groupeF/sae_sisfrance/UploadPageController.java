@@ -60,11 +60,11 @@ public class UploadPageController extends BorderPane {
 
     public void initialize() throws IOException {
         earthquakes = FXCollections.observableArrayList();
-        filteredEarthquakes = FXCollections.observableArrayList();
+        earthquakes = FXCollections.observableArrayList(DataImporter.readCSV(new File("src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv"))); //LIGNE POUR SETUP CSV DE BASE
+
+        filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
         filtersList = FXCollections.observableArrayList();
     }
-
-
 
     @FXML
     public void upload(){
