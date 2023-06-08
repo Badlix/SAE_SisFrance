@@ -15,8 +15,8 @@ public class DataFilter {
     private int rayon;
     private String dateDebut;
     private String dateFin;
-    private float intensityMin;
-    private float intensityMax;
+    private double intensityMin;
+    private double intensityMax;
 
     public DataFilter(ObservableList<Earthquake> allEarthquake) {
         this.allEarthquakes = allEarthquake;
@@ -24,7 +24,7 @@ public class DataFilter {
         this.filteredEarthquakes.setAll(allEarthquake);
         // TEMPORAIRE -> QD LES FILTRES DE LA PAGE UPLOAD SERONT FONCITONNEL
         // LEURS VALEURS SERONT PASSER EN PARAMETRE A CE CONSTRUCTEUR POUR INITALIASER LES VARIABLE DE FILTRES
-        this.regionFilter = "";
+        this.regionFilter = null;
         this.latitude = 0;
         this.longitude = 0;
         this.rayon = -1;
@@ -48,7 +48,6 @@ public class DataFilter {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
-        applyFilter();
     }
 
     public String getRegionFilter() {
@@ -67,7 +66,6 @@ public class DataFilter {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
-        applyFilter();
     }
 
     public int getRayon() {
@@ -77,7 +75,6 @@ public class DataFilter {
     public void setRayon(int rayon) {
         this.rayon = rayon;
         applyFilter();
-
     }
 
     public String getDateDebut() {
@@ -98,34 +95,44 @@ public class DataFilter {
         applyFilter();
     }
 
-    public float getIntensityMin() {
+    public double getIntensityMin() {
         return intensityMin;
     }
 
-    public void setIntensityMin(float intensite) {
+    public void setIntensityMin(double intensite) {
         this.intensityMin = intensite;
         applyFilter();
     }
 
-    public float getIntensityMax() {
+    public double getIntensityMax() {
         return intensityMax;
     }
 
-    public void setIntensityMax(float intensite) {
+    public void setIntensityMax(double intensite) {
         this.intensityMax = intensite;
         applyFilter();
     }
 
     private boolean isInRegion(Earthquake earthquake) {
-        if (this.regionFilter == "") {
+        if (this.regionFilter == null || this.regionFilter.isEmpty()) {
             return true;
         }
-        return earthquake.getRegion() == this.regionFilter;
+        return earthquake.getRegion().contentEquals(this.regionFilter);
     }
 
     private boolean isInCoordinate(Earthquake earthquake) {
         if (this.longitude == 0 || this.latitude == 0 || this.rayon == -1) {
             return true;
+        }
+        if (earthquake.getLatitude().isEmpty() || earthquake.getLongitude().isEmpty()) {
+            return false;
+        }
+        if (Double.valueOf(earthquake.getLatitude()) > 48 && Double.valueOf(earthquake.getLatitude()) < 49) {
+            System.out.println(Double.valueOf(earthquake.getLatitude()));
+            System.out.println(this.latitude);
+            System.out.println(Double.valueOf(earthquake.getLongitude()));
+            System.out.println(this.longitude);
+            System.out.println(Coordinate.isCoordinateWithinRadius(this.latitude, this.longitude, Double.valueOf(earthquake.getLatitude()), Double.valueOf(earthquake.getLongitude()), this.rayon));
         }
         double earthquakeLat = Double.valueOf(earthquake.getLatitude());
         double earthquakeLong = Double.valueOf(earthquake.getLongitude());

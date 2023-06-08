@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
 <!--   <top>-->
 <!--      <MenuBar>-->
@@ -47,7 +47,7 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Label>
-                                        <ChoiceBox prefHeight="10.0" prefWidth="100.0" fx:id="filtreRegion"/>
+                                        <ChoiceBox fx:id="regionFilter" prefHeight="10.0" prefWidth="100.0" />
                                     </children>
                                 </HBox>
                             </content>
@@ -96,9 +96,9 @@
                                         <Label text="Longitude : " GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                         <Label text="Latitude : " GridPane.columnIndex="0" GridPane.rowIndex="1" />
                                         <Label text="Rayon (km) : " GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                                        <TextField fx:id="filtreLongitude" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                        <TextField fx:id="filtreLatitude" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                        <TextField fx:id="filtreRayon" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <TextField fx:id="longFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        <TextField fx:id="latFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <TextField fx:id="rayonFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     </children>
                                 </GridPane>
                             </content>
@@ -111,7 +111,7 @@
                             <content>
                                 <HBox>
                                     <children>
-                                        <Slider blockIncrement="0.5" max="10.0" prefWidth="200.0" />
+                                        <Slider blockIncrement="0.5" max="10.0" prefWidth="200.0" fx:id="intensityFilter"/>
                                         <Label text="5" />
                                     </children>
                                 </HBox>
@@ -124,6 +124,11 @@
                         <TextField fx:id="rechercherTextField" promptText="Rechercher" />
                     </graphic>
                 </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button mnemonicParsing="false" text="Actualiser" onAction="#actualizeFilter"/>
+               </graphic>
+            </Menu>
             </menus>
         </MenuBar>
     </top>
@@ -138,7 +143,7 @@
    </center>
    <bottom>
        <HBox fx:id="footer" alignment="CENTER">
-            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" onAction="#changingToGraphicsPage"/>
+            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
 
        </HBox>
    </bottom>
