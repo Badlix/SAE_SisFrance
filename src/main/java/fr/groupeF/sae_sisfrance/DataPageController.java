@@ -29,6 +29,8 @@ public class DataPageController extends BorderPane implements Initializable {
     TableColumn<Object, Object> regionColumn;
     @FXML
     TableColumn<Object, Object> intensiteColumn;
+    @FXML
+    ChoiceBox<String> filtreRegion;
 
     @FXML
     Menu regionMenu;
@@ -62,18 +64,23 @@ public class DataPageController extends BorderPane implements Initializable {
         regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
         intensiteColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
 
-//        ArrayList<String> regions = new ArrayList<>();
-//        for (Earthquake earthquake : earthquakes) {
-//            if (!regions.contains(earthquake.getRegion()))
-//                regions.add(earthquake.getRegion());
-//        }
-//        regions.sort(String::compareToIgnoreCase);
+        ObservableList<String> regions = FXCollections.observableArrayList();
+        for (Earthquake earthquake : earthquakes) {
+            if (!regions.contains(earthquake.getRegion()))
+                regions.add(earthquake.getRegion());
+        }
+        regions.sort(String::compareToIgnoreCase);
+        filtreRegion.setItems(regions);
 //        for (String region : regions) {
 //            MenuItem menuItem = new MenuItem(region);
 //            menuItem.setId(region.replace(" ", "").replace("_",""));
 //            menuItem.setOnAction(this::buttonFilterRegion);
 //            regionMenu.getItems().add(menuItem);
 //        }
+
+        // --------- INIT DU FILTRAGE---------------
+        DataFilter dataFilter = new DataFilter(earthquakes);
+        // -----------------------------------------
         initMapView();
         searchBar();
     }
@@ -130,5 +137,9 @@ public class DataPageController extends BorderPane implements Initializable {
     public void setEarthquakes(ArrayList<Earthquake> data) {
         this.earthquakes.setAll(data);
         this.filteredEarthquakes.setAll(data);
+    }
+
+    public void changeFilter() {
+
     }
 }

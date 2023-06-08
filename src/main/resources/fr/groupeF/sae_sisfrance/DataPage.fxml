@@ -120,10 +120,10 @@
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false">
-                               <graphic>
-                                  <TextField fx:id="rechercherTextField" promptText="Rechercher" />
-                               </graphic>
-                              </Menu>
+                    <graphic>
+                        <TextField fx:id="rechercherTextField" promptText="Rechercher" />
+                    </graphic>
+                </Menu>
             </menus>
         </MenuBar>
     </top>
