@@ -1,14 +1,62 @@
 .menu-bar {
-    -fx-background-color: #4CAF50; /* Green */
+    /*-fx-background-color: #4CAF50; /* Green */
+    -fx-background-color: lightgrey;
+    -fx-font-size: 15px;
+}
+
+.table-view {
+    -fx-font-weight: bold;
+}
+.table-view .column-header {
+    -fx-font-weight: bold;
     -fx-alignment: center;
 }
 .hbox{
     -fx-background-color: #5784BA;
+}
+
+#graphicsButton:hover {
+    -fx-text-fill: #174ea6;
+}
+
+#graphicsButton:pressed {
+    -fx-background-color: #999999; /* Couleur d'arrière-plan lorsque pressé */
+}
+
+#footer {
+    -fx-background-color: #333333;
 }
 .filter {
     -fx-background-color: #9AC8EB; /* Green */
     -fx-animated: true;
 }
 .table-view .cell {
-    -fx-background-color: #00FFFF; /* Couleur du fond des cellules du table view */
+    -fx-background-color: lightgrey; /* Couleur du fond des cellules du table view */
+}
+
+.text-field{
+    -fx-prompt-text-fill: grey;
+    -fx-text-fill: black;
+}
+
+#rechercherTextField {
+    -fx-background-color: #c3c4c4,
+    linear-gradient(lightgrey 50%, white 100%),
+    radial-gradient(center 50% -50%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 24px;
+    -fx-background-insets: 0,1,1;
+}
+
+.button{
+
+}
+
+#graphicsButton {
+    -fx-background-color: #c3c4c4,
+    linear-gradient(lightgrey 50%, white 100%),
+    radial-gradient(center 50% -50%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 24px;
+    -fx-background-insets: 0,1,1;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
 }
