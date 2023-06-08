@@ -23,11 +23,11 @@ import java.util.ArrayList;
 public class UploadPageController extends BorderPane {
     private FXMLLoader graphicsPageLoader;
     private FXMLLoader dataPageLoader;
-    private FXMLLoader uploadPageLoader;
+    private Scene dataPageScene;
+
     @FXML
     private Button uploadButton;
-    @FXML
-    private Button changingFXMLButton;
+
     @FXML
     private Label fileReadableLabel;
     private ObservableList<Earthquake> earthquakes;
@@ -42,8 +42,8 @@ public class UploadPageController extends BorderPane {
         this.dataPageLoader = dataPageLoader;
     }
 
-    public void setUploadPageLoad(FXMLLoader uploadPageLoader) {
-        this.uploadPageLoader = uploadPageLoader;
+    public void setDataPageScene(Scene dataPageScene) {
+        this.dataPageScene = dataPageScene;
     }
 
     public ObservableList<Earthquake> getEarthquakes() {
@@ -97,11 +97,9 @@ public class UploadPageController extends BorderPane {
         }
     };
     @FXML
-    public void changingFXML(ActionEvent event) throws IOException {
-        Parent root = dataPageLoader.getRoot();
-        Scene scene = new Scene(root, 1000, 500);
+    public void changingToDataPage(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+        stage.setScene(dataPageScene);
         stage.show();
     }
 

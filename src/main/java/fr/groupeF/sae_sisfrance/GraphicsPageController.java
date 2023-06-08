@@ -19,17 +19,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GraphicsPageController extends BorderPane {
-    private FXMLLoader graphicsPageLoader;
     private FXMLLoader dataPageLoader;
     private FXMLLoader uploadPageLoader;
+    private Scene dataPageScene;
     private ListView<Earthquake> earthquakes;
     private ObservableList<Earthquake> filteredEarthquakes;
     private ObservableList<String> filtersList;
 
-    public void setGraphicsPageLoad(FXMLLoader graphicsPageLoader) {
-        this.graphicsPageLoader = graphicsPageLoader;
+    public void setDataPageScene(Scene dataPageScene) {
+        this.dataPageScene = dataPageScene;
     }
-
     public void setDataPageLoad(FXMLLoader dataPageLoader) {
         this.dataPageLoader = dataPageLoader;
     }
@@ -58,13 +57,9 @@ public class GraphicsPageController extends BorderPane {
     }
 
     @FXML
-    public void changingToDataPage(ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DataPage.fxml"));
-        fxmlLoader.load();
-        Parent root = fxmlLoader.getRoot();
-        Scene scene = new Scene(root, 1000, 500);
+    public void changingToDataPage(ActionEvent event){
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+        stage.setScene(dataPageScene);
         stage.show();
     }
 

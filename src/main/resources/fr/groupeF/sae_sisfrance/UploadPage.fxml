@@ -27,7 +27,7 @@
                         </HBox>
 
 
-                        <Button fx:id="changingFXMLButton" text="Rechercher" onAction="#changingFXML"/>
+                        <Button fx:id="changingFXMLButton" text="Rechercher" onAction="#changingToDataPage"/>
                   </VBox>
             </HBox>
       </left>

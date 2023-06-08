@@ -24,6 +24,14 @@ public class Main extends Application {
         graphicsPageLoader.load();
         GraphicsPageController graphicsPageController = graphicsPageLoader.getController();
 
+        Scene uploadPageScene = new Scene(uploadPageLoader.getRoot(), 1000, 500);
+        Scene dataPageScene = new Scene(dataPageLoader.getRoot(), 1000, 500);
+        Scene graphicsPageScene = new Scene(graphicsPageLoader.getRoot(), 1000, 500);
+
+        dataPageController.setGraphicsPageScene(graphicsPageScene);
+        graphicsPageController.setDataPageScene(dataPageScene);
+        uploadPageController.setDataPageScene(dataPageScene);
+
         uploadPageController.setDataPageLoad(dataPageLoader);
         uploadPageController.setGraphicsPageLoad(graphicsPageLoader);
         dataPageController.setUploadPageLoad(uploadPageLoader);
@@ -38,9 +46,10 @@ public class Main extends Application {
         Bindings.bindContentBidirectional(dataPageController.getFiltersList(), uploadPageController.getFiltersList());
         Bindings.bindContentBidirectional(graphicsPageController.getFiltersList(), uploadPageController.getFiltersList());
 
-        Scene scene = new Scene(uploadPageLoader.getRoot(), 1000, 500);
+
+
         stage.setTitle("Hello!");
-        stage.setScene(scene);
+        stage.setScene(uploadPageScene);
         stage.show();
     }
 

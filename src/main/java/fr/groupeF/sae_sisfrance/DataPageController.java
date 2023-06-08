@@ -6,11 +6,16 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -18,8 +23,9 @@ import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import com.gluonhq.maps.MapView;
+import javafx.stage.Stage;
 
-public class DataPageController extends BorderPane implements Initializable {
+public class DataPageController extends BorderPane{
 
     @FXML
     TableView<Earthquake> table;
@@ -31,32 +37,48 @@ public class DataPageController extends BorderPane implements Initializable {
     TableColumn<Object, Object> intensiteColumn;
 
     @FXML
-    Menu regionMenu;
-    @FXML
     TextField rechercherTextField;
 
     @FXML
-    Button uploadButton;
-    @FXML
-    Button changingFXMLButton;
-    @FXML
-    Label fileReadable;
-    @FXML
     VBox map;
-    private String filePath;
-    private ObservableList<Earthquake> earthquakes;
+    private Scene graphicsPageScene;
+    private FXMLLoader graphicsPageLoader;
+
+    private FXMLLoader uploadPageLoader;
+    private ListView<Earthquake> earthquakes;
     private ObservableList<Earthquake> filteredEarthquakes;
-    private boolean isRegionFiltered = false;
+    private ObservableList<String> filtersList;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        filePath = "src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv";
-        this.earthquakes = FXCollections.observableArrayList(DataImporter.readCSV(filePath));
+    public void setGraphicsPageScene(Scene graphicsPageScene) {
+        this.graphicsPageScene = graphicsPageScene;
+    }
 
-//        this.earthquakes = FXCollections.observableArrayList();
-        this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
+    public void setGraphicsPageLoad(FXMLLoader graphicsPageLoader) {
+        this.graphicsPageLoader = graphicsPageLoader;
+    }
 
-        isRegionFiltered = false;
+    public void setUploadPageLoad(FXMLLoader uploadPageLoader) {
+        this.uploadPageLoader = uploadPageLoader;
+    }
+
+    public ListView<Earthquake> getEarthquakes() {
+        return earthquakes;
+    }
+
+    public ObservableList<Earthquake> getFilteredEarthquakes() {
+        return filteredEarthquakes;
+    }
+
+    public ObservableList<String> getFiltersList() {
+        return filtersList;
+    }
+
+    public void initialize() throws IOException {
+        System.out.println("DataPageController initialized");
+        earthquakes = new ListView<>();
+        filteredEarthquakes = FXCollections.observableArrayList();
+        filtersList = FXCollections.observableArrayList();
+
         table.setItems(filteredEarthquakes);
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
@@ -75,7 +97,7 @@ public class DataPageController extends BorderPane implements Initializable {
 //            regionMenu.getItems().add(menuItem);
 //        }
         initMapView();
-        searchBar();
+        //searchBar();
     }
 
     public void initMapView() {
@@ -86,49 +108,41 @@ public class DataPageController extends BorderPane implements Initializable {
         mapView.setZoom(5);
         //mapView.flyTo(0, mapPoint, 0.1);
         map.getChildren().add(mapView);
-
     }
+
+//    @FXML
+//    public void searchBar() {
+//        FilteredList<Earthquake> filteredList = new FilteredList<>(earthquakes, element -> true);
+//        rechercherTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+//            filteredList.setPredicate(element -> {
+//                if (newValue == null || newValue.isEmpty()) {
+//                    return true; // Afficher tous les éléments si la recherche est vide
+//                }
+//
+//                String rechercheTexte = newValue.toLowerCase();
+//
+//                if (element.getDate().toLowerCase().indexOf(rechercheTexte) > -1) {
+//                    return true;
+//                } else if (element.getRegion().toLowerCase().indexOf(rechercheTexte) > -1) {
+//                    return true;
+//                } else if (element.getIntensity().toLowerCase().indexOf(rechercheTexte) > -1) {
+//                    return true;
+//                } else
+//                    return false;
+//            });
+//        });
+//
+//        SortedList<Earthquake> sortedList = new SortedList<>(filteredList);
+//
+//        sortedList.comparatorProperty().bind(table.comparatorProperty());
+//
+//        table.setItems(sortedList);
+//    }
+
     @FXML
-    public void buttonFilterRegion(ActionEvent actionEvent) {
-        MenuItem source = (MenuItem) actionEvent.getSource();
-        if (isRegionFiltered) {
-            this.filteredEarthquakes.clear();
-            this.filteredEarthquakes.addAll(earthquakes);
-        }
-        filteredEarthquakes.removeIf(filteredEarthquakes -> !filteredEarthquakes.getRegion().replace(" ", "").replace("_","").equals(source.getId()));
-        isRegionFiltered = true;
-    }
-
-    @FXML
-    public void searchBar() {
-        FilteredList<Earthquake> filteredList = new FilteredList<>(earthquakes, element -> true);
-        rechercherTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredList.setPredicate(element -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true; // Afficher tous les éléments si la recherche est vide
-                }
-
-                String rechercheTexte = newValue.toLowerCase();
-
-                if (element.getDate().toLowerCase().indexOf(rechercheTexte) > -1) {
-                    return true;
-                } else if (element.getRegion().toLowerCase().indexOf(rechercheTexte) > -1) {
-                    return true;
-                } else if (element.getIntensity().toLowerCase().indexOf(rechercheTexte) > -1) {
-                    return true;
-                } else
-                    return false;
-            });
-        });
-
-        SortedList<Earthquake> sortedList = new SortedList<>(filteredList);
-
-        sortedList.comparatorProperty().bind(table.comparatorProperty());
-
-        table.setItems(sortedList);
-    }
-    public void setEarthquakes(ArrayList<Earthquake> data) {
-        this.earthquakes.setAll(data);
-        this.filteredEarthquakes.setAll(data);
+    public void changingToGraphicsPage(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(graphicsPageScene);
+        stage.show();
     }
 }
