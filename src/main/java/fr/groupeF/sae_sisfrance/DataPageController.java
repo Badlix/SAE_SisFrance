@@ -1,16 +1,21 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -18,8 +23,9 @@ import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import com.gluonhq.maps.MapView;
+import javafx.stage.Stage;
 
-public class DataPageController extends BorderPane implements Initializable {
+public class DataPageController extends BorderPane{
 
     @FXML
     TableView<Earthquake> table;
@@ -29,34 +35,49 @@ public class DataPageController extends BorderPane implements Initializable {
     TableColumn<Object, Object> regionColumn;
     @FXML
     TableColumn<Object, Object> intensiteColumn;
-
     @FXML
     Menu regionMenu;
     @FXML
     TextField rechercherTextField;
-
-    @FXML
-    Button uploadButton;
-    @FXML
-    Button changingFXMLButton;
-    @FXML
-    Label fileReadable;
     @FXML
     VBox map;
-    private String filePath;
-    private ObservableList<Earthquake> earthquakes;
+    private FXMLLoader graphicsPageLoader;
+    private FXMLLoader dataPageLoader;
+    private FXMLLoader uploadPageLoader;
+    private ListView<Earthquake> earthquakes;
     private ObservableList<Earthquake> filteredEarthquakes;
-    private boolean isRegionFiltered = false;
+    private ObservableList<String> filtersList;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        filePath = "src/main/resources/fr/groupeF/sae_sisfrance/SisFrance.csv";
-        this.earthquakes = FXCollections.observableArrayList(DataImporter.readCSV(filePath));
+    public void setGraphicsPageLoad(FXMLLoader graphicsPageLoader) {
+        this.graphicsPageLoader = graphicsPageLoader;
+    }
 
-//        this.earthquakes = FXCollections.observableArrayList();
-        this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
+    public void setDataPageLoad(FXMLLoader dataPageLoader) {
+        this.dataPageLoader = dataPageLoader;
+    }
 
-        isRegionFiltered = false;
+    public void setUploadPageLoad(FXMLLoader uploadPageLoader) {
+        this.uploadPageLoader = uploadPageLoader;
+    }
+
+    public ListView<Earthquake> getEarthquakes() {
+        return earthquakes;
+    }
+
+    public ObservableList<Earthquake> getFilteredEarthquakes() {
+        return filteredEarthquakes;
+    }
+
+    public ObservableList<String> getFiltersList() {
+        return filtersList;
+    }
+
+    public void initialize() throws IOException {
+        System.out.println("dataPageController initialized");
+        earthquakes = new ListView<>();
+        filteredEarthquakes = FXCollections.observableArrayList();
+        filtersList = FXCollections.observableArrayList();
+
         table.setItems(filteredEarthquakes);
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
@@ -75,7 +96,7 @@ public class DataPageController extends BorderPane implements Initializable {
 //            regionMenu.getItems().add(menuItem);
 //        }
         initMapView();
-        searchBar();
+        //searchBar();
     }
 
     public void initMapView() {
@@ -86,22 +107,11 @@ public class DataPageController extends BorderPane implements Initializable {
         mapView.setZoom(5);
         //mapView.flyTo(0, mapPoint, 0.1);
         map.getChildren().add(mapView);
-
-    }
-    @FXML
-    public void buttonFilterRegion(ActionEvent actionEvent) {
-        MenuItem source = (MenuItem) actionEvent.getSource();
-        if (isRegionFiltered) {
-            this.filteredEarthquakes.clear();
-            this.filteredEarthquakes.addAll(earthquakes);
-        }
-        filteredEarthquakes.removeIf(filteredEarthquakes -> !filteredEarthquakes.getRegion().replace(" ", "").replace("_","").equals(source.getId()));
-        isRegionFiltered = true;
     }
 
     @FXML
     public void searchBar() {
-        FilteredList<Earthquake> filteredList = new FilteredList<>(earthquakes, element -> true);
+        FilteredList<Earthquake> filteredList = new FilteredList<>(filteredEarthquakes, element -> true);
         rechercherTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(element -> {
                 if (newValue == null || newValue.isEmpty()) {
@@ -120,15 +130,16 @@ public class DataPageController extends BorderPane implements Initializable {
                     return false;
             });
         });
-
         SortedList<Earthquake> sortedList = new SortedList<>(filteredList);
-
         sortedList.comparatorProperty().bind(table.comparatorProperty());
-
         table.setItems(sortedList);
     }
-    public void setEarthquakes(ArrayList<Earthquake> data) {
-        this.earthquakes.setAll(data);
-        this.filteredEarthquakes.setAll(data);
+    @FXML
+    public void changingToGraphicsPage(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("GraphicsPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 500);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

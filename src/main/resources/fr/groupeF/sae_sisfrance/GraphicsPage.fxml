@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.GraphicsPageController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <Menu fx:id="regionMenu" mnemonicParsing="false" text="Région" />
@@ -36,7 +36,7 @@
     </center>
     <bottom>
         <HBox alignment="CENTER">
-            <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="DataPage" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
+            <Button alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="DataPage" textAlignment="RIGHT" BorderPane.alignment="CENTER" onAction="#changingToDataPage"/>
 
         </HBox>
     </bottom>

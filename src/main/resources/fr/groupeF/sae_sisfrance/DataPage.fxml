@@ -43,7 +43,7 @@
    </center>
    <bottom>
        <HBox fx:id="footer" alignment="CENTER">
-            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
+            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" onAction="#changingToGraphicsPage"/>
 
        </HBox>
    </bottom>
