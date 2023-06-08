@@ -45,18 +45,36 @@
     radial-gradient(center 50% -50%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
     -fx-background-radius: 24px;
     -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
 }
 
 .button{
 
 }
+/*1ère version*/
 
-#graphicsButton {
+/*#graphicsButton {
     -fx-background-color: #c3c4c4,
     linear-gradient(lightgrey 50%, white 100%),
     radial-gradient(center 50% -50%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
     -fx-background-radius: 24px;
     -fx-background-insets: 0,1,1;
     -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}*/
+
+/*2ème version*/
+
+#graphicsButton {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
     -fx-cursor: hand;
 }
