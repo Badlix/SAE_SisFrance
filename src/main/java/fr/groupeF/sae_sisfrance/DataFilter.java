@@ -133,13 +133,6 @@ public class DataFilter {
         if (earthquake.getLatitude().isEmpty() || earthquake.getLongitude().isEmpty()) {
             return false;
         }
-        if (Double.valueOf(earthquake.getLatitude()) > 48 && Double.valueOf(earthquake.getLatitude()) < 49) {
-            System.out.println(Double.valueOf(earthquake.getLatitude()));
-            System.out.println(this.latitude);
-            System.out.println(Double.valueOf(earthquake.getLongitude()));
-            System.out.println(this.longitude);
-            System.out.println(Coordinate.isCoordinateWithinRadius(this.latitude, this.longitude, Double.valueOf(earthquake.getLatitude()), Double.valueOf(earthquake.getLongitude()), this.rayon));
-        }
         double earthquakeLat = Double.valueOf(earthquake.getLatitude());
         double earthquakeLong = Double.valueOf(earthquake.getLongitude());
         return Coordinate.isCoordinateWithinRadius(this.latitude, this.longitude, earthquakeLat, earthquakeLong, this.rayon);
