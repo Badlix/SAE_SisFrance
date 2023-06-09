@@ -112,7 +112,7 @@
                             <content>
                                 <HBox>
                                     <children>
-                                        <RangeSlider  fx:id="intensityFilter" blockIncrement="0.5" min="0" max="10.0" prefWidth="200.0"/>
+                                        <RangeSlider fx:id="intensityFilter" snapToTicks="true" showTickMarks="true" showTickLabels="true" majorTickUnit="2" minorTickCount="1" blockIncrement="0.5" min="0" max="10.0" prefWidth="200.0"/>
                                         <Label fx:id="rangeLabel" />
                                     </children>
                                 </HBox>
