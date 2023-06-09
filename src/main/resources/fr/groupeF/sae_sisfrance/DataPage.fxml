@@ -112,7 +112,7 @@
                             <content>
                                 <HBox>
                                     <children>
-                                        <RangeSlider fx:id="intensityFilter"  max="10.0" min="0.0" blockIncrement="0.5" highValue="10.0" lowValue="0.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                                        <RangeSlider fx:id="intensityFilter"  max="12.0" min="0.0" blockIncrement="0.5" highValue="12.0" lowValue="0.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                                         <Label fx:id="rangeLabel" />
                                     </children>
                                 </HBox>
@@ -125,11 +125,6 @@
                         <TextField fx:id="rechercherTextField" promptText="Rechercher" />
                     </graphic>
                 </Menu>
-<!--            <Menu mnemonicParsing="false">-->
-<!--               <graphic>-->
-<!--                  <Button mnemonicParsing="false" onAction="#actualizeFilter" text="Actualiser" />-->
-<!--               </graphic>-->
-<!--            </Menu>-->
             </menus>
         </MenuBar>
     </top>
