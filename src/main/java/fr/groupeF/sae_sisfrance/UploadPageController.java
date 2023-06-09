@@ -1,17 +1,18 @@
 package fr.groupeF.sae_sisfrance;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.controlsfx.control.RangeSlider;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +28,22 @@ public class UploadPageController extends BorderPane {
 
     @FXML
     private Label fileReadableLabel;
+    @FXML
+    private ComboBox<String> regionFilter;
+    @FXML
+    private TextField latFilter;
+    @FXML
+    private TextField longFilter;
+    @FXML
+    private TextField rayonFilter;
+    @FXML
+    private RangeSlider intensityFilter;
+    @FXML
+    private DatePicker dateDebutFilter;
+    @FXML
+    private DatePicker dateFinFilter;
+    @FXML
+    private Button changingFXMLButton;
     private DataFilter dataEarthquakes;
 
     public void setGraphicsPageLoad(FXMLLoader graphicsPageLoader) {
@@ -48,6 +65,38 @@ public class UploadPageController extends BorderPane {
     public void initialize() throws IOException {
         dataEarthquakes = new DataFilter(FXCollections.observableArrayList());
         System.out.println("UploadPageController initialized");
+        // ---------ACTUALISATION DES FILTRES---------------
+        regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        // ---------FILTRE DATE A MODIFIER---------------
+        dateDebutFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        dateFinFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        // ---------FILTRE DATE A MODIFIER---------------
+        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+
+        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        dataEarthquakes.getEarthquake().addListener(new ListChangeListener<Earthquake>() {
+            @Override
+            public void onChanged(Change<? extends Earthquake> change) {
+                ObservableList<String> regions = FXCollections.observableArrayList();
+                for (Earthquake earthquake : dataEarthquakes.getEarthquake()) {
+                    if (!regions.contains(earthquake.getRegion()))
+                        regions.add(earthquake.getRegion());
+                }
+                regions.sort(String::compareToIgnoreCase);
+                regions.add(0, "");
+                regionFilter.setItems(regions);
+            }
+        });
     }
 
     @FXML
@@ -70,6 +119,7 @@ public class UploadPageController extends BorderPane {
             if(dataEarthquakes.getEarthquake().size() > 0) {
                 fileReadableLabel.setText("file uploaded");
                 fileReadableLabel.setStyle("-fx-text-fill: green");
+                enableFilter();
             }else {
                 fileReadableLabel.setText("invalid file");
                 fileReadableLabel.setStyle("-fx-text-fill: red");
@@ -84,6 +134,35 @@ public class UploadPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
+    }
+
+    public void actualizeFilter() {
+        // Region
+        dataEarthquakes.setRegionFilter(regionFilter.getValue());
+        // Localisation
+        if (longFilter.getText().isEmpty() == false && latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
+            dataEarthquakes.setLongitude(Float.valueOf(longFilter.getText()));
+            dataEarthquakes.setLatitude(Float.valueOf(latFilter.getText()));
+            dataEarthquakes.setRayon(Integer.valueOf(rayonFilter.getText()));
+        }
+        // Date -> NE MARCHE PAS
+        dataEarthquakes.setDateDebut(String.valueOf(dateDebutFilter.getValue()));
+        dataEarthquakes.setDateFin(String.valueOf(dateFinFilter.getValue()));
+
+        // Intensity -> A MODIFIER
+        dataEarthquakes.setIntensityMin(intensityFilter.getLowValue());
+        dataEarthquakes.setIntensityMax(intensityFilter.getHighValue());
+    }
+
+    public void enableFilter() {
+        regionFilter.setDisable(false);
+        latFilter.setDisable(false);
+        longFilter.setDisable(false);
+        rayonFilter.setDisable(false);
+        intensityFilter.setDisable(false);
+        dateDebutFilter.setDisable(false);
+        dateFinFilter.setDisable(false);
+        changingFXMLButton.setDisable(false);
     }
 
 }

@@ -6,123 +6,112 @@
 <?import org.controlsfx.control.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
-<!--   <top>-->
-<!--      <MenuBar>-->
-
-<!--              <Menu fx:id="regionMenu" text="Région"/>-->
-<!--              <Menu text="Coordonnées">-->
-<!--                  <MenuItem text="Longitude" />-->
-<!--                  <SeparatorMenuItem />-->
-<!--                  <MenuItem text="Latitude" />-->
-<!--                  <SeparatorMenuItem />-->
-<!--                  <MenuItem text="Rayon" />-->
-<!--              </Menu>-->
-<!--              <Menu>-->
-<!--                   <graphic>-->
-<!--                      <DatePicker promptText="Date" />-->
-<!--                   </graphic>-->
-<!--              </Menu>-->
-<!--              <Menu>-->
-<!--                <graphic>-->
-<!--                    <DatePicker promptText="Date" />-->
-<!--                </graphic>-->
-<!--              </Menu>-->
-<!--              <Menu>-->
-<!--               <graphic>-->
-<!--                  <TextField fx:id="rechercherTextField" promptText="Rechercher" />-->
-<!--               </graphic>-->
-<!--              </Menu>-->
-<!--      </MenuBar>-->
-<!--   </top>-->
     <top>
-        <MenuBar fx:id="menuBar" prefHeight="50.0">
-            <Menu text="Localisation" >
-                <CustomMenuItem text="Unspecified Action">
-                    <content>
-                        <VBox alignment="CENTER" prefHeight="70.0" prefWidth="175.0" spacing="5">
-                            <ChoiceBox fx:id="regionFilter" prefHeight="30.0" prefWidth="150.0"/><!-- promptText="Regions"-->
-                            <ChoiceBox fx:id="paysFilter" prefHeight="30.0" prefWidth="150.0" /><!-- promptText="pays, etc..."-->
-                        </VBox>
-                    </content>
-                </CustomMenuItem>
-            </Menu>
-            <Menu text="Date">
-                <CustomMenuItem text="Unspecified Action">
-                    <content>
-                        <GridPane prefWidth="200.0">
-                                <DatePicker fx:id="filtreDateDebut" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="De"/>
-                                <DatePicker fx:id="filtreDateFin" GridPane.columnIndex="1" GridPane.rowIndex="1"  promptText="A"/>
-                                <Label text="DE : " GridPane.columnIndex="0" GridPane.rowIndex="0" minWidth="30"/>
-                                <Label text="A : " GridPane.columnIndex="0" GridPane.rowIndex="1" minWidth="30"/>
-                        </GridPane>
-                    </content>
-                </CustomMenuItem>
-            </Menu>
-            <Menu text="Coordonnées">
-                <items>
-                    <CustomMenuItem text="Unspecified Action">
-                        <content>
-                            <GridPane prefWidth="160.0">
-                                <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0"/>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0"/>
-                                </columnConstraints>
-                                <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                </rowConstraints>
-                                <Label text="Longitude : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                                <Label text="Latitude : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                                <Label text="Rayon (km) : " GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                                <TextField fx:id="longFilter" prefWidth="50.0" GridPane.columnIndex="1"
-                                           GridPane.rowIndex="0"/>
-                                <TextField fx:id="latFilter" prefWidth="50.0" GridPane.columnIndex="1"
-                                           GridPane.rowIndex="1"/>
-                                <TextField fx:id="rayonFilter" prefWidth="50.0" GridPane.columnIndex="1"
-                                           GridPane.rowIndex="2"/>
-                            </GridPane>
-                        </content>
-                    </CustomMenuItem>
-                </items>
-            </Menu>
-            <Menu text="Intensité">
-                <CustomMenuItem text="Unspecified Action">
-                    <content>
-                        <HBox spacing="5">
-                            <RangeSlider styleClass="rangeSlider" fx:id="intensityFilter" max="10.0" min="0.0" blockIncrement="0.5"
-                                         highValue="10.0" lowValue="0.0" majorTickUnit="2" minorTickCount="1"
-                                         prefWidth="200.0" showTickLabels="true" showTickMarks="true"
-                                         snapToTicks="true"/>
-                            <Label fx:id="rangeLabel"/>
-                        </HBox>
-                    </content>
-                </CustomMenuItem>
-            </Menu>
-            <Menu>
-                <graphic>
-                    <TextField fx:id="rechercherTextField" promptText="Rechercher" />
-                </graphic>
-            </Menu>
-            <!--            <Menu>-->
-            <!--               <graphic>-->
-            <!--                  <Button onAction="#actualizeFilter" text="Actualiser" />-->
-            <!--               </graphic>-->
-            <!--            </Menu>-->
+        <MenuBar fx:id="menuBar" prefHeight="50.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Localisation">
+                    <items>
+                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                            <content>
+                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="175.0">
+                                    <children>
+                                        <Label alignment="CENTER" prefHeight="25.0" text="Région : ">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <ChoiceBox fx:id="regionFilter" prefHeight="10.0" prefWidth="100.0" />
+                                    </children>
+                                </HBox>
+                            </content>
+                        </CustomMenuItem>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Date">
+                    <items>
+                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                            <content>
+                                <GridPane prefWidth="160.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="40.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <DatePicker fx:id="filtreDateDebut" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        <DatePicker fx:id="filtreDateFin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <Label text="DE : " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <Label text="A : " GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                    </children>
+                                </GridPane>
+                            </content>
+                        </CustomMenuItem>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Coordonnées">
+                    <items>
+                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                            <content>
+                                <GridPane prefWidth="160.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Longitude : " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <Label text="Latitude : " GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                        <Label text="Rayon (km) : " GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                        <TextField fx:id="longFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        <TextField fx:id="latFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <TextField fx:id="rayonFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    </children>
+                                </GridPane>
+                            </content>
+                        </CustomMenuItem>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Intensité">
+                    <items>
+                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                            <content>
+                                <HBox>
+                                    <children>
+                                        <RangeSlider fx:id="intensityFilter"  max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
+                                        <Label fx:id="rangeLabel" />
+                                    </children>
+                                </HBox>
+                            </content>
+                        </CustomMenuItem>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false">
+                    <graphic>
+                        <TextField fx:id="rechercherTextField" promptText="Rechercher" />
+                    </graphic>
+                </Menu>
+            </menus>
         </MenuBar>
     </top>
    <center>
       <TableView fx:id="table" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
         <columns>
-            <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
-            <TableColumn fx:id="regionColumn" prefWidth="200.0" text="Région" />
+          <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
+          <TableColumn fx:id="regionColumn" prefWidth="200.0" text="Région" />
             <TableColumn fx:id="intensiteColumn" minWidth="0.0" prefWidth="100.0" text="Intensité" />
         </columns>
       </TableView>
    </center>
     <bottom>
         <HBox fx:id="footer" alignment="CENTER">
-            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" onAction="#changingToGraphicsPage" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
+            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" onAction="#changingToGraphicsPage" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
         </HBox>
     </bottom>
    <right>
