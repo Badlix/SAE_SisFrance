@@ -3,8 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import org.controlsfx.control.*?>
 
-<?import org.controlsfx.control.RangeSlider?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
 <!--   <top>-->
 <!--      <MenuBar>-->
@@ -112,7 +112,7 @@
                             <content>
                                 <HBox>
                                     <children>
-                                        <RangeSlider fx:id="intensityFilter" snapToTicks="true" showTickMarks="true" showTickLabels="true" majorTickUnit="2" minorTickCount="1" blockIncrement="0.5" min="0" max="10.0" prefWidth="200.0"/>
+                                        <RangeSlider fx:id="intensityFilter"  max="10.0" min="0.0" blockIncrement="0.5" highValue="10.0" lowValue="0.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                                         <Label fx:id="rangeLabel" />
                                     </children>
                                 </HBox>
@@ -127,7 +127,7 @@
                 </Menu>
             <Menu mnemonicParsing="false">
                <graphic>
-                  <Button mnemonicParsing="false" text="Actualiser" onAction="#actualizeFilter"/>
+                  <Button mnemonicParsing="false" onAction="#actualizeFilter" text="Actualiser" />
                </graphic>
             </Menu>
             </menus>
@@ -144,7 +144,7 @@
    </center>
     <bottom>
         <HBox fx:id="footer" alignment="CENTER">
-            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" onAction="#changingToGraphicsPage"/>
+            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" onAction="#changingToGraphicsPage" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
         </HBox>
     </bottom>
    <right>
