@@ -69,18 +69,17 @@ public class UploadPageController extends BorderPane {
         regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
             actualizeFilter();
         });
-        // ---------FILTRE DATE A MODIFIER---------------
+        // ---------FILTRE DATE ------------------------
         dateDebutFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
             actualizeFilter();
         });
         dateFinFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
             actualizeFilter();
         });
-        // ---------FILTRE DATE A MODIFIER---------------
+        // ---------FILTRE INTENSITE A MODIFIER---------------
         intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
             actualizeFilter();
         });
-
         intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
             actualizeFilter();
         });
@@ -146,8 +145,8 @@ public class UploadPageController extends BorderPane {
             dataEarthquakes.setRayon(Integer.valueOf(rayonFilter.getText()));
         }
         // Date -> NE MARCHE PAS
-        dataEarthquakes.setDateDebut(String.valueOf(dateDebutFilter.getValue()));
-        dataEarthquakes.setDateFin(String.valueOf(dateFinFilter.getValue()));
+        dataEarthquakes.setDateDebut(new MyDate(String.valueOf(dateDebutFilter.getValue())));
+        dataEarthquakes.setDateFin(new MyDate(String.valueOf(dateFinFilter.getValue())));
 
         // Intensity -> A MODIFIER
         dataEarthquakes.setIntensityMin(intensityFilter.getLowValue());

@@ -2,7 +2,7 @@ package fr.groupeF.sae_sisfrance;
 
 public class Earthquake {
     private final String identifiant; // Identifiant du tremblement de terre
-    private final String date; // Date du tremblement de terre
+    private final MyDate date; // Date du tremblement de terre
     private final String hour; // Heure du tremblement de terre
     private final String name; // Nom du tremblement de terre
     private final String region; // endroit où le tremblement de terre s'est produit
@@ -17,7 +17,7 @@ public class Earthquake {
     // Constructeur de la classe Earthquake
 public Earthquake(String[] data) {
     this.identifiant = data[0].replace("\"", "");
-    this.date = data[1].replace("\"", "");
+    this.date = new MyDate(data[1].replace("\"", ""));
     this.hour = data[2].replace("\"", "");
     this.name = data[3].replace("\"", "");
     this.region = data[4].replace("\"", "");
@@ -34,7 +34,7 @@ public Earthquake(String[] data) {
         return identifiant;
     }
 
-    public String getDate() {
+    public MyDate getDate() {
         return date;
     }
 
@@ -91,8 +91,8 @@ public Earthquake(String[] data) {
         return e.getIdentifiant().equals(this.getIdentifiant());
     }
 
-    public boolean is_between_dates(String date1, String date2) {
-        return this.getDate().compareTo(date1) >= 0 && this.getDate().compareTo(date2) <= 0;
+    public boolean isBetweenDates(MyDate date1, MyDate date2) {
+        return this.date.isBetween(date1, date2);
     }
 }
 

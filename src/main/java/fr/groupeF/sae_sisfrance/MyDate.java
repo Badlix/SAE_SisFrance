@@ -9,15 +9,28 @@ public class MyDate {
         this.year = null;
         this.month = null;
         this.day = null;
-        String[] numbers = date.split("/");
-        if (numbers.length >= 1 && numbers[0].isEmpty() == false) {
-            this.year = Integer.valueOf(numbers[0]);
-        }
-        if (numbers.length >= 2 && numbers[1].isEmpty() == false) {
-            this.month = Integer.valueOf(numbers[1]);
-        }
-        if (numbers.length == 3 && numbers[2].isEmpty() == false) {
-            this.day = Integer.valueOf(numbers[2]);
+        if (date.contains("/")) {
+            String[] numbers = date.split("/");
+            if (numbers.length >= 1 && numbers[0].isEmpty() == false) {
+                this.year = Integer.valueOf(numbers[0]);
+            }
+            if (numbers.length >= 2 && numbers[1].isEmpty() == false) {
+                this.month = Integer.valueOf(numbers[1]);
+            }
+            if (numbers.length == 3 && numbers[2].isEmpty() == false) {
+                this.day = Integer.valueOf(numbers[2]);
+            }
+        } else if (date.contains("-")) {
+            String[] numbers = date.split("-");
+            if (numbers.length >= 1 && numbers[0].isEmpty() == false) {
+                this.year = Integer.valueOf(numbers[0]);
+            }
+            if (numbers.length >= 2 && numbers[1].isEmpty() == false) {
+                this.month = Integer.valueOf(numbers[1]);
+            }
+            if (numbers.length == 3 && numbers[2].isEmpty() == false) {
+                this.day = Integer.valueOf(numbers[2]);
+            }
         }
     }
 
@@ -38,6 +51,9 @@ public class MyDate {
     }
     public boolean isBefore(MyDate aDate) {
         // Compare Years
+        if (this.year == null || aDate.year == null) {
+            return true;
+        }
         if (this.year > aDate.year) {
             return false;
         } else if (this.year < aDate.year) {
@@ -63,6 +79,9 @@ public class MyDate {
     }
     public boolean isAfter(MyDate aDate) {
         // Compare Years
+        if (this.year == null || aDate.year == null) {
+            return true;
+        }
         if (this.year < aDate.year) {
             return false;
         } else if (this.year > aDate.year) {
@@ -85,5 +104,27 @@ public class MyDate {
             return false;
         }
         return true;
+    }
+
+    public String toString() {
+        String txt = "";
+        if (year != null) {
+            txt += String.valueOf(year);
+        }
+        if (month != null) {
+            if (month < 10) {
+                txt += "/0" + String.valueOf(month);
+            } else {
+                txt += "/" + String.valueOf(month);
+            }
+        }
+        if (day != null) {
+            if (day < 10) {
+                txt += "/0" + String.valueOf(day);
+            } else {
+                txt += "/" + String.valueOf(day);
+            }
+        }
+        return txt;
     }
 }

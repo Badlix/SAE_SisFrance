@@ -13,8 +13,8 @@ public class DataFilter {
     private double longitude;
 
     private int rayon;
-    private String dateDebut;
-    private String dateFin;
+    private MyDate dateDebut;
+    private MyDate dateFin;
     private double intensityMin;
     private double intensityMax;
 
@@ -28,8 +28,8 @@ public class DataFilter {
         this.latitude = 0;
         this.longitude = 0;
         this.rayon = -1;
-        this.dateDebut = "";
-        this.dateFin = "";
+        this.dateDebut = new MyDate("");
+        this.dateFin = new MyDate("");
         this.intensityMin = 0;
         this.intensityMax = 10;
     }
@@ -83,20 +83,12 @@ public class DataFilter {
         applyFilter();
     }
 
-    public String getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(String dateDebut) {
+    public void setDateDebut(MyDate dateDebut) {
         this.dateDebut = dateDebut;
         applyFilter();
     }
 
-    public String getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(String dateFin) {
+    public void setDateFin(MyDate dateFin) {
         this.dateFin = dateFin;
         applyFilter();
     }
@@ -147,8 +139,10 @@ public class DataFilter {
         for (Earthquake earthquake: allEarthquakes) {
             if (isInRegion(earthquake)) {
                 if (isInCoordinate(earthquake)) {
-                    if (isBetweenIntensity(earthquake)) {
-                        filteredEarthquakes.add(earthquake);
+                    if (earthquake.isBetweenDates(dateDebut, dateFin)) {
+                        if (isBetweenIntensity(earthquake)) {
+                            filteredEarthquakes.add(earthquake);
+                        }
                     }
                 }
             }

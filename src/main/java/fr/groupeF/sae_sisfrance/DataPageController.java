@@ -109,6 +109,7 @@ public class DataPageController extends BorderPane implements Initializable {
         });
         // ---------FILTRE DATE A MODIFIER---------------
         filtreDateDebut.valueProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("Date Debut MODIF");
             actualizeFilter();
         });
         filtreDateFin.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -154,7 +155,7 @@ public class DataPageController extends BorderPane implements Initializable {
                     return true; // Afficher tous les éléments si la recherche est vide
                 }
                 String rechercheTexte = newValue.toLowerCase();
-                if (element.getDate().toLowerCase().indexOf(rechercheTexte) > -1) {
+                if (element.getDate().toString().indexOf(rechercheTexte) > -1) {
                     return true;
                 } else if (element.getRegion().toLowerCase().indexOf(rechercheTexte) > -1) {
                     return true;
@@ -179,8 +180,12 @@ public class DataPageController extends BorderPane implements Initializable {
             dataEarthquakes.setRayon(Integer.valueOf(rayonFilter.getText()));
         }
         // Date -> NE MARCHE PAS
-        dataEarthquakes.setDateDebut(String.valueOf(filtreDateDebut.getValue()));
-        dataEarthquakes.setDateFin(String.valueOf(filtreDateFin.getValue()));
+        if (String.valueOf(filtreDateDebut.getValue()).isEmpty() == false) {
+            dataEarthquakes.setDateDebut(new MyDate(String.valueOf(filtreDateDebut.getValue())));
+        }
+        if (String.valueOf(filtreDateFin.getValue()).isEmpty() == false) {
+            dataEarthquakes.setDateFin(new MyDate(String.valueOf(filtreDateFin.getValue())));
+        }
 
         // Intensity -> A MODIFIER
         dataEarthquakes.setIntensityMin(intensityFilter.getLowValue());
