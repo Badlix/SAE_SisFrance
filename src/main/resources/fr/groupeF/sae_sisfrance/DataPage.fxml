@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import org.controlsfx.control.RangeSlider?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
 <!--   <top>-->
 <!--      <MenuBar>-->
@@ -111,8 +112,8 @@
                             <content>
                                 <HBox>
                                     <children>
-                                        <Slider blockIncrement="0.5" max="10.0" prefWidth="200.0" fx:id="intensityFilter"/>
-                                        <Label text="5" />
+                                        <RangeSlider  fx:id="intensityFilter" blockIncrement="0.5" min="0" max="10.0" prefWidth="200.0"/>
+                                        <Label fx:id="rangeLabel" />
                                     </children>
                                 </HBox>
                             </content>
