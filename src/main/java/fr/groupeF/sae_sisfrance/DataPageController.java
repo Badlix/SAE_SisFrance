@@ -168,7 +168,7 @@ public class DataPageController extends BorderPane implements Initializable {
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedList);
     }
-    @FXML
+    //@FXML
     public void actualizeFilter() {
         // Region
         dataEarthquakes.setRegionFilter(regionFilter.getValue());
