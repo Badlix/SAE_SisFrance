@@ -14,11 +14,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import com.gluonhq.maps.MapView;
 import javafx.stage.Stage;
+import org.controlsfx.control.RangeSlider;
 
 public class DataPageController extends BorderPane implements Initializable {
 
@@ -39,9 +44,18 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     TextField rayonFilter;
     @FXML
-    Slider intensityFilter;
+    RangeSlider intensityFilter;
+    @FXML
+    Label rangeLabel;
+    @FXML
+    Menu regionMenu;
     @FXML
     TextField rechercherTextField;
+    @FXML
+    DatePicker filtreDateDebut;
+    @FXML
+    DatePicker filtreDateFin;
+
     @FXML
     VBox map;
     private DataFilter dataEarthquakes;
@@ -89,6 +103,34 @@ public class DataPageController extends BorderPane implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
         intensiteColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
+        // ---------ACTUALISATION DES FILTRES---------------
+        regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        // ---------FILTRE DATE A MODIFIER---------------
+        filtreDateDebut.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        filtreDateFin.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        // ---------FILTRE DATE A MODIFIER---------------
+        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+
+        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+//        longFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+//            actualizeFilter();
+//        });
+//        latFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+//            actualizeFilter();
+//        });
+//        rayonFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+//            actualizeFilter();
+//        });
         initMapView();
     }
 
@@ -136,8 +178,14 @@ public class DataPageController extends BorderPane implements Initializable {
             dataEarthquakes.setLatitude(Float.valueOf(latFilter.getText()));
             dataEarthquakes.setRayon(Integer.valueOf(rayonFilter.getText()));
         }
+        // Date -> NE MARCHE PAS
+        dataEarthquakes.setDateDebut(String.valueOf(filtreDateDebut.getValue()));
+        dataEarthquakes.setDateFin(String.valueOf(filtreDateFin.getValue()));
+
         // Intensity -> A MODIFIER
-        dataEarthquakes.setIntensityMin(intensityFilter.getValue());
+        dataEarthquakes.setIntensityMin(intensityFilter.getLowValue());
+        dataEarthquakes.setIntensityMax(intensityFilter.getHighValue());
+        rangeLabel.setText(dataEarthquakes.getIntensityMin() + " - " + dataEarthquakes.getIntensityMax());
         table.setItems(dataEarthquakes.getFilteredEarthquakes());
     }
 
