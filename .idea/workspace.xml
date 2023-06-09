@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/DataPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/DataPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +89,7 @@
       <workItem from="1686172600066" duration="3853000" />
       <workItem from="1686177072097" duration="26000" />
       <workItem from="1686218189915" duration="3320000" />
+      <workItem from="1686340786559" duration="7911000" />
     </task>
     <task id="LOCAL-00001" summary="page upload file">
       <created>1686162058523</created>
