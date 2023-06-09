@@ -1,7 +1,29 @@
-.menu-bar {
+.menu-bar, .menu{
     /*-fx-background-color: #4CAF50; /* Green */
     -fx-background-color: lightgrey;
     -fx-font-size: 15px;
+    -fx-alignment: center;
+}
+.menu-bar .menu .label{
+    -fx-text-fill: black;
+}
+
+.menu{
+    -fx-padding: 10;
+    -fx-min-height: 50;
+}
+
+.menu:hover{
+    -fx-background-color: grey;
+    -fx-background-radius: 10;
+}
+
+.menu .text-field .menu{
+    -fx-background-color: white;
+}
+
+.custom-menu-item:hover{
+    -fx-background-color: transparent;
 }
 
 .table-view {
