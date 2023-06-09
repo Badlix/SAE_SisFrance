@@ -1,6 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +29,7 @@ public class UploadPageController extends BorderPane {
     @FXML
     private Label fileReadableLabel;
     @FXML
-    private ComboBox regionFilter;
+    private ComboBox<String> regionFilter;
     @FXML
     private TextField latFilter;
     @FXML
@@ -64,6 +65,38 @@ public class UploadPageController extends BorderPane {
     public void initialize() throws IOException {
         dataEarthquakes = new DataFilter(FXCollections.observableArrayList());
         System.out.println("UploadPageController initialized");
+        // ---------ACTUALISATION DES FILTRES---------------
+        regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        // ---------FILTRE DATE A MODIFIER---------------
+        dateDebutFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        dateFinFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        // ---------FILTRE DATE A MODIFIER---------------
+        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+
+        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
+            actualizeFilter();
+        });
+        dataEarthquakes.getEarthquake().addListener(new ListChangeListener<Earthquake>() {
+            @Override
+            public void onChanged(Change<? extends Earthquake> change) {
+                ObservableList<String> regions = FXCollections.observableArrayList();
+                for (Earthquake earthquake : dataEarthquakes.getEarthquake()) {
+                    if (!regions.contains(earthquake.getRegion()))
+                        regions.add(earthquake.getRegion());
+                }
+                regions.sort(String::compareToIgnoreCase);
+                regions.add(0, "");
+                regionFilter.setItems(regions);
+            }
+        });
     }
 
     @FXML
@@ -101,6 +134,24 @@ public class UploadPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
+    }
+
+    public void actualizeFilter() {
+        // Region
+        dataEarthquakes.setRegionFilter(regionFilter.getValue());
+        // Localisation
+        if (longFilter.getText().isEmpty() == false && latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
+            dataEarthquakes.setLongitude(Float.valueOf(longFilter.getText()));
+            dataEarthquakes.setLatitude(Float.valueOf(latFilter.getText()));
+            dataEarthquakes.setRayon(Integer.valueOf(rayonFilter.getText()));
+        }
+        // Date -> NE MARCHE PAS
+        dataEarthquakes.setDateDebut(String.valueOf(dateDebutFilter.getValue()));
+        dataEarthquakes.setDateFin(String.valueOf(dateFinFilter.getValue()));
+
+        // Intensity -> A MODIFIER
+        dataEarthquakes.setIntensityMin(intensityFilter.getLowValue());
+        dataEarthquakes.setIntensityMax(intensityFilter.getHighValue());
     }
 
     public void enableFilter() {
