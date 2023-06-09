@@ -112,6 +112,16 @@ public class DataPageController extends BorderPane implements Initializable {
         intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
             actualizeFilter();
         });
+//        longFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+//            actualizeFilter();
+//        });
+//        latFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+//            actualizeFilter();
+//        });
+//        rayonFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+//            actualizeFilter();
+//        });
+
 
 
         // -----------------------------------------
