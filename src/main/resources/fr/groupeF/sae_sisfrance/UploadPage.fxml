@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
+<?import org.controlsfx.control.RangeSlider?>
 
-<BorderPane stylesheets="@style.css" styleClass="uploadPage" fx:controller="fr.groupeF.sae_sisfrance.UploadPageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="uploadPage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.UploadPageController">
       <left>
-            <HBox alignment="CENTER" styleClass="hbox" prefWidth="400">
+            <HBox alignment="CENTER" prefWidth="400" styleClass="hbox">
                   <VBox alignment="CENTER" spacing="10">
-                        <ComboBox prefHeight="30" prefWidth="300" promptText="Region" styleClass="filter">
-                              <items >
-                                    <FXCollections fx:factory="observableArrayList" fx:id="regions">
-                                          <String fx:value="Option 1" />
-                                          <String fx:value="Option 2" />
-                                          <String fx:value="Option 3" />
-                                    </FXCollections>
-                              </items>
-                        </ComboBox>
-                        <TextField promptText="Région" styleClass="filter"/>
-                        <TextField promptText="coordonnée" styleClass="filter"/>
-                        <HBox spacing="10" prefWidth="300">
-                              <DatePicker promptText="De" styleClass="filter"/>
-                              <DatePicker promptText="A" styleClass="filter"/>
+                        <ComboBox prefHeight="30" prefWidth="300" promptText="Region" styleClass="filter" />
+                        <HBox alignment="CENTER" prefWidth="200.0" spacing="10.0">
+                            <children>
+                                <TextField prefWidth="100.0" promptText="Latitude" styleClass="filter" />
+                                <TextField prefWidth="100.0" promptText="Longitude" styleClass="filter" />
+                                <TextField prefWidth="100.0" promptText="Rayon (km)" styleClass="filter" />
+                            </children>
                         </HBox>
-                        <Button fx:id="changingFXMLButton" text="Rechercher" onAction="#changingToDataPage"/>
+                        <HBox prefWidth="200.0" spacing="10.0">
+                            <children>
+                                <Label styleClass="filter" text="Intensité : " />
+                                <RangeSlider fx:id="intensityFilter" max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                            </children>
+                        </HBox>
+                        <HBox prefWidth="300" spacing="10">
+                              <DatePicker promptText="De" styleClass="filter" />
+                              <DatePicker promptText="A" styleClass="filter" />
+                        </HBox>
+                        <Button fx:id="changingFXMLButton" onAction="#changingToDataPage" text="Rechercher" />
                   </VBox>
             </HBox>
       </left>
       <center>
-            <HBox alignment="CENTER" >
+            <HBox alignment="CENTER">
                   <VBox alignment="CENTER" spacing="10">
                         <Label text="Selectionnez un fichier csv :" />
-                        <Button fx:id="uploadButton" text="Upload" onAction="#upload"/>
-                        <Label text="" fx:id="fileReadableLabel"/>
+                        <Button fx:id="uploadButton" onAction="#upload" text="Upload" />
+                        <Label fx:id="fileReadableLabel" text="" />
                   </VBox>
             </HBox>
       </center>
