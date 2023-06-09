@@ -34,6 +34,12 @@ public class DataFilter {
         this.intensityMax = 10;
     }
 
+    public void setAllEarthquakes(ObservableList<Earthquake> earthquakes) {
+        this.allEarthquakes = earthquakes;
+        this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
+        this.filteredEarthquakes.addAll(allEarthquakes);
+    }
+
     public ObservableList<Earthquake> getEarthquake() {
         return allEarthquakes;
     }

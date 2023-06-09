@@ -141,12 +141,11 @@
         </columns>
       </TableView>
    </center>
-   <bottom>
-       <HBox fx:id="footer" alignment="CENTER">
-            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" />
-
-       </HBox>
-   </bottom>
+    <bottom>
+        <HBox fx:id="footer" alignment="CENTER">
+            <Button fx:id="graphicsButton" alignment="TOP_RIGHT" cancelButton="true" mnemonicParsing="false" text="Graphiques" textAlignment="RIGHT" BorderPane.alignment="CENTER" onAction="#changingToGraphicsPage"/>
+        </HBox>
+    </bottom>
    <right>
 <!--&lt;!&ndash;      <ImageView fitHeight="500.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">&ndash;&gt;-->
 <!--&lt;!&ndash;         <image>&ndash;&gt;-->

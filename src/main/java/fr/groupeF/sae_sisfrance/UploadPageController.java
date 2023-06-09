@@ -1,35 +1,53 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.controlsfx.tools.Borders;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class UploadPageController extends BorderPane {
+    private FXMLLoader graphicsPageLoader;
+    private FXMLLoader dataPageLoader;
+    private Scene dataPageScene;
+
     @FXML
-    Button uploadButton;
+    private Button uploadButton;
+
     @FXML
-    Button changingFXMLButton;
-    @FXML
-    Label fileReadableLabel;
-    public static ArrayList<Earthquake> earthquakes;
-    private FXMLLoader loader;
+    private Label fileReadableLabel;
+    private DataFilter dataEarthquakes;
+
+    public void setGraphicsPageLoad(FXMLLoader graphicsPageLoader) {
+        this.graphicsPageLoader = graphicsPageLoader;
+    }
+
+    public void setDataPageLoad(FXMLLoader dataPageLoader) {
+        this.dataPageLoader = dataPageLoader;
+    }
+
+    public void setDataPageScene(Scene dataPageScene) {
+        this.dataPageScene = dataPageScene;
+    }
+
+    public DataFilter getDataEarthquakes() {
+        return dataEarthquakes;
+    }
+
     public void initialize() throws IOException {
-        this.loader = new FXMLLoader(Main.class.getResource("DataPage.fxml"));
-        loader.load();
+        dataEarthquakes = new DataFilter(FXCollections.observableArrayList());
+        System.out.println("UploadPageController initialized");
     }
 
     @FXML
@@ -46,13 +64,12 @@ public class UploadPageController extends BorderPane {
         // Obtenir le fichier sélectionné
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
-            earthquakes = new DataImporter().readCSV(selectedFile);
-            if(earthquakes.size() > 0) {
+            ArrayList<Earthquake> data = DataImporter.readCSV(selectedFile);
+            dataEarthquakes.getEarthquake().addAll(FXCollections.observableArrayList(data));
+            dataEarthquakes.getFilteredEarthquakes().addAll(FXCollections.observableArrayList(data));
+            if(dataEarthquakes.getEarthquake().size() > 0) {
                 fileReadableLabel.setText("file uploaded");
                 fileReadableLabel.setStyle("-fx-text-fill: green");
-
-                DataPageController controller = loader.getController();
-                controller.setEarthquakes(earthquakes);
             }else {
                 fileReadableLabel.setText("invalid file");
                 fileReadableLabel.setStyle("-fx-text-fill: red");
@@ -63,11 +80,9 @@ public class UploadPageController extends BorderPane {
         }
     };
     @FXML
-    public void changingFXML(ActionEvent event) throws IOException {
-        Parent root = this.loader.getRoot();
-        Scene scene = new Scene(root, 1000, 500);
+    public void changingToDataPage(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+        stage.setScene(dataPageScene);
         stage.show();
     }
 
