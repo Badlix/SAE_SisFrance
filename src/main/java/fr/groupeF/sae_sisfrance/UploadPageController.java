@@ -7,11 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.controlsfx.control.RangeSlider;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +27,22 @@ public class UploadPageController extends BorderPane {
 
     @FXML
     private Label fileReadableLabel;
+    @FXML
+    private ComboBox regionFilter;
+    @FXML
+    private TextField latFilter;
+    @FXML
+    private TextField longFilter;
+    @FXML
+    private TextField rayonFilter;
+    @FXML
+    private RangeSlider intensityFilter;
+    @FXML
+    private DatePicker dateDebutFilter;
+    @FXML
+    private DatePicker dateFinFilter;
+    @FXML
+    private Button changingFXMLButton;
     private DataFilter dataEarthquakes;
 
     public void setGraphicsPageLoad(FXMLLoader graphicsPageLoader) {
@@ -70,6 +86,7 @@ public class UploadPageController extends BorderPane {
             if(dataEarthquakes.getEarthquake().size() > 0) {
                 fileReadableLabel.setText("file uploaded");
                 fileReadableLabel.setStyle("-fx-text-fill: green");
+                enableFilter();
             }else {
                 fileReadableLabel.setText("invalid file");
                 fileReadableLabel.setStyle("-fx-text-fill: red");
@@ -84,6 +101,17 @@ public class UploadPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
+    }
+
+    public void enableFilter() {
+        regionFilter.setDisable(false);
+        latFilter.setDisable(false);
+        longFilter.setDisable(false);
+        rayonFilter.setDisable(false);
+        intensityFilter.setDisable(false);
+        dateDebutFilter.setDisable(false);
+        dateFinFilter.setDisable(false);
+        changingFXMLButton.setDisable(false);
     }
 
 }
