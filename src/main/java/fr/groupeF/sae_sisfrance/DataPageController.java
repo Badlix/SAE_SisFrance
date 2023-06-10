@@ -25,6 +25,8 @@ import com.gluonhq.maps.MapView;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 
+import static javafx.application.Application.launch;
+
 public class DataPageController extends BorderPane implements Initializable {
 
     @FXML
@@ -199,5 +201,8 @@ public class DataPageController extends BorderPane implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(graphicsPageScene);
         stage.show();
+    }
+    @FXML
+    public void newFile(){
     }
 }

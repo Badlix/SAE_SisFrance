@@ -41,5 +41,9 @@ public class GraphicsPageController extends BorderPane {
         stage.setScene(dataPageScene);
         stage.show();
     }
+    @FXML
+    public void newFile(){
+
+    }
 
 }

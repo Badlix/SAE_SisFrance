@@ -6,7 +6,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="uploadPage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.UploadPageController">
       <left>
-            <HBox alignment="CENTER" prefWidth="400" styleClass="hbox">
+            <HBox alignment="CENTER" prefWidth="400" styleClass="uploadFilter">
                   <VBox alignment="CENTER" spacing="10">
                         <ComboBox disable="true" prefHeight="30" prefWidth="300" promptText="Region" styleClass="filter" fx:id="regionFilter"/>
                         <HBox alignment="CENTER" prefWidth="200.0" spacing="10.0">
