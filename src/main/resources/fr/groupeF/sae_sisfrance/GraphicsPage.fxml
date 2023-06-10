@@ -6,6 +6,8 @@
 
 <?import org.controlsfx.control.RangeSlider?>
 <?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.GraphicsPageController">
     <top>
         <MenuBar fx:id="menuBar" prefHeight="50.0" BorderPane.alignment="CENTER">
@@ -102,9 +104,26 @@
         </MenuBar>
     </top>
     <center>
+        <LineChart fx:id="lineChartSeismPerRegion">
+            <xAxis>
+                <CategoryAxis label="Région" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Date" />
+            </yAxis>
+        </LineChart>
+        <!--<ChoiceBox fx:id="choiceBox" onAction="#showGraphics">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Option 1" />
+                    <String fx:value="Option 2" />
+                    <String fx:value="Option 3" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>-->
     </center>
     <right>
-        <LineChart fx:id="lineChart">
+        <LineChart fx:id="lineChartIntensityPerRegion">
             <xAxis>
                 <CategoryAxis label="Région" />
             </xAxis>
@@ -114,14 +133,14 @@
         </LineChart>
     </right>
     <left>
-        <BarChart fx:id="barChart">
+        <LineChart fx:id="lineChartDatePerIntensity">
             <xAxis>
-                <CategoryAxis label="Date" />
+                <CategoryAxis label="Région" />
             </xAxis>
             <yAxis>
-                <NumberAxis label="Intensité" />
+                <NumberAxis label="Date" />
             </yAxis>
-        </BarChart>
+        </LineChart>
     </left>
     <bottom>
         <HBox alignment="CENTER" styleClass="bottom">

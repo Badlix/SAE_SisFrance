@@ -60,7 +60,12 @@ public class DataPageController extends BorderPane implements Initializable {
 
     @FXML
     VBox map;
-    private DataFilter dataEarthquakes;
+    private static DataFilter dataEarthquakes;
+
+    public static DataFilter getDataEarthquakes() {
+        return dataEarthquakes;
+    }
+
     private Scene graphicsPageScene;
     private FXMLLoader graphicsPageLoader;
     private FXMLLoader uploadPageLoader;

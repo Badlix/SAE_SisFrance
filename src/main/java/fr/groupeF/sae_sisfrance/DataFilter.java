@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 public class DataFilter {
 
     private ObservableList<Earthquake> allEarthquakes;
-    private ObservableList<Earthquake> filteredEarthquakes;
+    private static ObservableList<Earthquake> filteredEarthquakes;
 
     private String regionFilter;
     private double latitude;
@@ -34,6 +34,10 @@ public class DataFilter {
         this.intensityMax = 10;
     }
 
+    public ObservableList<Earthquake> getAllEarthquakes() {
+        return allEarthquakes;
+    }
+
     public void setAllEarthquakes(ObservableList<Earthquake> earthquakes) {
         this.allEarthquakes = earthquakes;
         this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
@@ -44,7 +48,7 @@ public class DataFilter {
         return allEarthquakes;
     }
 
-    public ObservableList<Earthquake> getFilteredEarthquakes() {
+    public static ObservableList<Earthquake> getFilteredEarthquakes() {
         return filteredEarthquakes;
     }
 
