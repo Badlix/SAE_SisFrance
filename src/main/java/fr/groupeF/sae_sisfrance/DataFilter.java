@@ -37,6 +37,18 @@ public class DataFilter {
         selectedRegion.addListener((observable, oldValue, newValue) -> {
             applyFilter();
         });
+        selectedLongitude.addListener((observable, oldValue, newValue) -> {
+            applyFilter();
+        });
+        selectedLatitude.addListener((observable, oldValue, newValue) -> {
+            applyFilter();
+        });
+        selectedRayon.addListener((observable, oldValue, newValue) -> {
+            applyFilter();
+        });
+        selectedLongitude.addListener((observable, oldValue, newValue) -> {
+            applyFilter();
+        });
         selectedMinIntensity.addListener((observable, oldValue, newValue) -> {
             applyFilter();
         });
@@ -45,6 +57,25 @@ public class DataFilter {
             applyFilter();
         });
     }
+
+    // ---------- PROPERTY ----------
+
+    public SimpleStringProperty selectedRegionProperty() {
+        return selectedRegion;
+    }
+    public SimpleDoubleProperty selectedLatitudeProperty() {
+        return selectedLatitude;
+    }
+    public SimpleDoubleProperty selectedLongitudeProperty() {
+        return selectedLongitude;
+    }
+    public SimpleIntegerProperty selectedRayonProperty() {
+        return selectedRayon;
+    }
+    public SimpleDoubleProperty selectedMinIntensensityProperty() {
+        return selectedMinIntensity;
+    }
+    public SimpleDoubleProperty selectedMaxIntensensityProperty() {return selectedMaxIntensity; }
 
     // ---------- GETTER ----------
 
@@ -56,25 +87,34 @@ public class DataFilter {
         return filteredEarthquakes;
     }
 
-    public SimpleStringProperty selectedRegionProperty() {
-        return selectedRegion;
+    public String getSelectedRegion() {
+        return selectedRegion.get();
     }
 
-    public SimpleDoubleProperty selectedLatitudeProperty() {
-        return selectedLatitude;
+    public double getSelectedLatitude() {
+        return selectedLatitude.get();
     }
 
-    public SimpleDoubleProperty selectedMinIntensensityProperty() {
-        return selectedMinIntensity;
+    public double getSelectedLongitude() {
+        return selectedLongitude.get();
+    }
+
+    public int getSelectedRayon() {
+        return selectedRayon.get();
+    }
+
+    public MyDate getSelectedStartDate() {
+        return selectedStartDate;
+    }
+
+    public MyDate getSelectedEndDate() {
+        return selectedEndDate;
     }
 
     public double getSelectedMinIntensity() {
         return selectedMinIntensity.getValue();
     }
 
-    public SimpleDoubleProperty selectedMaxIntensensityProperty() {
-        return selectedMaxIntensity;
-    }
 
     public double getSelectedMaxIntensity() {
         return selectedMaxIntensity.getValue();

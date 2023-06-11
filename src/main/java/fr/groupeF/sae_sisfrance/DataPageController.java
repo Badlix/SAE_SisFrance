@@ -1,5 +1,6 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -19,6 +20,9 @@ import java.util.ResourceBundle;
 import javafx.scene.layout.VBox;
 import com.gluonhq.maps.MapView;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.NumberStringConverter;
 import org.controlsfx.control.RangeSlider;
 
 public class DataPageController extends BorderPane implements Initializable {
@@ -99,35 +103,55 @@ public class DataPageController extends BorderPane implements Initializable {
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
             }
         });
+        createBindings();
         searchBar();
     }
 
     public void createBindings() {
         // ---------- BINDING BETWEEN FILTERS AND dataEartquakes ----------
 
-        /* Region Filter */
-        regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedRegion(regionFilter.getValue());
-        });
+        /* Region Filter */ /* Two listener are use because there are problems with the Birectionnal Bindind*/
+        regionFilter.valueProperty().bindBidirectional(dataEarthquakes.selectedRegionProperty());
 
         /* Coordinate Filter */
-        latFilter.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (longFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
-                dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
-            }
-        });
+//        latFilter.textProperty().bindBidirectional(dataEarthquakes.selectedLatitudeProperty(), new DoubleStringConverter());
 
-        longFilter.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
-                dataEarthquakes.setSelectedLatitude(Float.valueOf(longFilter.getText()));
-            }
-        });
+        Bindings.bindBidirectional(latFilter.textProperty(), dataEarthquakes.selectedLatitudeProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(longFilter.textProperty(), dataEarthquakes.selectedLongitudeProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(rayonFilter.textProperty(), dataEarthquakes.selectedRayonProperty(), new NumberStringConverter());
+//        latFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+//            if (longFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
+//                dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
+//            }
+//        });
+//        dataEarthquakes.selectedLatitudeProperty().addListener((observable, oldValue, newValue) -> {
+//            if (dataEarthquakes.getSelectedLongitude() != 0 && dataEarthquakes.getSelectedRayon() != -1) {
+//                latFilter.setText(String.valueOf(dataEarthquakes.getSelectedLatitude()));
+//            }
+//        });
 
-        rayonFilter.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (latFilter.getText().isEmpty() == false && longFilter.getText().isEmpty() == false) {
-                dataEarthquakes.setSelectedLatitude(Float.valueOf(rayonFilter.getText()));
-            }
-        });
+//        longFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+//            if (latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
+//                dataEarthquakes.setSelectedLatitude(Float.valueOf(longFilter.getText()));
+//            }
+//        });
+//        dataEarthquakes.selectedLongitudeProperty().addListener((observable, oldValue, newValue) -> {
+//            if (dataEarthquakes.getSelectedLatitude() != 0 && dataEarthquakes.getSelectedRayon() != -1) {
+//                longFilter.setText(String.valueOf(dataEarthquakes.getSelectedLongitude()));
+//            }
+//        });
+//
+//        rayonFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+//            if (latFilter.getText().isEmpty() == false && longFilter.getText().isEmpty() == false) {
+//                dataEarthquakes.setSelectedLatitude(Float.valueOf(rayonFilter.getText()));
+//            }
+//        });
+//        dataEarthquakes.selectedRayonProperty().addListener((observable, oldValue, newValue) -> {
+//            if (dataEarthquakes.getSelectedLatitude() != 0 && dataEarthquakes.getSelectedLongitude() != -1) {
+//                longFilter.setText(String.valueOf(dataEarthquakes.getSelectedRayon()));
+//            }
+//        });
+
 
         /* Date Filter */
         startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {

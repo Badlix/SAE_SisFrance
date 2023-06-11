@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" afterDir="false" />
     </list>
@@ -264,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686470313475</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Initialisation de dataEartquakes dans le fichier GraphicsPageController + changement des valeurs de MyDate en SimpleStringProperty">
+      <created>1686472994223</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1686472994223</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,6 +304,7 @@
     <MESSAGE value="Changement des attributs de DataFilter en Property et renommage plus clair de certaines variables" />
     <MESSAGE value="Bindings des valeurs du tableau de DataPage avec le DataFilter" />
     <MESSAGE value="Binding des filtres de la page Upload fini" />
-    <option name="LAST_COMMIT_MESSAGE" value="Binding des filtres de la page Upload fini" />
+    <MESSAGE value="Initialisation de dataEartquakes dans le fichier GraphicsPageController + changement des valeurs de MyDate en SimpleStringProperty" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initialisation de dataEartquakes dans le fichier GraphicsPageController + changement des valeurs de MyDate en SimpleStringProperty" />
   </component>
 </project>

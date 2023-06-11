@@ -15,28 +15,25 @@ public class MyDate {
     }
 
     public void setMyDate(String date) {
+        String[] numbers = {};
         if (date.contains("/")) {
-            String[] numbers = date.split("/");
-            if (numbers.length >= 1 && numbers[0].isEmpty() == false) {
-                this.year.set(Integer.valueOf(numbers[0]));
-            }
-            if (numbers.length >= 2 && numbers[1].isEmpty() == false) {
-                this.month.set(Integer.valueOf(numbers[1]));
-            }
-            if (numbers.length == 3 && numbers[2].isEmpty() == false) {
-                this.day.set(Integer.valueOf(numbers[2]));
-            }
+            numbers = date.split("/");
         } else if (date.contains("-")) {
-            String[] numbers = date.split("-");
-            if (numbers.length >= 1 && numbers[0].isEmpty() == false) {
-                this.year.set(Integer.valueOf(numbers[0]));
-            }
-            if (numbers.length >= 2 && numbers[1].isEmpty() == false) {
-                this.month.set(Integer.valueOf(numbers[1]));
-            }
-            if (numbers.length == 3 && numbers[2].isEmpty() == false) {
-                this.day.set(Integer.valueOf(numbers[2]));
-            }
+            numbers = date.split("-");
+        }
+
+        if (numbers.length == 1 && numbers[0].isEmpty() == false) {
+            this.year.set(Integer.valueOf(numbers[0]));
+            this.month.set(0);
+            this.day.set(0);
+        } else if (numbers.length == 2 && numbers[1].isEmpty() == false) {
+            this.year.set(Integer.valueOf(numbers[0]));
+            this.month.set(Integer.valueOf(numbers[1]));
+            this.day.set(0);
+        } else if (numbers.length >= 3 && numbers[2].isEmpty() == false) {
+            this.year.set(Integer.valueOf(numbers[0]));
+            this.month.set(Integer.valueOf(numbers[1]));
+            this.day.set(Integer.valueOf(numbers[2]));
         }
     }
 
@@ -57,7 +54,7 @@ public class MyDate {
     }
     public boolean isBefore(MyDate aDate) {
         // Compare Years
-        if (this.year == null || aDate.year == null) {
+        if (this.year.getValue() == 0 || aDate.year.getValue() == 0) {
             return true;
         }
         if (this.year.getValue() > aDate.year.getValue()) {
@@ -66,7 +63,7 @@ public class MyDate {
             return true;
         }
         // Compare Months
-        if (this.month == null || aDate.month == null) {
+        if (this.month.getValue() == 0 || aDate.month.getValue() == 0) {
             return true;
         }
         if (this.month.getValue() > aDate.month.getValue()) {
@@ -75,7 +72,7 @@ public class MyDate {
             return true;
         }
         // Compare Days
-        if (this.day == null || aDate.day == null) {
+        if (this.day.getValue() == 0 || aDate.day.getValue() == 0) {
             return true;
         }
         if (this.day.getValue() > aDate.day.getValue()) {
@@ -85,7 +82,7 @@ public class MyDate {
     }
     public boolean isAfter(MyDate aDate) {
         // Compare Years
-        if (this.year == null || aDate.year == null) {
+        if (this.year.getValue() == 0 || aDate.year.getValue() == 0) {
             return true;
         }
         if (this.year.getValue() < aDate.year.getValue()) {
@@ -94,7 +91,7 @@ public class MyDate {
             return true;
         }
         // Compare Months
-        if (this.month == null || aDate.month == null) {
+        if (this.month.getValue() == 0 || aDate.month.getValue() == 0) {
             return true;
         }
         if (this.month.getValue() < aDate.month.getValue()) {
@@ -103,7 +100,7 @@ public class MyDate {
             return true;
         }
         // Compare Days
-        if (this.day == null || aDate.day == null) {
+        if (this.day.getValue() == 0 || aDate.day.getValue() == 0) {
             return true;
         }
         if (this.day.getValue() < aDate.day.getValue()){
@@ -114,22 +111,16 @@ public class MyDate {
 
     public String toString() {
         String txt = "";
-        if (year != null) {
-            txt += String.valueOf(year);
+        txt += String.valueOf(year);
+        if (month.getValue() < 10) {
+            txt += "/0" + String.valueOf(month);
+        } else {
+            txt += "/" + String.valueOf(month);
         }
-        if (month != null) {
-            if (month.getValue() < 10) {
-                txt += "/0" + String.valueOf(month);
-            } else {
-                txt += "/" + String.valueOf(month);
-            }
-        }
-        if (day != null) {
-            if (day.getValue() < 10) {
-                txt += "/0" + String.valueOf(day);
-            } else {
-                txt += "/" + String.valueOf(day);
-            }
+        if (day.getValue() < 10) {
+            txt += "/0" + String.valueOf(day);
+        } else {
+            txt += "/" + String.valueOf(day);
         }
         return txt;
     }
