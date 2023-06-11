@@ -15,14 +15,14 @@ class MyDateTest {
         MyDate date = new MyDate("789/05");
         assertEquals(789, date.getYear());
         assertEquals(5, date.getMonth());
-        assertEquals(null, date.getDay());
+        assertEquals(0, date.getDay());
     }
     @Test
     public void testInitializationSansJourEtSansMois() {
         MyDate date = new MyDate("2023");
         assertEquals(2023, date.getYear());
-        assertEquals(null, date.getMonth());
-        assertEquals(null, date.getDay());
+        assertEquals(0, date.getMonth());
+        assertEquals(0, date.getDay());
     }
     @Test
     public void testIsBeforeDate() {
@@ -41,7 +41,7 @@ class MyDateTest {
     }
     @Test
     public void testIsAfterDate() {
-        MyDate date1 = new MyDate("2004/12/02");
+        MyDate date1 = new MyDate("2004-12-02");
         MyDate date2 = new MyDate("2012/01");
         MyDate date3 = new MyDate("2023");
         assertEquals(true, date1.isAfter(date1));
