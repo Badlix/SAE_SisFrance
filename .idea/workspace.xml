@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyBindings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -270,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686472994223</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Binding du filtre region">
+      <created>1686484044288</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1686484044288</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +312,7 @@
     <MESSAGE value="Bindings des valeurs du tableau de DataPage avec le DataFilter" />
     <MESSAGE value="Binding des filtres de la page Upload fini" />
     <MESSAGE value="Initialisation de dataEartquakes dans le fichier GraphicsPageController + changement des valeurs de MyDate en SimpleStringProperty" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialisation de dataEartquakes dans le fichier GraphicsPageController + changement des valeurs de MyDate en SimpleStringProperty" />
+    <MESSAGE value="Binding du filtre region" />
+    <option name="LAST_COMMIT_MESSAGE" value="Binding du filtre region" />
   </component>
 </project>

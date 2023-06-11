@@ -99,10 +99,11 @@ public class DataPageController extends BorderPane implements Initializable {
         dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
-                System.out.println("FILTERED ON CHANGE : CALLED");
+                System.out.println("ELEMENT TABLE : " + dataEarthquakes.getFilteredEarthquakes().size());
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
             }
         });
+        rechercherTextField.setDisable(true); // on verra plus tard
         createBindings();
         searchBar();
     }
@@ -115,10 +116,9 @@ public class DataPageController extends BorderPane implements Initializable {
 
         /* Coordinate Filter */
 //        latFilter.textProperty().bindBidirectional(dataEarthquakes.selectedLatitudeProperty(), new DoubleStringConverter());
-
-        Bindings.bindBidirectional(latFilter.textProperty(), dataEarthquakes.selectedLatitudeProperty(), new NumberStringConverter());
-        Bindings.bindBidirectional(longFilter.textProperty(), dataEarthquakes.selectedLongitudeProperty(), new NumberStringConverter());
-        Bindings.bindBidirectional(rayonFilter.textProperty(), dataEarthquakes.selectedRayonProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(latFilter.textProperty(), dataEarthquakes.selectedLatitudeProperty(), MyBindings.converterDoubleToString);
+        Bindings.bindBidirectional(longFilter.textProperty(), dataEarthquakes.selectedLongitudeProperty(), MyBindings.converterDoubleToString);
+        Bindings.bindBidirectional(rayonFilter.textProperty(), dataEarthquakes.selectedRayonProperty(), MyBindings.converterDoubleToString);
 //        latFilter.textProperty().addListener((observable, oldValue, newValue) -> {
 //            if (longFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
 //                dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
@@ -153,23 +153,23 @@ public class DataPageController extends BorderPane implements Initializable {
 //        });
 
 
-        /* Date Filter */
-        startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedStartDate(new MyDate(String.valueOf(startDateFilter.getValue())));
-        });
-
-        endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedEndDate(new MyDate(String.valueOf(endDateFilter.getValue())));
-        });
-
-        /* Intensity Filter */
-        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
-        });
-
-        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
-        });
+//        /* Date Filter */
+//        startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+//            dataEarthquakes.setSelectedStartDate(new MyDate(String.valueOf(startDateFilter.getValue())));
+//        });
+//
+//        endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+//            dataEarthquakes.setSelectedEndDate(new MyDate(String.valueOf(endDateFilter.getValue())));
+//        });
+//
+//        /* Intensity Filter */
+//        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
+//            dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
+//        });
+//
+//        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
+//            dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
+//        });
 
     }
 
@@ -185,7 +185,6 @@ public class DataPageController extends BorderPane implements Initializable {
         });
         // ---------FILTRE DATE A MODIFIER---------------
         startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("Date Debut MODIF");
             actualizeFilter();
         });
         endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {

@@ -27,9 +27,9 @@ public class DataFilter {
         this.filteredEarthquakes = FXCollections.observableArrayList();
         this.filteredEarthquakes.setAll(allEarthquake);
         this.selectedRegion = new SimpleStringProperty("");
-        this.selectedLatitude = new SimpleDoubleProperty(0);
+        this.selectedLatitude = new SimpleDoubleProperty();
         this.selectedLongitude = new SimpleDoubleProperty(0);
-        this.selectedRayon = new SimpleIntegerProperty(-1);
+        this.selectedRayon = new SimpleIntegerProperty(0);
         this.selectedStartDate = new MyDate(" ");
         this.selectedEndDate = new MyDate(" ");
         this.selectedMinIntensity = new SimpleDoubleProperty(2);
@@ -176,7 +176,7 @@ public class DataFilter {
     }
 
     private boolean isInCoordinate(Earthquake earthquake) {
-        if (this.selectedLongitude.getValue() == 0 || this.selectedLatitude.getValue() == 0 || this.selectedRayon.getValue() == -1) {
+        if (this.selectedLongitude.getValue() == 0.0 || this.selectedLatitude.getValue() == 0.0 || this.selectedRayon.getValue() == 0.0) {
             return true;
         }
         if (earthquake.getLatitude().isEmpty() || earthquake.getLongitude().isEmpty()) {
@@ -192,6 +192,7 @@ public class DataFilter {
     }
 
     private void applyFilter() {
+        System.out.println("APPLY FILTER : lat=" + selectedLatitude + " - long=" + selectedLongitude + " - ray=" + selectedRayon);
         filteredEarthquakes.clear();
         for (Earthquake earthquake: allEarthquakes) {
             if (isInRegion(earthquake)) {

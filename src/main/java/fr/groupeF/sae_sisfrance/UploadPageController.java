@@ -76,24 +76,24 @@ public class UploadPageController extends BorderPane {
         latFilter.textProperty().addListener((observable, oldValue, newValue) -> {
             if (longFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
                 dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
-                dataEarthquakes.setSelectedLatitude(Float.valueOf(longFilter.getText()));
-                dataEarthquakes.setSelectedLatitude(Float.valueOf(rayonFilter.getText()));
+                dataEarthquakes.setSelectedLongitude(Float.valueOf(longFilter.getText()));
+                dataEarthquakes.setSelectedRayon(Integer.valueOf(rayonFilter.getText()));
             }
         });
 
         longFilter.textProperty().addListener((observable, oldValue, newValue) -> {
             if (latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
                 dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
-                dataEarthquakes.setSelectedLatitude(Float.valueOf(longFilter.getText()));
-                dataEarthquakes.setSelectedLatitude(Float.valueOf(rayonFilter.getText()));
+                dataEarthquakes.setSelectedLongitude(Float.valueOf(longFilter.getText()));
+                dataEarthquakes.setSelectedRayon(Integer.valueOf(rayonFilter.getText()));
             }
         });
 
         rayonFilter.textProperty().addListener((observable, oldValue, newValue) -> {
             if (latFilter.getText().isEmpty() == false && longFilter.getText().isEmpty() == false) {
                 dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
-                dataEarthquakes.setSelectedLatitude(Float.valueOf(longFilter.getText()));
-                dataEarthquakes.setSelectedLatitude(Float.valueOf(rayonFilter.getText()));
+                dataEarthquakes.setSelectedLongitude(Float.valueOf(longFilter.getText()));
+                dataEarthquakes.setSelectedRayon(Integer.valueOf(rayonFilter.getText()));
             }
         });
 
