@@ -1,9 +1,10 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class MyDate {
-    private SimpleStringProperty date;
+    private final SimpleStringProperty date;
     private int year;
     private int month;
     private int day;

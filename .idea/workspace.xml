@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Ajout d'un type MyDate avec les tests qui correspondent" />
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Graphiques Seisme Année + Intensité année + labels en bleu à modifier">
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -335,12 +338,12 @@
       <option name="project" value="LOCAL" />
       <updated>1686350409685</updated>
     </task>
-    <task id="LOCAL-00012" summary="Les filtres de dates sont opérationnels">
-      <created>1686352299589</created>
+    <task id="LOCAL-00012" summary="Graphiques Seisme Année + Intensité année + labels en bleu à modifier">
+      <created>1686523796330</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1686352299589</updated>
+      <updated>1686523796330</updated>
     </task>
     <task id="LOCAL-00013" summary="Changement des attributs de DataFilter en Property et renommage plus clair de certaines variables">
       <created>1686468948149</created>
@@ -412,7 +415,7 @@
       <option name="project" value="LOCAL" />
       <updated>1686497332544</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,6 +456,7 @@
     <MESSAGE value="Amélioration du binding des coordonées" />
     <MESSAGE value="Le binding des filtres d'intensité fonctionne" />
     <MESSAGE value="Le binding des dates fonctionne" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'un type MyDate avec les tests qui correspondent" />
+    <MESSAGE value="Graphiques Seisme Année + Intensité année + labels en bleu à modifier" />
+    <option name="LAST_COMMIT_MESSAGE" value="Graphiques Seisme Année + Intensité année + labels en bleu à modifier" />
   </component>
 </project>
