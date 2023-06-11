@@ -23,8 +23,8 @@
                             </children>
                         </HBox>
                         <HBox prefWidth="300" spacing="10">
-                              <DatePicker disable="true" promptText="De" styleClass="filter" fx:id="dateDebutFilter"/>
-                              <DatePicker disable="true" promptText="A" styleClass="filter" fx:id="dateFinFilter"/>
+                              <DatePicker disable="true" promptText="De" styleClass="filter" fx:id="startDateFilter"/>
+                              <DatePicker disable="true" promptText="A" styleClass="filter" fx:id="endDateFilter"/>
                         </HBox>
                         <Button fx:id="changingFXMLButton" disable="true" onAction="#changingToDataPage" text="Rechercher"/>
                   </VBox>

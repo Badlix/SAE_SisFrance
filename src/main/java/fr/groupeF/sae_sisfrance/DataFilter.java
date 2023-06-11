@@ -1,5 +1,8 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -8,43 +11,33 @@ public class DataFilter {
     private ObservableList<Earthquake> allEarthquakes;
     private static ObservableList<Earthquake> filteredEarthquakes;
 
-    private String regionFilter;
-    private double latitude;
-    private double longitude;
+    private SimpleStringProperty selectedRegion;
+    private SimpleDoubleProperty selectedLatitude;
+    private SimpleDoubleProperty selectedLongitude;
 
-    private int rayon;
-    private MyDate dateDebut;
-    private MyDate dateFin;
-    private double intensityMin;
-    private double intensityMax;
+    private SimpleIntegerProperty selectedRayon;
+    private MyDate selectedStartDate;
+    private MyDate selectedEndDate;
+    private SimpleDoubleProperty selectedMinIntensity;
+    private SimpleDoubleProperty selectedMaxIntensity;
 
     public DataFilter(ObservableList<Earthquake> allEarthquake) {
         this.allEarthquakes = allEarthquake;
         this.filteredEarthquakes = FXCollections.observableArrayList();
         this.filteredEarthquakes.setAll(allEarthquake);
-        // TEMPORAIRE -> QD LES FILTRES DE LA PAGE UPLOAD SERONT FONCITONNEL
-        // LEURS VALEURS SERONT PASSER EN PARAMETRE A CE CONSTRUCTEUR POUR INITALIASER LES VARIABLE DE FILTRES
-        this.regionFilter = null;
-        this.latitude = 0;
-        this.longitude = 0;
-        this.rayon = -1;
-        this.dateDebut = new MyDate("");
-        this.dateFin = new MyDate("");
-        this.intensityMin = 0;
-        this.intensityMax = 10;
+        this.selectedRegion = new SimpleStringProperty("");
+        this.selectedLatitude = new SimpleDoubleProperty(0);
+        this.selectedLongitude = new SimpleDoubleProperty(0);
+        this.selectedRayon = new SimpleIntegerProperty(-1);
+        this.selectedStartDate = new MyDate("");
+        this.selectedEndDate = new MyDate("");
+        this.selectedMinIntensity = new SimpleDoubleProperty(2);
+        this.selectedMaxIntensity = new SimpleDoubleProperty(12);
     }
+
+    // ---------- GETTER ----------
 
     public ObservableList<Earthquake> getAllEarthquakes() {
-        return allEarthquakes;
-    }
-
-    public void setAllEarthquakes(ObservableList<Earthquake> earthquakes) {
-        this.allEarthquakes = earthquakes;
-        this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
-        this.filteredEarthquakes.addAll(allEarthquakes);
-    }
-
-    public ObservableList<Earthquake> getEarthquake() {
         return allEarthquakes;
     }
 
@@ -52,78 +45,87 @@ public class DataFilter {
         return filteredEarthquakes;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public SimpleStringProperty selectedRegionProperty() {
+        return selectedRegion;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public SimpleDoubleProperty selectedLatitudeProperty() {
+        return selectedLatitude;
     }
 
-    public String getRegionFilter() {
-        return regionFilter;
+    public SimpleDoubleProperty selectedMinIntensensityProperty() {
+        return selectedMinIntensity;
     }
 
-    public void setRegionFilter(String regionFilter) {
-        this.regionFilter = regionFilter;
-        System.out.println("FILTRE REGION APPLIQUÉ : " + regionFilter);
+    public double getSelectedMinIntensity() {
+        return selectedMinIntensity.getValue();
+    }
+
+    public SimpleDoubleProperty selectedMaxIntensensityProperty() {
+        return selectedMaxIntensity;
+    }
+
+    public double getSelectedMaxIntensity() {
+        return selectedMaxIntensity.getValue();
+    }
+
+    // ---------- SETTER ----------
+
+    public void setAllEarthquakes(ObservableList<Earthquake> earthquakes) {
+        this.allEarthquakes = earthquakes;
+        this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
+        this.filteredEarthquakes.addAll(allEarthquakes);
+    }
+
+    public void setSelectedRegion(String selectedRegion) {
+        this.selectedRegion.setValue(selectedRegion);
         applyFilter();
     }
 
-    public double getLongitude() {
-        return longitude;
+    public void setSelectedLatitude(double selectedLatitude) {
+        this.selectedLatitude.set(selectedLatitude);
     }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setSelectedLongitude(double selectedLongitude) {
+        this.selectedLongitude.set(selectedLongitude);
     }
 
-    public int getRayon() {
-        return rayon;
-    }
-
-    public void setRayon(int rayon) {
-        this.rayon = rayon;
+    public void setSelectedRayon(int selectedRayon) {
+        this.selectedRayon.set(selectedRayon);
         applyFilter();
     }
 
-    public void setDateDebut(MyDate dateDebut) {
-        this.dateDebut = dateDebut;
+    public void setSelectedStartDate(MyDate selectedStartDate) {
+        this.selectedStartDate = selectedStartDate;
         applyFilter();
     }
 
-    public void setDateFin(MyDate dateFin) {
-        this.dateFin = dateFin;
+    public void setSelectedEndDate(MyDate selectedEndDate) {
+        this.selectedEndDate = selectedEndDate;
         applyFilter();
     }
 
-    public double getIntensityMin() {
-        return intensityMin;
-    }
-
-    public void setIntensityMin(double intensite) {
-        this.intensityMin = intensite;
+    public void setSelectedMinIntensity(double intensite) {
+        this.selectedMinIntensity.set(intensite);
         applyFilter();
     }
 
-    public double getIntensityMax() {
-        return intensityMax;
-    }
-
-    public void setIntensityMax(double intensite) {
-        this.intensityMax = intensite;
+    public void setSelectedMaxIntensity(double intensite) {
+        this.selectedMaxIntensity.set(intensite);
         applyFilter();
     }
+
+    // ---------- OTHERS ----------
 
     private boolean isInRegion(Earthquake earthquake) {
-        if (this.regionFilter == null || this.regionFilter.isEmpty()) {
+        if (this.selectedRegion.getValue().isEmpty()) {
             return true;
         }
-        return earthquake.getRegion().contentEquals(this.regionFilter);
+        return earthquake.getRegion().contentEquals(this.selectedRegion.getValue());
     }
 
     private boolean isInCoordinate(Earthquake earthquake) {
-        if (this.longitude == 0 || this.latitude == 0 || this.rayon == -1) {
+        if (this.selectedLongitude.getValue() == 0 || this.selectedLatitude.getValue() == 0 || this.selectedRayon.getValue() == -1) {
             return true;
         }
         if (earthquake.getLatitude().isEmpty() || earthquake.getLongitude().isEmpty()) {
@@ -131,11 +133,11 @@ public class DataFilter {
         }
         double earthquakeLat = Double.valueOf(earthquake.getLatitude());
         double earthquakeLong = Double.valueOf(earthquake.getLongitude());
-        return Coordinate.isCoordinateWithinRadius(this.latitude, this.longitude, earthquakeLat, earthquakeLong, this.rayon);
+        return Coordinate.isCoordinateWithinRadius(this.selectedLatitude.getValue(), this.selectedLongitude.getValue(), earthquakeLat, earthquakeLong, this.selectedRayon.getValue());
     }
 
     private boolean isBetweenIntensity(Earthquake earthquake) {
-        return (intensityMin <= Float.valueOf(earthquake.getIntensity()) && intensityMax >= Float.valueOf(earthquake.getIntensity()));
+        return (selectedMinIntensity.getValue() <= Float.valueOf(earthquake.getIntensity()) && selectedMaxIntensity.getValue() >= Float.valueOf(earthquake.getIntensity()));
     }
 
     private void applyFilter() {
@@ -143,7 +145,7 @@ public class DataFilter {
         for (Earthquake earthquake: allEarthquakes) {
             if (isInRegion(earthquake)) {
                 if (isInCoordinate(earthquake)) {
-                    if (earthquake.isBetweenDates(dateDebut, dateFin)) {
+                    if (earthquake.isBetweenDates(selectedStartDate, selectedEndDate)) {
                         if (isBetweenIntensity(earthquake)) {
                             filteredEarthquakes.add(earthquake);
                         }

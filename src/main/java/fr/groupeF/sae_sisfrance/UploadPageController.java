@@ -39,9 +39,9 @@ public class UploadPageController extends BorderPane {
     @FXML
     private RangeSlider intensityFilter;
     @FXML
-    private DatePicker dateDebutFilter;
+    private DatePicker startDateFilter;
     @FXML
-    private DatePicker dateFinFilter;
+    private DatePicker endDateFilter;
     @FXML
     private Button changingFXMLButton;
     private DataFilter dataEarthquakes;
@@ -70,10 +70,10 @@ public class UploadPageController extends BorderPane {
             actualizeFilter();
         });
         // ---------FILTRE DATE ------------------------
-        dateDebutFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+        startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
             actualizeFilter();
         });
-        dateFinFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+        endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
             actualizeFilter();
         });
         // ---------FILTRE INTENSITE A MODIFIER---------------
@@ -83,11 +83,11 @@ public class UploadPageController extends BorderPane {
         intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
             actualizeFilter();
         });
-        dataEarthquakes.getEarthquake().addListener(new ListChangeListener<Earthquake>() {
+        dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
                 ObservableList<String> regions = FXCollections.observableArrayList();
-                for (Earthquake earthquake : dataEarthquakes.getEarthquake()) {
+                for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
                     if (!regions.contains(earthquake.getRegion()))
                         regions.add(earthquake.getRegion());
                 }
@@ -113,9 +113,9 @@ public class UploadPageController extends BorderPane {
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile != null) {
             ArrayList<Earthquake> data = DataImporter.readCSV(selectedFile);
-            dataEarthquakes.getEarthquake().addAll(FXCollections.observableArrayList(data));
+            dataEarthquakes.getAllEarthquakes().addAll(FXCollections.observableArrayList(data));
             dataEarthquakes.getFilteredEarthquakes().addAll(FXCollections.observableArrayList(data));
-            if(dataEarthquakes.getEarthquake().size() > 0) {
+            if(dataEarthquakes.getAllEarthquakes().size() > 0) {
                 fileReadableLabel.setText("file uploaded");
                 fileReadableLabel.setStyle("-fx-text-fill: green");
                 enableFilter();
@@ -137,20 +137,20 @@ public class UploadPageController extends BorderPane {
 
     public void actualizeFilter() {
         // Region
-        dataEarthquakes.setRegionFilter(regionFilter.getValue());
+        dataEarthquakes.setSelectedRegion(regionFilter.getValue());
         // Localisation
         if (longFilter.getText().isEmpty() == false && latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
-            dataEarthquakes.setLongitude(Float.valueOf(longFilter.getText()));
-            dataEarthquakes.setLatitude(Float.valueOf(latFilter.getText()));
-            dataEarthquakes.setRayon(Integer.valueOf(rayonFilter.getText()));
+            dataEarthquakes.setSelectedLongitude(Float.valueOf(longFilter.getText()));
+            dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
+            dataEarthquakes.setSelectedRayon(Integer.valueOf(rayonFilter.getText()));
         }
         // Date -> NE MARCHE PAS
-        dataEarthquakes.setDateDebut(new MyDate(String.valueOf(dateDebutFilter.getValue())));
-        dataEarthquakes.setDateFin(new MyDate(String.valueOf(dateFinFilter.getValue())));
+        dataEarthquakes.setSelectedStartDate(new MyDate(String.valueOf(startDateFilter.getValue())));
+        dataEarthquakes.setSelectedEndDate(new MyDate(String.valueOf(endDateFilter.getValue())));
 
         // Intensity -> A MODIFIER
-        dataEarthquakes.setIntensityMin(intensityFilter.getLowValue());
-        dataEarthquakes.setIntensityMax(intensityFilter.getHighValue());
+        dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
+        dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
     }
 
     public void enableFilter() {
@@ -159,8 +159,8 @@ public class UploadPageController extends BorderPane {
         longFilter.setDisable(false);
         rayonFilter.setDisable(false);
         intensityFilter.setDisable(false);
-        dateDebutFilter.setDisable(false);
-        dateFinFilter.setDisable(false);
+        startDateFilter.setDisable(false);
+        endDateFilter.setDisable(false);
         changingFXMLButton.setDisable(false);
     }
 }
