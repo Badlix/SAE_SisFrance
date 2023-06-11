@@ -59,9 +59,9 @@ public class GraphicsPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
-        graphicsIntensityPerRegion(DataFilter.getFilteredEarthquakes());
-        graphicsDatePerIntensity(DataFilter.getFilteredEarthquakes());
-        graphicsSeismPerRegion(DataFilter.getFilteredEarthquakes());
+//        graphicsIntensityPerRegion(DataFilter.getFilteredEarthquakes());
+//        graphicsDatePerIntensity(DataFilter.getFilteredEarthquakes());
+//        graphicsSeismPerRegion(DataFilter.getFilteredEarthquakes());
 
     }
     @FXML

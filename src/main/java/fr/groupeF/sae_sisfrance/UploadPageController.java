@@ -67,6 +67,7 @@ public class UploadPageController extends BorderPane {
         System.out.println("UploadPageController initialized");
         // ---------ACTUALISATION DES FILTRES---------------
         regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("FILTRE REGION APPLIQUÉ");
             actualizeFilter();
         });
         // ---------FILTRE DATE ------------------------

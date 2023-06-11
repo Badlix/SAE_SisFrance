@@ -41,7 +41,7 @@ public class DataFilter {
         return allEarthquakes;
     }
 
-    public static ObservableList<Earthquake> getFilteredEarthquakes() {
+    public ObservableList<Earthquake> getFilteredEarthquakes() {
         return filteredEarthquakes;
     }
 

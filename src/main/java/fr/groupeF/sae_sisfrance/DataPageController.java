@@ -91,8 +91,14 @@ public class DataPageController extends BorderPane implements Initializable {
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
             }
         });
-        // --------- INIT DU FILTRAGE---------------
-        table.setItems(dataEarthquakes.getFilteredEarthquakes());
+        // --------- BNDING DES VALEURS DU TABLEAU ---------------
+        dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<Earthquake>() {
+            @Override
+            public void onChanged(Change<? extends Earthquake> change) {
+                System.out.println("FILTERED ON CHANGE : CALLED");
+                table.setItems(dataEarthquakes.getFilteredEarthquakes());
+            }
+        });
         searchBar();
     }
 
@@ -190,7 +196,6 @@ public class DataPageController extends BorderPane implements Initializable {
         dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
         dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
         rangeLabel.setText(dataEarthquakes.getSelectedMinIntensity() + " - " + dataEarthquakes.getSelectedMaxIntensity());
-        table.setItems(dataEarthquakes.getFilteredEarthquakes());
     }
 
     @FXML
