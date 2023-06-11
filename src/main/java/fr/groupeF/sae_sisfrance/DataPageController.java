@@ -136,6 +136,8 @@ public class DataPageController extends BorderPane implements Initializable {
 //        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
 //            dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
 //        });
+        dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
+        dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
 
     }
 
