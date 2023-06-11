@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 public class DataFilter {
@@ -29,10 +30,20 @@ public class DataFilter {
         this.selectedLatitude = new SimpleDoubleProperty(0);
         this.selectedLongitude = new SimpleDoubleProperty(0);
         this.selectedRayon = new SimpleIntegerProperty(-1);
-        this.selectedStartDate = new MyDate("");
-        this.selectedEndDate = new MyDate("");
+        this.selectedStartDate = new MyDate(" ");
+        this.selectedEndDate = new MyDate(" ");
         this.selectedMinIntensity = new SimpleDoubleProperty(2);
         this.selectedMaxIntensity = new SimpleDoubleProperty(12);
+        selectedRegion.addListener((observable, oldValue, newValue) -> {
+            applyFilter();
+        });
+        selectedMinIntensity.addListener((observable, oldValue, newValue) -> {
+            applyFilter();
+        });
+        selectedMaxIntensity.addListener((observable, oldValue, newValue) -> {
+            System.out.println("MIN INTENSITY A CHANGÉ");
+            applyFilter();
+        });
     }
 
     // ---------- GETTER ----------

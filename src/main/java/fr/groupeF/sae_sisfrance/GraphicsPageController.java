@@ -46,6 +46,7 @@ public class GraphicsPageController extends BorderPane {
 
     public void setDataEarthquakes(DataFilter dataFilter) {
         dataEarthquakes = dataFilter;
+        //searchBar();
     }
 
     public void initialize() throws IOException {
@@ -59,9 +60,9 @@ public class GraphicsPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
-//        graphicsIntensityPerRegion(DataFilter.getFilteredEarthquakes());
-//        graphicsDatePerIntensity(DataFilter.getFilteredEarthquakes());
-//        graphicsSeismPerRegion(DataFilter.getFilteredEarthquakes());
+        graphicsIntensityPerRegion(dataEarthquakes.getFilteredEarthquakes());
+        graphicsDatePerIntensity(dataEarthquakes.getFilteredEarthquakes());
+        graphicsSeismPerRegion(dataEarthquakes.getFilteredEarthquakes());
 
     }
     @FXML

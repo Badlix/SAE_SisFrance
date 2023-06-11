@@ -101,13 +101,8 @@ public class UploadPageController extends BorderPane {
         });
 
         /* Intensity Filter */
-        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
-        });
-
-        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
-        });
+        dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
+        dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
 
         // ---------- BINDING BETWEEN RegionFilter options AND dataEartquakes ----------
 

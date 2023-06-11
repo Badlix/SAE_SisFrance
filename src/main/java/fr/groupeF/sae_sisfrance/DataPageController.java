@@ -102,6 +102,53 @@ public class DataPageController extends BorderPane implements Initializable {
         searchBar();
     }
 
+    public void createBindings() {
+        // ---------- BINDING BETWEEN FILTERS AND dataEartquakes ----------
+
+        /* Region Filter */
+        regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            dataEarthquakes.setSelectedRegion(regionFilter.getValue());
+        });
+
+        /* Coordinate Filter */
+        latFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (longFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
+                dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
+            }
+        });
+
+        longFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
+                dataEarthquakes.setSelectedLatitude(Float.valueOf(longFilter.getText()));
+            }
+        });
+
+        rayonFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (latFilter.getText().isEmpty() == false && longFilter.getText().isEmpty() == false) {
+                dataEarthquakes.setSelectedLatitude(Float.valueOf(rayonFilter.getText()));
+            }
+        });
+
+        /* Date Filter */
+        startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            dataEarthquakes.setSelectedStartDate(new MyDate(String.valueOf(startDateFilter.getValue())));
+        });
+
+        endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            dataEarthquakes.setSelectedEndDate(new MyDate(String.valueOf(endDateFilter.getValue())));
+        });
+
+        /* Intensity Filter */
+        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
+            dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
+        });
+
+        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
+            dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
+        });
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("DataPageController initialized");

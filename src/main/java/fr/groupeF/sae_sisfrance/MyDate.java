@@ -1,49 +1,55 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class MyDate {
-    private Integer year;
-    private Integer month;
-    private Integer day;
+    private SimpleIntegerProperty year;
+    private SimpleIntegerProperty month;
+    private SimpleIntegerProperty day;
 
     public MyDate(String date) {
-        this.year = null;
-        this.month = null;
-        this.day = null;
+        this.year = new SimpleIntegerProperty(0);
+        this.month = new SimpleIntegerProperty(0);
+        this.day = new SimpleIntegerProperty(0);
+        setMyDate(date);
+    }
+
+    public void setMyDate(String date) {
         if (date.contains("/")) {
             String[] numbers = date.split("/");
             if (numbers.length >= 1 && numbers[0].isEmpty() == false) {
-                this.year = Integer.valueOf(numbers[0]);
+                this.year.set(Integer.valueOf(numbers[0]));
             }
             if (numbers.length >= 2 && numbers[1].isEmpty() == false) {
-                this.month = Integer.valueOf(numbers[1]);
+                this.month.set(Integer.valueOf(numbers[1]));
             }
             if (numbers.length == 3 && numbers[2].isEmpty() == false) {
-                this.day = Integer.valueOf(numbers[2]);
+                this.day.set(Integer.valueOf(numbers[2]));
             }
         } else if (date.contains("-")) {
             String[] numbers = date.split("-");
             if (numbers.length >= 1 && numbers[0].isEmpty() == false) {
-                this.year = Integer.valueOf(numbers[0]);
+                this.year.set(Integer.valueOf(numbers[0]));
             }
             if (numbers.length >= 2 && numbers[1].isEmpty() == false) {
-                this.month = Integer.valueOf(numbers[1]);
+                this.month.set(Integer.valueOf(numbers[1]));
             }
             if (numbers.length == 3 && numbers[2].isEmpty() == false) {
-                this.day = Integer.valueOf(numbers[2]);
+                this.day.set(Integer.valueOf(numbers[2]));
             }
         }
     }
 
     public Integer getYear() {
-        return year;
+        return year.getValue();
     }
 
     public Integer getMonth() {
-        return month;
+        return month.getValue();
     }
 
     public Integer getDay() {
-        return day;
+        return day.getValue();
     }
 
     public boolean isBetween(MyDate afterDate, MyDate beforeDate) {
@@ -54,25 +60,25 @@ public class MyDate {
         if (this.year == null || aDate.year == null) {
             return true;
         }
-        if (this.year > aDate.year) {
+        if (this.year.getValue() > aDate.year.getValue()) {
             return false;
-        } else if (this.year < aDate.year) {
+        } else if (this.year.getValue() < aDate.year.getValue()) {
             return true;
         }
         // Compare Months
         if (this.month == null || aDate.month == null) {
             return true;
         }
-        if (this.month > aDate.month) {
+        if (this.month.getValue() > aDate.month.getValue()) {
             return false;
-        } else if (this.month < aDate.month) {
+        } else if (this.month.getValue() < aDate.month.getValue()) {
             return true;
         }
         // Compare Days
         if (this.day == null || aDate.day == null) {
             return true;
         }
-        if (this.day > aDate.day) {
+        if (this.day.getValue() > aDate.day.getValue()) {
             return false;
         }
         return true;
@@ -82,25 +88,25 @@ public class MyDate {
         if (this.year == null || aDate.year == null) {
             return true;
         }
-        if (this.year < aDate.year) {
+        if (this.year.getValue() < aDate.year.getValue()) {
             return false;
-        } else if (this.year > aDate.year) {
+        } else if (this.year.getValue() > aDate.year.getValue()) {
             return true;
         }
         // Compare Months
         if (this.month == null || aDate.month == null) {
             return true;
         }
-        if (this.month < aDate.month) {
+        if (this.month.getValue() < aDate.month.getValue()) {
             return false;
-        } else if (this.month > aDate.month) {
+        } else if (this.month.getValue() > aDate.month.getValue()) {
             return true;
         }
         // Compare Days
         if (this.day == null || aDate.day == null) {
             return true;
         }
-        if (this.day < aDate.day) {
+        if (this.day.getValue() < aDate.day.getValue()){
             return false;
         }
         return true;
@@ -112,14 +118,14 @@ public class MyDate {
             txt += String.valueOf(year);
         }
         if (month != null) {
-            if (month < 10) {
+            if (month.getValue() < 10) {
                 txt += "/0" + String.valueOf(month);
             } else {
                 txt += "/" + String.valueOf(month);
             }
         }
         if (day != null) {
-            if (day < 10) {
+            if (day.getValue() < 10) {
                 txt += "/0" + String.valueOf(day);
             } else {
                 txt += "/" + String.valueOf(day);
