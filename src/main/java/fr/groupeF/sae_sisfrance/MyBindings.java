@@ -26,4 +26,24 @@ public class MyBindings {
         }
 
     };
+    static StringConverter<Number> converterIntToString = new StringConverter<Number>() {
+        @Override
+        public String toString(Number object) {;
+            return object == null || object.intValue() == 0 ? "" :  object.toString();
+        }
+
+        @Override
+        public Number fromString(String string) {
+            if (string == null) {
+                return 0;
+            } else {
+                try {
+                    return Integer.valueOf(string);
+                } catch (NumberFormatException ex) {
+                    return 0;
+                }
+            }
+        }
+
+    };
 }
