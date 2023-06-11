@@ -1,5 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class Earthquake {
     private final String identifiant; // Identifiant du tremblement de terre
     private final MyDate date; // Date du tremblement de terre
@@ -37,6 +39,7 @@ public Earthquake(String[] data) {
     public MyDate getDate() {
         return date;
     }
+    public SimpleIntegerProperty getYear(){return this.date.yearProperty();}
 
     public String getHour() {
         return hour;

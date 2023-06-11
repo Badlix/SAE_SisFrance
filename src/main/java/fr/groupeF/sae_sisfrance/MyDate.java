@@ -4,6 +4,11 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class MyDate {
     private SimpleIntegerProperty year;
+
+    public SimpleIntegerProperty yearProperty() {
+        return year;
+    }
+
     private SimpleIntegerProperty month;
     private SimpleIntegerProperty day;
 

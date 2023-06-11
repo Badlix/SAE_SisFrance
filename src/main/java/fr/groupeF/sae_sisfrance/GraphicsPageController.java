@@ -1,5 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -16,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Year;
 import java.util.ArrayList;
 
 public class GraphicsPageController extends BorderPane {
@@ -24,11 +27,11 @@ public class GraphicsPageController extends BorderPane {
     private Scene dataPageScene;
     private DataFilter dataEarthquakes;
     @FXML
-    private LineChart<String, Number> lineChartIntensityPerRegion;
+    private LineChart<String, Number> lineChartSeismPerYear;
     @FXML
     private LineChart<String, Number> lineChartDatePerIntensity;
-    @FXML
-    private LineChart<String, Number> lineChartSeismPerRegion;
+    //@FXML
+    //private LineChart<String, Number> lineChartSeismPerRegion;
     @FXML
     private ChoiceBox choiceBox;
 
@@ -60,64 +63,38 @@ public class GraphicsPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
-        graphicsIntensityPerRegion(dataEarthquakes.getFilteredEarthquakes());
-        graphicsDatePerIntensity(dataEarthquakes.getFilteredEarthquakes());
-        graphicsSeismPerRegion(dataEarthquakes.getFilteredEarthquakes());
+        graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
+        graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
+        //graphicsSeismPerRegion(dataEarthquakes.getFilteredEarthquakes());
 
     }
     @FXML
     public void newFile(){
 
     }
-/*    public void loadCSVData() {
-        try {
-            //ArrayList<Earthquake> data = DataImporter.readCSV(selectedFile);
-            CSVReader reader = new CSVReader(new FileReader("chemin_vers_votre_fichier.csv"));
-            String[] nextLine;
-
-            // Ignorer la première ligne si elle contient des en-têtes de colonne
-            reader.readNext();
-
-            while ((nextLine = reader.readNext()) != null) {
-                // Récupérez les valeurs appropriées à partir de chaque ligne du fichier CSV
-                String xValue = nextLine[0];
-                double yValue = Double.parseDouble(nextLine[1]);
-
-                // Ajoutez les données au graphique
-                XYChart.Series<String, Number> series = new XYChart.Series<>();
-                series.getData().add(new XYChart.Data<>(xValue, yValue));
-                lineChart.getData().add(series);
-            }*/
-
-//}}
-    public void graphicsIntensityPerRegion(ObservableList<Earthquake> dataGraphics){
+    public void graphicsSeismPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
+        int size = dataEarthquakes.getFilteredEarthquakes().size();
         for (Earthquake element : dataGraphics) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(element.getRegion()),Double.valueOf(element.getIntensity())));
-            //System.out.println(element.getDate());
-
+            series.getData().add(new XYChart.Data<>(String.valueOf(element.getYear()),Double.valueOf(size)));
         }
-        lineChartIntensityPerRegion.getData().add(series);
+        lineChartSeismPerYear.getData().add(series);
     }
-    public void graphicsDatePerIntensity(ObservableList<Earthquake> dataGraphics){
+    public void graphicsIntensityPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Earthquake element : dataGraphics) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(element.getDate()),Double.valueOf(element.getIntensity())));
-            //System.out.println(element.getDate());
-
+            series.getData().add(new XYChart.Data<>(String.valueOf(element.getYear()),Double.valueOf(element.getIntensity())));
+            //Year.textProperty().bindBidirectional(number);
         }
         lineChartDatePerIntensity.getData().add(series);
     }
-    public void graphicsSeismPerRegion(ObservableList<Earthquake> dataGraphics){
+    /*public void graphicsSeismPerRegion(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Earthquake element : dataGraphics) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(element.getIdentifiant()),Double.valueOf(element.getRegion())));
-            //System.out.println(element.getDate());
-
-        }
+            series.getData().add(new XYChart.Data<>(String.valueOf(element.getShock()),Double.valueOf(element.getRegion())));
         lineChartSeismPerRegion.getData().add(series);
     }
-/*    public void showGraphics() {
+    public void showGraphics() {
         String selectedOption = choiceBox.getValue().toString();
 
         ObservableList<Earthquake> dataGraphics = getDataForOption(selectedOption);
