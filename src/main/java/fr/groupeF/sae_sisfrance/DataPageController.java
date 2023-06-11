@@ -179,34 +179,6 @@ public class DataPageController extends BorderPane implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
         intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
-        // ---------ACTUALISATION DES FILTRES---------------
-        regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            actualizeFilter();
-        });
-        // ---------FILTRE DATE A MODIFIER---------------
-        startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            actualizeFilter();
-        });
-        endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            actualizeFilter();
-        });
-        // ---------FILTRE DATE A MODIFIER---------------
-        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
-            actualizeFilter();
-        });
-
-        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
-            actualizeFilter();
-        });
-//        longFilter.textProperty().addListener((observable, oldValue, newValue) -> {
-//            actualizeFilter();
-//        });
-//        latFilter.textProperty().addListener((observable, oldValue, newValue) -> {
-//            actualizeFilter();
-//        });
-//        rayonFilter.textProperty().addListener((observable, oldValue, newValue) -> {
-//            actualizeFilter();
-//        });
         initMapView();
     }
 
@@ -243,29 +215,6 @@ public class DataPageController extends BorderPane implements Initializable {
         SortedList<Earthquake> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedList);
-    }
-    //@FXML
-    public void actualizeFilter() {
-        // Region
-        dataEarthquakes.setSelectedRegion(regionFilter.getValue());
-        // Localisation
-        if (longFilter.getText().isEmpty() == false && latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
-            dataEarthquakes.setSelectedLongitude(Float.valueOf(longFilter.getText()));
-            dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
-            dataEarthquakes.setSelectedRayon(Integer.valueOf(rayonFilter.getText()));
-        }
-        // Date -> NE MARCHE PAS
-        if (String.valueOf(startDateFilter.getValue()).isEmpty() == false) {
-            dataEarthquakes.setSelectedStartDate(new MyDate(String.valueOf(startDateFilter.getValue())));
-        }
-        if (String.valueOf(endDateFilter.getValue()).isEmpty() == false) {
-            dataEarthquakes.setSelectedEndDate(new MyDate(String.valueOf(endDateFilter.getValue())));
-        }
-
-        // Intensity -> A MODIFIER
-        dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
-        dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
-        rangeLabel.setText(dataEarthquakes.getSelectedMinIntensity() + " - " + dataEarthquakes.getSelectedMaxIntensity());
     }
 
     @FXML
