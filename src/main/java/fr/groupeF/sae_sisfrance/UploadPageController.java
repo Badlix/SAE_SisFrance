@@ -80,11 +80,11 @@ public class UploadPageController extends BorderPane {
 
         /* Date Filter */
         startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedStartDate(new MyDate(String.valueOf(startDateFilter.getValue())));
+            dataEarthquakes.getSelectedStartDate().dateProperty().set(startDateFilter.valueProperty().getValue().toString());
         });
 
         endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedEndDate(new MyDate(String.valueOf(endDateFilter.getValue())));
+            dataEarthquakes.getSelectedEndDate().dateProperty().set(endDateFilter.valueProperty().getValue().toString());
         });
 
         /* Intensity Filter */

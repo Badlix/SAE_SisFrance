@@ -1,57 +1,62 @@
 package fr.groupeF.sae_sisfrance;
 
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class MyDate {
-    private SimpleIntegerProperty year;
+    private SimpleStringProperty date;
+    private int year;
+    private int month;
+    private int day;
 
-    public SimpleIntegerProperty yearProperty() {
-        return year;
+    public MyDate(String dateTxt) {
+        date = new SimpleStringProperty(dateTxt);
+        update();
+        date.addListener((observable, oldValue, newValue) -> {
+            System.out.println("VALEUR DATE A CHANGÉ");
+            update();
+        });
     }
 
-    private SimpleIntegerProperty month;
-    private SimpleIntegerProperty day;
-
-    public MyDate(String date) {
-        this.year = new SimpleIntegerProperty(0);
-        this.month = new SimpleIntegerProperty(0);
-        this.day = new SimpleIntegerProperty(0);
-        setMyDate(date);
-    }
-
-    public void setMyDate(String date) {
+    public void update() {
         String[] numbers = {};
-        if (date.contains("/")) {
-            numbers = date.split("/");
-        } else if (date.contains("-")) {
-            numbers = date.split("-");
+        if (date.getValue().contains("/")) {
+            numbers = date.getValue().split("/");
+        } else if (date.getValue().contains("-")) {
+            numbers = date.getValue().split("-");
+        } else {
+            String tmp = date.getValue() + "/";
+            numbers = tmp.split("/");
         }
 
-        if (numbers.length == 1 && numbers[0].isEmpty() == false) {
-            this.year.set(Integer.valueOf(numbers[0]));
-            this.month.set(0);
-            this.day.set(0);
-        } else if (numbers.length == 2 && numbers[1].isEmpty() == false) {
-            this.year.set(Integer.valueOf(numbers[0]));
-            this.month.set(Integer.valueOf(numbers[1]));
-            this.day.set(0);
-        } else if (numbers.length >= 3 && numbers[2].isEmpty() == false) {
-            this.year.set(Integer.valueOf(numbers[0]));
-            this.month.set(Integer.valueOf(numbers[1]));
-            this.day.set(Integer.valueOf(numbers[2]));
+        if (numbers.length >= 1 && !numbers[0].isEmpty()) {
+            year = Integer.valueOf(numbers[0]);
+        } if (numbers.length >= 2) {
+            month = Integer.valueOf(numbers[1]);
+            if (numbers.length >= 3) {
+                day = Integer.valueOf(numbers[2]);
+            } else {
+                day = 0;
+            }
+        } else {
+            month = 0;
+            day = 0;
         }
+    }
+
+    public SimpleStringProperty dateProperty() {
+        return date;
     }
 
     public Integer getYear() {
-        return year.getValue();
+        return year;
     }
 
     public Integer getMonth() {
-        return month.getValue();
+        return month;
     }
 
     public Integer getDay() {
-        return day.getValue();
+        return day;
     }
 
     public boolean isBetween(MyDate afterDate, MyDate beforeDate) {
@@ -59,56 +64,56 @@ public class MyDate {
     }
     public boolean isBefore(MyDate aDate) {
         // Compare Years
-        if (this.year.getValue() == 0 || aDate.year.getValue() == 0) {
+        if (year == 0 || aDate.year == 0) {
             return true;
         }
-        if (this.year.getValue() > aDate.year.getValue()) {
+        if (year > aDate.year) {
             return false;
-        } else if (this.year.getValue() < aDate.year.getValue()) {
+        } else if (year < aDate.year) {
             return true;
         }
         // Compare Months
-        if (this.month.getValue() == 0 || aDate.month.getValue() == 0) {
+        if (month == 0 || aDate.month == 0) {
             return true;
         }
-        if (this.month.getValue() > aDate.month.getValue()) {
+        if (month > aDate.month) {
             return false;
-        } else if (this.month.getValue() < aDate.month.getValue()) {
+        } else if (month < aDate.month) {
             return true;
         }
         // Compare Days
-        if (this.day.getValue() == 0 || aDate.day.getValue() == 0) {
+        if (day == 0 || aDate.day == 0) {
             return true;
         }
-        if (this.day.getValue() > aDate.day.getValue()) {
+        if (day > aDate.day) {
             return false;
         }
         return true;
     }
     public boolean isAfter(MyDate aDate) {
         // Compare Years
-        if (this.year.getValue() == 0 || aDate.year.getValue() == 0) {
+        if (year == 0 || aDate.year == 0) {
             return true;
         }
-        if (this.year.getValue() < aDate.year.getValue()) {
+        if (year < aDate.year) {
             return false;
-        } else if (this.year.getValue() > aDate.year.getValue()) {
+        } else if (year > aDate.year) {
             return true;
         }
         // Compare Months
-        if (this.month.getValue() == 0 || aDate.month.getValue() == 0) {
+        if (month == 0 || aDate.month == 0) {
             return true;
         }
-        if (this.month.getValue() < aDate.month.getValue()) {
+        if (month < aDate.month) {
             return false;
-        } else if (this.month.getValue() > aDate.month.getValue()) {
+        } else if (month > aDate.month) {
             return true;
         }
         // Compare Days
-        if (this.day.getValue() == 0 || aDate.day.getValue() == 0) {
+        if (this.day == 0 || aDate.day == 0) {
             return true;
         }
-        if (this.day.getValue() < aDate.day.getValue()){
+        if (this.day < aDate.day){
             return false;
         }
         return true;
@@ -117,15 +122,15 @@ public class MyDate {
     public String toString() {
         String txt = "";
         txt += String.valueOf(year);
-        if (month.getValue() < 10) {
-            txt += "/0" + String.valueOf(month);
+        if (month < 10) {
+            txt += "-0" + String.valueOf(month);
         } else {
-            txt += "/" + String.valueOf(month);
+            txt += "-" + String.valueOf(month);
         }
-        if (day.getValue() < 10) {
-            txt += "/0" + String.valueOf(day);
+        if (day < 10) {
+            txt += "-0" + String.valueOf(day);
         } else {
-            txt += "/" + String.valueOf(day);
+            txt += "-" + String.valueOf(day);
         }
         return txt;
     }

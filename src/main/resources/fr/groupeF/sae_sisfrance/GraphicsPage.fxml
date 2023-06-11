@@ -7,6 +7,10 @@
 <?import javafx.scene.text.*?>
 <?import org.controlsfx.control.*?>
 
+<?import org.controlsfx.control.RangeSlider?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.GraphicsPageController">
     <top>
         <MenuBar fx:id="menuBar" prefHeight="50.0" BorderPane.alignment="CENTER">
@@ -43,8 +47,8 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <DatePicker fx:id="filtreDateDebut" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                        <DatePicker fx:id="filtreDateFin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <DatePicker fx:id="startDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        <DatePicker fx:id="endDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                         <Label text="DE : " GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                         <Label text="A : " GridPane.columnIndex="0" GridPane.rowIndex="1" />
                                     </children>
@@ -86,7 +90,7 @@
                             <content>
                                 <HBox>
                                     <children>
-                                        <RangeSlider fx:id="intensityFilter" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" max="12.0" min="2.0" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                                        <RangeSlider fx:id="intensityFilter"  max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
                                         <Label fx:id="rangeLabel" />
                                     </children>
                                 </HBox>
@@ -94,9 +98,9 @@
                         </CustomMenuItem>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false">
+                <Menu mnemonicParsing="false" >
                     <graphic>
-                        <TextField fx:id="rechercherTextField" promptText="Rechercher" />
+                        <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
                     </graphic>
                 </Menu>
             </menus>

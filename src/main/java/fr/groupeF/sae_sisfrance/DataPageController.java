@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.scene.layout.VBox;
 import com.gluonhq.maps.MapView;
@@ -109,9 +110,7 @@ public class DataPageController extends BorderPane implements Initializable {
     }
 
     public void createBindings() {
-        // ---------- BINDING BETWEEN FILTERS AND dataEartquakes ----------
-
-        /* Region Filter */ /* Two listener are use because there are problems with the Birectionnal Bindind*/
+        /* Region Filter */
         regionFilter.valueProperty().bindBidirectional(dataEarthquakes.selectedRegionProperty());
 
         /* Coordinate Filter */
@@ -119,23 +118,22 @@ public class DataPageController extends BorderPane implements Initializable {
         Bindings.bindBidirectional(longFilter.textProperty(), dataEarthquakes.selectedLongitudeProperty(), MyBindings.converterDoubleToString);
         Bindings.bindBidirectional(rayonFilter.textProperty(), dataEarthquakes.selectedRayonProperty(), MyBindings.converterIntToString);
 
-//        /* Date Filter */
-//        startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-//            dataEarthquakes.setSelectedStartDate(new MyDate(String.valueOf(startDateFilter.getValue())));
-//        });
-//
-//        endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-//            dataEarthquakes.setSelectedEndDate(new MyDate(String.valueOf(endDateFilter.getValue())));
-//        });
-//
-//        /* Intensity Filter */
-//        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
-//            dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
-//        });
-//
-//        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
-//            dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
-//        });
+        /* Date Filter */
+        startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            dataEarthquakes.getSelectedStartDate().dateProperty().set(startDateFilter.valueProperty().getValue().toString());
+        });
+        dataEarthquakes.getSelectedStartDate().dateProperty().addListener((observable, oldValue, newValue) -> {
+            startDateFilter.setValue(LocalDate.parse(dataEarthquakes.getSelectedStartDate().toString()));
+        });
+
+        endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            dataEarthquakes.getSelectedEndDate().dateProperty().set(endDateFilter.valueProperty().getValue().toString());
+        });
+        dataEarthquakes.getSelectedEndDate().dateProperty().addListener((observable, oldValue, newValue) -> {
+            endDateFilter.setValue(LocalDate.parse(dataEarthquakes.getSelectedEndDate().toString()));
+        });
+
+        /* Intensity Filter */
         dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
 

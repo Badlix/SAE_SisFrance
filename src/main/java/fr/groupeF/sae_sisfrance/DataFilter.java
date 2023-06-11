@@ -30,8 +30,8 @@ public class DataFilter {
         this.selectedLatitude = new SimpleDoubleProperty();
         this.selectedLongitude = new SimpleDoubleProperty(0);
         this.selectedRayon = new SimpleIntegerProperty(0);
-        this.selectedStartDate = new MyDate(" ");
-        this.selectedEndDate = new MyDate(" ");
+        this.selectedStartDate = new MyDate("");
+        this.selectedEndDate = new MyDate("");
         this.selectedMinIntensity = new SimpleDoubleProperty(2);
         this.selectedMaxIntensity = new SimpleDoubleProperty(12);
         selectedRegion.addListener((observable, oldValue, newValue) -> {
@@ -49,11 +49,16 @@ public class DataFilter {
         selectedLongitude.addListener((observable, oldValue, newValue) -> {
             applyFilter();
         });
+        selectedStartDate.dateProperty().addListener((observable, oldValue, newValue) -> {
+            applyFilter();
+        });
+        selectedEndDate.dateProperty().addListener((observable, oldValue, newValue) -> {
+            applyFilter();
+        });
         selectedMinIntensity.addListener((observable, oldValue, newValue) -> {
             applyFilter();
         });
         selectedMaxIntensity.addListener((observable, oldValue, newValue) -> {
-            System.out.println("MIN INTENSITY A CHANGÉ");
             applyFilter();
         });
     }
@@ -130,7 +135,6 @@ public class DataFilter {
 
     public void setSelectedRegion(String selectedRegion) {
         this.selectedRegion.setValue(selectedRegion);
-        applyFilter();
     }
 
     public void setSelectedLatitude(double selectedLatitude) {
@@ -143,27 +147,22 @@ public class DataFilter {
 
     public void setSelectedRayon(int selectedRayon) {
         this.selectedRayon.set(selectedRayon);
-        applyFilter();
     }
 
     public void setSelectedStartDate(MyDate selectedStartDate) {
         this.selectedStartDate = selectedStartDate;
-        applyFilter();
     }
 
     public void setSelectedEndDate(MyDate selectedEndDate) {
         this.selectedEndDate = selectedEndDate;
-        applyFilter();
     }
 
     public void setSelectedMinIntensity(double intensite) {
         this.selectedMinIntensity.set(intensite);
-        applyFilter();
     }
 
     public void setSelectedMaxIntensity(double intensite) {
         this.selectedMaxIntensity.set(intensite);
-        applyFilter();
     }
 
     // ---------- OTHERS ----------
@@ -192,7 +191,7 @@ public class DataFilter {
     }
 
     private void applyFilter() {
-        System.out.println("APPLY FILTER : lat=" + selectedLatitude + " - long=" + selectedLongitude + " - ray=" + selectedRayon);
+        System.out.println("APPLY FILTER : " + selectedStartDate + "  A  " + selectedEndDate);
         filteredEarthquakes.clear();
         for (Earthquake earthquake: allEarthquakes) {
             if (isInRegion(earthquake)) {

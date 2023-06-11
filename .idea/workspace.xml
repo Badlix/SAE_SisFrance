@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Ajout d'un type MyDate avec les tests qui correspondent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" afterDir="false" />
@@ -164,6 +167,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyDateTest.testInitializationSansJourEtSansMois" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SAE_SisFrance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
+      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.MyDateTest" />
+      <option name="METHOD_NAME" value="testInitializationSansJourEtSansMois" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyDateTest.testIsAfterDate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SAE_SisFrance" />
       <extension name="coverage">
@@ -196,22 +215,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyDateTest.testIsBetween" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SAE_SisFrance" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
-      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.MyDateTest" />
-      <option name="METHOD_NAME" value="testIsBetween" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -226,10 +229,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.MyDateTest.testIsBetween" />
+        <item itemvalue="JUnit.MyDateTest" />
         <item itemvalue="JUnit.MyDateTest.testIsAfterDate" />
         <item itemvalue="JUnit.MyDateTest.testIsBeforeDate" />
-        <item itemvalue="JUnit.MyDateTest" />
+        <item itemvalue="JUnit.MyDateTest.testInitializationSansJourEtSansMois" />
       </list>
     </recent_temporary>
   </component>
@@ -342,6 +345,84 @@
       <option name="project" value="LOCAL" />
       <updated>1686350409685</updated>
     </task>
+    <task id="LOCAL-00012" summary="Les filtres de dates sont opérationnels">
+      <created>1686352299589</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1686352299589</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Changement des attributs de DataFilter en Property et renommage plus clair de certaines variables">
+      <created>1686468948149</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1686468948149</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Bindings des valeurs du tableau de DataPage avec le DataFilter">
+      <created>1686469629434</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1686469629434</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Binding des filtres de la page Upload fini">
+      <created>1686470313475</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686470313475</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Initialisation de dataEartquakes dans le fichier GraphicsPageController + changement des valeurs de MyDate en SimpleStringProperty">
+      <created>1686472994223</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1686472994223</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Binding du filtre region">
+      <created>1686484044288</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1686484044288</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Binding du filtre coordonnées fonctionne">
+      <created>1686487214893</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1686487214893</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Suppression de la fonction atualizeFilter qui est entrain d'être remplacé par des bindings">
+      <created>1686487360971</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1686487360971</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Amélioration du binding des coordonées">
+      <created>1686487662588</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1686487662588</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Le binding des filtres d'intensité fonctionne">
+      <created>1686487794140</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1686487794140</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Le binding des dates fonctionne">
+      <created>1686497332544</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1686497332544</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <option name="localTasksCounter" value="12" />
     <servers />
   </component>
@@ -372,6 +453,18 @@
     <MESSAGE value="Les filtres et boutons de la page Upload sont désactivé tant qu'un fichier csv n'a pas été selectionné" />
     <MESSAGE value="Les valeurs de la comboBox de la page Upload se mettent à jour en fonction des régions présentes dans le fichier csv selectionné" />
     <MESSAGE value="Ajout d'un type MyDate avec les tests qui correspondent" />
+    <MESSAGE value="Les filtres de dates sont opérationnels" />
+    <MESSAGE value="Changement des attributs de DataFilter en Property et renommage plus clair de certaines variables" />
+    <MESSAGE value="Bindings des valeurs du tableau de DataPage avec le DataFilter" />
+    <MESSAGE value="Binding des filtres de la page Upload fini" />
+    <MESSAGE value="Initialisation de dataEartquakes dans le fichier GraphicsPageController + changement des valeurs de MyDate en SimpleStringProperty" />
+    <MESSAGE value="Binding du filtre region" />
+    <MESSAGE value="Binding du filtre coordonnées fonctionne" />
+    <MESSAGE value="Suppression de la fonction atualizeFilter qui est entrain d'être remplacé par des bindings" />
+    <MESSAGE value="Amélioration du binding des coordonées" />
+    <MESSAGE value="Le binding des filtres d'intensité fonctionne" />
+    <MESSAGE value="Le binding des dates fonctionne" />
+    <option name="LAST_COMMIT_MESSAGE" value="Le binding des dates fonctionne" />
     <option name="LAST_COMMIT_MESSAGE" value="Ajout d'un type MyDate avec les tests qui correspondent" />
   </component>
 </project>
