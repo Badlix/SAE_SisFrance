@@ -110,9 +110,7 @@ public class DataPageController extends BorderPane implements Initializable {
     }
 
     public void createBindings() {
-        // ---------- BINDING BETWEEN FILTERS AND dataEartquakes ----------
-
-        /* Region Filter */ /* Two listener are use because there are problems with the Birectionnal Bindind*/
+        /* Region Filter */
         regionFilter.valueProperty().bindBidirectional(dataEarthquakes.selectedRegionProperty());
 
         /* Coordinate Filter */
@@ -135,7 +133,7 @@ public class DataPageController extends BorderPane implements Initializable {
             endDateFilter.setValue(LocalDate.parse(dataEarthquakes.getSelectedEndDate().toString()));
         });
 
-
+        /* Intensity Filter */
         dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
 

@@ -44,8 +44,8 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <DatePicker fx:id="filtreDateDebut" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                        <DatePicker fx:id="filtreDateFin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <DatePicker fx:id="startDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        <DatePicker fx:id="endDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                         <Label text="DE : " GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                         <Label text="A : " GridPane.columnIndex="0" GridPane.rowIndex="1" />
                                     </children>
@@ -87,17 +87,17 @@
                             <content>
                                 <HBox>
                                     <children>
-                                        <RangeSlider fx:id="intensityFilter" max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-                                        <Label fx:id="rangeLabel"/>
+                                        <RangeSlider fx:id="intensityFilter"  max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
+                                        <Label fx:id="rangeLabel" />
                                     </children>
                                 </HBox>
                             </content>
                         </CustomMenuItem>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false">
+                <Menu mnemonicParsing="false" >
                     <graphic>
-                        <TextField fx:id="rechercherTextField" promptText="Rechercher" />
+                        <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
                     </graphic>
                 </Menu>
             </menus>

@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Le binding des filtres d'intensité fonctionne">
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/MyDateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/MyDateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686487794140</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Le binding des dates fonctionne">
+      <created>1686497332544</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1686497332544</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,6 +351,7 @@
     <MESSAGE value="Suppression de la fonction atualizeFilter qui est entrain d'être remplacé par des bindings" />
     <MESSAGE value="Amélioration du binding des coordonées" />
     <MESSAGE value="Le binding des filtres d'intensité fonctionne" />
-    <option name="LAST_COMMIT_MESSAGE" value="Le binding des filtres d'intensité fonctionne" />
+    <MESSAGE value="Le binding des dates fonctionne" />
+    <option name="LAST_COMMIT_MESSAGE" value="Le binding des dates fonctionne" />
   </component>
 </project>
