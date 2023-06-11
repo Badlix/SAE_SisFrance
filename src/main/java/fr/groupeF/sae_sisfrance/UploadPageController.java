@@ -65,25 +65,52 @@ public class UploadPageController extends BorderPane {
     public void initialize() throws IOException {
         dataEarthquakes = new DataFilter(FXCollections.observableArrayList());
         System.out.println("UploadPageController initialized");
-        // ---------ACTUALISATION DES FILTRES---------------
+        // ---------- BINDING BETWEEN FILTERS AND dataEartquakes ----------
+
+        /* Region Filter */
         regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("FILTRE REGION APPLIQUÉ");
-            actualizeFilter();
+            dataEarthquakes.setSelectedRegion(regionFilter.getValue());
         });
-        // ---------FILTRE DATE ------------------------
+
+        /* Coordinate Filter */
+        latFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (longFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
+                dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
+            }
+        });
+
+        longFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
+                dataEarthquakes.setSelectedLatitude(Float.valueOf(longFilter.getText()));
+            }
+        });
+
+        rayonFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (latFilter.getText().isEmpty() == false && longFilter.getText().isEmpty() == false) {
+                dataEarthquakes.setSelectedLatitude(Float.valueOf(rayonFilter.getText()));
+            }
+        });
+
+        /* Date Filter */
         startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            actualizeFilter();
+            dataEarthquakes.setSelectedStartDate(new MyDate(String.valueOf(startDateFilter.getValue())));
         });
+
         endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            actualizeFilter();
+            dataEarthquakes.setSelectedEndDate(new MyDate(String.valueOf(endDateFilter.getValue())));
         });
-        // ---------FILTRE INTENSITE A MODIFIER---------------
+
+        /* Intensity Filter */
         intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
-            actualizeFilter();
+            dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
         });
+
         intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
-            actualizeFilter();
+            dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
         });
+
+        // ---------- BINDING BETWEEN RegionFilter options AND dataEartquakes ----------
+
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
@@ -134,24 +161,6 @@ public class UploadPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
-    }
-
-    public void actualizeFilter() {
-        // Region
-        dataEarthquakes.setSelectedRegion(regionFilter.getValue());
-        // Localisation
-        if (longFilter.getText().isEmpty() == false && latFilter.getText().isEmpty() == false && rayonFilter.getText().isEmpty() == false) {
-            dataEarthquakes.setSelectedLongitude(Float.valueOf(longFilter.getText()));
-            dataEarthquakes.setSelectedLatitude(Float.valueOf(latFilter.getText()));
-            dataEarthquakes.setSelectedRayon(Integer.valueOf(rayonFilter.getText()));
-        }
-        // Date -> NE MARCHE PAS
-        dataEarthquakes.setSelectedStartDate(new MyDate(String.valueOf(startDateFilter.getValue())));
-        dataEarthquakes.setSelectedEndDate(new MyDate(String.valueOf(endDateFilter.getValue())));
-
-        // Intensity -> A MODIFIER
-        dataEarthquakes.setSelectedMinIntensity(intensityFilter.getLowValue());
-        dataEarthquakes.setSelectedMaxIntensity(intensityFilter.getHighValue());
     }
 
     public void enableFilter() {
