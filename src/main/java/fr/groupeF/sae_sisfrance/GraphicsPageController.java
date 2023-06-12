@@ -20,12 +20,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
-
 import java.util.*;
-
-import java.io.FileReader;
 import java.io.IOException;
-import java.time.Year;
 import java.time.LocalDate;
 
 public class GraphicsPageController extends BorderPane {

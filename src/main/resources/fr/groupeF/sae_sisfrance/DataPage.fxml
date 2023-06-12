@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import org.controlsfx.control.*?>
 
+<?import com.gluonhq.maps.MapView?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
     <top>
         <MenuBar fx:id="menuBar" prefHeight="50.0" BorderPane.alignment="CENTER_LEFT">
@@ -99,7 +101,7 @@
                 </Menu>
             <Menu mnemonicParsing="false">
                <graphic>
-                  <Button mnemonicParsing="false" text="Filtrer" onAction="#applyFilter"/>
+                  <Button mnemonicParsing="false" onAction="#applyFilter" text="Filtrer" />
                </graphic>
             </Menu>
             </menus>
@@ -121,6 +123,23 @@
         </HBox>
     </bottom>
    <right>
-       <VBox fx:id="map" prefWidth="600.0" />
+      <StackPane alignment="BOTTOM_RIGHT" prefWidth="600.0">
+         <children>
+             <MapView fx:id="mapView" prefWidth="600.0" />
+            <Button onAction="#zoomIn" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="+">
+               <StackPane.margin>
+                  <Insets bottom="50.0" right="10.0" />
+               </StackPane.margin>
+            </Button>
+            <Button onAction="#zoomOut" alignment="CENTER" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="-">
+               <StackPane.margin>
+                  <Insets bottom="15.0" right="10.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </StackPane>
    </right>
 </BorderPane>

@@ -1,5 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
+import com.gluonhq.maps.MapLayer;
+import com.gluonhq.maps.MapPoint;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -54,9 +56,8 @@ public class DataPageController extends BorderPane implements Initializable {
     DatePicker startDateFilter;
     @FXML
     DatePicker endDateFilter;
-
     @FXML
-    VBox map;
+    MapView mapView;
     private static DataFilter dataEarthquakes;
 
     public static DataFilter getDataEarthquakes() {
@@ -151,12 +152,20 @@ public class DataPageController extends BorderPane implements Initializable {
     public void initMapView() {
         System.setProperty("javafx.platform", "desktop");
         System.setProperty("http.agent", "Gluon Mobile/1.0.3");
-        MapView mapView = new MapView();
-        //MapPoint mapPoint = new MapPoint(46.227638, 2.213749);
-        mapView.setZoom(5);
-        //mapView.flyTo(0, mapPoint, 0.1);
-        map.getChildren().add(mapView);
+        MapPoint mapPoint = new MapPoint(45.98,2.78);
+        mapView.setZoom(6);
+        mapView.flyTo(0, mapPoint, 0.1);
+        MapLayer mapLayer = new CustomMapPoint(mapPoint);
+        mapView.addLayer(mapLayer);
+    }
 
+    @FXML
+    public void zoomIn() {
+        mapView.setZoom(mapView.getZoom()+1);
+    }
+    @FXML
+    public void zoomOut() {
+        mapView.setZoom(mapView.getZoom()-1);
     }
 
     @FXML
