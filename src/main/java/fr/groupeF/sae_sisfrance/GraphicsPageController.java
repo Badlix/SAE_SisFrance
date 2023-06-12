@@ -247,7 +247,7 @@ public class GraphicsPageController extends BorderPane {
         for (Earthquake element : dataGraphics) {
             series.getData().add(new XYChart.Data<>(String.valueOf(element.getYear()),Double.valueOf(element.getIntensity())));
         }
-        lineChartDatePerIntensity.getData().add(series);
+        lineChartDatePerIntensity.setData(FXCollections.observableArrayList(series));
     }
     /*public void graphicsSeismPerRegion(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
