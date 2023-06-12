@@ -112,29 +112,20 @@
         </MenuBar>
     </top>
     <center>
-        <!--<ChoiceBox fx:id="choiceBox" onAction="#showGraphics">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Option 1" />
-                    <String fx:value="Option 2" />
-                    <String fx:value="Option 3" />
-                </FXCollections>
-            </items>
-        </ChoiceBox>-->
     </center>
     <right>
         <VBox>
          <VBox prefHeight="100.0" prefWidth="100.0" />
             <HBox>
             <HBox prefHeight="100.0" prefWidth="80.0" />
-            <VBox fx:id="rectangle1" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C); -fx-background-radius: 10;">
+            <VBox fx:id="rectangle1" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
             <Label fx:id="numberLabel1">
                   <VBox.margin>
                      <Insets />
                   </VBox.margin></Label>
             </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
-                <VBox fx:id="rectangle2" prefHeight="150.0" prefWidth="200" style="-fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C); -fx-background-radius: 10;">
+                <VBox fx:id="rectangle2" prefHeight="150.0" prefWidth="200">
                     <Label fx:id="numberLabel2"/>
                 </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
@@ -142,14 +133,14 @@
          <VBox prefHeight="100.0" prefWidth="100.0" />
             <HBox>
                 <HBox prefHeight="100.0" prefWidth="80.0" />
-                <VBox fx:id="rectangle3" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C); -fx-background-radius: 10;">
+                <VBox fx:id="rectangle3" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
                     <Label fx:id="numberLabel3">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin></Label>
                 </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />
-                <VBox fx:id="rectangle4" prefHeight="150.0" prefWidth="200" style="-fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C); -fx-background-radius: 10;">
+                <VBox fx:id="rectangle4" prefHeight="150.0" prefWidth="200">
                     <Label fx:id="numberLabel4"/>
                 </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />
@@ -157,28 +148,20 @@
             <VBox prefHeight="100.0" prefWidth="100.0" />
             <HBox>
             <HBox prefHeight="100.0" prefWidth="80.0" />
-            <VBox fx:id="rectangle5" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C); -fx-background-radius: 10;">
+            <VBox fx:id="rectangle5" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
                 <Label fx:id="numberLabel5">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin></Label>
             </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
-            <VBox fx:id="rectangle6" prefHeight="150.0" prefWidth="200" style="-fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C); -fx-background-radius: 10;">
+            <VBox fx:id="rectangle6" prefHeight="150.0" prefWidth="200">
                 <Label fx:id="numberLabel6"/>
 
             </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />
             </HBox>
             <VBox prefHeight="100.0" prefWidth="100.0" />
-      <!--  <LineChart fx:id="lineChartIntensityPerRegion">
-            <xAxis>
-                <CategoryAxis label="Région" />
-            </xAxis>
-            <yAxis>
-                <NumberAxis label="Date" />
-            </yAxis>
-        </LineChart> -->
         </VBox>
     </right>
     <left>
