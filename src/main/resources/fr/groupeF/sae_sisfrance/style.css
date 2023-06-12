@@ -101,6 +101,76 @@
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
     -fx-cursor: hand;
 }
-#rectangle{
 
+#rectangle1 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 16;
+}
+
+#rectangle1:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
+}
+#rectangle2 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
+
+#rectangle2:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
+}
+#rectangle3 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
+
+#rectangle3:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
+}
+#rectangle4 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
+
+#rectangle4:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
+}
+#rectangle5 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
+
+#rectangle5:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
+}
+#rectangle6 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
+
+#rectangle6:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
 }
