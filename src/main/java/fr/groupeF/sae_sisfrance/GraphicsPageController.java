@@ -20,6 +20,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Year;
@@ -104,6 +108,14 @@ public class GraphicsPageController extends BorderPane {
         dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
 
+        // ---------- BINDINGS - DASHBOARD ----------
+        dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<Earthquake>() {
+            @Override
+            public void onChanged(Change<? extends Earthquake> change) {
+                graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
+                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
+            }
+        });
     }
 
     public void initialize() throws IOException {
@@ -117,10 +129,9 @@ public class GraphicsPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
-        graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
-        graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
-        //graphicsSeismPerRegion(dataEarthquakes.getFilteredEarthquakes());
-
+        // graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
+        // graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
+        // graphicsSeismPerRegion(dataEarthquakes.getFilteredEarthquakes());
     }
     @FXML
     public void newFile(){
@@ -129,8 +140,19 @@ public class GraphicsPageController extends BorderPane {
     public void graphicsSeismPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         int size = dataEarthquakes.getFilteredEarthquakes().size();
+        HashMap<String, Integer> nbEarthquekesDuringAYear = new HashMap<String, Integer>();
         for (Earthquake element : dataGraphics) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(element.getYear()),Double.valueOf(size)));
+            if (nbEarthquekesDuringAYear.containsKey(element.getYear().toString())) {
+                nbEarthquekesDuringAYear.put(element.getYear().toString(), nbEarthquekesDuringAYear.get(element.getYear().toString()) + 1);
+            } else {
+                nbEarthquekesDuringAYear.put(element.getYear().toString(), 0);
+            }
+        }
+        // TreeMap permet de trier une hashMap selon les clés
+        Map<String, Integer> sortedMap = new TreeMap<>(nbEarthquekesDuringAYear);
+        //Parcour de la Hashmap
+        for (Map.Entry m : sortedMap.entrySet()) {
+            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf((String) m.getValue().toString())));
         }
         lineChartSeismPerYear.getData().add(series);
     }

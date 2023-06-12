@@ -7,7 +7,6 @@ import java.time.Year;
 public class Earthquake {
     private final String identifiant; // Identifiant du tremblement de terre
     private final MyDate date; // Date du tremblement de terre
-    private Year year; // Date du tremblement de terre
     private final String hour; // Heure du tremblement de terre
     private final String name; // Nom du tremblement de terre
     private final String region; // endroit où le tremblement de terre s'est produit
@@ -42,7 +41,7 @@ public Earthquake(String[] data) {
     public MyDate getDate() {
         return date;
     }
-    public Year getYear(){ return year; }
+    public Integer getYear(){ return date.getYear(); }
 
     public String getHour() {
         return hour;
