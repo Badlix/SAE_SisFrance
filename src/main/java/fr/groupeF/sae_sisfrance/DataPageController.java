@@ -1,6 +1,5 @@
 package fr.groupeF.sae_sisfrance;
 
-import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -20,12 +19,9 @@ import javafx.scene.layout.BorderPane;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import javafx.scene.layout.VBox;
+
 import com.gluonhq.maps.MapView;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
-import javafx.util.converter.DoubleStringConverter;
-import javafx.util.converter.NumberStringConverter;
 import org.controlsfx.control.RangeSlider;
 
 public class DataPageController extends BorderPane implements Initializable {
@@ -58,6 +54,7 @@ public class DataPageController extends BorderPane implements Initializable {
     DatePicker endDateFilter;
     @FXML
     MapView mapView;
+    CustomMapLayer mapLayer;
     private static DataFilter dataEarthquakes;
 
     public static DataFilter getDataEarthquakes() {
@@ -85,7 +82,6 @@ public class DataPageController extends BorderPane implements Initializable {
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
-                System.out.println("OKKKKK");
                 ObservableList<String> regions = FXCollections.observableArrayList();
                 for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
                     if (!regions.contains(earthquake.getRegion()))
@@ -97,12 +93,12 @@ public class DataPageController extends BorderPane implements Initializable {
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
             }
         });
-        // --------- BNDING DES VALEURS DU TABLEAU ---------------
+        // --------- BNDING DES VALEURS DU TABLEAU ET DE LA MAP ---------------
         dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
-                System.out.println("ELEMENT TABLE : " + dataEarthquakes.getFilteredEarthquakes().size());
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
+                changeEarthquakesOnMap();
             }
         });
         rechercherTextField.setDisable(true); // on verra plus tard
@@ -153,11 +149,22 @@ public class DataPageController extends BorderPane implements Initializable {
         System.setProperty("javafx.platform", "desktop");
         System.setProperty("http.agent", "Gluon Mobile/1.0.3");
         MapPoint mapPoint = new MapPoint(45.98,2.78);
-        mapView.setZoom(6);
-        mapView.flyTo(0, mapPoint, 0.1);
-        MapLayer mapLayer = new CustomMapPoint(mapPoint);
+        mapLayer = new CustomMapLayer();
         mapView.addLayer(mapLayer);
+        mapView.setCenter(mapPoint);
+        mapView.setZoom(5);
     }
+
+    private void changeEarthquakesOnMap() {
+        mapLayer.clear();
+        for (Earthquake earthquake : dataEarthquakes.getFilteredEarthquakes()) {
+            if (!earthquake.getLatitude().isEmpty() && !earthquake.getLongitude().isEmpty()) {
+                MapPoint mapPoint = new MapPoint(Float.valueOf(earthquake.getLatitude()),Float.valueOf(earthquake.getLongitude()));
+                mapLayer.addMapPoint(mapPoint, Float.valueOf(earthquake.getIntensity()));
+            }
+        }
+    }
+
 
     @FXML
     public void zoomIn() {

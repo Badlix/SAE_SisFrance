@@ -128,7 +128,6 @@ public class DataFilter {
     }
 
     public void applyFilter() {
-        System.out.println("APPLY FILTER : " + selectedStartDate + "  A  " + selectedEndDate);
         filteredEarthquakes.clear();
         for (Earthquake earthquake: allEarthquakes) {
             if (isInRegion(earthquake)) {
