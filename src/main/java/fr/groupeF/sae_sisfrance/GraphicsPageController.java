@@ -89,7 +89,6 @@ public class GraphicsPageController extends BorderPane {
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
-                System.out.println("OKKKKK");
                 ObservableList<String> regions = FXCollections.observableArrayList();
                 for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
                     if (!regions.contains(earthquake.getRegion()))
@@ -310,5 +309,11 @@ public class GraphicsPageController extends BorderPane {
         return data;
     }
 */
+
+    @FXML
+    public void applyFilter() {
+        dataEarthquakes.applyFilter();
+    }
+
 
 }

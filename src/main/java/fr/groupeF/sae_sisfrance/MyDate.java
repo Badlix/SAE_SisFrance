@@ -13,7 +13,6 @@ public class MyDate {
         date = new SimpleStringProperty(dateTxt);
         update();
         date.addListener((observable, oldValue, newValue) -> {
-            System.out.println("VALEUR DATE A CHANGÉ");
             update();
         });
     }

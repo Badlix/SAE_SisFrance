@@ -4,61 +4,36 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 public class DataFilter {
-
-    private ObservableList<Earthquake> allEarthquakes;
-    private static ObservableList<Earthquake> filteredEarthquakes;
-
-    private SimpleStringProperty selectedRegion;
-    private SimpleDoubleProperty selectedLatitude;
-    private SimpleDoubleProperty selectedLongitude;
-
-    private SimpleIntegerProperty selectedRayon;
-    private MyDate selectedStartDate;
-    private MyDate selectedEndDate;
-    private SimpleDoubleProperty selectedMinIntensity;
-    private SimpleDoubleProperty selectedMaxIntensity;
+    private ObservableList<Earthquake> allEarthquakes; // List of all Earthquakes extracted from the csv file
+    private ObservableList<Earthquake> filteredEarthquakes; // Filtered list of Earthquakes
+    private SimpleStringProperty selectedRegion; // Value of region filter
+    private SimpleDoubleProperty selectedLatitude; // Value of latitude filter
+    private SimpleDoubleProperty selectedLongitude; // Value of longitude filter
+    private SimpleIntegerProperty selectedRayon; // Value of rayon filter
+    private MyDate selectedStartDate; // Value of the start date filter
+    private MyDate selectedEndDate; // Value of the end date filter
+    private SimpleDoubleProperty selectedMinIntensity; // Value of the minimal intensity
+    private SimpleDoubleProperty selectedMaxIntensity; // Value of the maximal intensity
 
     public DataFilter(ObservableList<Earthquake> allEarthquake) {
-        this.allEarthquakes = allEarthquake;
-        this.filteredEarthquakes = FXCollections.observableArrayList();
-        this.filteredEarthquakes.setAll(allEarthquake);
-        this.selectedRegion = new SimpleStringProperty("");
-        this.selectedLatitude = new SimpleDoubleProperty();
-        this.selectedLongitude = new SimpleDoubleProperty(0);
-        this.selectedRayon = new SimpleIntegerProperty(0);
-        this.selectedStartDate = new MyDate("");
-        this.selectedEndDate = new MyDate("");
-        this.selectedMinIntensity = new SimpleDoubleProperty(2);
-        this.selectedMaxIntensity = new SimpleDoubleProperty(12);
+        // Initialization of the two eartquakes list
+        allEarthquakes = allEarthquake;
+        filteredEarthquakes = FXCollections.observableArrayList(allEarthquakes);
+        // Initialization of the filter's values
+        selectedRegion = new SimpleStringProperty("");
+        selectedLatitude = new SimpleDoubleProperty();
+        selectedLongitude = new SimpleDoubleProperty(0);
+        selectedRayon = new SimpleIntegerProperty(0);
+        selectedStartDate = new MyDate("");
+        selectedEndDate = new MyDate("");
+        selectedMinIntensity = new SimpleDoubleProperty(2);
+        selectedMaxIntensity = new SimpleDoubleProperty(12);
+        /* Listener allow the region filter to update the filtered list
+        without having to click on the button "Filtrer" */
         selectedRegion.addListener((observable, oldValue, newValue) -> {
-            applyFilter();
-        });
-        selectedLongitude.addListener((observable, oldValue, newValue) -> {
-            applyFilter();
-        });
-        selectedLatitude.addListener((observable, oldValue, newValue) -> {
-            applyFilter();
-        });
-        selectedRayon.addListener((observable, oldValue, newValue) -> {
-            applyFilter();
-        });
-        selectedLongitude.addListener((observable, oldValue, newValue) -> {
-            applyFilter();
-        });
-        selectedStartDate.dateProperty().addListener((observable, oldValue, newValue) -> {
-            applyFilter();
-        });
-        selectedEndDate.dateProperty().addListener((observable, oldValue, newValue) -> {
-            applyFilter();
-        });
-        selectedMinIntensity.addListener((observable, oldValue, newValue) -> {
-            applyFilter();
-        });
-        selectedMaxIntensity.addListener((observable, oldValue, newValue) -> {
             applyFilter();
         });
     }
@@ -92,22 +67,6 @@ public class DataFilter {
         return filteredEarthquakes;
     }
 
-    public String getSelectedRegion() {
-        return selectedRegion.get();
-    }
-
-    public double getSelectedLatitude() {
-        return selectedLatitude.get();
-    }
-
-    public double getSelectedLongitude() {
-        return selectedLongitude.get();
-    }
-
-    public int getSelectedRayon() {
-        return selectedRayon.get();
-    }
-
     public MyDate getSelectedStartDate() {
         return selectedStartDate;
     }
@@ -116,22 +75,7 @@ public class DataFilter {
         return selectedEndDate;
     }
 
-    public double getSelectedMinIntensity() {
-        return selectedMinIntensity.getValue();
-    }
-
-
-    public double getSelectedMaxIntensity() {
-        return selectedMaxIntensity.getValue();
-    }
-
     // ---------- SETTER ----------
-
-    public void setAllEarthquakes(ObservableList<Earthquake> earthquakes) {
-        this.allEarthquakes = earthquakes;
-        this.filteredEarthquakes = FXCollections.observableArrayList(earthquakes);
-        this.filteredEarthquakes.addAll(allEarthquakes);
-    }
 
     public void setSelectedRegion(String selectedRegion) {
         this.selectedRegion.setValue(selectedRegion);
@@ -149,13 +93,6 @@ public class DataFilter {
         this.selectedRayon.set(selectedRayon);
     }
 
-    public void setSelectedStartDate(MyDate selectedStartDate) {
-        this.selectedStartDate = selectedStartDate;
-    }
-
-    public void setSelectedEndDate(MyDate selectedEndDate) {
-        this.selectedEndDate = selectedEndDate;
-    }
 
     public void setSelectedMinIntensity(double intensite) {
         this.selectedMinIntensity.set(intensite);
@@ -190,7 +127,7 @@ public class DataFilter {
         return (selectedMinIntensity.getValue() <= Float.valueOf(earthquake.getIntensity()) && selectedMaxIntensity.getValue() >= Float.valueOf(earthquake.getIntensity()));
     }
 
-    private void applyFilter() {
+    public void applyFilter() {
         System.out.println("APPLY FILTER : " + selectedStartDate + "  A  " + selectedEndDate);
         filteredEarthquakes.clear();
         for (Earthquake earthquake: allEarthquakes) {

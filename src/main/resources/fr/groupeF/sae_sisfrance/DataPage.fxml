@@ -7,7 +7,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
     <top>
-        <MenuBar fx:id="menuBar" prefHeight="50.0" BorderPane.alignment="CENTER">
+        <MenuBar fx:id="menuBar" prefHeight="50.0" BorderPane.alignment="CENTER_LEFT">
             <menus>
                 <Menu mnemonicParsing="false" text="Localisation">
                     <items>
@@ -84,7 +84,7 @@
                             <content>
                                 <HBox>
                                     <children>
-                                        <RangeSlider fx:id="intensityFilter"  max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
+                                        <RangeSlider fx:id="intensityFilter" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" max="12.0" min="2.0" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                                         <Label fx:id="rangeLabel" />
                                     </children>
                                 </HBox>
@@ -92,17 +92,22 @@
                         </CustomMenuItem>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" >
+                <Menu mnemonicParsing="false">
                     <graphic>
-                        <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
+                        <TextField fx:id="rechercherTextField" promptText="Rechercher" />
                     </graphic>
                 </Menu>
+            <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button mnemonicParsing="false" text="Filtrer" onAction="#applyFilter"/>
+               </graphic>
+            </Menu>
             </menus>
         </MenuBar>
     </top>
    <center>
       <TableView fx:id="table" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-        <columns >
+        <columns>
             <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
             <TableColumn fx:id="regionColumn" prefWidth="200.0" text="Région" />
             <TableColumn fx:id="intensityColumn" minWidth="80.0" text="Intensité" />
@@ -110,13 +115,10 @@
       </TableView>
    </center>
     <bottom>
-
-
         <HBox fx:id="footer" styleClass="bottom">
-            <Button text="Nouveau fichier" onAction="#newFile"/>
-            <Button fx:id="graphicsButton" onAction="#changingToGraphicsPage" text="Graphiques" styleClass="newFile"/>
+            <Button onAction="#newFile" text="Nouveau fichier" />
+            <Button fx:id="graphicsButton" onAction="#changingToGraphicsPage" styleClass="newFile" text="Graphiques" />
         </HBox>
-
     </bottom>
    <right>
        <VBox fx:id="map" prefWidth="600.0" />

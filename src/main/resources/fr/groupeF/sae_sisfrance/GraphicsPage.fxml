@@ -103,6 +103,11 @@
                         <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
                     </graphic>
                 </Menu>
+                <Menu mnemonicParsing="false">
+                    <graphic>
+                        <Button mnemonicParsing="false" text="Filtrer" onAction="#applyFilter"/>
+                    </graphic>
+                </Menu>
             </menus>
         </MenuBar>
     </top>

@@ -19,7 +19,7 @@
                         <HBox prefWidth="200.0" spacing="10.0">
                             <children>
                                 <Label styleClass="filter" text="Intensité : " />
-                                <RangeSlider fx:id="intensityFilter"  max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
+                                <RangeSlider disable="true" fx:id="intensityFilter"  max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
                             </children>
                         </HBox>
                         <HBox prefWidth="300" spacing="10">

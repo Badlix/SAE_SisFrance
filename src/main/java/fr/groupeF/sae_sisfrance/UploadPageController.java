@@ -26,7 +26,6 @@ public class UploadPageController extends BorderPane {
 
     @FXML
     private Button uploadButton;
-
     @FXML
     private Label fileReadableLabel;
     @FXML
@@ -108,9 +107,13 @@ public class UploadPageController extends BorderPane {
         });
     }
 
+
+
     @FXML
     public void upload(){
+
         // Ouvrir une boîte de dialogue de sélection de fichier
+
         FileChooser fileChooser = new FileChooser();
         Stage stage = (Stage) uploadButton.getScene().getWindow();
         fileChooser.setTitle("Sélectionner un fichier");
@@ -119,8 +122,11 @@ public class UploadPageController extends BorderPane {
                 new FileChooser.ExtensionFilter("Fichiers texte", "*.txt"),
                 new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
         );
+
         // Obtenir le fichier sélectionné
+
         File selectedFile = fileChooser.showOpenDialog(stage);
+
         if (selectedFile != null) {
             ArrayList<Earthquake> data = DataImporter.readCSV(selectedFile);
             dataEarthquakes.getAllEarthquakes().addAll(FXCollections.observableArrayList(data));
@@ -140,6 +146,9 @@ public class UploadPageController extends BorderPane {
     };
     @FXML
     public void changingToDataPage(ActionEvent event) {
+        // TEMPORAIRE
+        dataEarthquakes.applyFilter();
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
