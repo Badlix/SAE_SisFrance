@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Label contenant l'année avec le plus de séismes ( à modifier car il affiche seulement la valeur 0 pour l'instant )">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,7 +349,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="avancement upload csv file" />
     <MESSAGE value="css menu principal" />
     <MESSAGE value="reorganisation pour filtres" />
     <MESSAGE value="Actualisation des filtres" />
@@ -373,6 +373,7 @@
     <MESSAGE value="Ajout du binding sur GraphicsPage" />
     <MESSAGE value="graphique du nombre de seismes par années fonctionne" />
     <MESSAGE value="graphique du nombre de seismes par années fonctionne (il y avait un problèmes sur l'ancien commit)" />
-    <option name="LAST_COMMIT_MESSAGE" value="graphique du nombre de seismes par années fonctionne (il y avait un problèmes sur l'ancien commit)" />
+    <MESSAGE value="Label contenant l'année avec le plus de séismes ( à modifier car il affiche seulement la valeur 0 pour l'instant )" />
+    <option name="LAST_COMMIT_MESSAGE" value="Label contenant l'année avec le plus de séismes ( à modifier car il affiche seulement la valeur 0 pour l'instant )" />
   </component>
 </project>

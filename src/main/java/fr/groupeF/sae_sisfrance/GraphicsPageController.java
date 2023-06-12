@@ -1,11 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
-import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
-import javafx.beans.binding.DoubleBinding;
 import javafx.beans.binding.StringBinding;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -36,7 +32,6 @@ public class GraphicsPageController extends BorderPane {
     private FXMLLoader dataPageLoader;
     private FXMLLoader uploadPageLoader;
     private Scene dataPageScene;
-    private ObservableList<Double> values;
     private DataFilter dataEarthquakes;
     @FXML
     private LineChart<String, Number> lineChartSeismPerYear;
@@ -58,8 +53,6 @@ public class GraphicsPageController extends BorderPane {
     private Label numberLabel5;
     @FXML
     private Label numberLabel6;
-    @FXML
-    private ChoiceBox choiceBox;
     @FXML
     ChoiceBox<String> regionFilter;
     @FXML
@@ -93,7 +86,7 @@ public class GraphicsPageController extends BorderPane {
 
     public void setDataEarthquakes(DataFilter dataFilter) {
         dataEarthquakes = dataFilter;
-        dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
+        dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
                 System.out.println("OKKKKK");
@@ -180,17 +173,25 @@ public class GraphicsPageController extends BorderPane {
         /* Labels */
         // Liaison dynamique entre le nombre total de séismes et le texte des Labels (les rectangles bleus)
         StringBinding totalSeismBinding = Bindings.createStringBinding(()-> {
-                    int totalSeism = dataEarthquakes.getFilteredEarthquakes().size();
-                    return "Nombre total de séismes: " + totalSeism;
+            int size = dataEarthquakes.getFilteredEarthquakes().size();
+            return "Nombre total de séismes: " + size;
         }, dataEarthquakes.getFilteredEarthquakes());
+
+        // Liaison dynamique entre l'année avec le plus de séismes et le texte du 5ème label
+        int yearWithMostSeisms = YearWithMostSeisms(dataEarthquakes.getFilteredEarthquakes());
+        StringBinding yearWithMostSeismsBinding = Bindings.createStringBinding(()-> {
+                    return "Année avec le plus de séismes : " + yearWithMostSeisms;
+        },dataEarthquakes.getFilteredEarthquakes());
+
 
 
         //numberLabel1.textProperty().bind(ObservableValueof(dataEarthquakes.getAllEarthquakes()));
         numberLabel1.textProperty().bind(totalSeismBinding);
+        numberLabel5.textProperty().bind(yearWithMostSeismsBinding);
         // Liaison du texte du Label avec la valeur moyenne
 //        numberLabel2.textProperty().bind(averageBinding.asString("Average: %.2f"));
         // ---------- BINDINGS - DASHBOARD ----------
-        dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<Earthquake>() {
+        dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
                 graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
@@ -222,19 +223,44 @@ public class GraphicsPageController extends BorderPane {
     public void newFile(){
 
     }
+    public int YearWithMostSeisms(ObservableList<Earthquake> dataGraphics) {
+        HashMap<Integer, Integer> nbEarthquakesDuringAYear = new HashMap<>();
+
+        // Compter le nombre de séismes pour chaque année
+        for (Earthquake element : dataGraphics) {
+            int year = element.getYear();
+            nbEarthquakesDuringAYear.put(year, nbEarthquakesDuringAYear.getOrDefault(year, 0) + 1);
+        }
+
+        // Trouver l'année avec le nombre maximal de séismes
+        int maxCount = 0;
+        int maxYear = 0;
+        // TreeMap permet de trier une hashMap selon les clés
+        Map<Integer, Integer> sortedMap = new TreeMap<>(nbEarthquakesDuringAYear);
+        // Parcourir la Map et trouver l'année avec le plus de séismes
+        for (Map.Entry<Integer, Integer> entry : sortedMap.entrySet()) {
+            int year = entry.getKey();
+            int count = entry.getValue();
+            if (count > maxCount) {
+                maxCount = count;
+                maxYear = year;
+            }
+        }
+
+        return maxYear;
+    }
     public void graphicsSeismPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        int size = dataEarthquakes.getFilteredEarthquakes().size();
-        HashMap<String, Integer> nbEarthquekesDuringAYear = new HashMap<String, Integer>();
+        HashMap<String, Integer> nbEarthquakesDuringAYear = new HashMap<String, Integer>();
         for (Earthquake element : dataGraphics) {
-            if (nbEarthquekesDuringAYear.containsKey(element.getYear().toString())) {
-                nbEarthquekesDuringAYear.put(element.getYear().toString(), nbEarthquekesDuringAYear.get(element.getYear().toString()) + 1);
+            if (nbEarthquakesDuringAYear.containsKey(element.getYear().toString())) {
+                nbEarthquakesDuringAYear.put(element.getYear().toString(), nbEarthquakesDuringAYear.get(element.getYear().toString()) + 1);
             } else {
-                nbEarthquekesDuringAYear.put(element.getYear().toString(), 0);
+                nbEarthquakesDuringAYear.put(element.getYear().toString(), 0);
             }
         }
         // TreeMap permet de trier une hashMap selon les clés
-        Map<String, Integer> sortedMap = new TreeMap<>(nbEarthquekesDuringAYear);
+        Map<String, Integer> sortedMap = new TreeMap<>(nbEarthquakesDuringAYear);
         //Parcour de la Hashmap
         for (Map.Entry m : sortedMap.entrySet()) {
             series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf((String) m.getValue().toString())));
