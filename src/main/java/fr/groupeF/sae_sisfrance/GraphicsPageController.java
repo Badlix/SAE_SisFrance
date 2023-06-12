@@ -76,6 +76,20 @@ public class GraphicsPageController extends BorderPane {
 
     public void setDataEarthquakes(DataFilter dataFilter) {
         dataEarthquakes = dataFilter;
+        dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
+            @Override
+            public void onChanged(Change<? extends Earthquake> change) {
+                System.out.println("OKKKKK");
+                ObservableList<String> regions = FXCollections.observableArrayList();
+                for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
+                    if (!regions.contains(earthquake.getRegion()))
+                        regions.add(earthquake.getRegion());
+                }
+                regions.sort(String::compareToIgnoreCase);
+                regions.add(0, "");
+                regionFilter.setItems(regions);
+            }
+        });
         createBindings();
         //searchBar();
     }
@@ -154,7 +168,8 @@ public class GraphicsPageController extends BorderPane {
         for (Map.Entry m : sortedMap.entrySet()) {
             series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf((String) m.getValue().toString())));
         }
-        lineChartSeismPerYear.getData().add(series);
+        lineChartSeismPerYear.setData(FXCollections.observableArrayList(series));
+        //lineChartSeismPerYear.getData().add(series);
     }
     public void graphicsIntensityPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
