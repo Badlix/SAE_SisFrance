@@ -160,7 +160,7 @@
             </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
             <VBox fx:id="rectangle6" prefHeight="150.0" prefWidth="200" style="-fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C); -fx-background-radius: 10;">
-                <Label fx:id="numberLabel7"/>
+                <Label fx:id="numberLabel6"/>
 
             </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />

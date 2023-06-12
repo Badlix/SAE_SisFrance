@@ -1,7 +1,12 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
+import javafx.beans.binding.StringBinding;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -20,27 +25,39 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Year;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class GraphicsPageController extends BorderPane {
     private FXMLLoader dataPageLoader;
     private FXMLLoader uploadPageLoader;
     private Scene dataPageScene;
+    private ObservableList<Double> values;
     private DataFilter dataEarthquakes;
     @FXML
     private LineChart<String, Number> lineChartSeismPerYear;
     @FXML
     private LineChart<String, Number> lineChartDatePerIntensity;
+    private ObservableList<String> intensity;
+    private ListView<Double> listView;
     //@FXML
     //private LineChart<String, Number> lineChartSeismPerRegion;
+    @FXML
+    private Label numberLabel1;
+    @FXML
+    private Label numberLabel2;
+    @FXML
+    private Label numberLabel3;
+    @FXML
+    private Label numberLabel4;
+    @FXML
+    private Label numberLabel5;
+    @FXML
+    private Label numberLabel6;
     @FXML
     private ChoiceBox choiceBox;
     @FXML
@@ -121,7 +138,57 @@ public class GraphicsPageController extends BorderPane {
         /* Intensity Filter */
         dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
+        /* Moyennes */
+        /*DoubleBinding averageBinding = Bindings.createDoubleBinding(() -> {
+            double sum = 0;
+            for (String value : intensity) {
+                double doubleValue = Double.parseDouble(value);
+                sum += doubleValue;
+            }
+            return sum / intensity.size();
+        }, values);*/
 
+/*        private void calculateAverage() {
+            List<Double> intensities = Earthquake.getIntensity();
+
+            if (!intensities.isEmpty()) {
+                double sum = 0;
+                for (double intensity : intensities) {
+                    sum += intensity;
+                }
+                double average = sum / intensities.size();
+                numberLabel2.setText("Moyenne : " + average);
+            } else {
+                numberLabel2.setText("Moyenne :");
+            }
+        }
+
+        private List<Double> getIntensity() {
+            List<Double> intensities = new ArrayList<>();
+            intensities.addAll(listView.getItems());
+            return intensities;
+        }
+*/
+       /* private String calculateSum(String[] intensityValues) {
+            String sum = "";
+            for (String intensity : intensityValues) {
+                sum += intensity + " ";
+            }
+            return sum;
+        }*/
+
+        /* Labels */
+        // Liaison dynamique entre le nombre total de séismes et le texte des Labels (les rectangles bleus)
+        StringBinding totalSeismBinding = Bindings.createStringBinding(()-> {
+                    int totalSeism = dataEarthquakes.getFilteredEarthquakes().size();
+                    return "Nombre total de séismes: " + totalSeism;
+        }, dataEarthquakes.getFilteredEarthquakes());
+
+
+        //numberLabel1.textProperty().bind(ObservableValueof(dataEarthquakes.getAllEarthquakes()));
+        numberLabel1.textProperty().bind(totalSeismBinding);
+        // Liaison du texte du Label avec la valeur moyenne
+//        numberLabel2.textProperty().bind(averageBinding.asString("Average: %.2f"));
         // ---------- BINDINGS - DASHBOARD ----------
         dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
@@ -131,6 +198,10 @@ public class GraphicsPageController extends BorderPane {
             }
         });
     }
+   /* private ObservableValue<String> ObservableValueof(ObservableList<Earthquake> allEarthquakes) {
+        dataEarthquakes.getAllEarthquakes();
+        return ObservableValueof(allEarthquakes);
+    }*/
 
     public void initialize() throws IOException {
         System.out.println("GraphicsPageController initialized");
@@ -175,7 +246,6 @@ public class GraphicsPageController extends BorderPane {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Earthquake element : dataGraphics) {
             series.getData().add(new XYChart.Data<>(String.valueOf(element.getYear()),Double.valueOf(element.getIntensity())));
-            //Year.textProperty().bindBidirectional(number);
         }
         lineChartDatePerIntensity.getData().add(series);
     }
