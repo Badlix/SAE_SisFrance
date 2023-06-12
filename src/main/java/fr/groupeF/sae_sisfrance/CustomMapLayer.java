@@ -46,6 +46,10 @@ public class CustomMapLayer extends MapLayer {
         this.rectangles = FXCollections.observableArrayList();
     }
 
+    public void update() {
+        this.layoutLayer();
+    }
+
     /* La fonction est appelée à chaque rafraichissement de la carte */
     @Override
     protected void layoutLayer() {

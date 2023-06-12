@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.maps.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import org.controlsfx.control.*?>
 
-<?import com.gluonhq.maps.MapView?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
+<BorderPane minHeight="740.0" minWidth="1200.0" prefHeight="740.0" prefWidth="1200.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.DataPageController">
     <top>
         <MenuBar fx:id="menuBar" prefHeight="50.0" BorderPane.alignment="CENTER_LEFT">
             <menus>
@@ -108,10 +108,11 @@
         </MenuBar>
     </top>
    <center>
-      <TableView fx:id="table" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" maxWidth="520.0" minWidth="520.0" prefWidth="520.0" BorderPane.alignment="CENTER">
         <columns>
-            <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
-            <TableColumn fx:id="regionColumn" prefWidth="200.0" text="Région" />
+            <TableColumn minWidth="80.0" text="Id" />
+            <TableColumn fx:id="dateColumn" minWidth="110.0" prefWidth="110.0" text="Date" />
+            <TableColumn fx:id="regionColumn" minWidth="250.0" prefWidth="250.0" text="Région" />
             <TableColumn fx:id="intensityColumn" minWidth="80.0" text="Intensité" />
         </columns>
       </TableView>
@@ -123,15 +124,15 @@
         </HBox>
     </bottom>
    <right>
-      <StackPane alignment="BOTTOM_RIGHT" prefWidth="600.0">
+      <StackPane alignment="BOTTOM_RIGHT" maxWidth="-Infinity" minWidth="680.0" prefWidth="680.0">
          <children>
-             <MapView fx:id="mapView" prefWidth="600.0" />
-            <Button onAction="#zoomIn" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="+">
+             <MapView fx:id="mapView" minWidth="680.0" />
+            <Button maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#zoomIn" prefHeight="30.0" prefWidth="30.0" text="+">
                <StackPane.margin>
                   <Insets bottom="50.0" right="10.0" />
                </StackPane.margin>
             </Button>
-            <Button onAction="#zoomOut" alignment="CENTER" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="-">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#zoomOut" prefHeight="30.0" prefWidth="30.0" text="-">
                <StackPane.margin>
                   <Insets bottom="15.0" right="10.0" />
                </StackPane.margin>

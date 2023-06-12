@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -139,9 +140,13 @@ public class DataPageController extends BorderPane implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("DataPageController initialized");
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
-        intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
+        table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("identifiant"));
+        table.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("date"));
+        table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("region"));
+        table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("intensity"));
+        //dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        //regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
+        //intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
         initMapView();
     }
 
@@ -163,6 +168,7 @@ public class DataPageController extends BorderPane implements Initializable {
                 mapLayer.addMapPoint(mapPoint, Float.valueOf(earthquake.getIntensity()));
             }
         }
+        mapLayer.update();
     }
 
 

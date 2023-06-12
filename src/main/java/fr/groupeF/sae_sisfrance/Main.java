@@ -11,7 +11,6 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        System.setProperty("http.agent", "Gluon Mobile/1.0.3");
 
         //LOAD OF ALL FXML FILES TO GET LOADERS AND CONTROLLER
 
@@ -29,9 +28,9 @@ public class Main extends Application {
         GraphicsPageController graphicsPageController = graphicsPageLoader.getController();
 
         // CREATION OF ALL SCENES
-        Scene uploadPageScene = new Scene(uploadPageLoader.getRoot(), 1000, 500);
-        Scene dataPageScene = new Scene(dataPageLoader.getRoot(), 1000, 500);
-        Scene graphicsPageScene = new Scene(graphicsPageLoader.getRoot(), 1000, 500);
+        Scene uploadPageScene = new Scene(uploadPageLoader.getRoot(), 1200, 740);
+        Scene dataPageScene = new Scene(dataPageLoader.getRoot(), 1200, 740);
+        Scene graphicsPageScene = new Scene(graphicsPageLoader.getRoot(), 1200, 740);
 
         // LINK SCENES AND CONTROLLERS
         dataPageController.setGraphicsPageScene(graphicsPageScene);

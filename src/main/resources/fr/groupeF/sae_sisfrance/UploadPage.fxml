@@ -4,29 +4,29 @@
 <?import javafx.scene.layout.*?>
 <?import org.controlsfx.control.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="uploadPage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.UploadPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="uploadPage" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.UploadPageController">
       <left>
             <HBox alignment="CENTER" prefWidth="400" styleClass="uploadFilter">
                   <VBox alignment="CENTER" spacing="10">
-                        <ComboBox disable="true" prefHeight="30" prefWidth="300" promptText="Region" styleClass="filter" fx:id="regionFilter"/>
+                        <ComboBox fx:id="regionFilter" disable="true" prefHeight="30" prefWidth="300" promptText="Region" styleClass="filter" />
                         <HBox alignment="CENTER" prefWidth="200.0" spacing="10.0">
                             <children>
-                                <TextField disable="true" prefWidth="100.0" promptText="Latitude" styleClass="filter" fx:id="latFilter"/>
-                                <TextField disable="true" prefWidth="100.0" promptText="Longitude" styleClass="filter" fx:id="longFilter"/>
-                                <TextField disable="true" prefWidth="100.0" promptText="Rayon (km)" styleClass="filter" fx:id="rayonFilter"/>
+                                <TextField fx:id="latFilter" disable="true" prefWidth="100.0" promptText="Latitude" styleClass="filter" />
+                                <TextField fx:id="longFilter" disable="true" prefWidth="100.0" promptText="Longitude" styleClass="filter" />
+                                <TextField fx:id="rayonFilter" disable="true" prefWidth="100.0" promptText="Rayon (km)" styleClass="filter" />
                             </children>
                         </HBox>
                         <HBox prefWidth="200.0" spacing="10.0">
                             <children>
                                 <Label styleClass="filter" text="Intensité : " />
-                                <RangeSlider disable="true" fx:id="intensityFilter"  max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
+                                <RangeSlider fx:id="intensityFilter" blockIncrement="0.5" disable="true" highValue="12.0" lowValue="2.0" majorTickUnit="2" max="12.0" min="2.0" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                             </children>
                         </HBox>
                         <HBox prefWidth="300" spacing="10">
-                              <DatePicker disable="true" promptText="De" styleClass="filter" fx:id="startDateFilter"/>
-                              <DatePicker disable="true" promptText="A" styleClass="filter" fx:id="endDateFilter"/>
+                              <DatePicker fx:id="startDateFilter" disable="true" promptText="De" styleClass="filter" />
+                              <DatePicker fx:id="endDateFilter" disable="true" promptText="A" styleClass="filter" />
                         </HBox>
-                        <Button fx:id="changingFXMLButton" disable="true" onAction="#changingToDataPage" text="Rechercher"/>
+                        <Button fx:id="changingFXMLButton" disable="true" onAction="#changingToDataPage" text="Rechercher" />
                   </VBox>
             </HBox>
       </left>
