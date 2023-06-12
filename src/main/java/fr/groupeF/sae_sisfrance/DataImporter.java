@@ -13,25 +13,9 @@ public class DataImporter {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             br.readLine();
             while ((line = br.readLine()) != null) {
+                System.out.println(line);
                 String[] data = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-                // Process the data
-                Earthquake earthquake = new Earthquake(data);
-                earthquakes.add(earthquake);
-            }
-            return earthquakes;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    public static ArrayList<Earthquake> readCSV(String csvFile){
-        String line;
-        ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-            br.readLine();
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+                System.out.println(data.length);
                 // Process the data
                 Earthquake earthquake = new Earthquake(data);
                 earthquakes.add(earthquake);

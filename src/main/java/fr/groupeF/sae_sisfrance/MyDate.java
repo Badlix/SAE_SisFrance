@@ -62,6 +62,8 @@ public class MyDate {
     public boolean isBetween(MyDate afterDate, MyDate beforeDate) {
         return isAfter(afterDate) && isBefore(beforeDate);
     }
+
+    // Check is this Date happened before another Date
     public boolean isBefore(MyDate aDate) {
         // Compare Years
         if (year == 0 || aDate.year == 0) {
@@ -90,6 +92,8 @@ public class MyDate {
         }
         return true;
     }
+
+    // Check is this Date happened after another Date
     public boolean isAfter(MyDate aDate) {
         // Compare Years
         if (year == 0 || aDate.year == 0) {
@@ -117,21 +121,5 @@ public class MyDate {
             return false;
         }
         return true;
-    }
-
-    public String toString() {
-        String txt = "";
-        txt += String.valueOf(year);
-        if (month < 10) {
-            txt += "-0" + String.valueOf(month);
-        } else {
-            txt += "-" + String.valueOf(month);
-        }
-        if (day < 10) {
-            txt += "-0" + String.valueOf(day);
-        } else {
-            txt += "-" + String.valueOf(day);
-        }
-        return txt;
     }
 }

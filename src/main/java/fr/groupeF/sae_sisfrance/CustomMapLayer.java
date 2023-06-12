@@ -9,8 +9,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class CustomMapLayer extends MapLayer {
-    private ObservableList<MapPoint> mapPoints;
-    private ObservableList<Rectangle> rectangles;
+    private ObservableList<MapPoint> mapPoints; // list of MapPoint who contains coordinate
+    private ObservableList<Rectangle> rectangles; // list of shapes who are going to appear on the map
 
     public CustomMapLayer() {
         this.mapPoints = FXCollections.observableArrayList();
@@ -20,6 +20,8 @@ public class CustomMapLayer extends MapLayer {
     public void addMapPoint(MapPoint mapPoint, float intensity) {
         this.mapPoints.add(mapPoint);
         Rectangle pin = new Rectangle(10, 10, Color.TRANSPARENT);
+
+        // The color of the rectangle depends on the eartquake's intensity
         if (intensity <= 2.5) {
             pin.setStroke(Color.LAVENDER);
         } else if (intensity <= 3.5) {
@@ -50,15 +52,15 @@ public class CustomMapLayer extends MapLayer {
         this.layoutLayer();
     }
 
-    /* La fonction est appelée à chaque rafraichissement de la carte */
+    /* This function is called every time the map is refresh */
     @Override
     protected void layoutLayer() {
         Point2D point2d;
         for (int i = 0; i < mapPoints.size(); i++) {
-            /* Conversion du MapPoint vers Point2D */
+            /* Convert the MapPoint in a Point2D */
             point2d = getMapPoint(mapPoints.get(i).getLatitude(), mapPoints.get(i).getLongitude());
 
-            /* Déplace le cercle selon les coordonnées du point */
+            /* Move the shape depending on the MapPoint's coordinates */
             rectangles.get(i).setTranslateX(point2d.getX());
             rectangles.get(i).setTranslateY(point2d.getY());
         }
