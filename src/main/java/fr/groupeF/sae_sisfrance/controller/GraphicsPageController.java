@@ -81,6 +81,12 @@ public class GraphicsPageController extends BorderPane {
      */
     public void setDataEarthquakes(DataFilter dataFilter) {
         dataEarthquakes = dataFilter;
+        intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
+            rangeLabel.setText(intensityFilter.getLowValue() + " - " + intensityFilter.getHighValue());
+        });
+        intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
+            rangeLabel.setText(intensityFilter.getLowValue() + " - " + intensityFilter.getHighValue());
+        });
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
