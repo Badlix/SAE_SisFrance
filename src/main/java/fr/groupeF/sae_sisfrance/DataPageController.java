@@ -60,8 +60,8 @@ public class DataPageController extends BorderPane implements Initializable {
     List<String> qualityLabels;
     @FXML
     Label rangeLabel;
-    @FXML
-    TextField rechercherTextField;
+    /*@FXML
+    TextField rechercherTextField;*/
     @FXML
     DatePicker startDateFilter;
     @FXML
@@ -146,8 +146,7 @@ public class DataPageController extends BorderPane implements Initializable {
                 changeEarthquakesOnMap();
             }
         });
-        rechercherTextField.setDisable(true); // on verra plus tard
-        searchBar();
+        //searchBar();
     }
     /**
      * Creates bindings between Nodes and the DateFilter filters.
@@ -208,7 +207,7 @@ public class DataPageController extends BorderPane implements Initializable {
     /**
      * Performs a search based on the entered text in the search bar and updates the table display.
      */
-    @FXML
+    /*@FXML
     public void searchBar() {
         FilteredList<Earthquake> filteredList = new FilteredList<>(dataEarthquakes.getFilteredEarthquakes(), element -> true);
         rechercherTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -230,7 +229,7 @@ public class DataPageController extends BorderPane implements Initializable {
         SortedList<Earthquake> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedList);
-    }
+    }*/
 
     /**
      * Applies the selected filters to the data earthquakes.

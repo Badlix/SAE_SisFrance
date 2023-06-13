@@ -10,7 +10,7 @@ import java.util.List;
  * It stores information such as the identifier, date, location, latitude, longitude, intensity, and data quality of the earthquake.
  */
 public class Earthquake {
-    private final String identifiant; // Identifiant du tremblement de terre
+    private final Integer identifiant; // Identifiant du tremblement de terre
     private final String date; // Date du tremblement de terre
     private final String zone; // endroit où le tremblement de terre s'est produit
     private final String latitude; // Latitude du lieu du tremblement de terre
@@ -24,7 +24,7 @@ public class Earthquake {
      * @param data A list of strings containing the earthquake data.
      */
     public Earthquake(List<String> data) {
-        this.identifiant = data.get(0).replace("\"", "");
+        this.identifiant = Integer.valueOf(data.get(0).replace("\"", ""));
         this.date = data.get(1).replace("\"", "");
         this.zone = data.get(4).replace("\"", "");
         this.latitude = data.get(8).replace("\"", "");
@@ -37,7 +37,7 @@ public class Earthquake {
      * Returns the identifiant of the earthquake.
      * @return The identifiant of the earthquake.
      */
-    public String getIdentifiant() {
+    public Integer getIdentifiant() {
         return identifiant;
     }
 

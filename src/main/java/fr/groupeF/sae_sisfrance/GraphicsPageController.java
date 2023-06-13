@@ -56,8 +56,8 @@ public class GraphicsPageController extends BorderPane {
     List<String> qualityLabels;
     @FXML
     Label rangeLabel;
-    @FXML
-    TextField rechercherTextField;
+//    @FXML
+//    TextField rechercherTextField;
     @FXML
     DatePicker startDateFilter;
     @FXML

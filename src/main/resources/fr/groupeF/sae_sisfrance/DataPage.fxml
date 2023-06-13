@@ -79,11 +79,11 @@
                     <Button onAction="#applyFilter" text="Appliquer" />
                 </graphic>
             </Menu>
-            <Menu>
+            <!--<Menu>
                 <graphic>
                     <TextField fx:id="rechercherTextField" promptText="Rechercher" />
                 </graphic>
-            </Menu>
+            </Menu>-->
         </MenuBar>
     </top>
    <left>

@@ -53,6 +53,7 @@ public class Main extends Application {
         graphicsPageController.setDataEarthquakes(uploadPageController.getDataEarthquakes());
 
         stage.setTitle("Sis France : Data Analysis");
+        stage.setResizable(false);
         stage.setScene(uploadPageScene);
         stage.show();
     }

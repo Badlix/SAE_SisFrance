@@ -68,11 +68,11 @@
                     <Button text="Appliquer" onAction="#applyFilter"/>
                 </graphic>
             </Menu>
-            <Menu >
-                <graphic>
-                    <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
-                </graphic>
-            </Menu>
+<!--            <Menu >-->
+<!--                <graphic>-->
+<!--                    <TextField fx:id="rechercherTextField" promptText="Rechercher"/>-->
+<!--                </graphic>-->
+<!--            </Menu>-->
         </MenuBar>
     </top>
     <center>
