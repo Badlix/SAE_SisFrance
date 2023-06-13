@@ -127,45 +127,45 @@
          <VBox prefHeight="100.0" prefWidth="100.0" />
             <HBox>
             <HBox prefHeight="100.0" prefWidth="80.0" />
-            <VBox fx:id="rectangle1" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
-            <Label fx:id="numberLabel1">
+            <VBox fx:id="rectangle1" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" styleClass="rectangle">
+            <Label fx:id="numberLabel1" styleClass="numberLabel">
                   <VBox.margin>
                      <Insets />
                   </VBox.margin></Label>
             </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
-                <VBox fx:id="rectangle2" prefHeight="150.0" prefWidth="200">
-                    <Label fx:id="numberLabel2"/>
+                <VBox fx:id="rectangle2" prefHeight="150.0" prefWidth="200" styleClass="rectangle">
+                    <Label fx:id="numberLabel2" styleClass="numberLabel"/>
                 </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
             </HBox>
          <VBox prefHeight="100.0" prefWidth="100.0" />
             <HBox>
                 <HBox prefHeight="100.0" prefWidth="80.0" />
-                <VBox fx:id="rectangle3" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
-                    <Label fx:id="numberLabel3">
+                <VBox fx:id="rectangle3" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" styleClass="rectangle">
+                    <Label fx:id="numberLabel3" styleClass="numberLabel">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin></Label>
                 </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />
-                <VBox fx:id="rectangle4" prefHeight="150.0" prefWidth="200">
-                    <Label fx:id="numberLabel4"/>
+                <VBox fx:id="rectangle4" prefHeight="150.0" prefWidth="200" styleClass="rectangle">
+                    <Label fx:id="numberLabel4" styleClass="numberLabel"/>
                 </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />
             </HBox>
             <VBox prefHeight="100.0" prefWidth="100.0" />
             <HBox>
             <HBox prefHeight="100.0" prefWidth="80.0" />
-            <VBox fx:id="rectangle5" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
-                <Label fx:id="numberLabel5">
+            <VBox fx:id="rectangle5" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" styleClass="rectangle">
+                <Label fx:id="numberLabel5" styleClass="numberLabel">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin></Label>
             </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
-            <VBox fx:id="rectangle6" prefHeight="150.0" prefWidth="200">
-                <Label fx:id="numberLabel6"/>
+            <VBox fx:id="rectangle6" prefHeight="150.0" prefWidth="200" styleClass="rectangle">
+                <Label fx:id="numberLabel6" styleClass="numberLabel"/>
 
             </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />
