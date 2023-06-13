@@ -4,6 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="2ème graphique qui marche pas pour l'instant" />
+    <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="suppression de fonction inutiles">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/CustomMapLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/CustomMapLayer.java" afterDir="false" />
@@ -13,6 +15,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyBindings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/GraphicsPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -411,6 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686651505522</updated>
     </task>
+    <task id="LOCAL-00036" summary="2ème graphique qui marche pas pour l'instant">
+      <created>1686657450036</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1686657450036</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <task id="LOCAL-00036" summary="Réparage de la colonne date du tableau et des filtres de dates">
       <created>1686652550842</created>
       <option name="number" value="00036" />
@@ -450,6 +462,15 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="correction des valeurs par défaut du Range Slider" />
+    <MESSAGE value="Rectification des valeurs du RangeSlider -&gt; l'intensité maximum d'un seisme est 12 et non 10" />
+    <MESSAGE value="Ajout de tout les filtres sur la page Upload" />
+    <MESSAGE value="Les filtres et boutons de la page Upload sont désactivé tant qu'un fichier csv n'a pas été selectionné" />
+    <MESSAGE value="Les valeurs de la comboBox de la page Upload se mettent à jour en fonction des régions présentes dans le fichier csv selectionné" />
+    <MESSAGE value="Ajout d'un type MyDate avec les tests qui correspondent" />
+    <MESSAGE value="Les filtres de dates sont opérationnels" />
+    <MESSAGE value="Changement des attributs de DataFilter en Property et renommage plus clair de certaines variables" />
+    <MESSAGE value="Bindings des valeurs du tableau de DataPage avec le DataFilter" />
     <MESSAGE value="Binding des filtres de la page Upload fini" />
     <MESSAGE value="Initialisation de dataEartquakes dans le fichier GraphicsPageController + changement des valeurs de MyDate en SimpleStringProperty" />
     <MESSAGE value="Binding du filtre region" />
@@ -476,5 +497,7 @@
     <MESSAGE value="déplacement de certaines fonctions + optimisation des listener -&gt; ajout de filterApplied" />
     <MESSAGE value="suppression de fonction inutiles" />
     <option name="LAST_COMMIT_MESSAGE" value="suppression de fonction inutiles" />
+    <MESSAGE value="2ème graphique qui marche pas pour l'instant" />
+    <option name="LAST_COMMIT_MESSAGE" value="2ème graphique qui marche pas pour l'instant" />
   </component>
 </project>
