@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="réparation des checkboxs">
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Modifications mineures du css">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/DataPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/DataPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,12 +158,9 @@
       <workItem from="1686643464069" duration="54000" />
       <workItem from="1686643519373" duration="4191000" />
       <workItem from="1686647874911" duration="8261000" />
-      <workItem from="1686656598374" duration="2077000" />
-      <workItem from="1686658970208" duration="3757000" />
-      <workItem from="1686668493639" duration="8742000" />
-      <workItem from="1686679256757" duration="672000" />
-      <workItem from="1686679937096" duration="2162000" />
-      <workItem from="1686682106212" duration="246000" />
+      <workItem from="1686656598374" duration="2551000" />
+      <workItem from="1686679669189" duration="317000" />
+      <workItem from="1686679987653" duration="535000" />
     </task>
     <task id="LOCAL-00001" summary="page upload file">
       <created>1686162058523</created>
@@ -426,56 +421,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686658407324</updated>
     </task>
-    <task id="LOCAL-00038" summary="correction du merge">
-      <created>1686664670201</created>
+    <task id="LOCAL-00038" summary="suppression de fonction inutiles">
+      <created>1686658728541</created>
       <option name="number" value="00038" />
       <option name="presentableId" value="LOCAL-00038" />
       <option name="project" value="LOCAL" />
-      <updated>1686664670201</updated>
+      <updated>1686658728541</updated>
     </task>
-    <task id="LOCAL-00039" summary="commentaire javadoc fichier Coordinate, CustomeMapLayer, DataFilter">
-      <created>1686665658256</created>
+    <task id="LOCAL-00039" summary="Modifications mineures du css">
+      <created>1686660316341</created>
       <option name="number" value="00039" />
       <option name="presentableId" value="LOCAL-00039" />
       <option name="project" value="LOCAL" />
-      <updated>1686665658256</updated>
+      <updated>1686660316341</updated>
     </task>
-    <task id="LOCAL-00040" summary="correction de bug">
-      <created>1686666039408</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1686666039408</updated>
-    </task>
-    <task id="LOCAL-00041" summary="ajout de la colonne qualité au tableau">
-      <created>1686666301254</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1686666301254</updated>
-    </task>
-    <task id="LOCAL-00042" summary="réparage du 2eme graphique">
-      <created>1686666420348</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1686666420348</updated>
-    </task>
-    <task id="LOCAL-00043" summary="avancement style">
-      <created>1686672552810</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1686672552810</updated>
-    </task>
-    <task id="LOCAL-00044" summary="réparation des checkboxs">
-      <created>1686679950039</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1686679950039</updated>
-    </task>
-    <option name="localTasksCounter" value="45" />
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,6 +453,19 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ajout de tout les filtres sur la page Upload" />
+    <MESSAGE value="Les filtres et boutons de la page Upload sont désactivé tant qu'un fichier csv n'a pas été selectionné" />
+    <MESSAGE value="Les valeurs de la comboBox de la page Upload se mettent à jour en fonction des régions présentes dans le fichier csv selectionné" />
+    <MESSAGE value="Ajout d'un type MyDate avec les tests qui correspondent" />
+    <MESSAGE value="Les filtres de dates sont opérationnels" />
+    <MESSAGE value="Changement des attributs de DataFilter en Property et renommage plus clair de certaines variables" />
+    <MESSAGE value="Bindings des valeurs du tableau de DataPage avec le DataFilter" />
+    <MESSAGE value="Binding des filtres de la page Upload fini" />
+    <MESSAGE value="Initialisation de dataEartquakes dans le fichier GraphicsPageController + changement des valeurs de MyDate en SimpleStringProperty" />
+    <MESSAGE value="Binding du filtre region" />
+    <MESSAGE value="Binding du filtre coordonnées fonctionne" />
+    <MESSAGE value="Suppression de la fonction atualizeFilter qui est entrain d'être remplacé par des bindings" />
+    <MESSAGE value="Amélioration du binding des coordonées" />
     <MESSAGE value="Le binding des filtres d'intensité fonctionne" />
     <MESSAGE value="Le binding des dates fonctionne" />
     <MESSAGE value="Ajout du binding sur GraphicsPage" />
@@ -511,13 +484,9 @@
     <MESSAGE value="Remise en place du binding du premier graphique" />
     <MESSAGE value="Réparage de la colonne date du tableau et des filtres de dates" />
     <MESSAGE value="déplacement de certaines fonctions + optimisation des listener -&gt; ajout de filterApplied" />
-    <MESSAGE value="correction du merge" />
-    <MESSAGE value="commentaire javadoc fichier Coordinate, CustomeMapLayer, DataFilter" />
-    <MESSAGE value="correction de bug" />
-    <MESSAGE value="ajout de la colonne qualité au tableau" />
-    <MESSAGE value="réparage du 2eme graphique" />
-    <MESSAGE value="avancement style" />
-    <MESSAGE value="réparation des checkboxs" />
-    <option name="LAST_COMMIT_MESSAGE" value="réparation des checkboxs" />
+    <MESSAGE value="suppression de fonction inutiles" />
+    <MESSAGE value="2ème graphique qui marche pas pour l'instant" />
+    <MESSAGE value="Modifications mineures du css" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifications mineures du css" />
   </component>
 </project>
