@@ -104,13 +104,22 @@
                   <Button mnemonicParsing="false" onAction="#applyFilter" text="Filtrer" />
                </graphic>
             </Menu>
+            <Menu mnemonicParsing="false" text="Unspecified Menu">
+              <items>
+                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                     <content>
+                         <VBox fx:id="qualityFilter"></VBox>
+                     </content>
+                  </CustomMenuItem>
+              </items>
+            </Menu>
             </menus>
         </MenuBar>
     </top>
    <center>
       <TableView fx:id="table" maxWidth="520.0" minWidth="520.0" prefWidth="520.0" BorderPane.alignment="CENTER">
         <columns>
-            <TableColumn minWidth="80.0" text="Id" fx:id="idColumn"/>
+            <TableColumn fx:id="idColumn" minWidth="80.0" text="Id" />
             <TableColumn fx:id="dateColumn" minWidth="110.0" prefWidth="110.0" text="Date" />
             <TableColumn fx:id="regionColumn" minWidth="250.0" prefWidth="250.0" text="Région" />
             <TableColumn fx:id="intensityColumn" minWidth="80.0" text="Intensité" />

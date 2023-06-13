@@ -15,8 +15,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.TreeMap;
+
 import com.gluonhq.maps.MapView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 
@@ -42,6 +48,10 @@ public class DataPageController extends BorderPane implements Initializable {
     TextField rayonFilter;
     @FXML
     RangeSlider intensityFilter;
+    @FXML
+    VBox qualityFilter;
+    List<CheckBox> qualityCheckboxs;
+    List<String> quelityLabels;
     @FXML
     Label rangeLabel;
     @FXML
@@ -75,6 +85,7 @@ public class DataPageController extends BorderPane implements Initializable {
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
+                // init des options de la combo box des régions
                 ObservableList<String> regions = FXCollections.observableArrayList();
                 for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
                     if (!regions.contains(earthquake.getRegion()))
@@ -83,7 +94,26 @@ public class DataPageController extends BorderPane implements Initializable {
                 regions.sort(String::compareToIgnoreCase);
                 regions.add(0, "");
                 regionFilter.setItems(regions);
+                // init des options de la combo box des régions
+                qualityCheckboxs = new ArrayList<>();
+                quelityLabels = new ArrayList<>();
+                ObservableList<String> quality = FXCollections.observableArrayList();
+                for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
+                    if (!quality.contains(earthquake.getQuality()) && !earthquake.getQuality().isEmpty())
+                        quality.add(earthquake.getQuality());
+                }
+                System.out.println(qualityCheckboxs.size());
+                quality.sort(String::compareToIgnoreCase);
+                for (String str : quality) {
+                    CheckBox checkbox = new CheckBox();
+                    qualityCheckboxs.add(checkbox);
+                    quelityLabels.add(str);
+                    qualityFilter.getChildren().add(new HBox(checkbox, new Label(str)));
+                }
+                dataFilter.setSelectedQuality(quality);
+                // init des elements de la table
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
+                createBindings();
             }
         });
         // --------- BNDING DES VALEURS DU TABLEAU ET DE LA MAP ---------------
@@ -93,7 +123,6 @@ public class DataPageController extends BorderPane implements Initializable {
             }
         });
         rechercherTextField.setDisable(true); // on verra plus tard
-        createBindings();
         searchBar();
     }
 
@@ -102,6 +131,7 @@ public class DataPageController extends BorderPane implements Initializable {
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
+        MyBindings.createBindingQuality(dataEarthquakes, qualityCheckboxs, quelityLabels);
     }
 
     public void initMapView() {

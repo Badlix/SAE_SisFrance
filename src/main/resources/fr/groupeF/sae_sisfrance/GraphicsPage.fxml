@@ -108,6 +108,15 @@
                         <Button mnemonicParsing="false" text="Filtrer" onAction="#applyFilter"/>
                     </graphic>
                 </Menu>
+                <Menu mnemonicParsing="false" text="Unspecified Menu">
+                    <items>
+                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                            <content>
+                                <VBox fx:id="qualityFilter"></VBox>
+                            </content>
+                        </CustomMenuItem>
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
     </top>

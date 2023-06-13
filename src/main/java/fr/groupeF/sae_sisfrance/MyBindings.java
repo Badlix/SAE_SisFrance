@@ -1,6 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
 import javafx.beans.binding.Bindings;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -8,6 +9,7 @@ import javafx.util.StringConverter;
 import org.controlsfx.control.RangeSlider;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class MyBindings {
 
@@ -43,6 +45,12 @@ public class MyBindings {
     static void createBindingIntensity(DataFilter dataFilter, RangeSlider intensityFilter) {
         dataFilter.selectedMinIntensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataFilter.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
+    }
+
+    static void createBindingQuality(DataFilter dataFilter, List<CheckBox> qualityFilter, List<String> labels) {
+        for (int i = 0; i < qualityFilter.size(); i++) {
+            dataFilter.getSelectedQuality().get(labels.get(i)).bindBidirectional(qualityFilter.get(i).selectedProperty());
+        }
     }
 
     static StringConverter<Number> converterDoubleToString = new StringConverter<Number>() {

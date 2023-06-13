@@ -1,7 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
 import javafx.beans.binding.Bindings;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -12,11 +12,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 import java.util.*;
@@ -56,6 +54,10 @@ public class GraphicsPageController extends BorderPane {
     @FXML
     RangeSlider intensityFilter;
     @FXML
+    VBox qualityFilter;
+    List<CheckBox> qualityCheckboxs;
+    List<String> quelityLabels;
+    @FXML
     Label rangeLabel;
     @FXML
     TextField rechercherTextField;
@@ -82,7 +84,21 @@ public class GraphicsPageController extends BorderPane {
                 regions.sort(String::compareToIgnoreCase);
                 regions.add(0, "");
                 regionFilter.setItems(regions);
+                ObservableList<String> quality = FXCollections.observableArrayList();
+                qualityCheckboxs = new ArrayList<>();
+                quelityLabels = new ArrayList<>();
+                quality.sort(String::compareToIgnoreCase);
+                for (String str : quality) {
+                    CheckBox checkbox = new CheckBox();
+                    qualityCheckboxs.add(checkbox);
+                    quelityLabels.add(str);
+                    qualityFilter.getChildren().add(new HBox(checkbox, new Label(str)));
+                }
+                System.out.println("ok");
+                dataFilter.setSelectedQuality(quality);
+                createBindings();
             }
+
         });
         dataEarthquakes.filterAppliedProperty().addListener((observable, oldValue, newValue) -> {
             if (dataEarthquakes.filterAppliedProperty().getValue() == true) {
@@ -98,7 +114,7 @@ public class GraphicsPageController extends BorderPane {
 //                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes())
             }
         });
-        createBindings();
+
         //searchBar();
     }
 
@@ -107,6 +123,7 @@ public class GraphicsPageController extends BorderPane {
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
+        MyBindings.createBindingQuality(dataEarthquakes, qualityCheckboxs, quelityLabels);
     }
 
     public void initialize() {
@@ -171,7 +188,7 @@ public class GraphicsPageController extends BorderPane {
     /*public void graphicsSeismPerRegion(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Earthquake element : dataGraphics) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(element.getShock()),Double.valueOf(element.getRegion())));
+            series.getData().add(new XYChart.Data<>(String.valueOf(element.getquality()),Double.valueOf(element.getRegion())));
         lineChartSeismPerRegion.getData().add(series);
     }
     public void showGraphics() {
