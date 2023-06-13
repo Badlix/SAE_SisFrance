@@ -65,7 +65,7 @@
                     <items>
                         <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
                             <content>
-                                <VBox fx:id="Quality" prefHeight="200.0" prefWidth="100.0" />
+                                <VBox fx:id="qualityFilter" prefHeight="200.0" prefWidth="100.0" />
                             </content>
                         </CustomMenuItem>
                     </items>
@@ -85,7 +85,6 @@
    </center>
     <bottom>
         <HBox fx:id="footer" styleClass="bottom">
-            <Button onAction="#newFile" text="Nouveau fichier" />
             <Button fx:id="graphicsButton" onAction="#changingToGraphicsPage" styleClass="newFile" text="Graphiques" />
         </HBox>
     </bottom>

@@ -163,9 +163,7 @@
     </left>
     <bottom>
         <HBox alignment="CENTER" styleClass="bottom">
-            <Button onAction="#newFile" styleClass="newFile" text="Nouveau fichier" />
             <Button onAction="#changingToDataPage" text="DataPage" />
-
         </HBox>
     </bottom>
 </BorderPane>

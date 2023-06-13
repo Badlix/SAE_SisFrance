@@ -1,7 +1,6 @@
 package fr.groupeF.sae_sisfrance;
 
 import com.gluonhq.maps.MapPoint;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -9,9 +8,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -21,7 +18,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import com.gluonhq.maps.MapView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -202,8 +198,5 @@ public class DataPageController extends BorderPane implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(graphicsPageScene);
         stage.show();
-    }
-    @FXML
-    public void newFile(){
     }
 }

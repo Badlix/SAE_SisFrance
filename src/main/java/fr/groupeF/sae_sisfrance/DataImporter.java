@@ -6,8 +6,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DataImporter is a utility class that provides methods for parsing and reading earthquake data from a CSV file.
+ */
 public class DataImporter {
 
+    /**
+     * Parses a comma-separated string and returns a list of strings.
+     * @param inputString The input string to parse.
+     * @return A list of strings parsed from the input string.
+     */
     public static List<String> parseString(String inputString) {
         List<String> result = new ArrayList<>();
         StringBuilder currentItem = new StringBuilder();
@@ -32,6 +40,12 @@ public class DataImporter {
         result.add(currentItem.toString().trim());
         return result;
     }
+
+    /**
+     * Reads earthquake data from a CSV file and returns a list of Earthquake objects.
+     * @param csvFile The CSV file to read.
+     * @return A list of Earthquake objects read from the CSV file.
+     */
     public static ArrayList<Earthquake> readCSV(File csvFile) {
         String line;
         ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();

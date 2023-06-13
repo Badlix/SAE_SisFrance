@@ -1,9 +1,6 @@
 package fr.groupeF.sae_sisfrance;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -82,6 +79,14 @@ public class DataFilter {
      */
     public SimpleDoubleProperty selectedLongitudeProperty() {
         return selectedLongitude;
+    }
+
+    /**
+     * Returns the selectedRayon property object.
+     * @return The selectedRayon property object.
+     */
+    public SimpleIntegerProperty selectedRayonProperty() {
+        return selectedRayon;
     }
 
     /**
@@ -319,4 +324,5 @@ public class DataFilter {
         filterApplied.set(false);
         filterApplied.set(true);
     }
+
 }
