@@ -4,6 +4,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import org.controlsfx.control.*?>
 
@@ -12,17 +13,23 @@
         <MenuBar fx:id="menuBar" prefHeight="50.0" BorderPane.alignment="CENTER">
             <Menu>
                 <graphic>
-                    <ComboBox promptText="ZONE" fx:id="zoneFilter" prefHeight="10.0"/>
+                    <ComboBox fx:id="zoneFilter" prefHeight="10.0" promptText="ZONE" />
                 </graphic>
             </Menu>
             <Menu text="Date">
                 <CustomMenuItem>
                     <content>
                         <GridPane prefWidth="160.0">
-                            <DatePicker fx:id="startDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="0"
-                                        promptText="de :"/>
-                            <DatePicker fx:id="endDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="1"
-                                        promptText="à :"/>
+                            <DatePicker fx:id="startDateFilter" promptText="de :" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                            <DatePicker fx:id="endDateFilter" promptText="à :" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
                         </GridPane>
                     </content>
                 </CustomMenuItem>
@@ -31,15 +38,21 @@
                 <CustomMenuItem>
                     <content>
                         <GridPane prefWidth="160.0">
-                            <Label text="Longitude : " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                            <Label text="Latitude : " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                            <Label text="Rayon (km) : " GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                            <TextField fx:id="longFilter" prefWidth="50.0" GridPane.columnIndex="1"
-                                       GridPane.rowIndex="0"/>
-                            <TextField fx:id="latFilter" prefWidth="50.0" GridPane.columnIndex="1"
-                                       GridPane.rowIndex="1"/>
-                            <TextField fx:id="rayonFilter" prefWidth="50.0" GridPane.columnIndex="1"
-                                       GridPane.rowIndex="2"/>
+                            <Label text="Longitude : " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <Label text="Latitude : " GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <Label text="Rayon (km) : " GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                            <TextField fx:id="longFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                            <TextField fx:id="latFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <TextField fx:id="rayonFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
                         </GridPane>
                     </content>
                 </CustomMenuItem>
@@ -48,11 +61,8 @@
                 <CustomMenuItem>
                     <content>
                         <HBox>
-                            <RangeSlider fx:id="intensityFilter" max="12.0" min="2.0" blockIncrement="0.5"
-                                         highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1"
-                                         prefWidth="200.0" showTickLabels="false" showTickMarks="true"
-                                         snapToTicks="true"/>
-                            <Label fx:id="rangeLabel"/>
+                            <RangeSlider fx:id="intensityFilter" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" max="12.0" min="2.0" minorTickCount="1" prefWidth="200.0" showTickLabels="false" showTickMarks="true" snapToTicks="true" />
+                            <Label fx:id="rangeLabel" />
                         </HBox>
                     </content>
                 </CustomMenuItem>
@@ -60,26 +70,26 @@
             <Menu text="Qualité">
                 <CustomMenuItem>
                     <content>
-                        <VBox fx:id="qualityFilter" prefHeight="200.0" prefWidth="100.0" styleClass="quality"/>
+                        <VBox fx:id="qualityFilter" prefHeight="200.0" prefWidth="100.0" styleClass="quality" />
                     </content>
                 </CustomMenuItem>
             </Menu>
             <Menu>
                 <graphic>
-                    <Button text="Appliquer" onAction="#applyFilter"/>
+                    <Button onAction="#applyFilter" text="Appliquer" />
                 </graphic>
             </Menu>
-            <Menu >
+            <Menu>
                 <graphic>
-                    <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
+                    <TextField fx:id="rechercherTextField" promptText="Rechercher" />
                 </graphic>
             </Menu>
         </MenuBar>
     </top>
    <left>
-      <TableView fx:id="table"  minWidth="630.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" minWidth="630.0" BorderPane.alignment="CENTER">
         <columns>
-            <TableColumn minWidth="80.0" text="Id" fx:id="idColumn"/>
+            <TableColumn fx:id="idColumn" minWidth="80.0" text="Id" />
             <TableColumn fx:id="dateColumn" minWidth="110.0" prefWidth="110.0" text="Date" />
             <TableColumn fx:id="zoneColumn" minWidth="200.0" prefWidth="200.0" text="Région" />
             <TableColumn fx:id="intensityColumn" minWidth="80.0" text="Intensité" />
@@ -98,17 +108,89 @@
              <MapView fx:id="mapView" minWidth="720.0" />
             <Button maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#zoomIn" prefHeight="30.0" prefWidth="30.0" text="+">
                <StackPane.margin>
-                  <Insets bottom="50.0" right="10.0" />
+                  <Insets bottom="220.0" right="10.0" />
                </StackPane.margin>
             </Button>
             <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#zoomOut" prefHeight="30.0" prefWidth="30.0" text="-">
                <StackPane.margin>
-                  <Insets bottom="15.0" right="10.0" />
+                  <Insets bottom="175.0" right="10.0" />
                </StackPane.margin>
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+             <VBox maxHeight="150.0" maxWidth="200.0" prefWidth="200.0">
+                 <HBox>
+                     <Label text="Légende" />
+                 </HBox>
+                 <HBox>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ededed00" height="10.0" stroke="#9494c6" strokeType="INSIDE" strokeWidth="2.0" width="10.0">
+                     <HBox.margin>
+                        <Insets right="5.0" top="3.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                     <Label text="2 et 2.5 - ressenti par de rares personnes" />
+                 </HBox>
+                 <HBox>
+                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffff" height="10.0" stroke="#9494c6" strokeType="INSIDE" strokeWidth="2.0" width="10.0">
+                         <HBox.margin>
+                             <Insets right="5.0" top="3.0" />
+                         </HBox.margin>
+                     </Rectangle>
+                     <Label text="3 et 3.5 - ressenti par quelques personnes" />
+                 </HBox>
+                 <HBox>
+                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#32cd32" height="10.0" stroke="#9494c6" strokeType="INSIDE" strokeWidth="2.0" width="10.0">
+                         <HBox.margin>
+                             <Insets right="5.0" top="3.0" />
+                         </HBox.margin>
+                     </Rectangle>
+                     <Label text="4 et 4.5 - ressenti largement" />
+                 </HBox>
+                 <HBox>
+                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffff00" height="10.0" stroke="#9494c6" strokeType="INSIDE" strokeWidth="2.0" width="10.0">
+                         <HBox.margin>
+                             <Insets right="5.0" top="3.0" />
+                         </HBox.margin>
+                     </Rectangle>
+                     <Label text="5 et 5.5 - ressenti par tout le monde" />
+                 </HBox>
+                 <HBox>
+                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa500" height="10.0" stroke="#9494c6" strokeType="INSIDE" strokeWidth="2.0" width="10.0">
+                         <HBox.margin>
+                             <Insets right="5.0" top="3.0" />
+                         </HBox.margin>
+                     </Rectangle>
+                     <Label text="6 et 6.5 - dommages légers" />
+                 </HBox>
+                 <HBox>
+                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff0000" height="10.0" stroke="#9494c6" strokeType="INSIDE" strokeWidth="2.0" width="10.0">
+                         <HBox.margin>
+                             <Insets right="5.0" top="3.0" />
+                         </HBox.margin>
+                     </Rectangle>
+                     <Label text="7 et 7.5 - dommages prononcés" />
+                 </HBox>
+                 <HBox>
+                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1493" height="10.0" stroke="#9494c6" strokeType="INSIDE" strokeWidth="2.0" width="10.0">
+                         <HBox.margin>
+                             <Insets right="5.0" top="3.0" />
+                         </HBox.margin>
+                     </Rectangle>
+                     <Label text="8 et 8.5 - dégâts massifs" />
+                 </HBox>
+                 <HBox>
+                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#800080" height="10.0" stroke="#9494c6" strokeType="INSIDE" strokeWidth="2.0" width="10.0">
+                         <HBox.margin>
+                             <Insets right="5.0" top="3.0" />
+                         </HBox.margin>
+                     </Rectangle>
+                     <Label text="9 et 9.5 - destructions nombreuses" />
+                 </HBox>
+               <StackPane.margin>
+                  <Insets bottom="20.0" right="10.0" />
+               </StackPane.margin>
+             </VBox>
          </children>
       </StackPane>
    </right>
