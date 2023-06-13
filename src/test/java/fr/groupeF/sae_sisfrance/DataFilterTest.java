@@ -44,6 +44,7 @@ class DataFilterTest {
         data.setSelectedLatitude(45.00);
         data.setSelectedLongitude(0.37);
         data.setSelectedRayon(50);
+        data.applyFilter();
         ObservableList<Earthquake> expectedList = FXCollections.observableArrayList();
         expectedList.add(testEartquakeList().get(0));
         expectedList.add(testEartquakeList().get(3));
@@ -56,6 +57,7 @@ class DataFilterTest {
         DataFilter data = new DataFilter(testEartquakeList());
         data.setSelectedMinIntensity(2);
         data.setSelectedMaxIntensity(4);
+        data.applyFilter();
         ObservableList<Earthquake> expectedList = FXCollections.observableArrayList();
         expectedList.add(testEartquakeList().get(2));
         expectedList.add(testEartquakeList().get(4));

@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/StatCalculTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/StatCalculTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/DataFilterTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +58,7 @@
       <recent name="fr.groupeF.sae_sisfrance" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StatCalculTest">
+  <component name="RunManager" selected="JUnit.DataFilterTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.Main" />
       <module name="SAE_SisFrance" />
@@ -87,6 +87,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DataFilterTest.testintensityFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SAE_SisFrance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
+      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.DataFilterTest" />
+      <option name="METHOD_NAME" value="testintensityFilter" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyDateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SAE_SisFrance" />
       <extension name="coverage">
@@ -98,22 +114,6 @@
       <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
       <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.MyDateTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MyDateTest.testInitializationComplete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SAE_SisFrance" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
-      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.MyDateTest" />
-      <option name="METHOD_NAME" value="testInitializationComplete" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,11 +135,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataFilterTest" />
+        <item itemvalue="JUnit.DataFilterTest.testintensityFilter" />
         <item itemvalue="JUnit.StatCalculTest" />
         <item itemvalue="JUnit.MyDateTest" />
-        <item itemvalue="JUnit.DataFilterTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.MyDateTest.testInitializationComplete" />
       </list>
     </recent_temporary>
   </component>
@@ -492,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686689893135</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="réparation de certains tests">
+      <created>1686691109316</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1686691109316</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +517,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ajout du binding sur GraphicsPage" />
     <MESSAGE value="graphique du nombre de seismes par années fonctionne" />
     <MESSAGE value="graphique du nombre de seismes par années fonctionne (il y avait un problèmes sur l'ancien commit)" />
     <MESSAGE value="Résolution du bug du RangeSlider qui faisait crash l'appli" />
@@ -535,6 +541,7 @@
     <MESSAGE value="reglage bugs" />
     <MESSAGE value="suppression de la barre de recherche" />
     <MESSAGE value="amélioration de l'arborescence" />
-    <option name="LAST_COMMIT_MESSAGE" value="amélioration de l'arborescence" />
+    <MESSAGE value="réparation de certains tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="réparation de certains tests" />
   </component>
 </project>
