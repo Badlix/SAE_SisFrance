@@ -1,7 +1,6 @@
 package fr.groupeF.sae_sisfrance;
 
 import com.gluonhq.maps.MapPoint;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -9,19 +8,14 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.Map;
 import java.util.ResourceBundle;
-
 import com.gluonhq.maps.MapView;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
@@ -135,10 +129,12 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     public void zoomIn() {
         mapView.setZoom(mapView.getZoom()+1);
+        mapLayer.update();
     }
     @FXML
     public void zoomOut() {
         mapView.setZoom(mapView.getZoom()-1);
+        mapLayer.update();
     }
 
     @FXML
@@ -150,7 +146,7 @@ public class DataPageController extends BorderPane implements Initializable {
                     return true; // Afficher tous les éléments si la recherche est vide
                 }
                 String rechercheTexte = newValue.toLowerCase();
-                if (element.getDate().toString().indexOf(rechercheTexte) > -1) {
+                if (element.getDate().indexOf(rechercheTexte) > -1) {
                     return true;
                 } else if (element.getRegion().toLowerCase().indexOf(rechercheTexte) > -1) {
                     return true;

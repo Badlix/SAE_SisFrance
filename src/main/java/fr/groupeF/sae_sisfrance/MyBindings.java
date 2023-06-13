@@ -1,15 +1,12 @@
 package fr.groupeF.sae_sisfrance;
 
 import javafx.beans.binding.Bindings;
-import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.StringConverter;
 import org.controlsfx.control.RangeSlider;
 
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 public class MyBindings {
@@ -34,7 +31,7 @@ public class MyBindings {
     }
 
     static void createBindingRegion(DataFilter dataFilter, ChoiceBox<String> regionFilter) {
-        regionFilter.valueProperty().bindBidirectional(dataFilter.selectedRegionProperty());
+        regionFilter.valueProperty().bindBidirectional(dataFilter.selectedZoneProperty());
     }
 
     static void createBindingCoordinate(DataFilter dataFilter, TextField longFilter, TextField latFilter, TextField rayonFilter) {
@@ -44,7 +41,7 @@ public class MyBindings {
     }
 
     static void createBindingIntensity(DataFilter dataFilter, RangeSlider intensityFilter) {
-        dataFilter.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
+        dataFilter.selectedMinIntensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataFilter.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
     }
 

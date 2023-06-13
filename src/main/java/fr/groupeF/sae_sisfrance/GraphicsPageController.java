@@ -109,10 +109,8 @@ public class GraphicsPageController extends BorderPane {
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
     }
 
-    public void initialize() throws IOException {
+    public void initialize() {
         System.out.println("GraphicsPageController initialized");
-        // Ajoutez des options supplémentaires au ChoiceBox si nécessaire
-        //choiceBox.getItems().addAll("Option 1", "Option 2", "Option 3");
     }
 
     @FXML
@@ -120,9 +118,6 @@ public class GraphicsPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
-        // graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
-        // graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
-        // graphicsSeismPerRegion(dataEarthquakes.getFilteredEarthquakes());
     }
     @FXML
     public void newFile(){
@@ -145,6 +140,8 @@ public class GraphicsPageController extends BorderPane {
         }
         lineChartSeismPerYear.setData(FXCollections.observableArrayList(series));
     }
+
+
     public void graphicsIntensityPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         HashMap<String, Double> averageIntensityPerYear = new HashMap<>();
@@ -171,7 +168,6 @@ public class GraphicsPageController extends BorderPane {
         lineChartIntensityPerYear.setData(FXCollections.observableArrayList(series));
         }
 
-
     /*public void graphicsSeismPerRegion(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Earthquake element : dataGraphics) {
@@ -188,23 +184,6 @@ public class GraphicsPageController extends BorderPane {
 
         // Génère le graphique avec les nouvelles données
         graphicsIntensityPerRegion(dataGraphics);
-    }
-*/
-/*    private ObservableList<Earthquake> getDataForOption(String selectedOption) {
-        ObservableList<Earthquake> data = FXCollections.observableArrayList();
-
-        if (selectedOption.equals("Option 1")) {
-            graphicsIntensityPerRegion(DataFilter.getFilteredEarthquakes());
-
-        } else if (selectedOption.equals("Option 2")) {
-            graphicsDatePerIntensity(DataFilter.getFilteredEarthquakes());
-
-        } else if (selectedOption.equals("Option 3")) {
-            graphicsSeismPerRegion(DataFilter.getFilteredEarthquakes());
-
-        }
-
-        return data;
     }
 */
 

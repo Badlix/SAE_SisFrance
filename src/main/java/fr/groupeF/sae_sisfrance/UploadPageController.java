@@ -6,7 +6,6 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -59,7 +58,7 @@ public class UploadPageController extends BorderPane {
 
         /* Region Filter */
         regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedRegion(regionFilter.getValue());
+            dataEarthquakes.setSelectedZone(regionFilter.getValue());
         });
 
         /* Coordinate Filter */
@@ -77,7 +76,7 @@ public class UploadPageController extends BorderPane {
         });
 
         /* Intensity Filter */
-        dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
+        dataEarthquakes.selectedMinIntensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
 
         // ---------- BINDING BETWEEN RegionFilter options AND dataEartquakes ----------
