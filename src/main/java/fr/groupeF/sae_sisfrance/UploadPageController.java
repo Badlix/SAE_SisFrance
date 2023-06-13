@@ -63,7 +63,6 @@ public class UploadPageController extends BorderPane {
      */
     public void initialize() {
         dataEarthquakes = new DataFilter(FXCollections.observableArrayList());
-        System.out.println("UploadPageController initialized");
 
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override

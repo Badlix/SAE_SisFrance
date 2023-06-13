@@ -54,7 +54,7 @@ public class GraphicsPageController extends BorderPane {
     @FXML
     VBox qualityFilter;
     List<CheckBox> qualityCheckboxs;
-    List<String> quelityLabels;
+    List<String> qualityLabels;
     @FXML
     Label rangeLabel;
     @FXML
@@ -91,24 +91,29 @@ public class GraphicsPageController extends BorderPane {
                 zones.add(0, "ZONE");
                 zoneFilter.setValue("ZONE");
                 zoneFilter.setItems(zones);
-                ObservableList<String> quality = FXCollections.observableArrayList();
+                // init des options des checkbox de qualité
                 qualityCheckboxs = new ArrayList<>();
-                quelityLabels = new ArrayList<>();
+                qualityLabels = new ArrayList<>();
+                ObservableList<String> quality = FXCollections.observableArrayList();
+                for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
+                    if (!quality.contains(earthquake.getQuality()) && !earthquake.getQuality().isEmpty())
+                        quality.add(earthquake.getQuality());
+                }
                 quality.sort(String::compareToIgnoreCase);
                 for (String str : quality) {
                     CheckBox checkbox = new CheckBox();
                     qualityCheckboxs.add(checkbox);
-                    quelityLabels.add(str);
-                    qualityFilter.getChildren().add(new HBox(checkbox, new Label(str)));
+                    qualityLabels.add(str);
+                    HBox hBox = new HBox(checkbox, new Label(str));
+                    hBox.setSpacing(5);
+                    qualityFilter.getChildren().add(hBox);
                 }
-                System.out.println("ok");
                 dataFilter.setSelectedQuality(quality);
                 createBindings();
             }
         });
         dataEarthquakes.filterAppliedProperty().addListener((observable, oldValue, newValue) -> {
             if (dataEarthquakes.filterAppliedProperty().getValue() == true) {
-                System.out.println("CHANGED : SIZE = " + dataFilter.getFilteredEarthquakes().size());
                 /* Change Labels values */
                 numberLabel1.setText(StatCalcul.totalNumberOfEarthquakes(dataFilter) + "\nNB TOTAL");
                 numberLabel2.setText(StatCalcul.globalAverageIntensity(dataFilter) + "\nAVG INTENSITY");
@@ -132,13 +137,6 @@ public class GraphicsPageController extends BorderPane {
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
-    }
-
-    /**
-     * Initializes the controller.
-     */
-    public void initialize(){
-        System.out.println("GraphicsPageController initialized");
     }
 
     /**
@@ -199,9 +197,6 @@ public class GraphicsPageController extends BorderPane {
         for (Map.Entry m : sortedMap.entrySet()) {
             series.getData().add(new XYChart.Data<>(m.getKey().toString(), Double.valueOf(m.getValue().toString())));
         }
-
-        System.out.println(averageIntensityPerYear.size());
-        System.out.println(sortedMap.size());
         lineChartIntensityPerYear.setData(FXCollections.observableArrayList(series));
     }
 

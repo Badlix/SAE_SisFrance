@@ -1,3 +1,11 @@
+.uploadFilter{
+    -fx-background-color: #5784BA;
+}
+.filter {
+    -fx-control-inner-background: #9AC8EB;
+    -fx-background-color: #9AC8EB; /* Green */
+    -fx-animated: true;
+}
 .menu-bar, .menu, .bottom{
     /*-fx-background-color: #4CAF50; /* Green */
     -fx-background-color: #9AC8EB;
@@ -30,10 +38,15 @@
 .menu .cell:hover, .menu .combo-box:hover{
     -fx-background-color: #9AC8EB;
 }
-
 .custom-menu-item:hover, .custom-menu-item:focused {
     -fx-background-color: transparent;
 }
+.quality {
+    -fx-spacing: 10;
+    -fx-pref-width: 200;
+    -fx-fit-to-height: true;
+}
+
 
 .table-view, .table-view:hover, .table-view:focused {
     -fx-background-color: #9AC8EB;
@@ -55,15 +68,6 @@
     -fx-background-color: #9AC8EB;
     -fx-font-weight: bold;
     -fx-alignment: center;
-}
-
-.uploadFilter{
-    -fx-background-color: #5784BA;
-}
-
-.filter {
-    -fx-background-color: #9AC8EB; /* Green */
-    -fx-animated: true;
 }
 
 
@@ -100,7 +104,7 @@
     -fx-spacing: 20;
 }
 
-.bottom .button{
+.button{
     -fx-padding: 3 10 3 10;
     -fx-background-color: #B6D8F2;
     -fx-background-radius: 10;
@@ -110,75 +114,75 @@
     -fx-cursor: hand;
 }
 
-#rectangle1 {
-    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
-    -fx-background-radius: 16;
-}
+/*#rectangle1 {*/
+/*    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);*/
+/*    -fx-background-radius: 16;*/
+/*}*/
 
-#rectangle1:hover {
-    -fx-background-insets: 0,1,1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
-    -fx-font-size: 16;
-    -fx-pref-width: 250;
-    -fx-translate-y: -2;
-}
-#rectangle2 {
-    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
-    -fx-background-radius: 10;
-}
+/*#rectangle1:hover {*/
+/*    -fx-background-insets: 0,1,1;*/
+/*    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );*/
+/*    -fx-font-size: 16;*/
+/*    -fx-pref-width: 250;*/
+/*    -fx-translate-y: -2;*/
+/*}*/
+/*#rectangle2 {*/
+/*    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);*/
+/*    -fx-background-radius: 10;*/
+/*}*/
 
-#rectangle2:hover {
-    -fx-background-insets: 0,1,1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
-    -fx-font-size: 16;
-    -fx-pref-width: 250;
-    -fx-translate-y: -2;
-}
-#rectangle3 {
-    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
-    -fx-background-radius: 10;
-}
+/*#rectangle2:hover {*/
+/*    -fx-background-insets: 0,1,1;*/
+/*    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );*/
+/*    -fx-font-size: 16;*/
+/*    -fx-pref-width: 250;*/
+/*    -fx-translate-y: -2;*/
+/*}*/
+/*#rectangle3 {*/
+/*    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);*/
+/*    -fx-background-radius: 10;*/
+/*}*/
 
-#rectangle3:hover {
-    -fx-background-insets: 0,1,1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
-    -fx-font-size: 16;
-    -fx-pref-width: 250;
-    -fx-translate-y: -2;
-}
-#rectangle4 {
-    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
-    -fx-background-radius: 10;
-}
+/*#rectangle3:hover {*/
+/*    -fx-background-insets: 0,1,1;*/
+/*    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );*/
+/*    -fx-font-size: 16;*/
+/*    -fx-pref-width: 250;*/
+/*    -fx-translate-y: -2;*/
+/*}*/
+/*#rectangle4 {*/
+/*    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);*/
+/*    -fx-background-radius: 10;*/
+/*}*/
 
-#rectangle4:hover {
-    -fx-background-insets: 0,1,1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
-    -fx-font-size: 16;
-    -fx-pref-width: 250;
-    -fx-translate-y: -2;
-}
-#rectangle5 {
-    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
-    -fx-background-radius: 10;
-}
+/*#rectangle4:hover {*/
+/*    -fx-background-insets: 0,1,1;*/
+/*    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );*/
+/*    -fx-font-size: 16;*/
+/*    -fx-pref-width: 250;*/
+/*    -fx-translate-y: -2;*/
+/*}*/
+/*#rectangle5 {*/
+/*    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);*/
+/*    -fx-background-radius: 10;*/
+/*}*/
 
-#rectangle5:hover {
-    -fx-background-insets: 0,1,1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
-    -fx-font-size: 16;
-    -fx-pref-width: 250;
-    -fx-translate-y: -2;
-}
-#rectangle6 {
-    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
-    -fx-background-radius: 10;
-}
+/*#rectangle5:hover {*/
+/*    -fx-background-insets: 0,1,1;*/
+/*    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );*/
+/*    -fx-font-size: 16;*/
+/*    -fx-pref-width: 250;*/
+/*    -fx-translate-y: -2;*/
+/*}*/
+/*#rectangle6 {*/
+/*    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);*/
+/*    -fx-background-radius: 10;*/
+/*}*/
 
-#rectangle6:hover {
-    -fx-background-insets: 0,1,1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
-    -fx-font-size: 16;
-    -fx-pref-width: 250;
-    -fx-translate-y: -2;
-}
+/*#rectangle6:hover {*/
+/*    -fx-background-insets: 0,1,1;*/
+/*    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );*/
+/*    -fx-font-size: 16;*/
+/*    -fx-pref-width: 250;*/
+/*    -fx-translate-y: -2;*/
+/*}*/

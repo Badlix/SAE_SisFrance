@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -56,7 +57,7 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     VBox qualityFilter;
     List<CheckBox> qualityCheckboxs;
-    List<String> quelityLabels;
+    List<String> qualityLabels;
     @FXML
     Label rangeLabel;
     @FXML
@@ -79,7 +80,6 @@ public class DataPageController extends BorderPane implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("DataPageController initialized");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("identifiant"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         zoneColumn.setCellValueFactory(new PropertyValueFactory<>("zone"));
@@ -114,9 +114,10 @@ public class DataPageController extends BorderPane implements Initializable {
                 zones.add(0, "ZONE");
                 zoneFilter.setValue("ZONE");
                 zoneFilter.setItems(zones);
-                // init des options de la combo box des régions
+
+                // init des options des checkbox de qualité
                 qualityCheckboxs = new ArrayList<>();
-                quelityLabels = new ArrayList<>();
+                qualityLabels = new ArrayList<>();
                 ObservableList<String> quality = FXCollections.observableArrayList();
                 for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
                     if (!quality.contains(earthquake.getQuality()) && !earthquake.getQuality().isEmpty())
@@ -126,10 +127,13 @@ public class DataPageController extends BorderPane implements Initializable {
                 for (String str : quality) {
                     CheckBox checkbox = new CheckBox();
                     qualityCheckboxs.add(checkbox);
-                    quelityLabels.add(str);
-                    qualityFilter.getChildren().add(new HBox(checkbox, new Label(str)));
+                    qualityLabels.add(str);
+                    HBox hBox = new HBox(checkbox, new Label(str));
+                    hBox.setSpacing(5);
+                    qualityFilter.getChildren().add(hBox);
                 }
                 dataFilter.setSelectedQuality(quality);
+
                 // init des elements de la table
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
                 createBindings();
@@ -144,8 +148,6 @@ public class DataPageController extends BorderPane implements Initializable {
         rechercherTextField.setDisable(true); // on verra plus tard
         searchBar();
     }
-
-
     /**
      * Creates bindings between Nodes and the DateFilter filters.
      */
@@ -154,7 +156,7 @@ public class DataPageController extends BorderPane implements Initializable {
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
-        MyBindings.createBindingQuality(dataEarthquakes, qualityCheckboxs, quelityLabels);
+        MyBindings.createBindingQuality(dataEarthquakes, qualityCheckboxs, qualityLabels);
     }
 
     /**
