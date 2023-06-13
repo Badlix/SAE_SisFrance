@@ -111,7 +111,7 @@ public class UploadPageController extends BorderPane {
 
     @FXML
     public void upload(){
-
+        fileReadableLabel.setText("");
         // Ouvrir une boîte de dialogue de sélection de fichier
 
         FileChooser fileChooser = new FileChooser();
@@ -128,7 +128,14 @@ public class UploadPageController extends BorderPane {
         File selectedFile = fileChooser.showOpenDialog(stage);
 
         if (selectedFile != null) {
-            ArrayList<Earthquake> data = DataImporter.readCSV(selectedFile);
+
+            ArrayList<Earthquake> data = new ArrayList<>();
+            try {
+                data = DataImporter.readCSV(selectedFile);
+            } catch (RuntimeException e) {
+                fileReadableLabel.setText("invalid file");
+                fileReadableLabel.setStyle("-fx-text-fill: red");
+            }
             dataEarthquakes.getAllEarthquakes().addAll(FXCollections.observableArrayList(data));
             dataEarthquakes.getFilteredEarthquakes().addAll(FXCollections.observableArrayList(data));
             if(dataEarthquakes.getAllEarthquakes().size() > 0) {

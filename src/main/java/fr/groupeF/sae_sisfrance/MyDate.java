@@ -59,6 +59,10 @@ public class MyDate {
         return day;
     }
 
+    public String getDateValue() {
+        return date.getValue();
+    }
+
     public boolean isBetween(MyDate afterDate, MyDate beforeDate) {
         return isAfter(afterDate) && isBefore(beforeDate);
     }

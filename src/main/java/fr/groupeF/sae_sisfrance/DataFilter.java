@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
+
 public class DataFilter {
     private ObservableList<Earthquake> allEarthquakes; // List of all Earthquakes extracted from the csv file
     private ObservableList<Earthquake> filteredEarthquakes; // Filtered list of Earthquakes
@@ -93,7 +95,6 @@ public class DataFilter {
         this.selectedRayon.set(selectedRayon);
     }
 
-
     public void setSelectedMinIntensity(double intensite) {
         this.selectedMinIntensity.set(intensite);
     }
@@ -124,17 +125,43 @@ public class DataFilter {
     }
 
     private boolean isBetweenIntensity(Earthquake earthquake) {
+        if (selectedMinIntensity.getValue() == 2 && selectedMaxIntensity.getValue() == 12) {
+            return true;
+        } else if (earthquake.getIntensity().isEmpty()) {
+            return false;
+        }
         return (selectedMinIntensity.getValue() <= Float.valueOf(earthquake.getIntensity()) && selectedMaxIntensity.getValue() >= Float.valueOf(earthquake.getIntensity()));
+    }
+
+    private boolean isBetweenDates(Earthquake earthquake) {
+        if (selectedStartDate.getDateValue().isEmpty() && selectedEndDate.getDateValue().isEmpty()) {
+            return true;
+        } else if (earthquake.getDate().getDateValue().isEmpty()) {
+            return false;
+        }
+        return earthquake.isBetweenDates(selectedStartDate, selectedEndDate);
     }
 
     public void applyFilter() {
         filteredEarthquakes.clear();
-        for (Earthquake earthquake: allEarthquakes) {
-            if (isInRegion(earthquake)) {
-                if (isInCoordinate(earthquake)) {
-                    if (earthquake.isBetweenDates(selectedStartDate, selectedEndDate)) {
-                        if (isBetweenIntensity(earthquake)) {
-                            filteredEarthquakes.add(earthquake);
+        boolean regionFilterEmpty = selectedRegion.getValue().isEmpty();
+        boolean coorFilterEmpty = (selectedLatitude.getValue() == 0 || selectedLongitude.getValue() == 0 || selectedRayon.getValue() == 0);
+        if (regionFilterEmpty && coorFilterEmpty) {
+            for (Earthquake earthquake: allEarthquakes) {
+                if (isBetweenDates(earthquake)) {
+                    if (isBetweenIntensity(earthquake)) {
+                        filteredEarthquakes.add(earthquake);
+                    }
+                }
+            }
+        } else {
+            for (Earthquake earthquake: allEarthquakes) {
+                if (isInRegion(earthquake)) {
+                    if (isInCoordinate(earthquake)) {
+                        if (isBetweenDates(earthquake)) {
+                            if (isBetweenIntensity(earthquake)) {
+                                filteredEarthquakes.add(earthquake);
+                            }
                         }
                     }
                 }

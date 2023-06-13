@@ -40,6 +40,8 @@ public class DataImporter {
             br.readLine();
             while ((line = br.readLine()) != null) {
                 List<String> data = parseString(line);
+                System.out.println(line);
+                System.out.println(data.size());
                 // Process the data
                 Earthquake earthquake = new Earthquake(data);
                 earthquakes.add(earthquake);

@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/StatCalcul.java" afterDir="false" />
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Modification du Binding sur Graphics Page et ajout des valeurs des labels + code cleaning">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataImporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/StatCalculTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/StatCalculTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +48,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mathieu/IdeaProjects/SAE_SisFrance&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -66,6 +73,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DataFilterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SAE_SisFrance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
+      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.DataFilterTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyDateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SAE_SisFrance" />
       <extension name="coverage">
@@ -81,7 +103,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyDateTest.testInitializationSansJourEtSansMois" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StatCalculTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SAE_SisFrance" />
       <extension name="coverage">
         <pattern>
@@ -90,14 +112,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
-      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.MyDateTest" />
-      <option name="METHOD_NAME" value="testInitializationSansJourEtSansMois" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.StatCalculTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyDateTest.testIsAfterDate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StatCalculTest.testMostAffectedYear" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SAE_SisFrance" />
       <extension name="coverage">
         <pattern>
@@ -106,24 +127,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
-      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.MyDateTest" />
-      <option name="METHOD_NAME" value="testIsAfterDate" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MyDateTest.testIsBeforeDate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SAE_SisFrance" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
-      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.MyDateTest" />
-      <option name="METHOD_NAME" value="testIsBeforeDate" />
+      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.StatCalculTest" />
+      <option name="METHOD_NAME" value="testMostAffectedYear" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -132,10 +137,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.DataFilterTest" />
         <item itemvalue="JUnit.MyDateTest" />
-        <item itemvalue="JUnit.MyDateTest.testIsAfterDate" />
-        <item itemvalue="JUnit.MyDateTest.testIsBeforeDate" />
-        <item itemvalue="JUnit.MyDateTest.testInitializationSansJourEtSansMois" />
+        <item itemvalue="JUnit.StatCalculTest" />
+        <item itemvalue="JUnit.StatCalculTest.testMostAffectedYear" />
       </list>
     </recent_temporary>
   </component>
@@ -155,7 +160,10 @@
       <workItem from="1686177072097" duration="26000" />
       <workItem from="1686218189915" duration="3320000" />
       <workItem from="1686613333002" duration="164000" />
-      <workItem from="1686633782968" duration="3660000" />
+      <workItem from="1686633782968" duration="9631000" />
+      <workItem from="1686643464069" duration="54000" />
+      <workItem from="1686643519373" duration="4191000" />
+      <workItem from="1686647874911" duration="3084000" />
     </task>
     <task id="LOCAL-00001" summary="page upload file">
       <created>1686162058523</created>
@@ -367,7 +375,28 @@
       <option name="project" value="LOCAL" />
       <updated>1686610847855</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Ajout de la classe StatCalcul (nom temporaire) qui contient des fonctions de calcul de différentes données">
+      <created>1686637548912</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1686637548912</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Ajout des fonctions de test de la classe StatCalcul">
+      <created>1686641916285</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1686641916285</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Modification du Binding sur Graphics Page et ajout des valeurs des labels + code cleaning">
+      <created>1686646551670</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1686646551670</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,10 +414,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="correction des valeurs par défaut du Range Slider" />
-    <MESSAGE value="Rectification des valeurs du RangeSlider -&gt; l'intensité maximum d'un seisme est 12 et non 10" />
-    <MESSAGE value="Ajout de tout les filtres sur la page Upload" />
-    <MESSAGE value="Les filtres et boutons de la page Upload sont désactivé tant qu'un fichier csv n'a pas été selectionné" />
     <MESSAGE value="Les valeurs de la comboBox de la page Upload se mettent à jour en fonction des régions présentes dans le fichier csv selectionné" />
     <MESSAGE value="Ajout d'un type MyDate avec les tests qui correspondent" />
     <MESSAGE value="Les filtres de dates sont opérationnels" />
@@ -410,6 +435,10 @@
     <MESSAGE value="Ajout de deux boutons pour zoomer et dézoomer sur la carte" />
     <MESSAGE value="Ajout des points sur la carte" />
     <MESSAGE value="Modification de la taille des fenêtres (temporaire ?)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification de la taille des fenêtres (temporaire ?)" />
+    <MESSAGE value="Ajout de la classe StatCalcul (nom temporaire) qui contient des fonctions de calcul de différentes données" />
+    <MESSAGE value="Ajout des fonctions de test de la classe StatCalcul" />
+    <MESSAGE value="Modification du Binding sur Graphics Page et ajout des valeurs des labels" />
+    <MESSAGE value="Modification du Binding sur Graphics Page et ajout des valeurs des labels + code cleaning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modification du Binding sur Graphics Page et ajout des valeurs des labels + code cleaning" />
   </component>
 </project>
