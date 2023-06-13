@@ -1,12 +1,10 @@
 package fr.groupeF.sae_sisfrance;
 
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,14 +12,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * A controller class for the upload page, that handle the upload of the csv file.
+ */
 public class UploadPageController extends BorderPane {
     private Scene dataPageScene;
-
     @FXML
     private Button uploadButton;
     @FXML
@@ -44,43 +42,28 @@ public class UploadPageController extends BorderPane {
     private Button changingFXMLButton;
     private DataFilter dataEarthquakes;
 
+    /**
+     * Sets the scene for the data page.
+     * @param dataPageScene The scene for the data page.
+     */
     public void setDataPageScene(Scene dataPageScene) {
         this.dataPageScene = dataPageScene;
     }
 
+    /**
+     * Returns the data filter for earthquakes.
+     * @return The data filter for earthquakes.
+     */
     public DataFilter getDataEarthquakes() {
         return dataEarthquakes;
     }
 
-    public void initialize() throws IOException {
+    /**
+     * Initializes the controller and sets up the data filter.
+     */
+    public void initialize() {
         dataEarthquakes = new DataFilter(FXCollections.observableArrayList());
         System.out.println("UploadPageController initialized");
-        // ---------- BINDING BETWEEN FILTERS AND dataEartquakes ----------
-
-        /* Zone Filter */
-        zoneFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedZone(zoneFilter.getValue());
-        });
-
-        /* Coordinate Filter */
-        Bindings.bindBidirectional(latFilter.textProperty(), dataEarthquakes.selectedLatitudeProperty(), MyBindings.converterDoubleToString);
-        Bindings.bindBidirectional(longFilter.textProperty(), dataEarthquakes.selectedLongitudeProperty(), MyBindings.converterDoubleToString);
-        Bindings.bindBidirectional(rayonFilter.textProperty(), dataEarthquakes.selectedRayonProperty(), MyBindings.converterDoubleToString);
-
-        /* Date Filter */
-        startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.getSelectedStartDate().dateProperty().set(startDateFilter.valueProperty().getValue().toString());
-        });
-
-        endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.getSelectedEndDate().dateProperty().set(endDateFilter.valueProperty().getValue().toString());
-        });
-
-        /* Intensity Filter */
-        dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
-        dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
-
-        // ---------- BINDING BETWEEN ZoneFilter options AND dataEartquakes ----------
 
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
@@ -94,16 +77,30 @@ public class UploadPageController extends BorderPane {
                 zoneFilter.setValue("ZONE");
                 zones.add(0, "ZONE");
                 zoneFilter.setItems(zones);
+                createBindings();
             }
         });
     }
 
 
+    /**
+     * Creates data bindings between filters and the data filter object.
+     */
+    public void createBindings() {
+        MyBindings.createBindingZone(dataEarthquakes, zoneFilter);
+        MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
+        MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
+        MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
+    }
 
+    /**
+     * Handle the upload button.
+     */
     @FXML
     public void upload(){
         fileReadableLabel.setText("");
-        // Ouvrir une boîte de dialogue de sélection de fichier
+
+        // Open a file selection dialog box
 
         FileChooser fileChooser = new FileChooser();
         Stage stage = (Stage) uploadButton.getScene().getWindow();
@@ -114,7 +111,7 @@ public class UploadPageController extends BorderPane {
                 new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
         );
 
-        // Obtenir le fichier sélectionné
+        // Open the selected file
 
         File selectedFile = fileChooser.showOpenDialog(stage);
 
@@ -141,17 +138,23 @@ public class UploadPageController extends BorderPane {
             fileReadableLabel.setText("file not uploaded");
             fileReadableLabel.setStyle("-fx-text-fill: red");
         }
-    };
+    }
+
+    /**
+     * Handles the changingFXMLButton action to navigate to the data page.
+     * @param event The action event.
+     */
     @FXML
     public void changingToDataPage(ActionEvent event) {
-        // TEMPORAIRE
         dataEarthquakes.applyFilter();
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
     }
 
+    /**
+     * Enables the filter controls.
+     */
     public void enableFilter() {
         zoneFilter.setDisable(false);
         latFilter.setDisable(false);

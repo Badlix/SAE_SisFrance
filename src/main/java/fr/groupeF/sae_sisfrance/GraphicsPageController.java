@@ -1,13 +1,11 @@
 package fr.groupeF.sae_sisfrance;
 
-import javafx.beans.binding.Bindings;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -20,6 +18,10 @@ import org.controlsfx.control.RangeSlider;
 import java.util.*;
 import java.io.IOException;
 
+/**
+ * GraphicsPageController is a controller class for the graphics page.
+ * It handles the display of various charts, labels, the menu and some data bindings.
+ */
 public class GraphicsPageController extends BorderPane {
     private Scene dataPageScene;
     private DataFilter dataEarthquakes;
@@ -27,10 +29,6 @@ public class GraphicsPageController extends BorderPane {
     private LineChart<String, Number> lineChartSeismPerYear;
     @FXML
     private LineChart<String, Number> lineChartIntensityPerYear;
-    private ObservableList<String> intensity;
-    private ListView<Double> listView;
-    //@FXML
-    //private LineChart<String, Number> lineChartSeismPerZone;
     @FXML
     private Label numberLabel1;
     @FXML
@@ -66,10 +64,18 @@ public class GraphicsPageController extends BorderPane {
     @FXML
     DatePicker endDateFilter;
 
+    /**
+     * Sets the scene for the data page.
+     * @param dataPageScene The scene for the data page.
+     */
     public void setDataPageScene(Scene dataPageScene) {
         this.dataPageScene = dataPageScene;
     }
 
+    /**
+     * Sets the data filter for earthquakes.
+     * @param dataFilter The data filter for earthquakes.
+     */
     public void setDataEarthquakes(DataFilter dataFilter) {
         dataEarthquakes = dataFilter;
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<>() {
@@ -118,6 +124,9 @@ public class GraphicsPageController extends BorderPane {
         //searchBar();
     }
 
+    /**
+     * Creates data bindings between filters and the data filter object.
+     */
     public void createBindings() {
         MyBindings.createBindingZone(dataEarthquakes, zoneFilter);
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
@@ -125,19 +134,28 @@ public class GraphicsPageController extends BorderPane {
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
     }
 
-    public void initialize() throws IOException {
+    /**
+     * Initializes the controller.
+     */
+    public void initialize(){
         System.out.println("GraphicsPageController initialized");
     }
 
+    /**
+     * Switches to the data page.
+     * @param event The action event.
+     */
     @FXML
     public void changingToDataPage(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
     }
-    @FXML
-    public void newFile(){
-    }
+
+    /**
+     * Displays the number of seismes per year chart based on the provided earthquake data.
+     * @param dataGraphics The earthquake data for the chart.
+     */
     public void graphicsSeismPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         HashMap<String, Integer> nbEarthquakesDuringAYear = new HashMap<>();
@@ -156,6 +174,11 @@ public class GraphicsPageController extends BorderPane {
         }
         lineChartSeismPerYear.setData(FXCollections.observableArrayList(series));
     }
+
+    /**
+     * Displays the intensity per year chart based on the provided earthquake data.
+     * @param dataGraphics The earthquake data for the chart.
+     */
     public void graphicsIntensityPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         HashMap<String, Double> averageIntensityPerYear = new HashMap<>();
@@ -182,6 +205,9 @@ public class GraphicsPageController extends BorderPane {
         lineChartIntensityPerYear.setData(FXCollections.observableArrayList(series));
     }
 
+    /**
+     * Applies the filter to the earthquake data.
+     */
     @FXML
     public void applyFilter() {
         dataEarthquakes.applyFilter();

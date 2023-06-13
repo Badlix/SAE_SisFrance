@@ -24,6 +24,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 
+
+/**
+ * DataPageController is a controller class that manages the functionality of the data page in the application.
+ * It handles the display and filtering of earthquake data, the menu and with the map view.
+ */
 public class DataPageController extends BorderPane implements Initializable {
 
     @FXML
@@ -66,6 +71,12 @@ public class DataPageController extends BorderPane implements Initializable {
     private Scene graphicsPageScene;
     private static DataFilter dataEarthquakes;
 
+
+    /**
+     * Initializes the controller after its root element
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("DataPageController initialized");
@@ -77,10 +88,18 @@ public class DataPageController extends BorderPane implements Initializable {
         initMapView();
     }
 
+    /**
+     * Sets the scene of the graphics page.
+     * @param graphicsPageScene The scene of the graphics page.
+     */
     public void setGraphicsPageScene(Scene graphicsPageScene) {
         this.graphicsPageScene = graphicsPageScene;
     }
 
+    /**
+     * Sets the data earthquakes for filtering and display.
+     * @param dataFilter The data earthquakes for filtering and display.
+     */
     public void setDataEarthquakes(DataFilter dataFilter) {
         dataEarthquakes = dataFilter;
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
@@ -126,6 +145,10 @@ public class DataPageController extends BorderPane implements Initializable {
         searchBar();
     }
 
+
+    /**
+     * Creates bindings between Nodes and the DateFilter filters.
+     */
     public void createBindings() {
         MyBindings.createBindingZone(dataEarthquakes, zoneFilter);
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
@@ -134,6 +157,9 @@ public class DataPageController extends BorderPane implements Initializable {
         MyBindings.createBindingQuality(dataEarthquakes, qualityCheckboxs, quelityLabels);
     }
 
+    /**
+     * Initializes the map view with and adds a custom map layer.
+     */
     public void initMapView() {
         System.setProperty("javafx.platform", "desktop");
         System.setProperty("http.agent", "Gluon Mobile/1.0.3");
@@ -144,6 +170,9 @@ public class DataPageController extends BorderPane implements Initializable {
         mapView.setZoom(5);
     }
 
+    /**
+     * Updates the display of earthquakes on the map based on the filtered earthquakes.
+     */
     private void changeEarthquakesOnMap() {
         mapLayer.clear();
         for (Earthquake earthquake : dataEarthquakes.getFilteredEarthquakes()) {
@@ -155,18 +184,27 @@ public class DataPageController extends BorderPane implements Initializable {
         mapLayer.update();
     }
 
-
+    /**
+     * Zooms in the map view.
+     */
     @FXML
     public void zoomIn() {
         mapView.setZoom(mapView.getZoom()+1);
         mapLayer.update();
     }
+
+    /**
+     * Zooms out the map view.
+     */
     @FXML
     public void zoomOut() {
         mapView.setZoom(mapView.getZoom()-1);
         mapLayer.update();
     }
 
+    /**
+     * Performs a search based on the entered text in the search bar and updates the table display.
+     */
     @FXML
     public void searchBar() {
         FilteredList<Earthquake> filteredList = new FilteredList<>(dataEarthquakes.getFilteredEarthquakes(), element -> true);
@@ -191,11 +229,18 @@ public class DataPageController extends BorderPane implements Initializable {
         table.setItems(sortedList);
     }
 
+    /**
+     * Applies the selected filters to the data earthquakes.
+     */
     @FXML
     public void applyFilter() {
         dataEarthquakes.applyFilter();
     }
 
+    /**
+     * Changes the current scene to the graphics page.
+     * @param event The action event that triggered the method call.
+     */
     @FXML
     public void changingToGraphicsPage(ActionEvent event){
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

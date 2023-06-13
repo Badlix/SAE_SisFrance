@@ -1,14 +1,21 @@
 package fr.groupeF.sae_sisfrance;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+/**
+ * A class representing a custom date object.
+ * It provides methods for parsing and manipulating dates.
+ */
 public class MyDate {
     private final SimpleStringProperty date;
     private int year;
     private int month;
     private int day;
 
+    /**
+     * Constructs a new `MyDate` object with the specified date string.
+     * @param dateTxt The date string in the format "YYYY-MM-DD".
+     */
     public MyDate(String dateTxt) {
         date = new SimpleStringProperty(dateTxt);
         update();
@@ -17,6 +24,10 @@ public class MyDate {
         });
     }
 
+    /**
+     * Updates the year, month, and day values based on the current date string.
+     * This method is called automatically when the date property changes.
+     */
     public void update() {
         String[] numbers = {};
         if (date.getValue().contains("/")) {
@@ -43,31 +54,61 @@ public class MyDate {
         }
     }
 
+    /**
+     * Returns the property representing the date string.
+     * @return The date property.
+     */
     public SimpleStringProperty dateProperty() {
         return date;
     }
 
+    /**
+     * Returns the year value of the date.
+     * @return The year value.
+     */
     public Integer getYear() {
         return year;
     }
 
+    /**
+     * Returns the month value of the date.
+     * @return The month value.
+     */
     public Integer getMonth() {
         return month;
     }
 
+    /**
+     * Returns the day value of the date.
+     * @return The day value.
+     */
     public Integer getDay() {
         return day;
     }
 
+    /**
+     * Returns the date string value.
+     * @return The date string.
+     */
     public String getDateValue() {
         return date.getValue();
     }
 
+    /**
+     * Checks if this date is between the specified after and before date.
+     * @param afterDate  The after date to compare.
+     * @param beforeDate The before date to compare.
+     * @return `true` if this date is between the after date and before date, `false` otherwise.
+     */
     public boolean isBetween(MyDate afterDate, MyDate beforeDate) {
         return isAfter(afterDate) && isBefore(beforeDate);
     }
 
-    // Check is this Date happened before another Date
+    /**
+     * Checks if this date is before the other date.
+     * @param aDate The date to compare.
+     * @return `true` if this date is before the specified date, `false` otherwise.
+     */
     public boolean isBefore(MyDate aDate) {
         // Compare Years
         if (year == 0 || aDate.year == 0) {
@@ -97,7 +138,11 @@ public class MyDate {
         return true;
     }
 
-    // Check is this Date happened after another Date
+    /**
+     * Checks if this date is after the other date.
+     * @param aDate The date to compare.
+     * @return `true` if this date is after the specified date, `false` otherwise.
+     */
     public boolean isAfter(MyDate aDate) {
         // Compare Years
         if (year == 0 || aDate.year == 0) {
@@ -127,6 +172,10 @@ public class MyDate {
         return true;
     }
 
+    /**
+     * Returns the string representation of the date in the format "YYYY-MM-DD".
+     * @return The string of the date.
+     */
     @Override
     public String toString() {
         String txt = "";
