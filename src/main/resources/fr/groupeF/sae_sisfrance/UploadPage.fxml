@@ -8,7 +8,7 @@
       <left>
             <HBox alignment="CENTER" prefWidth="600" styleClass="uploadFilter">
                   <VBox alignment="CENTER" spacing="10">
-                        <ComboBox fx:id="zoneFilter" disable="true" prefWidth="500" value="ZONE" styleClass="filter" />
+                        <ComboBox fx:id="zoneFilter" disable="true" prefWidth="500" value="ZONE" styleClass="filter"/>
 
                       <HBox alignment="CENTER" prefWidth="200.0" spacing="10.0" styleClass="lineFilter">
                           <TextField fx:id="latFilter" disable="true" prefWidth="166.0" promptText="Latitude"

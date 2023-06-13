@@ -38,8 +38,8 @@ public class DataFilter {
         allEarthquakes = allEarthquake;
         filteredEarthquakes = FXCollections.observableArrayList(allEarthquakes);
         // Initialization of the filter's values
-        selectedZone = new SimpleStringProperty("");
-        selectedLatitude = new SimpleDoubleProperty();
+        selectedZone = new SimpleStringProperty("ZONE");
+        selectedLatitude = new SimpleDoubleProperty(0);
         selectedLongitude = new SimpleDoubleProperty(0);
         selectedRayon = new SimpleIntegerProperty(0);
         selectedStartDate = new MyDate("");

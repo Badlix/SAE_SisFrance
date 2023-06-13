@@ -101,6 +101,7 @@ public class GraphicsPageController extends BorderPane {
                 quality.sort(String::compareToIgnoreCase);
                 for (String str : quality) {
                     CheckBox checkbox = new CheckBox();
+                    checkbox.setSelected(true);
                     qualityCheckboxs.add(checkbox);
                     qualityLabels.add(str);
                     HBox hBox = new HBox(checkbox, new Label(str));
@@ -115,15 +116,15 @@ public class GraphicsPageController extends BorderPane {
                 /* Change Labels values */
                 numberLabel1.setText(Integer.toString(StatCalcul.totalNumberOfEarthquakes(dataFilter)));
                 numberLabel2.setText(Double.toString(StatCalcul.globalAverageIntensity(dataFilter)));
-                numberLabel3.setText(StatCalcul.mostAffectedZone(dataFilter).getKey() + "(" + StatCalcul.mostAffectedZone(dataFilter).getValue() + ")");
+                numberLabel3.setText(StatCalcul.mostAffectedZone(dataFilter).getKey() + " (" + StatCalcul.mostAffectedZone(dataFilter).getValue() + ")");
                 numberLabel4.setText(Double.toString(StatCalcul.globalAverageEarthquakeByZone(dataFilter)));
-                numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter).getKey().toString() + "(" + StatCalcul.mostAffectedYear(dataFilter).getValue().toString() + ")");
+                numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter).getKey().toString() + " (" + StatCalcul.mostAffectedYear(dataFilter).getValue().toString() + ")");
                 numberLabel6.setText(Double.toString(StatCalcul.globalAverageEarthquakesByYear(dataFilter)));
                 graphicsSeismPerYear();
                 graphicsIntensityPerYear();
             }
         });
-        createBindings();
+
         //searchBar();
     }
 
@@ -135,6 +136,7 @@ public class GraphicsPageController extends BorderPane {
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
+        MyBindings.createBindingQuality(dataEarthquakes, qualityCheckboxs, qualityLabels);
     }
 
     /**

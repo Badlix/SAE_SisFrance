@@ -107,7 +107,7 @@
     </center>
     <left>
         <VBox styleClass="graphes">
-            <LineChart fx:id="lineChartSeismPerYear">
+            <LineChart fx:id="lineChartSeismPerYear" createSymbols="false">
                 <xAxis>
                     <CategoryAxis label="Années" />
                 </xAxis>
@@ -115,7 +115,7 @@
                     <NumberAxis label="Nb séisme" />
                 </yAxis>
             </LineChart>
-        <LineChart fx:id="lineChartIntensityPerYear">
+        <LineChart fx:id="lineChartIntensityPerYear" createSymbols="false">
             <xAxis>
                 <CategoryAxis label="Années" />
             </xAxis>

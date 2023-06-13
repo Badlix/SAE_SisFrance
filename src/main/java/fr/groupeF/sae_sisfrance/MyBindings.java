@@ -47,7 +47,7 @@ public class MyBindings {
      * @param zoneFilter  The UI control for the zone filter.
      */
     static void createBindingZone(DataFilter dataFilter, ComboBox<String> zoneFilter) {
-        zoneFilter.valueProperty().bindBidirectional(dataFilter.selectedZoneProperty());
+        dataFilter.selectedZoneProperty().bindBidirectional(zoneFilter.valueProperty());
     }
 
     /**

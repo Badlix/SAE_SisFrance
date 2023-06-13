@@ -126,6 +126,7 @@ public class DataPageController extends BorderPane implements Initializable {
                 quality.sort(String::compareToIgnoreCase);
                 for (String str : quality) {
                     CheckBox checkbox = new CheckBox();
+                    checkbox.setSelected(true);
                     qualityCheckboxs.add(checkbox);
                     qualityLabels.add(str);
                     HBox hBox = new HBox(checkbox, new Label(str));

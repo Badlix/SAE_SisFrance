@@ -163,5 +163,6 @@ public class UploadPageController extends BorderPane {
         startDateFilter.setDisable(false);
         endDateFilter.setDisable(false);
         changingFXMLButton.setDisable(false);
+
     }
 }
