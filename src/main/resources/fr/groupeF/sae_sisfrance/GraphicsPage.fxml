@@ -106,7 +106,7 @@
         </HBox>
     </center>
     <left>
-        <VBox>
+        <VBox styleClass="graphes">
             <LineChart fx:id="lineChartSeismPerYear">
                 <xAxis>
                     <CategoryAxis label="Années" />
@@ -127,7 +127,7 @@
     </left>
     <bottom>
         <HBox alignment="CENTER" styleClass="bottom">
-            <Button onAction="#changingToDataPage" text="DataPage" />
+            <Button onAction="#changingToDataPage" text="Page de données" />
         </HBox>
     </bottom>
 </BorderPane>
