@@ -1,15 +1,13 @@
 package fr.groupeF.sae_sisfrance;
 
 import javafx.beans.binding.Bindings;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import org.controlsfx.control.RangeSlider;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.util.List;
 
 public class MyBindings {
 
@@ -32,8 +30,8 @@ public class MyBindings {
         });
     }
 
-    static void createBindingRegion(DataFilter dataFilter, ChoiceBox<String> regionFilter) {
-        regionFilter.valueProperty().bindBidirectional(dataFilter.selectedZoneProperty());
+    static void createBindingZone(DataFilter dataFilter, ComboBox<String> zoneFilter) {
+        zoneFilter.valueProperty().bindBidirectional(dataFilter.selectedZoneProperty());
     }
 
     static void createBindingCoordinate(DataFilter dataFilter, TextField longFilter, TextField latFilter, TextField rayonFilter) {
@@ -43,14 +41,8 @@ public class MyBindings {
     }
 
     static void createBindingIntensity(DataFilter dataFilter, RangeSlider intensityFilter) {
-        dataFilter.selectedMinIntensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
+        dataFilter.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataFilter.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
-    }
-
-    static void createBindingQuality(DataFilter dataFilter, List<CheckBox> qualityFilter, List<String> labels) {
-        for (int i = 0; i < qualityFilter.size(); i++) {
-            dataFilter.getSelectedQuality().get(labels.get(i)).bindBidirectional(qualityFilter.get(i).selectedProperty());
-        }
     }
 
     static StringConverter<Number> converterDoubleToString = new StringConverter<Number>() {

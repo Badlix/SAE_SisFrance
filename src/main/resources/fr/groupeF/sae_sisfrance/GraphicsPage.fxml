@@ -11,111 +11,58 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.GraphicsPageController">
+<BorderPane prefHeight="500.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.groupeF.sae_sisfrance.GraphicsPageController">
     <top>
         <MenuBar fx:id="menuBar" prefHeight="50.0" BorderPane.alignment="CENTER">
             <menus>
-                <Menu mnemonicParsing="false" text="Localisation">
-                    <items>
-                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                            <content>
-                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="175.0">
-                                    <children>
-                                        <Label alignment="CENTER" prefHeight="25.0" text="Région : ">
-                                            <font>
-                                                <Font size="15.0" />
-                                            </font>
-                                        </Label>
-                                        <ChoiceBox fx:id="regionFilter" prefHeight="10.0" prefWidth="100.0" />
-                                    </children>
-                                </HBox>
-                            </content>
-                        </CustomMenuItem>
-                    </items>
+                <Menu>
+                    <graphic>
+                        <ComboBox promptText="ZONE" fx:id="zoneFilter" prefHeight="10.0" />
+                    </graphic>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Date">
-                    <items>
-                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                            <content>
-                                <GridPane prefWidth="160.0">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="40.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                        <DatePicker fx:id="startDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                        <DatePicker fx:id="endDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                        <Label text="DE : " GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                        <Label text="A : " GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                                    </children>
-                                </GridPane>
-                            </content>
-                        </CustomMenuItem>
-                    </items>
+                <Menu text="Date">
+                    <CustomMenuItem>
+                        <content>
+                            <GridPane prefWidth="160.0">
+                                <DatePicker fx:id="startDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="de :"/>
+                                <DatePicker fx:id="endDateFilter" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="à :"/>
+                            </GridPane>
+                        </content>
+                    </CustomMenuItem>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Coordonnées">
-                    <items>
-                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                            <content>
-                                <GridPane prefWidth="160.0">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                        <Label text="Longitude : " GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                        <Label text="Latitude : " GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                                        <Label text="Rayon (km) : " GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                                        <TextField fx:id="longFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                        <TextField fx:id="latFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                        <TextField fx:id="rayonFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    </children>
-                                </GridPane>
-                            </content>
-                        </CustomMenuItem>
-                    </items>
+                <Menu text="Coordonnées">
+                    <CustomMenuItem>
+                        <content>
+                            <GridPane prefWidth="160.0">
+                                <Label text="Longitude : " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="Latitude : " GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <Label text="Rayon (km) : " GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                <TextField fx:id="longFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <TextField fx:id="latFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField fx:id="rayonFilter" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                            </GridPane>
+                        </content>
+                    </CustomMenuItem>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Intensité">
-                    <items>
-                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
-                            <content>
-                                <HBox>
-                                    <children>
-                                        <RangeSlider fx:id="intensityFilter"  max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
-                                        <Label fx:id="rangeLabel" />
-                                    </children>
-                                </HBox>
-                            </content>
-                        </CustomMenuItem>
-                    </items>
+                <Menu text="Intensité">
+                    <CustomMenuItem>
+                        <content>
+                            <HBox>
+                                <RangeSlider fx:id="intensityFilter"  max="12.0" min="2.0" blockIncrement="0.5" highValue="12.0" lowValue="2.0" majorTickUnit="2" minorTickCount="1" prefWidth="200.0" showTickLabels="false" showTickMarks="true" snapToTicks="true"/>
+                                <Label fx:id="rangeLabel" />
+                            </HBox>
+                        </content>
+                    </CustomMenuItem>
                 </Menu>
-                <Menu mnemonicParsing="false" >
+                <Menu>
+                    <graphic>
+                        <Button text="Filtrer" onAction="#applyFilter"/>
+                    </graphic>
+                </Menu>
+                <Menu >
                     <graphic>
                         <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
                     </graphic>
-                </Menu>
-                <Menu mnemonicParsing="false">
-                    <graphic>
-                        <Button mnemonicParsing="false" text="Filtrer" onAction="#applyFilter"/>
-                    </graphic>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Unspecified Menu">
-                    <items>
-                        <CustomMenuItem mnemonicParsing="false" text="Qualité">
-                            <content>
-                                <VBox fx:id="qualityFilter"></VBox>
-                            </content>
-                        </CustomMenuItem>
-                    </items>
                 </Menu>
             </menus>
         </MenuBar>
@@ -127,45 +74,45 @@
          <VBox prefHeight="100.0" prefWidth="100.0" />
             <HBox>
             <HBox prefHeight="100.0" prefWidth="80.0" />
-            <VBox fx:id="rectangle1" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" styleClass="rectangle">
-            <Label fx:id="numberLabel1" styleClass="numberLabel">
+            <VBox fx:id="rectangle1" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
+            <Label fx:id="numberLabel1">
                   <VBox.margin>
                      <Insets />
                   </VBox.margin></Label>
             </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
-                <VBox fx:id="rectangle2" prefHeight="150.0" prefWidth="200" styleClass="rectangle">
-                    <Label fx:id="numberLabel2" styleClass="numberLabel"/>
+                <VBox fx:id="rectangle2" prefHeight="150.0" prefWidth="200">
+                    <Label fx:id="numberLabel2"/>
                 </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
             </HBox>
          <VBox prefHeight="100.0" prefWidth="100.0" />
             <HBox>
                 <HBox prefHeight="100.0" prefWidth="80.0" />
-                <VBox fx:id="rectangle3" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" styleClass="rectangle">
-                    <Label fx:id="numberLabel3" styleClass="numberLabel">
+                <VBox fx:id="rectangle3" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
+                    <Label fx:id="numberLabel3">
                         <VBox.margin>
                             <Insets />
                         </VBox.margin></Label>
                 </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />
-                <VBox fx:id="rectangle4" prefHeight="150.0" prefWidth="200" styleClass="rectangle">
-                    <Label fx:id="numberLabel4" styleClass="numberLabel"/>
+                <VBox fx:id="rectangle4" prefHeight="150.0" prefWidth="200">
+                    <Label fx:id="numberLabel4"/>
                 </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />
             </HBox>
             <VBox prefHeight="100.0" prefWidth="100.0" />
             <HBox>
             <HBox prefHeight="100.0" prefWidth="80.0" />
-            <VBox fx:id="rectangle5" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" styleClass="rectangle">
-                <Label fx:id="numberLabel5" styleClass="numberLabel">
+            <VBox fx:id="rectangle5" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0">
+                <Label fx:id="numberLabel5">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin></Label>
             </VBox>
             <HBox prefHeight="100.0" prefWidth="50.0" />
-            <VBox fx:id="rectangle6" prefHeight="150.0" prefWidth="200" styleClass="rectangle">
-                <Label fx:id="numberLabel6" styleClass="numberLabel"/>
+            <VBox fx:id="rectangle6" prefHeight="150.0" prefWidth="200">
+                <Label fx:id="numberLabel6"/>
 
             </VBox>
                 <HBox prefHeight="100.0" prefWidth="50.0" />

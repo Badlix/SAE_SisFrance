@@ -21,7 +21,7 @@ public class CustomMapLayer extends MapLayer {
         this.mapPoints.add(mapPoint);
         Rectangle pin = new Rectangle(10, 10, Color.TRANSPARENT);
 
-        // The color of the rectangle depends on the earthquake's intensity
+        // The color of the rectangle depends on the eartquake's intensity
         if (intensity <= 2.5) {
             pin.setStroke(Color.LAVENDER);
         } else if (intensity <= 3.5) {
@@ -52,7 +52,7 @@ public class CustomMapLayer extends MapLayer {
         this.layoutLayer();
     }
 
-    /* This function is called every time the map is refreshed */
+    /* This function is called every time the map is refresh */
     @Override
     protected void layoutLayer() {
         Point2D point2d;

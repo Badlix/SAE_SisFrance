@@ -1,6 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
 import com.gluonhq.maps.MapPoint;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -8,7 +9,9 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -18,11 +21,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.TreeMap;
 
 import com.gluonhq.maps.MapView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 
@@ -35,11 +36,11 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     TableColumn<Object, Object> dateColumn;
     @FXML
-    TableColumn<Object, Object> regionColumn;
+    TableColumn<Object, Object> zoneColumn;
     @FXML
     TableColumn<Object, Object> intensityColumn;
     @FXML
-    ChoiceBox<String> regionFilter;
+    ComboBox<String> zoneFilter;
     @FXML
     TextField longFilter;
     @FXML
@@ -71,7 +72,7 @@ public class DataPageController extends BorderPane implements Initializable {
         System.out.println("DataPageController initialized");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("identifiant"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
+        zoneColumn.setCellValueFactory(new PropertyValueFactory<>("zone"));
         intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
         initMapView();
     }
@@ -85,15 +86,15 @@ public class DataPageController extends BorderPane implements Initializable {
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
-                // init des options de la combo box des régions
-                ObservableList<String> regions = FXCollections.observableArrayList();
+                ObservableList<String> zones = FXCollections.observableArrayList();
                 for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
-                    if (!regions.contains(earthquake.getRegion()))
-                        regions.add(earthquake.getRegion());
+                    if (!zones.contains(earthquake.getZone()))
+                        zones.add(earthquake.getZone());
                 }
-                regions.sort(String::compareToIgnoreCase);
-                regions.add(0, "");
-                regionFilter.setItems(regions);
+                zones.sort(String::compareToIgnoreCase);
+                zones.add(0, "ZONE");
+                zoneFilter.setValue("ZONE");
+                zoneFilter.setItems(zones);
                 // init des options de la combo box des régions
                 qualityCheckboxs = new ArrayList<>();
                 quelityLabels = new ArrayList<>();
@@ -110,7 +111,6 @@ public class DataPageController extends BorderPane implements Initializable {
                     qualityFilter.getChildren().add(new HBox(checkbox, new Label(str)));
                 }
                 dataFilter.setSelectedQuality(quality);
-                // init des elements de la table
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
                 createBindings();
             }
@@ -126,7 +126,7 @@ public class DataPageController extends BorderPane implements Initializable {
     }
 
     public void createBindings() {
-        MyBindings.createBindingRegion(dataEarthquakes, regionFilter);
+        MyBindings.createBindingZone(dataEarthquakes, zoneFilter);
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
@@ -175,9 +175,9 @@ public class DataPageController extends BorderPane implements Initializable {
                     return true; // Afficher tous les éléments si la recherche est vide
                 }
                 String rechercheTexte = newValue.toLowerCase();
-                if (element.getDate().indexOf(rechercheTexte) > -1) {
+                if (element.getDate().toString().indexOf(rechercheTexte) > -1) {
                     return true;
-                } else if (element.getRegion().toLowerCase().indexOf(rechercheTexte) > -1) {
+                } else if (element.getZone().toLowerCase().indexOf(rechercheTexte) > -1) {
                     return true;
                 } else if (element.getIntensity().toLowerCase().indexOf(rechercheTexte) > -1) {
                     return true;

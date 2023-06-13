@@ -96,10 +96,10 @@ public class StatCalcul {
         return Math.round(globalAverage * 100.0) / 100.0;
     }
 
-    static public Map.Entry<String, Integer> mostAffectedRegion(DataFilter dataFilter) {
-        TreeMap<String, Integer> regionOcc = regionOcc(dataFilter);
+    static public Map.Entry<String, Integer> mostAffectedZone(DataFilter dataFilter) {
+        TreeMap<String, Integer> zoneOcc = zoneOcc(dataFilter);
         Map.Entry<String, Integer> result = new AbstractMap.SimpleEntry<>("",0);
-        for (Map.Entry<String, Integer> entry : regionOcc.entrySet()) {
+        for (Map.Entry<String, Integer> entry : zoneOcc.entrySet()) {
             if (entry.getValue() > result.getValue()) {
                 result = entry;
             }
@@ -107,10 +107,10 @@ public class StatCalcul {
         return result;
     }
 
-    static public double globalAverageEarthquakeByRegion(DataFilter dataFilter) {
-        TreeMap<String, Integer> regionOcc = regionOcc(dataFilter);
-        double sum = regionOcc.values().stream().mapToInt(Integer::intValue).sum();
-        double res = sum / regionOcc.size();
+    static public double globalAverageEarthquakeByZone(DataFilter dataFilter) {
+        TreeMap<String, Integer> zoneOcc = zoneOcc(dataFilter);
+        double sum = zoneOcc.values().stream().mapToInt(Integer::intValue).sum();
+        double res = sum / zoneOcc.size();
         return Math.round(res * 100.0) / 100.0;
     }
 
@@ -148,14 +148,14 @@ public class StatCalcul {
 
     // ---------- GET OCCURRENCES MAP ----------
 
-    static private TreeMap<String, Integer> regionOcc(DataFilter dataFilter) {
-        TreeMap<String, Integer> regionOcc = new TreeMap<>();
+    static private TreeMap<String, Integer> zoneOcc(DataFilter dataFilter) {
+        TreeMap<String, Integer> zoneOcc = new TreeMap<>();
         for (Earthquake earthquake : dataFilter.getFilteredEarthquakes()) {
-            if (!earthquake.getRegion().isEmpty()) {
-                regionOcc.put(earthquake.getRegion(), regionOcc.getOrDefault(earthquake.getRegion(), 0) + 1);
+            if (!earthquake.getZone().isEmpty()) {
+                zoneOcc.put(earthquake.getZone(), zoneOcc.getOrDefault(earthquake.getZone(), 0) + 1);
             }
         }
-        return regionOcc;
+        return zoneOcc;
     }
 
     static private TreeMap<Integer, Integer> yearOcc(DataFilter dataFilter) {

@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 class DataFilterTest {
 
@@ -30,7 +32,7 @@ class DataFilterTest {
     @Test
     public void testRegionFilter() {
         DataFilter data = new DataFilter(testEartquakeList());
-        data.setSelectedZone("AQUITAINE");
+        data.setSelectedRegion("AQUITAINE");
         ObservableList<Earthquake> expectedList = FXCollections.observableArrayList();
         expectedList.add(testEartquakeList().get(0));
         expectedList.add(testEartquakeList().get(3));
@@ -65,7 +67,7 @@ class DataFilterTest {
     @Test
     public void testManyFilter() {
         DataFilter data = new DataFilter(testEartquakeList());
-        data.setSelectedZone("BOUCHE DU RHONE");
+        data.setSelectedRegion("BOUCHE DU RHONE");
         data.setSelectedLatitude(45.00);
         data.setSelectedLongitude(0.37);
         data.setSelectedRayon(50);
@@ -79,12 +81,12 @@ class DataFilterTest {
     @Test
     public void testUpdateFilter() {
         DataFilter data = new DataFilter(testEartquakeList());
-        data.setSelectedZone("BOUCHE DU RHONE");
+        data.setSelectedRegion("BOUCHE DU RHONE");
         data.setSelectedMinIntensity(7);
         data.setSelectedMaxIntensity(10);
         ObservableList<Earthquake> expectedList = FXCollections.observableArrayList();
         expectedList.add(testEartquakeList().get(5));
-        data.setSelectedZone("BOUCHE DU RHONE");
+        data.setSelectedRegion("BOUCHE DU RHONE");
         data.setSelectedLatitude(45.00);
         data.setSelectedLongitude(0.37);
         data.setSelectedRayon(50);

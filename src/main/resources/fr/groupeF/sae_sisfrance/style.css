@@ -6,13 +6,10 @@
 }
 .menu-bar{
     -fx-spacing: 20;
-    -fx-border-width: 0 0 1 0;
-    -fx-border-color: rgb(122, 143, 236);
 }
 .menu:hover{
     -fx-background-color: #B6D8F2;
     -fx-background-radius: 10;
-    -fx-cursor: hand;
 }
 .menu-bar .menu .label{
     -fx-text-fill: black;
@@ -21,8 +18,17 @@
     -fx-padding: 10;
     -fx-min-height: 50;
 }
-.menu .text-field .menu{
-    -fx-background-color: white;
+.menu .cell, .menu .combo-box{
+    -fx-border-color: #9AC8EB;
+    -fx-prompt-text-fill: blue;
+    -fx-background-color: #a8daf5;
+}
+.menu .combo-box{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.menu .cell:hover, .menu .combo-box:hover{
+    -fx-background-color: #9AC8EB;
 }
 
 .custom-menu-item:hover, .custom-menu-item:focused {
@@ -44,8 +50,8 @@
 }
 
 .table-view .column-header {
-    -fx-border-width: 0 1 1 1;
-    -fx-border-color: rgb(122, 143, 236);
+    -fx-border-color: rgb(143, 161, 229);
+    -fx-border-width: 1 1 1 0;
     -fx-background-color: #9AC8EB;
     -fx-font-weight: bold;
     -fx-alignment: center;
@@ -92,8 +98,6 @@
 .bottom{
     -fx-min-height: 35;
     -fx-spacing: 20;
-    -fx-border-width: 1 0 0 0;
-    -fx-border-color: rgb(122, 143, 236);
 }
 
 .bottom .button{
@@ -106,19 +110,75 @@
     -fx-cursor: hand;
 }
 
-.rectangle {
+#rectangle1 {
     -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
-    -fx-background-radius: 10;
+    -fx-background-radius: 16;
 }
 
-.rectangle:hover {
+#rectangle1:hover {
     -fx-background-insets: 0,1,1;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
     -fx-font-size: 16;
     -fx-pref-width: 250;
     -fx-translate-y: -2;
 }
+#rectangle2 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
 
-.numberLabel{
-    -fx-font-family: Montserrat;
+#rectangle2:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
+}
+#rectangle3 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
+
+#rectangle3:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
+}
+#rectangle4 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
+
+#rectangle4:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
+}
+#rectangle5 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
+
+#rectangle5:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
+}
+#rectangle6 {
+    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);
+    -fx-background-radius: 10;
+}
+
+#rectangle6:hover {
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-font-size: 16;
+    -fx-pref-width: 250;
+    -fx-translate-y: -2;
 }
