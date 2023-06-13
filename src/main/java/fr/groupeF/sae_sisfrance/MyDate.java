@@ -132,14 +132,14 @@ public class MyDate {
         String txt = "";
         txt += String.valueOf(year);
         if (month < 10) {
-            txt += "-0" + String.valueOf(month);
+            txt += "-0" + month;
         } else {
-            txt += "-" + String.valueOf(month);
+            txt += "-" + month;
         }
         if (day < 10) {
-            txt += "-0" + String.valueOf(day);
+            txt += "-0" + day;
         } else {
-            txt += "-" + String.valueOf(day);
+            txt += "-" + day;
         }
         return txt;
     }

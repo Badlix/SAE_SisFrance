@@ -21,11 +21,8 @@ import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 import java.util.*;
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class GraphicsPageController extends BorderPane {
-    private FXMLLoader dataPageLoader;
-    private FXMLLoader uploadPageLoader;
     private Scene dataPageScene;
     private DataFilter dataEarthquakes;
     @FXML
@@ -71,14 +68,6 @@ public class GraphicsPageController extends BorderPane {
         this.dataPageScene = dataPageScene;
     }
 
-    public void setDataPageLoad(FXMLLoader dataPageLoader) {
-        this.dataPageLoader = dataPageLoader;
-    }
-
-    public void setUploadPageLoad(FXMLLoader uploadPageLoader) {
-        this.uploadPageLoader = uploadPageLoader;
-    }
-
     public void setDataEarthquakes(DataFilter dataFilter) {
         dataEarthquakes = dataFilter;
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<>() {
@@ -95,9 +84,8 @@ public class GraphicsPageController extends BorderPane {
                 regionFilter.setItems(regions);
             }
         });
-        dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<>() {
-            @Override
-            public void onChanged(Change<? extends Earthquake> change) {
+        dataEarthquakes.filterAppliedProperty().addListener((observable, oldValue, newValue) -> {
+            if (dataEarthquakes.filterAppliedProperty().getValue() == true) {
                 System.out.println("CHANGED : SIZE = " + dataFilter.getFilteredEarthquakes().size());
                 /* Change Labels values */
                 numberLabel1.setText(StatCalcul.totalNumberOfEarthquakes(dataFilter) + "\nNB TOTAL");
@@ -115,33 +103,10 @@ public class GraphicsPageController extends BorderPane {
     }
 
     public void createBindings() {
-        /* Region Filter */
-        regionFilter.valueProperty().bindBidirectional(dataEarthquakes.selectedRegionProperty());
-
-        /* Coordinate Filter */
-        Bindings.bindBidirectional(latFilter.textProperty(), dataEarthquakes.selectedLatitudeProperty(), MyBindings.converterDoubleToString);
-        Bindings.bindBidirectional(longFilter.textProperty(), dataEarthquakes.selectedLongitudeProperty(), MyBindings.converterDoubleToString);
-        Bindings.bindBidirectional(rayonFilter.textProperty(), dataEarthquakes.selectedRayonProperty(), MyBindings.converterIntToString);
-
-        /* Date Filter */
-        startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.getSelectedStartDate().dateProperty().set(startDateFilter.valueProperty().getValue().toString());
-        });
-        dataEarthquakes.getSelectedStartDate().dateProperty().addListener((observable, oldValue, newValue) -> {
-            startDateFilter.setValue(LocalDate.parse(dataEarthquakes.getSelectedStartDate().toString()));
-        });
-
-        endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.getSelectedEndDate().dateProperty().set(endDateFilter.valueProperty().getValue().toString());
-        });
-        dataEarthquakes.getSelectedEndDate().dateProperty().addListener((observable, oldValue, newValue) -> {
-            endDateFilter.setValue(LocalDate.parse(dataEarthquakes.getSelectedEndDate().toString()));
-        });
-
-        /* Intensity Filter */
-        dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
-        dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
-
+        MyBindings.createBindingRegion(dataEarthquakes, regionFilter);
+        MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
+        MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
+        MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
     }
 
     public void initialize() throws IOException {

@@ -1,5 +1,6 @@
 package fr.groupeF.sae_sisfrance;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,6 +21,7 @@ public class DataFilter {
     private MyDate selectedEndDate; // Value of the end date filter
     private SimpleDoubleProperty selectedMinIntensity; // Value of the minimal intensity
     private SimpleDoubleProperty selectedMaxIntensity; // Value of the maximal intensity
+    private SimpleBooleanProperty filterApplied;
 
     public DataFilter(ObservableList<Earthquake> allEarthquake) {
         // Initialization of the two eartquakes list
@@ -34,6 +36,7 @@ public class DataFilter {
         selectedEndDate = new MyDate("");
         selectedMinIntensity = new SimpleDoubleProperty(2);
         selectedMaxIntensity = new SimpleDoubleProperty(12);
+        filterApplied = new SimpleBooleanProperty(false);
         /* Listener allow the region filter to update the filtered list
         without having to click on the button "Filtrer" */
         selectedRegion.addListener((observable, oldValue, newValue) -> {
@@ -60,8 +63,11 @@ public class DataFilter {
     }
     public SimpleDoubleProperty selectedMaxIntensensityProperty() {return selectedMaxIntensity; }
 
+    public SimpleBooleanProperty filterAppliedProperty() {return filterApplied;}
+
     // ---------- GETTER ----------
 
+    public boolean getFilterApplied() {return filterApplied.get();}
     public ObservableList<Earthquake> getAllEarthquakes() {
         return allEarthquakes;
     }
@@ -145,29 +151,20 @@ public class DataFilter {
     }
 
     public void applyFilter() {
+        filterApplied.set(false);
         filteredEarthquakes.clear();
-        boolean regionFilterEmpty = selectedRegion.getValue().isEmpty();
-        boolean coorFilterEmpty = (selectedLatitude.getValue() == 0 || selectedLongitude.getValue() == 0 || selectedRayon.getValue() == 0);
-        if (regionFilterEmpty && coorFilterEmpty) {
-            for (Earthquake earthquake: allEarthquakes) {
-                if (isBetweenDates(earthquake)) {
-                    if (isBetweenIntensity(earthquake)) {
-                        filteredEarthquakes.add(earthquake);
-                    }
-                }
-            }
-        } else {
-            for (Earthquake earthquake: allEarthquakes) {
-                if (isInRegion(earthquake)) {
-                    if (isInCoordinate(earthquake)) {
-                        if (isBetweenDates(earthquake)) {
-                            if (isBetweenIntensity(earthquake)) {
-                                filteredEarthquakes.add(earthquake);
-                            }
+        for (Earthquake earthquake: allEarthquakes) {
+            if (isInRegion(earthquake)) {
+                if (isInCoordinate(earthquake)) {
+                    if (isBetweenDates(earthquake)) {
+                        if (isBetweenIntensity(earthquake)) {
+                            filteredEarthquakes.add(earthquake);
                         }
                     }
                 }
             }
         }
+        filterApplied.set(false);
+        filterApplied.set(true);
     }
 }

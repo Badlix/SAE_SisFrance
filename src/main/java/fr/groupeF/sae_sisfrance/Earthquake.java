@@ -67,7 +67,6 @@ public Earthquake(List<String> data) {
         return intensity;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (o == this) {
