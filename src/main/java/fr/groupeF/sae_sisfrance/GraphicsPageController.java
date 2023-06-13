@@ -1,7 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
 import javafx.beans.binding.Bindings;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -12,10 +12,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
@@ -32,7 +28,7 @@ public class GraphicsPageController extends BorderPane {
     private ObservableList<String> intensity;
     private ListView<Double> listView;
     //@FXML
-    //private LineChart<String, Number> lineChartSeismPerRegion;
+    //private LineChart<String, Number> lineChartSeismPerZone;
     @FXML
     private Label numberLabel1;
     @FXML
@@ -46,7 +42,7 @@ public class GraphicsPageController extends BorderPane {
     @FXML
     private Label numberLabel6;
     @FXML
-    ChoiceBox<String> regionFilter;
+    ComboBox<String> zoneFilter;
     @FXML
     TextField longFilter;
     @FXML
@@ -73,15 +69,16 @@ public class GraphicsPageController extends BorderPane {
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
-                /* Region comBox Options */
-                ObservableList<String> regions = FXCollections.observableArrayList();
+                /* Zone comBox Options */
+                ObservableList<String> zones = FXCollections.observableArrayList();
                 for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
-                    if (!regions.contains(earthquake.getRegion()))
-                        regions.add(earthquake.getRegion());
+                    if (!zones.contains(earthquake.getZone()))
+                        zones.add(earthquake.getZone());
                 }
-                regions.sort(String::compareToIgnoreCase);
-                regions.add(0, "");
-                regionFilter.setItems(regions);
+                zones.sort(String::compareToIgnoreCase);
+                zones.add(0, "ZONE");
+                zoneFilter.setValue("ZONE");
+                zoneFilter.setItems(zones);
             }
         });
         dataEarthquakes.filterAppliedProperty().addListener((observable, oldValue, newValue) -> {
@@ -90,8 +87,8 @@ public class GraphicsPageController extends BorderPane {
                 /* Change Labels values */
                 numberLabel1.setText(StatCalcul.totalNumberOfEarthquakes(dataFilter) + "\nNB TOTAL");
                 numberLabel2.setText(StatCalcul.globalAverageIntensity(dataFilter) + "\nAVG INTENSITY");
-                numberLabel3.setText(StatCalcul.mostAffectedRegion(dataFilter).getKey() + "\nMOST AFFECTED REGION (" + StatCalcul.mostAffectedRegion(dataFilter).getValue() + ")");
-                numberLabel4.setText(StatCalcul.globalAverageEarthquakeByRegion(dataFilter) + "\nAVG NB BY REGION");
+                numberLabel3.setText(StatCalcul.mostAffectedZone(dataFilter).getKey() + "\nMOST AFFECTED REGION (" + StatCalcul.mostAffectedZone(dataFilter).getValue() + ")");
+                numberLabel4.setText(StatCalcul.globalAverageEarthquakeByZone(dataFilter) + "\nAVG NB BY REGION");
                 numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter) + "\nMOST AFFECTED YEAR");
                 numberLabel6.setText(StatCalcul.globalAverageEarthquakesByYear(dataFilter) + "\nAVG NB BY YEAR");
                 graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
@@ -103,7 +100,7 @@ public class GraphicsPageController extends BorderPane {
     }
 
     public void createBindings() {
-        MyBindings.createBindingRegion(dataEarthquakes, regionFilter);
+        MyBindings.createBindingZone(dataEarthquakes, zoneFilter);
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
@@ -122,7 +119,7 @@ public class GraphicsPageController extends BorderPane {
         stage.show();
         // graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
         // graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
-        // graphicsSeismPerRegion(dataEarthquakes.getFilteredEarthquakes());
+        // graphicsSeismPerZone(dataEarthquakes.getFilteredEarthquakes());
     }
     @FXML
     public void newFile(){
@@ -172,11 +169,11 @@ public class GraphicsPageController extends BorderPane {
         }
 
 
-    /*public void graphicsSeismPerRegion(ObservableList<Earthquake> dataGraphics){
+    /*public void graphicsSeismPerZone(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Earthquake element : dataGraphics) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(element.getShock()),Double.valueOf(element.getRegion())));
-        lineChartSeismPerRegion.getData().add(series);
+            series.getData().add(new XYChart.Data<>(String.valueOf(element.getShock()),Double.valueOf(element.getZone())));
+        lineChartSeismPerZone.getData().add(series);
     }
     public void showGraphics() {
         String selectedOption = choiceBox.getValue().toString();
@@ -187,20 +184,20 @@ public class GraphicsPageController extends BorderPane {
         lineChart.getData().clear();
 
         // Génère le graphique avec les nouvelles données
-        graphicsIntensityPerRegion(dataGraphics);
+        graphicsIntensityPerZone(dataGraphics);
     }
 */
 /*    private ObservableList<Earthquake> getDataForOption(String selectedOption) {
         ObservableList<Earthquake> data = FXCollections.observableArrayList();
 
         if (selectedOption.equals("Option 1")) {
-            graphicsIntensityPerRegion(DataFilter.getFilteredEarthquakes());
+            graphicsIntensityPerZone(DataFilter.getFilteredEarthquakes());
 
         } else if (selectedOption.equals("Option 2")) {
             graphicsDatePerIntensity(DataFilter.getFilteredEarthquakes());
 
         } else if (selectedOption.equals("Option 3")) {
-            graphicsSeismPerRegion(DataFilter.getFilteredEarthquakes());
+            graphicsSeismPerZone(DataFilter.getFilteredEarthquakes());
 
         }
 

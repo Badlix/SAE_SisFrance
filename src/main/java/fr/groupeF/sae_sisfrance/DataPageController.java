@@ -35,11 +35,11 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     TableColumn<Object, Object> dateColumn;
     @FXML
-    TableColumn<Object, Object> regionColumn;
+    TableColumn<Object, Object> zoneColumn;
     @FXML
     TableColumn<Object, Object> intensityColumn;
     @FXML
-    ChoiceBox<String> regionFilter;
+    ComboBox<String> zoneFilter;
     @FXML
     TextField longFilter;
     @FXML
@@ -67,7 +67,7 @@ public class DataPageController extends BorderPane implements Initializable {
         System.out.println("DataPageController initialized");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("identifiant"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
+        zoneColumn.setCellValueFactory(new PropertyValueFactory<>("zone"));
         intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
         initMapView();
     }
@@ -81,14 +81,15 @@ public class DataPageController extends BorderPane implements Initializable {
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
-                ObservableList<String> regions = FXCollections.observableArrayList();
+                ObservableList<String> zones = FXCollections.observableArrayList();
                 for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
-                    if (!regions.contains(earthquake.getRegion()))
-                        regions.add(earthquake.getRegion());
+                    if (!zones.contains(earthquake.getZone()))
+                        zones.add(earthquake.getZone());
                 }
-                regions.sort(String::compareToIgnoreCase);
-                regions.add(0, "");
-                regionFilter.setItems(regions);
+                zones.sort(String::compareToIgnoreCase);
+                zones.add(0, "ZONE");
+                zoneFilter.setValue("ZONE");
+                zoneFilter.setItems(zones);
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
             }
         });
@@ -104,7 +105,7 @@ public class DataPageController extends BorderPane implements Initializable {
     }
 
     public void createBindings() {
-        MyBindings.createBindingRegion(dataEarthquakes, regionFilter);
+        MyBindings.createBindingZone(dataEarthquakes, zoneFilter);
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
@@ -152,7 +153,7 @@ public class DataPageController extends BorderPane implements Initializable {
                 String rechercheTexte = newValue.toLowerCase();
                 if (element.getDate().toString().indexOf(rechercheTexte) > -1) {
                     return true;
-                } else if (element.getRegion().toLowerCase().indexOf(rechercheTexte) > -1) {
+                } else if (element.getZone().toLowerCase().indexOf(rechercheTexte) > -1) {
                     return true;
                 } else if (element.getIntensity().toLowerCase().indexOf(rechercheTexte) > -1) {
                     return true;

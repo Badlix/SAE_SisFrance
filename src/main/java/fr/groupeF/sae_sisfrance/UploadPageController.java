@@ -27,7 +27,7 @@ public class UploadPageController extends BorderPane {
     @FXML
     private Label fileReadableLabel;
     @FXML
-    private ComboBox<String> regionFilter;
+    private ComboBox<String> zoneFilter;
     @FXML
     private TextField latFilter;
     @FXML
@@ -57,9 +57,9 @@ public class UploadPageController extends BorderPane {
         System.out.println("UploadPageController initialized");
         // ---------- BINDING BETWEEN FILTERS AND dataEartquakes ----------
 
-        /* Region Filter */
-        regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
-            dataEarthquakes.setSelectedRegion(regionFilter.getValue());
+        /* Zone Filter */
+        zoneFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
+            dataEarthquakes.setSelectedZone(zoneFilter.getValue());
         });
 
         /* Coordinate Filter */
@@ -80,19 +80,20 @@ public class UploadPageController extends BorderPane {
         dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
 
-        // ---------- BINDING BETWEEN RegionFilter options AND dataEartquakes ----------
+        // ---------- BINDING BETWEEN ZoneFilter options AND dataEartquakes ----------
 
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
-                ObservableList<String> regions = FXCollections.observableArrayList();
+                ObservableList<String> zones = FXCollections.observableArrayList();
                 for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
-                    if (!regions.contains(earthquake.getRegion()))
-                        regions.add(earthquake.getRegion());
+                    if (!zones.contains(earthquake.getZone()))
+                        zones.add(earthquake.getZone());
                 }
-                regions.sort(String::compareToIgnoreCase);
-                regions.add(0, "");
-                regionFilter.setItems(regions);
+                zones.sort(String::compareToIgnoreCase);
+                zoneFilter.setValue("ZONE");
+                zones.add(0, "ZONE");
+                zoneFilter.setItems(zones);
             }
         });
     }
@@ -152,7 +153,7 @@ public class UploadPageController extends BorderPane {
     }
 
     public void enableFilter() {
-        regionFilter.setDisable(false);
+        zoneFilter.setDisable(false);
         latFilter.setDisable(false);
         longFilter.setDisable(false);
         rayonFilter.setDisable(false);

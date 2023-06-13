@@ -10,7 +10,7 @@ public class Earthquake {
     private final String date; // Date du tremblement de terre
 //    private final String hour; // Heure du tremblement de terre
 //    private final String name; // Nom du tremblement de terre
-    private final String region; // endroit où le tremblement de terre s'est produit
+    private final String zone; // endroit où le tremblement de terre s'est produit
 //    private final String shock; // Type de choc causé par le tremblement de terre
 //    private final String xRGF; // Coordonnée X (système de référence géographique)
 //    private final String yRGF; // Coordonnée Y (système de référence géographique)
@@ -26,7 +26,7 @@ public Earthquake(List<String> data) {
     this.date = data.get(1).replace("\"", "");
 //    this.hour = data.get(2).replace("\"", "");
 //    this.name = data.get(3).replace("\"", "");
-    this.region = data.get(4).replace("\"", "");
+    this.zone = data.get(4).replace("\"", "");
 //    this.shock = data.get(5).replace("\"", "");
 //    this.xRGF = data.get(6).replace("\"", "");
 //    this.yRGF = data.get(7).replace("\"", "");
@@ -51,8 +51,8 @@ public Earthquake(List<String> data) {
         return Integer.valueOf(numbers[0]);
     }
 
-    public String getRegion() {
-        return region;
+    public String getZone() {
+        return zone;
     }
 
     public String getLatitude() {

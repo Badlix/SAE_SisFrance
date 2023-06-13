@@ -2,10 +2,7 @@ package fr.groupeF.sae_sisfrance;
 
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import org.controlsfx.control.RangeSlider;
 
@@ -33,8 +30,8 @@ public class MyBindings {
         });
     }
 
-    static void createBindingRegion(DataFilter dataFilter, ChoiceBox<String> regionFilter) {
-        regionFilter.valueProperty().bindBidirectional(dataFilter.selectedRegionProperty());
+    static void createBindingZone(DataFilter dataFilter, ComboBox<String> zoneFilter) {
+        zoneFilter.valueProperty().bindBidirectional(dataFilter.selectedZoneProperty());
     }
 
     static void createBindingCoordinate(DataFilter dataFilter, TextField longFilter, TextField latFilter, TextField rayonFilter) {

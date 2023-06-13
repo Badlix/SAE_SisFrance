@@ -13,7 +13,7 @@ import java.util.Map;
 public class DataFilter {
     private ObservableList<Earthquake> allEarthquakes; // List of all Earthquakes extracted from the csv file
     private ObservableList<Earthquake> filteredEarthquakes; // Filtered list of Earthquakes
-    private SimpleStringProperty selectedRegion; // Value of region filter
+    private SimpleStringProperty selectedZone; // Value of zone filter
     private SimpleDoubleProperty selectedLatitude; // Value of latitude filter
     private SimpleDoubleProperty selectedLongitude; // Value of longitude filter
     private SimpleIntegerProperty selectedRayon; // Value of rayon filter
@@ -28,7 +28,7 @@ public class DataFilter {
         allEarthquakes = allEarthquake;
         filteredEarthquakes = FXCollections.observableArrayList(allEarthquakes);
         // Initialization of the filter's values
-        selectedRegion = new SimpleStringProperty("");
+        selectedZone = new SimpleStringProperty("");
         selectedLatitude = new SimpleDoubleProperty();
         selectedLongitude = new SimpleDoubleProperty(0);
         selectedRayon = new SimpleIntegerProperty(0);
@@ -37,17 +37,17 @@ public class DataFilter {
         selectedMinIntensity = new SimpleDoubleProperty(2);
         selectedMaxIntensity = new SimpleDoubleProperty(12);
         filterApplied = new SimpleBooleanProperty(false);
-        /* Listener allow the region filter to update the filtered list
+        /* Listener allow the zone filter to update the filtered list
         without having to click on the button "Filtrer" */
-        selectedRegion.addListener((observable, oldValue, newValue) -> {
+        selectedZone.addListener((observable, oldValue, newValue) -> {
             applyFilter();
         });
     }
 
     // ---------- PROPERTY ----------
 
-    public SimpleStringProperty selectedRegionProperty() {
-        return selectedRegion;
+    public SimpleStringProperty selectedZoneProperty() {
+        return selectedZone;
     }
     public SimpleDoubleProperty selectedLatitudeProperty() {
         return selectedLatitude;
@@ -86,8 +86,8 @@ public class DataFilter {
 
     // ---------- SETTER ----------
 
-    public void setSelectedRegion(String selectedRegion) {
-        this.selectedRegion.setValue(selectedRegion);
+    public void setSelectedZone(String selectedZone) {
+        this.selectedZone.setValue(selectedZone);
     }
 
     public void setSelectedLatitude(double selectedLatitude) {
@@ -112,11 +112,11 @@ public class DataFilter {
 
     // ---------- OTHERS ----------
 
-    private boolean isInRegion(Earthquake earthquake) {
-        if (this.selectedRegion.getValue().isEmpty()) {
+    private boolean isInZone(Earthquake earthquake) {
+        if (this.selectedZone.getValue().equals("ZONE")) {
             return true;
         }
-        return earthquake.getRegion().contentEquals(this.selectedRegion.getValue());
+        return earthquake.getZone().contentEquals(this.selectedZone.getValue());
     }
 
     private boolean isInCoordinate(Earthquake earthquake) {
@@ -154,7 +154,7 @@ public class DataFilter {
         filterApplied.set(false);
         filteredEarthquakes.clear();
         for (Earthquake earthquake: allEarthquakes) {
-            if (isInRegion(earthquake)) {
+            if (isInZone(earthquake)) {
                 if (isInCoordinate(earthquake)) {
                     if (isBetweenDates(earthquake)) {
                         if (isBetweenIntensity(earthquake)) {

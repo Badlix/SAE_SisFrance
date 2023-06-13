@@ -15,12 +15,20 @@
     -fx-text-fill: black;
 }
 .menu{
-
     -fx-padding: 10;
     -fx-min-height: 50;
 }
-.menu .text-field .menu{
-    -fx-background-color: white;
+.menu .cell, .menu .combo-box{
+    -fx-border-color: #9AC8EB;
+    -fx-prompt-text-fill: blue;
+    -fx-background-color: #a8daf5;
+}
+.menu .combo-box{
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.menu .cell:hover, .menu .combo-box:hover{
+    -fx-background-color: #9AC8EB;
 }
 
 .custom-menu-item:hover, .custom-menu-item:focused {
