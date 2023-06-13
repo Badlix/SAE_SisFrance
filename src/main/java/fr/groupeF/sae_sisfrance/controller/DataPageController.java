@@ -1,13 +1,14 @@
-package fr.groupeF.sae_sisfrance;
+package fr.groupeF.sae_sisfrance.controller;
 
 import com.gluonhq.maps.MapPoint;
+import fr.groupeF.sae_sisfrance.utils.CustomMapLayer;
+import fr.groupeF.sae_sisfrance.DataFilter;
+import fr.groupeF.sae_sisfrance.utils.Earthquake;
+import fr.groupeF.sae_sisfrance.MyBindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -115,7 +116,7 @@ public class DataPageController extends BorderPane implements Initializable {
                 zoneFilter.setValue("ZONE");
                 zoneFilter.setItems(zones);
 
-                // init des options des checkbox de qualité
+                // initialization of quality options
                 qualityCheckboxs = new ArrayList<>();
                 qualityLabels = new ArrayList<>();
                 ObservableList<String> quality = FXCollections.observableArrayList();
@@ -135,12 +136,12 @@ public class DataPageController extends BorderPane implements Initializable {
                 }
                 dataFilter.setSelectedQuality(quality);
 
-                // init des elements de la table
+                // initialization of table elements
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
                 createBindings();
             }
         });
-        // --------- BNDING DES VALEURS DU TABLEAU ET DE LA MAP ---------------
+        // --------- BNDING BETWEEN THE TABLE AND THE MAP ---------------
         dataEarthquakes.filterAppliedProperty().addListener((observable, oldValue, newValue) -> {
             if (dataEarthquakes.filterAppliedProperty().getValue() == true) {
                 changeEarthquakesOnMap();

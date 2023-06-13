@@ -1,8 +1,5 @@
-package fr.groupeF.sae_sisfrance;
+package fr.groupeF.sae_sisfrance.utils;
 
-import javafx.beans.property.SimpleIntegerProperty;
-
-import java.time.Year;
 import java.util.List;
 
 /**

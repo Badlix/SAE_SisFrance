@@ -1,12 +1,10 @@
 package fr.groupeF.sae_sisfrance;
 
 import javafx.beans.binding.Bindings;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
 import org.controlsfx.control.RangeSlider;
 
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class MyBindings {
      * @param dataEarthquakes The data filter containing the selected start date.
      * @param startDateFilter The UI control for the start date filter.
      */
-    static void createBindingDates(DataFilter dataEarthquakes, DatePicker startDateFilter, DatePicker endDateFilter) {
+    public static void createBindingDates(DataFilter dataEarthquakes, DatePicker startDateFilter, DatePicker endDateFilter) {
         /* Start Date Filter */
         startDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
             dataEarthquakes.getSelectedStartDate().dateProperty().set(startDateFilter.valueProperty().getValue().toString());
@@ -46,7 +44,7 @@ public class MyBindings {
      * @param dataFilter  The data filter containing the selected zone.
      * @param zoneFilter  The UI control for the zone filter.
      */
-    static void createBindingZone(DataFilter dataFilter, ComboBox<String> zoneFilter) {
+    public static void createBindingZone(DataFilter dataFilter, ComboBox<String> zoneFilter) {
         dataFilter.selectedZoneProperty().bindBidirectional(zoneFilter.valueProperty());
     }
 
@@ -58,7 +56,7 @@ public class MyBindings {
      * @param latFilter    The UI control for the latitude filter.
      * @param rayonFilter  The UI control for the rayon filter.
      */
-    static void createBindingCoordinate(DataFilter dataFilter, TextField longFilter, TextField latFilter, TextField rayonFilter) {
+    public static void createBindingCoordinate(DataFilter dataFilter, TextField longFilter, TextField latFilter, TextField rayonFilter) {
         Bindings.bindBidirectional(latFilter.textProperty(), dataFilter.selectedLatitudeProperty(), MyBindings.converterDoubleToString);
         Bindings.bindBidirectional(longFilter.textProperty(), dataFilter.selectedLongitudeProperty(), MyBindings.converterDoubleToString);
         Bindings.bindBidirectional(rayonFilter.textProperty(), dataFilter.selectedRayonProperty(), MyBindings.converterIntToString);
@@ -70,7 +68,7 @@ public class MyBindings {
      * @param dataFilter       The data filter containing the selected intensity range.
      * @param intensityFilter  The UI control for the intensity filter.
      */
-    static void createBindingIntensity(DataFilter dataFilter, RangeSlider intensityFilter) {
+    public static void createBindingIntensity(DataFilter dataFilter, RangeSlider intensityFilter) {
         dataFilter.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataFilter.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
     }
@@ -82,7 +80,7 @@ public class MyBindings {
      * @param qualityFilter   The CheckBox for the quality filters.
      * @param labels          The labels associated with the quality filters.
      */
-    static void createBindingQuality(DataFilter dataFilter, List<CheckBox> qualityFilter, List<String> labels) {
+    public static void createBindingQuality(DataFilter dataFilter, List<CheckBox> qualityFilter, List<String> labels) {
         for (int i = 0; i < qualityFilter.size(); i++) {
             dataFilter.getSelectedQuality().get(labels.get(i)).bindBidirectional(qualityFilter.get(i).selectedProperty());
         }
@@ -92,7 +90,7 @@ public class MyBindings {
      * A StringConverter fonction that converts a Number object to a formatted string representation.
      * It is used for bindind a String and a Double Property with a condition.
      */
-    static StringConverter<Number> converterDoubleToString = new StringConverter<Number>() {
+    public static StringConverter<Number> converterDoubleToString = new StringConverter<Number>() {
         @Override
         public String toString(Number object) {
             Double round = Math.round(object.doubleValue() * 100.0) / 100.0;
@@ -117,7 +115,7 @@ public class MyBindings {
      * A StringConverter fonction that converts a Number object to a formatted string representation.
      * It is used for bindind a String and a Interger Property with a condition.
      */
-    static StringConverter<Number> converterIntToString = new StringConverter<Number>() {
+    public static StringConverter<Number> converterIntToString = new StringConverter<Number>() {
         @Override
         public String toString(Number object) {;
             return object == null || object.intValue() == 0 ? "" :  object.toString();

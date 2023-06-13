@@ -1,5 +1,9 @@
-package fr.groupeF.sae_sisfrance;
+package fr.groupeF.sae_sisfrance.controller;
 
+import fr.groupeF.sae_sisfrance.DataFilter;
+import fr.groupeF.sae_sisfrance.utils.DataImporter;
+import fr.groupeF.sae_sisfrance.utils.Earthquake;
+import fr.groupeF.sae_sisfrance.MyBindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;

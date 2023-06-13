@@ -1,11 +1,13 @@
-package fr.groupeF.sae_sisfrance;
+package fr.groupeF.sae_sisfrance.utils;
+
+import fr.groupeF.sae_sisfrance.DataFilter;
 
 import java.util.*;
 
 /**
  * A class use for calculating various statistics related to earthquakes.
  */
-public class StatCalcul {
+public class StatCalculations {
 
     /**
      * Returns the total number of earthquakes based on the data filter.

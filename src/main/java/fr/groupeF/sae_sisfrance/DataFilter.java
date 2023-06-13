@@ -1,5 +1,8 @@
 package fr.groupeF.sae_sisfrance;
 
+import fr.groupeF.sae_sisfrance.utils.Coordinate;
+import fr.groupeF.sae_sisfrance.utils.Earthquake;
+import fr.groupeF.sae_sisfrance.utils.MyDate;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

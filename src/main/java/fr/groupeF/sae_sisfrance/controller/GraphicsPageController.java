@@ -1,5 +1,9 @@
-package fr.groupeF.sae_sisfrance;
+package fr.groupeF.sae_sisfrance.controller;
 
+import fr.groupeF.sae_sisfrance.DataFilter;
+import fr.groupeF.sae_sisfrance.utils.Earthquake;
+import fr.groupeF.sae_sisfrance.MyBindings;
+import fr.groupeF.sae_sisfrance.utils.StatCalculations;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -114,12 +118,12 @@ public class GraphicsPageController extends BorderPane {
         dataEarthquakes.filterAppliedProperty().addListener((observable, oldValue, newValue) -> {
             if (dataEarthquakes.filterAppliedProperty().getValue() == true) {
                 /* Change Labels values */
-                numberLabel1.setText(Integer.toString(StatCalcul.totalNumberOfEarthquakes(dataFilter)));
-                numberLabel2.setText(Double.toString(StatCalcul.globalAverageIntensity(dataFilter)));
-                numberLabel3.setText(StatCalcul.mostAffectedZone(dataFilter).getKey() + " (" + StatCalcul.mostAffectedZone(dataFilter).getValue() + ")");
-                numberLabel4.setText(Double.toString(StatCalcul.globalAverageEarthquakeByZone(dataFilter)));
-                numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter).getKey().toString() + " (" + StatCalcul.mostAffectedYear(dataFilter).getValue().toString() + ")");
-                numberLabel6.setText(Double.toString(StatCalcul.globalAverageEarthquakesByYear(dataFilter)));
+                numberLabel1.setText(Integer.toString(StatCalculations.totalNumberOfEarthquakes(dataFilter)));
+                numberLabel2.setText(Double.toString(StatCalculations.globalAverageIntensity(dataFilter)));
+                numberLabel3.setText(StatCalculations.mostAffectedZone(dataFilter).getKey() + " (" + StatCalculations.mostAffectedZone(dataFilter).getValue() + ")");
+                numberLabel4.setText(Double.toString(StatCalculations.globalAverageEarthquakeByZone(dataFilter)));
+                numberLabel5.setText(StatCalculations.mostAffectedYear(dataFilter).getKey().toString() + " (" + StatCalculations.mostAffectedYear(dataFilter).getValue().toString() + ")");
+                numberLabel6.setText(Double.toString(StatCalculations.globalAverageEarthquakesByYear(dataFilter)));
                 graphicsSeismPerYear();
                 graphicsIntensityPerYear();
             }
@@ -155,7 +159,7 @@ public class GraphicsPageController extends BorderPane {
      */
     public void graphicsSeismPerYear(){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        TreeMap<Integer, Integer> nbEarthquakeByYear = StatCalcul.yearOcc(dataEarthquakes);
+        TreeMap<Integer, Integer> nbEarthquakeByYear = StatCalculations.yearOcc(dataEarthquakes);
         for (Map.Entry entry : nbEarthquakeByYear.entrySet()) {
             series.getData().add(new XYChart.Data<>(entry.getKey().toString(), Integer.valueOf(entry.getValue().toString())));
         }
@@ -169,7 +173,7 @@ public class GraphicsPageController extends BorderPane {
      */
     public void graphicsIntensityPerYear(){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        TreeMap<Integer, Double> averageIntensityPerYear = StatCalcul.globalAverageintensityByYear(dataEarthquakes);
+        TreeMap<Integer, Double> averageIntensityPerYear = StatCalculations.globalAverageintensityByYear(dataEarthquakes);
         for (Map.Entry entry : averageIntensityPerYear.entrySet()) {
             series.getData().add(new XYChart.Data<>(entry.getKey().toString(), Double.valueOf(entry.getValue().toString())));
         }

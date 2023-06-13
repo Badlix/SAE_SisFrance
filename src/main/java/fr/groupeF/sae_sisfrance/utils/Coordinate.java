@@ -1,4 +1,4 @@
-package fr.groupeF.sae_sisfrance;
+package fr.groupeF.sae_sisfrance.utils;
 
 /* Code found on the internet */
 

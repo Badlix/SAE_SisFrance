@@ -8,4 +8,8 @@ module com.example.sae_sisfrance {
 
     opens fr.groupeF.sae_sisfrance to javafx.fxml;
     exports fr.groupeF.sae_sisfrance;
+    opens fr.groupeF.sae_sisfrance.utils to javafx.fxml;
+    exports fr.groupeF.sae_sisfrance.utils;
+    exports fr.groupeF.sae_sisfrance.controller;
+    opens fr.groupeF.sae_sisfrance.controller to javafx.fxml;
 }

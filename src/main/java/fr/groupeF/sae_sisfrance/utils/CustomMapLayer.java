@@ -1,4 +1,4 @@
-package fr.groupeF.sae_sisfrance;
+package fr.groupeF.sae_sisfrance.utils;
 
 import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;

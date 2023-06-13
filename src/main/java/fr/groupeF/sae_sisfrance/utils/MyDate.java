@@ -1,4 +1,4 @@
-package fr.groupeF.sae_sisfrance;
+package fr.groupeF.sae_sisfrance.utils;
 
 import javafx.beans.property.SimpleStringProperty;
 

@@ -3,63 +3,63 @@
   <ID>JAVA</ID>
   <OriginalElement>D:/Documents/Univ/SAE_SisFrance</OriginalElement>
   <nodes>
-    <node x="-103.0" y="1389.0">fr.groupeF.sae_sisfrance.DataImporter</node>
-    <node x="1026.5" y="1367.0">fr.groupeF.sae_sisfrance.CustomMapLayer</node>
+    <node x="-103.0" y="1389.0">fr.groupeF.sae_sisfrance.utils.DataImporter</node>
+    <node x="1026.5" y="1367.0">fr.groupeF.sae_sisfrance.utils.CustomMapLayer</node>
     <node x="1797.0" y="-15.0">fr.groupeF.sae_sisfrance.Main</node>
     <node x="1991.0" y="-15.0">fr.groupeF.sae_sisfrance.MyBindings</node>
-    <node x="466.25" y="361.0">fr.groupeF.sae_sisfrance.Earthquake</node>
-    <node x="1004.0" y="1861.0">fr.groupeF.sae_sisfrance.DataPageController</node>
-    <node x="1331.0" y="-15.0">fr.groupeF.sae_sisfrance.Coordinate</node>
+    <node x="466.25" y="361.0">fr.groupeF.sae_sisfrance.utils.Earthquake</node>
+    <node x="1004.0" y="1861.0">fr.groupeF.sae_sisfrance.controller.DataPageController</node>
+    <node x="1331.0" y="-15.0">fr.groupeF.sae_sisfrance.utils.Coordinate</node>
     <node x="760.25" y="594.0">fr.groupeF.sae_sisfrance.MyDateTest</node>
-    <node x="488.3493589743589" y="-15.0">fr.groupeF.sae_sisfrance.MyDate</node>
+    <node x="488.3493589743589" y="-15.0">fr.groupeF.sae_sisfrance.utils.MyDate</node>
     <node x="430.95833333333326" y="1079.0">fr.groupeF.sae_sisfrance.DataFilter</node>
-    <node x="619.0" y="1883.0">fr.groupeF.sae_sisfrance.GraphicsPageController</node>
+    <node x="619.0" y="1883.0">fr.groupeF.sae_sisfrance.controller.GraphicsPageController</node>
     <node x="18.0" y="1962.0">fr.groupeF.sae_sisfrance.DataFilterTest</node>
-    <node x="338.99999999999994" y="1927.0">fr.groupeF.sae_sisfrance.UploadPageController</node>
+    <node x="338.99999999999994" y="1927.0">fr.groupeF.sae_sisfrance.controller.UploadPageController</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="fr.groupeF.sae_sisfrance.DataFilterTest" target="fr.groupeF.sae_sisfrance.Earthquake" relationship="CREATE">
+    <edge source="fr.groupeF.sae_sisfrance.DataFilterTest" target="fr.groupeF.sae_sisfrance.utils.Earthquake" relationship="CREATE">
       <point x="100.0" y="-105.0" />
       <point x="268.5" y="1138.5" />
       <point x="249.0" y="1138.5" />
       <point x="249.0" y="688.0" />
       <point x="-136.5" y="0.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.UploadPageController" target="fr.groupeF.sae_sisfrance.DataFilter" relationship="CREATE">
+    <edge source="fr.groupeF.sae_sisfrance.controller.UploadPageController" target="fr.groupeF.sae_sisfrance.DataFilter" relationship="CREATE">
       <point x="-129.99999999999994" y="-127.5" />
       <point x="304.0" y="1939.5" />
       <point x="304.0" y="1439.0" />
       <point x="-176.50033333333323" y="0.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.UploadPageController" target="fr.groupeF.sae_sisfrance.DataFilter" relationship="TO_ONE">
+    <edge source="fr.groupeF.sae_sisfrance.controller.UploadPageController" target="fr.groupeF.sae_sisfrance.DataFilter" relationship="TO_ONE">
       <point x="5.6843418860808015E-14" y="-140.0" />
       <point x="469.0" y="1857.0" />
       <point x="607.458" y="1857.0" />
       <point x="-3.3333333328755543E-4" y="360.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.DataPageController" target="fr.groupeF.sae_sisfrance.CustomMapLayer" relationship="TO_ONE">
+    <edge source="fr.groupeF.sae_sisfrance.controller.DataPageController" target="fr.groupeF.sae_sisfrance.utils.CustomMapLayer" relationship="TO_ONE">
       <point x="15.0" y="-206.0" />
       <point x="15.0" y="72.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.DataImporter" target="fr.groupeF.sae_sisfrance.Earthquake" relationship="CREATE">
+    <edge source="fr.groupeF.sae_sisfrance.utils.DataImporter" target="fr.groupeF.sae_sisfrance.utils.Earthquake" relationship="CREATE">
       <point x="130.5" y="0.0" />
       <point x="249.0" y="1439.0" />
       <point x="249.0" y="688.0" />
       <point x="-136.5" y="0.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.DataPageController" target="fr.groupeF.sae_sisfrance.CustomMapLayer" relationship="CREATE">
+    <edge source="fr.groupeF.sae_sisfrance.controller.DataPageController" target="fr.groupeF.sae_sisfrance.utils.CustomMapLayer" relationship="CREATE">
       <point x="30.0" y="-206.0" />
       <point x="30.0" y="72.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.DataFilter" target="fr.groupeF.sae_sisfrance.MyDate" relationship="CREATE">
+    <edge source="fr.groupeF.sae_sisfrance.DataFilter" target="fr.groupeF.sae_sisfrance.utils.MyDate" relationship="CREATE">
       <point x="-3.3333333328755543E-4" y="-360.0" />
       <point x="607.458" y="1047.0" />
       <point x="1049.75" y="1047.0" />
       <point x="1049.75" y="147.0" />
       <point x="121.99964102564115" y="0.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.Earthquake" target="fr.groupeF.sae_sisfrance.MyDate" relationship="CREATE">
+    <edge source="fr.groupeF.sae_sisfrance.utils.Earthquake" target="fr.groupeF.sae_sisfrance.utils.MyDate" relationship="CREATE">
       <point x="0.0" y="327.0" />
       <point x="602.75" y="1047.0" />
       <point x="1049.75" y="1047.0" />
@@ -73,38 +73,38 @@
       <point x="304.0" y="1439.0" />
       <point x="-176.50033333333323" y="0.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.DataFilter" target="fr.groupeF.sae_sisfrance.Earthquake" relationship="TO_MANY">
+    <edge source="fr.groupeF.sae_sisfrance.DataFilter" target="fr.groupeF.sae_sisfrance.utils.Earthquake" relationship="TO_MANY">
       <point x="-19.708333333333258" y="-360.0" />
       <point x="-15.0" y="327.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.DataFilter" target="fr.groupeF.sae_sisfrance.MyDate" relationship="TO_ONE">
+    <edge source="fr.groupeF.sae_sisfrance.DataFilter" target="fr.groupeF.sae_sisfrance.utils.MyDate" relationship="TO_ONE">
       <point x="-113.95833333333326" y="-360.0" />
       <point x="493.5" y="1047.0" />
       <point x="448.75" y="1047.0" />
       <point x="448.75" y="147.0" />
       <point x="-122.0003589743589" y="0.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.GraphicsPageController" target="fr.groupeF.sae_sisfrance.DataFilter" relationship="TO_ONE">
+    <edge source="fr.groupeF.sae_sisfrance.controller.GraphicsPageController" target="fr.groupeF.sae_sisfrance.DataFilter" relationship="TO_ONE">
       <point x="0.0" y="-184.0" />
       <point x="801.5" y="1857.0" />
       <point x="607.458" y="1857.0" />
       <point x="-3.3333333328755543E-4" y="360.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.Earthquake" target="fr.groupeF.sae_sisfrance.MyDate" relationship="TO_ONE">
+    <edge source="fr.groupeF.sae_sisfrance.utils.Earthquake" target="fr.groupeF.sae_sisfrance.utils.MyDate" relationship="TO_ONE">
       <point x="-109.25" y="327.0" />
       <point x="493.5" y="1047.0" />
       <point x="448.75" y="1047.0" />
       <point x="448.75" y="147.0" />
       <point x="-122.0003589743589" y="0.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.MyDateTest" target="fr.groupeF.sae_sisfrance.MyDate" relationship="CREATE">
+    <edge source="fr.groupeF.sae_sisfrance.MyDateTest" target="fr.groupeF.sae_sisfrance.utils.MyDate" relationship="CREATE">
       <point x="0.0" y="94.0" />
       <point x="896.25" y="1047.0" />
       <point x="1049.75" y="1047.0" />
       <point x="1049.75" y="147.0" />
       <point x="121.99964102564115" y="0.0" />
     </edge>
-    <edge source="fr.groupeF.sae_sisfrance.DataPageController" target="fr.groupeF.sae_sisfrance.DataFilter" relationship="TO_ONE">
+    <edge source="fr.groupeF.sae_sisfrance.controller.DataPageController" target="fr.groupeF.sae_sisfrance.DataFilter" relationship="TO_ONE">
       <point x="0.0" y="-206.0" />
       <point x="1145.0" y="1837.5" />
       <point x="648.5" y="1837.5" />

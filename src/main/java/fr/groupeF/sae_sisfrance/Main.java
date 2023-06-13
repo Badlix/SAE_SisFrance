@@ -1,7 +1,9 @@
 package fr.groupeF.sae_sisfrance;
 
+import fr.groupeF.sae_sisfrance.controller.DataPageController;
+import fr.groupeF.sae_sisfrance.controller.GraphicsPageController;
+import fr.groupeF.sae_sisfrance.controller.UploadPageController;
 import javafx.application.Application;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
