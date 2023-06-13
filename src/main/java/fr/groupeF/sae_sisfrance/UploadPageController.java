@@ -113,6 +113,7 @@ public class UploadPageController extends BorderPane {
     public void upload(){
 
         // Ouvrir une boîte de dialogue de sélection de fichier
+
         FileChooser fileChooser = new FileChooser();
         Stage stage = (Stage) uploadButton.getScene().getWindow();
         fileChooser.setTitle("Sélectionner un fichier");
@@ -123,16 +124,11 @@ public class UploadPageController extends BorderPane {
         );
 
         // Obtenir le fichier sélectionné
+
         File selectedFile = fileChooser.showOpenDialog(stage);
 
         if (selectedFile != null) {
-            ArrayList<Earthquake> data = new ArrayList<>();
-            try {
-                data.addAll(DataImporter.readCSV(selectedFile));
-            }catch (Exception e) {
-                fileReadableLabel.setText("Fichier invalide");
-                fileReadableLabel.setStyle("-fx-text-fill: red");
-            }
+            ArrayList<Earthquake> data = DataImporter.readCSV(selectedFile);
             dataEarthquakes.getAllEarthquakes().addAll(FXCollections.observableArrayList(data));
             dataEarthquakes.getFilteredEarthquakes().addAll(FXCollections.observableArrayList(data));
             if(dataEarthquakes.getAllEarthquakes().size() > 0) {
@@ -140,7 +136,7 @@ public class UploadPageController extends BorderPane {
                 fileReadableLabel.setStyle("-fx-text-fill: green");
                 enableFilter();
             }else {
-                fileReadableLabel.setText("Fichier vide");
+                fileReadableLabel.setText("invalid file");
                 fileReadableLabel.setStyle("-fx-text-fill: red");
             }
         }else {
