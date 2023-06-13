@@ -1,5 +1,7 @@
 package fr.groupeF.sae_sisfrance;
 
+/* Code found on the internet */
+
 public class Coordinate {
     private static final double EARTH_RADIUS = 6371; // Rayon de la Terre en kilomètres
 
