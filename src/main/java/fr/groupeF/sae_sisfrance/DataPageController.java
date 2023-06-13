@@ -31,6 +31,8 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     TableView<Earthquake> table;
     @FXML
+    TableColumn<Object, Object> idColumn;
+    @FXML
     TableColumn<Object, Object> dateColumn;
     @FXML
     TableColumn<Object, Object> regionColumn;
@@ -57,13 +59,18 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     MapView mapView;
     CustomMapLayer mapLayer;
+    private Scene graphicsPageScene;
     private static DataFilter dataEarthquakes;
 
-    public static DataFilter getDataEarthquakes() {
-        return dataEarthquakes;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("DataPageController initialized");
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("identifiant"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
+        intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
+        initMapView();
     }
-
-    private Scene graphicsPageScene;
 
     public void setGraphicsPageScene(Scene graphicsPageScene) {
         this.graphicsPageScene = graphicsPageScene;
@@ -101,19 +108,6 @@ public class DataPageController extends BorderPane implements Initializable {
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
         MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("DataPageController initialized");
-        table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("identifiant"));
-        table.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("date"));
-        table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("region"));
-        table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("intensity"));
-        //dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        //regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
-        //intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
-        initMapView();
     }
 
     public void initMapView() {

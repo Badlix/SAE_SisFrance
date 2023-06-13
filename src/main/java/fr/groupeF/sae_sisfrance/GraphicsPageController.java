@@ -28,7 +28,7 @@ public class GraphicsPageController extends BorderPane {
     @FXML
     private LineChart<String, Number> lineChartSeismPerYear;
     @FXML
-    private LineChart<String, Number> lineChartDatePerIntensity;
+    private LineChart<String, Number> lineChartIntensityPerYear;
     private ObservableList<String> intensity;
     private ListView<Double> listView;
     //@FXML
@@ -126,7 +126,6 @@ public class GraphicsPageController extends BorderPane {
     }
     @FXML
     public void newFile(){
-
     }
     public void graphicsSeismPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
@@ -148,11 +147,31 @@ public class GraphicsPageController extends BorderPane {
     }
     public void graphicsIntensityPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
+        HashMap<String, Double> averageIntensityPerYear = new HashMap<>();
+
+        // Somme des intensités pr chaque année
         for (Earthquake element : dataGraphics) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(element.getYear()),Double.valueOf(element.getIntensity())));
+            String year = element.getYear().toString();
+            double intensity = Double.parseDouble(element.getIntensity());
+
+            if (averageIntensityPerYear.containsKey(year)) {
+                double sum = averageIntensityPerYear.get(year) + intensity;
+                averageIntensityPerYear.put(year, sum);
+            } else {
+                averageIntensityPerYear.put(year, intensity);
+            }
         }
-        lineChartDatePerIntensity.setData(FXCollections.observableArrayList(series));
-    }
+        // TreeMap permet de trier une hashMap selon les clés
+        Map<String, Double> sortedMap = new TreeMap<>(averageIntensityPerYear);
+        for (Map.Entry m : sortedMap.entrySet()) {
+            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf(m.getValue().toString())));
+        }
+
+        System.out.println("Intensité moyenne globale : " + StatCalcul.globalAverageIntensityPerYear((DataFilter) dataEarthquakes.getFilteredEarthquakes()));
+        lineChartIntensityPerYear.setData(FXCollections.observableArrayList(series));
+        }
+
+
     /*public void graphicsSeismPerRegion(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Earthquake element : dataGraphics) {

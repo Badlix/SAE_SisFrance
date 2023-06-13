@@ -20,8 +20,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class UploadPageController extends BorderPane {
-    private FXMLLoader graphicsPageLoader;
-    private FXMLLoader dataPageLoader;
     private Scene dataPageScene;
 
     @FXML
@@ -45,14 +43,6 @@ public class UploadPageController extends BorderPane {
     @FXML
     private Button changingFXMLButton;
     private DataFilter dataEarthquakes;
-
-    public void setGraphicsPageLoad(FXMLLoader graphicsPageLoader) {
-        this.graphicsPageLoader = graphicsPageLoader;
-    }
-
-    public void setDataPageLoad(FXMLLoader dataPageLoader) {
-        this.dataPageLoader = dataPageLoader;
-    }
 
     public void setDataPageScene(Scene dataPageScene) {
         this.dataPageScene = dataPageScene;
