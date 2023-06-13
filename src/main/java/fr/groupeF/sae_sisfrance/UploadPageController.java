@@ -106,7 +106,6 @@ public class UploadPageController extends BorderPane {
         fileChooser.setTitle("Sélectionner un fichier");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Fichier csv", "*.csv"),
-                new FileChooser.ExtensionFilter("Fichiers texte", "*.txt"),
                 new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
         );
 
@@ -120,21 +119,21 @@ public class UploadPageController extends BorderPane {
             try {
                 data = DataImporter.readCSV(selectedFile);
             } catch (RuntimeException e) {
-                fileReadableLabel.setText("invalid file");
+                fileReadableLabel.setText("Fichier non lisible");
                 fileReadableLabel.setStyle("-fx-text-fill: red");
             }
             dataEarthquakes.getAllEarthquakes().addAll(FXCollections.observableArrayList(data));
             dataEarthquakes.getFilteredEarthquakes().addAll(FXCollections.observableArrayList(data));
             if(dataEarthquakes.getAllEarthquakes().size() > 0) {
-                fileReadableLabel.setText("file uploaded");
+                fileReadableLabel.setText("Fichier importé");
                 fileReadableLabel.setStyle("-fx-text-fill: green");
                 enableFilter();
             }else {
-                fileReadableLabel.setText("invalid file");
+                fileReadableLabel.setText("Fichier invalide");
                 fileReadableLabel.setStyle("-fx-text-fill: red");
             }
         }else {
-            fileReadableLabel.setText("file not uploaded");
+            fileReadableLabel.setText("Fichier non importé");
             fileReadableLabel.setStyle("-fx-text-fill: red");
         }
     }

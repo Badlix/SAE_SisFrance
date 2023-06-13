@@ -82,6 +82,17 @@
     -fx-pref-width: 200;
     -fx-fit-to-height: true;
 }
+.text-field{
+    -fx-prompt-text-fill: grey;
+    -fx-text-fill: black;
+}
+
+#rechercherTextField {
+    -fx-background-color: #B6D8F2;
+    -fx-background-radius: 24px;
+    -fx-background-insets: 0,1,1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+}
 
 
 .table-view, .table-view:hover, .table-view:focused {
@@ -105,19 +116,15 @@
     -fx-font-weight: bold;
     -fx-alignment: center;
 }
-
-
-.text-field{
-    -fx-prompt-text-fill: grey;
-    -fx-text-fill: black;
+.legend {
+    -fx-alignment: center;
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+}
+.legendLine{
+    -fx-padding: 0 10 0 10;
 }
 
-#rechercherTextField {
-    -fx-background-color: #B6D8F2;
-    -fx-background-radius: 24px;
-    -fx-background-insets: 0,1,1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
-}
+
 
 
 /*1ère version*/

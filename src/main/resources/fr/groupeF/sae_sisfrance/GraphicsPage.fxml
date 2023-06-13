@@ -87,11 +87,11 @@
                 <Label fx:id="numberLabel2"/>
             </VBox>
             <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="rectangleStat">
-                <Label text="Région la plus affectée : "/>
+                <Label text="Zone la plus affectée : "/>
                 <Label fx:id="numberLabel3"/>
             </VBox>
             <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="rectangleStat">
-                <Label text="Moyenne de seismes par région : "/>
+                <Label text="Moyenne de seismes par zones : "/>
                 <Label fx:id="numberLabel4"/>
             </VBox>
             <VBox GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="rectangleStat">
@@ -99,7 +99,7 @@
                 <Label fx:id="numberLabel5"/>
             </VBox>
             <VBox GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="rectangleStat">
-                <Label text="Moyenne de seismes par année : "/>
+                <Label text="Moyenne de seismes par années : "/>
                 <Label fx:id="numberLabel6"/>
             </VBox>
         </GridPane>
