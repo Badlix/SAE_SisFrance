@@ -68,9 +68,25 @@ public class MyBindings {
      * @param dataFilter       The data filter containing the selected intensity range.
      * @param intensityFilter  The UI control for the intensity filter.
      */
-    public static void createBindingIntensity(DataFilter dataFilter, RangeSlider intensityFilter) {
+    public static void createBindingIntensity(DataFilter dataFilter, RangeSlider intensityFilter, Label rangeLabel) {
         dataFilter.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataFilter.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
+        if (rangeLabel.getText() != "noLabel") {
+            intensityFilter.highValueProperty().addListener((observable, oldValue, newValue) -> {
+                double maxVal = intensityFilter.getHighValue();
+                double roundMax = Math.round(maxVal * 100.0) / 100.0;
+                double minVal = intensityFilter.getLowValue();
+                double roundMin = Math.round(minVal * 100.0) / 100.0;
+                rangeLabel.setText("   " + roundMin + " - " + roundMax);
+            });
+            intensityFilter.lowValueProperty().addListener((observable, oldValue, newValue) -> {
+                double maxVal = intensityFilter.getHighValue();
+                double roundMax = Math.round(maxVal * 100.0) / 100.0;
+                double minVal = intensityFilter.getLowValue();
+                double roundMin = Math.round(minVal * 100.0) / 100.0;
+                rangeLabel.setText("   " + roundMin + " - " + roundMax);
+            });
+        }
     }
 
     /**

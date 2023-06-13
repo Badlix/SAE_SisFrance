@@ -93,7 +93,7 @@ public class UploadPageController extends BorderPane {
         MyBindings.createBindingZone(dataEarthquakes, zoneFilter);
         MyBindings.createBindingCoordinate(dataEarthquakes, longFilter, latFilter, rayonFilter);
         MyBindings.createBindingDates(dataEarthquakes, startDateFilter, endDateFilter);
-        MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter);
+        MyBindings.createBindingIntensity(dataEarthquakes, intensityFilter, new Label("noLabel"));
     }
 
     /**

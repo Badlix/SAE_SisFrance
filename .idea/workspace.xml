@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyBindings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/controller/DataPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/controller/DataPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/controller/GraphicsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/controller/GraphicsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/controller/UploadPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/controller/UploadPageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -501,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686691109316</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="ajout du label d'intensité">
+      <created>1686692166767</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1686692166768</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,7 +528,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="graphique du nombre de seismes par années fonctionne" />
     <MESSAGE value="graphique du nombre de seismes par années fonctionne (il y avait un problèmes sur l'ancien commit)" />
     <MESSAGE value="Résolution du bug du RangeSlider qui faisait crash l'appli" />
     <MESSAGE value="Ajout du bouton &quot;Filtrer&quot; (nom temporaire)" />
@@ -544,6 +552,7 @@
     <MESSAGE value="suppression de la barre de recherche" />
     <MESSAGE value="amélioration de l'arborescence" />
     <MESSAGE value="réparation de certains tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="réparation de certains tests" />
+    <MESSAGE value="ajout du label d'intensité" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout du label d'intensité" />
   </component>
 </project>
