@@ -158,6 +158,8 @@ public class GraphicsPageController extends BorderPane {
             series.getData().add(new XYChart.Data<>(entry.getKey().toString(), Integer.valueOf(entry.getValue().toString())));
         }
         lineChartSeismPerYear.setData(FXCollections.observableArrayList(series));
+        // Désactivation de la légende
+        lineChartSeismPerYear.legendVisibleProperty().set(false);
     }
 
     /**
@@ -170,6 +172,8 @@ public class GraphicsPageController extends BorderPane {
             series.getData().add(new XYChart.Data<>(entry.getKey().toString(), Double.valueOf(entry.getValue().toString())));
         }
         lineChartIntensityPerYear.setData(FXCollections.observableArrayList(series));
+        // Désactivation de la légende
+        lineChartIntensityPerYear.legendVisibleProperty().set(false);
     }
 
     /**
