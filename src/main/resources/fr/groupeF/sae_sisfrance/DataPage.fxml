@@ -61,6 +61,15 @@
                         <TextField fx:id="rechercherTextField" promptText="Rechercher"/>
                     </graphic>
                 </Menu>
+                <Menu mnemonicParsing="false" text="Unspecified Menu">
+                    <items>
+                        <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                            <content>
+                                <VBox fx:id="Quality" prefHeight="200.0" prefWidth="100.0" />
+                            </content>
+                        </CustomMenuItem>
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
     </top>

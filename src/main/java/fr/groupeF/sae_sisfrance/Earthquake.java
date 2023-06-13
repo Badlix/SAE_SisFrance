@@ -17,7 +17,7 @@ public class Earthquake {
     private final String latitude; // Latitude du lieu du tremblement de terre
     private final String longitude; // Longitude du lieu du tremblement de terre
     private final String intensity; // Intensité du tremblement de terre
-//    private final String quality; // Qualité des données relatives au tremblement de terre
+    private final String quality; // Qualité des données relatives au tremblement de terre
 
     // Constructeur de la classe Earthquake
 public Earthquake(List<String> data) {
@@ -33,7 +33,7 @@ public Earthquake(List<String> data) {
     this.latitude = data.get(8).replace("\"", "");
     this.longitude = data.get(9).replace("\"", "");
     this.intensity = data.get(10).replace("\"", "");
-//    this.quality = data.get(11).replace("\"", "");
+    this.quality = data.get(11).replace("\"", "");
 }
 
     public String getIdentifiant() {
@@ -66,6 +66,8 @@ public Earthquake(List<String> data) {
     public String getIntensity() {
         return intensity;
     }
+
+    public String getQuality() {return quality;}
 
     @Override
     public boolean equals(Object o) {

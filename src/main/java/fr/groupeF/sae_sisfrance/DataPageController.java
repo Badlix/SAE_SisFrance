@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 
 import com.gluonhq.maps.MapView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 
@@ -111,6 +112,7 @@ public class DataPageController extends BorderPane implements Initializable {
                     qualityFilter.getChildren().add(new HBox(checkbox, new Label(str)));
                 }
                 dataFilter.setSelectedQuality(quality);
+                // init des elements de la table
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
                 createBindings();
             }

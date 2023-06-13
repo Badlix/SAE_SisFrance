@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 import java.util.*;
@@ -52,6 +54,10 @@ public class GraphicsPageController extends BorderPane {
     @FXML
     RangeSlider intensityFilter;
     @FXML
+    VBox qualityFilter;
+    List<CheckBox> qualityCheckboxs;
+    List<String> quelityLabels;
+    @FXML
     Label rangeLabel;
     @FXML
     TextField rechercherTextField;
@@ -79,6 +85,19 @@ public class GraphicsPageController extends BorderPane {
                 zones.add(0, "ZONE");
                 zoneFilter.setValue("ZONE");
                 zoneFilter.setItems(zones);
+                ObservableList<String> quality = FXCollections.observableArrayList();
+                qualityCheckboxs = new ArrayList<>();
+                quelityLabels = new ArrayList<>();
+                quality.sort(String::compareToIgnoreCase);
+                for (String str : quality) {
+                    CheckBox checkbox = new CheckBox();
+                    qualityCheckboxs.add(checkbox);
+                    quelityLabels.add(str);
+                    qualityFilter.getChildren().add(new HBox(checkbox, new Label(str)));
+                }
+                System.out.println("ok");
+                dataFilter.setSelectedQuality(quality);
+                createBindings();
             }
         });
         dataEarthquakes.filterAppliedProperty().addListener((observable, oldValue, newValue) -> {

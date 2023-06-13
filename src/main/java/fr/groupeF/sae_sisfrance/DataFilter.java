@@ -7,8 +7,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class DataFilter {
     private ObservableList<Earthquake> allEarthquakes; // List of all Earthquakes extracted from the csv file
@@ -21,6 +22,7 @@ public class DataFilter {
     private MyDate selectedEndDate; // Value of the end date filter
     private SimpleDoubleProperty selectedMinIntensity; // Value of the minimal intensity
     private SimpleDoubleProperty selectedMaxIntensity; // Value of the maximal intensity
+    private TreeMap<String, SimpleBooleanProperty> selectedQuality;
     private SimpleBooleanProperty filterApplied;
 
     public DataFilter(ObservableList<Earthquake> allEarthquake) {
@@ -36,6 +38,7 @@ public class DataFilter {
         selectedEndDate = new MyDate("");
         selectedMinIntensity = new SimpleDoubleProperty(2);
         selectedMaxIntensity = new SimpleDoubleProperty(12);
+        selectedQuality = new TreeMap<>();
         filterApplied = new SimpleBooleanProperty(false);
         /* Listener allow the zone filter to update the filtered list
         without having to click on the button "Filtrer" */
@@ -63,6 +66,7 @@ public class DataFilter {
     }
     public SimpleDoubleProperty selectedMaxIntensensityProperty() {return selectedMaxIntensity; }
 
+    public TreeMap<String, SimpleBooleanProperty> getSelectedQuality() {return selectedQuality;}
     public SimpleBooleanProperty filterAppliedProperty() {return filterApplied;}
 
     // ---------- GETTER ----------
@@ -110,6 +114,12 @@ public class DataFilter {
         this.selectedMaxIntensity.set(intensite);
     }
 
+    public void setSelectedQuality(List<String> options) {
+        for (String option:options) {
+            selectedQuality.put(option, new SimpleBooleanProperty(false));
+        }
+    }
+
     // ---------- OTHERS ----------
 
     private boolean isInZone(Earthquake earthquake) {
@@ -150,15 +160,41 @@ public class DataFilter {
         return earthquakeDate.isBetween(selectedStartDate, selectedEndDate);
     }
 
+    private boolean isQuality(Earthquake earthquake) {
+        if (this.selectedQuality.containsKey(earthquake.getQuality())) {
+            if (this.selectedQuality.get(earthquake.getQuality()).getValue() == true) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean IsOneOptionsOfQualityChecked() {
+        for (Map.Entry<String, SimpleBooleanProperty> entry : selectedQuality.entrySet()) {
+            if (entry.getValue().getValue() == true) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void applyFilter() {
         filterApplied.set(false);
         filteredEarthquakes.clear();
+        boolean atLestOneQualityOptionIsChecked = IsOneOptionsOfQualityChecked();
         for (Earthquake earthquake: allEarthquakes) {
             if (isInZone(earthquake)) {
                 if (isInCoordinate(earthquake)) {
                     if (isBetweenDates(earthquake)) {
                         if (isBetweenIntensity(earthquake)) {
-                            filteredEarthquakes.add(earthquake);
+                            if (atLestOneQualityOptionIsChecked) {
+                                if (isQuality(earthquake)) {
+                                    filteredEarthquakes.add(earthquake);
+                                }
+                            } else {
+                                filteredEarthquakes.add(earthquake);
+                            }
+
                         }
                     }
                 }
