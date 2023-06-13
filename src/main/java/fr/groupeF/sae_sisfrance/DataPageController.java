@@ -121,7 +121,8 @@ public class DataPageController extends BorderPane implements Initializable {
             dataEarthquakes.getSelectedStartDate().dateProperty().set(startDateFilter.valueProperty().getValue().toString());
         });
         dataEarthquakes.getSelectedStartDate().dateProperty().addListener((observable, oldValue, newValue) -> {
-            startDateFilter.setValue(LocalDate.parse(dataEarthquakes.getSelectedStartDate().toString()));
+            System.out.println(dataEarthquakes.getSelectedStartDate().toString());
+            //startDateFilter.setValue(LocalDate.parse(dataEarthquakes.getSelectedStartDate().toString()));
         });
 
         endDateFilter.valueProperty().addListener((observable, oldValue, newValue) -> {

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Earthquake {
     private final String identifiant; // Identifiant du tremblement de terre
-    private final MyDate date; // Date du tremblement de terre
+    private final String date; // Date du tremblement de terre
 //    private final String hour; // Heure du tremblement de terre
 //    private final String name; // Nom du tremblement de terre
     private final String region; // endroit où le tremblement de terre s'est produit
@@ -22,7 +22,8 @@ public class Earthquake {
     // Constructeur de la classe Earthquake
 public Earthquake(List<String> data) {
     this.identifiant = data.get(0).replace("\"", "");
-    this.date = new MyDate(data.get(1).replace("\"", ""));
+   // this.date = new MyDate(data.get(1).replace("\"", ""));
+    this.date = data.get(1).replace("\"", "");
 //    this.hour = data.get(2).replace("\"", "");
 //    this.name = data.get(3).replace("\"", "");
     this.region = data.get(4).replace("\"", "");
@@ -39,10 +40,16 @@ public Earthquake(List<String> data) {
         return identifiant;
     }
 
-    public MyDate getDate() {
-        return date;
+//    public MyDate getDate() {
+//        return date;
+//    }
+    public String getDate() {
+    return date;
     }
-    public Integer getYear(){ return date.getYear(); }
+    public Integer getYear(){
+        String[] numbers = date.split("/");
+        return Integer.valueOf(numbers[0]);
+    }
 
     public String getRegion() {
         return region;
@@ -71,10 +78,6 @@ public Earthquake(List<String> data) {
         }
         Earthquake e = (Earthquake) o;
         return e.getIdentifiant().equals(this.getIdentifiant());
-    }
-
-    public boolean isBetweenDates(MyDate date1, MyDate date2) {
-        return this.date.isBetween(date1, date2);
     }
 }
 

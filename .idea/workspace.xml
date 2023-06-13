@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Optimisation des filtres">
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Remise en place du binding du premier graphique">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/Earthquake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +100,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyDateTest.testInitializationComplete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SAE_SisFrance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
+      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.MyDateTest" />
+      <option name="METHOD_NAME" value="testInitializationComplete" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StatCalculTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SAE_SisFrance" />
       <extension name="coverage">
@@ -112,29 +131,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StatCalculTest.testMostAffectedYear" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SAE_SisFrance" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
-      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.StatCalculTest" />
-      <option name="METHOD_NAME" value="testMostAffectedYear" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MyDateTest.testInitializationComplete" />
         <item itemvalue="JUnit.DataFilterTest" />
         <item itemvalue="JUnit.MyDateTest" />
         <item itemvalue="JUnit.StatCalculTest" />
-        <item itemvalue="JUnit.StatCalculTest.testMostAffectedYear" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +160,7 @@
       <workItem from="1686633782968" duration="9631000" />
       <workItem from="1686643464069" duration="54000" />
       <workItem from="1686643519373" duration="4191000" />
-      <workItem from="1686647874911" duration="3528000" />
+      <workItem from="1686647874911" duration="4605000" />
     </task>
     <task id="LOCAL-00001" summary="page upload file">
       <created>1686162058523</created>
@@ -397,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686650981404</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Remise en place du binding du premier graphique">
+      <created>1686651505522</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1686651505522</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +425,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ajout d'un type MyDate avec les tests qui correspondent" />
     <MESSAGE value="Les filtres de dates sont opérationnels" />
     <MESSAGE value="Changement des attributs de DataFilter en Property et renommage plus clair de certaines variables" />
     <MESSAGE value="Bindings des valeurs du tableau de DataPage avec le DataFilter" />
@@ -440,6 +449,7 @@
     <MESSAGE value="Modification du Binding sur Graphics Page et ajout des valeurs des labels" />
     <MESSAGE value="Modification du Binding sur Graphics Page et ajout des valeurs des labels + code cleaning" />
     <MESSAGE value="Optimisation des filtres" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimisation des filtres" />
+    <MESSAGE value="Remise en place du binding du premier graphique" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remise en place du binding du premier graphique" />
   </component>
 </project>

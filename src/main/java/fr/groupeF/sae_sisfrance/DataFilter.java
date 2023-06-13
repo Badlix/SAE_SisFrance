@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 public class DataFilter {
     private ObservableList<Earthquake> allEarthquakes; // List of all Earthquakes extracted from the csv file
@@ -136,10 +137,11 @@ public class DataFilter {
     private boolean isBetweenDates(Earthquake earthquake) {
         if (selectedStartDate.getDateValue().isEmpty() && selectedEndDate.getDateValue().isEmpty()) {
             return true;
-        } else if (earthquake.getDate().getDateValue().isEmpty()) {
+        } else if (earthquake.getDate().isEmpty()) {
             return false;
         }
-        return earthquake.isBetweenDates(selectedStartDate, selectedEndDate);
+        MyDate earthquakeDate = new MyDate(earthquake.getDate());
+        return earthquakeDate.isBetween(selectedStartDate, selectedEndDate);
     }
 
     public void applyFilter() {
