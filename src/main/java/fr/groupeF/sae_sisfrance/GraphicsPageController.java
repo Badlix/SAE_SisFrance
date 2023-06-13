@@ -106,6 +106,8 @@ public class GraphicsPageController extends BorderPane {
                 numberLabel4.setText(StatCalcul.globalAverageEarthquakeByRegion(dataFilter) + "\nAVG NB BY REGION");
                 numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter) + "\nMOST AFFECTED YEAR");
                 numberLabel6.setText(StatCalcul.globalAverageEarthquakesByYear(dataFilter) + "\nAVG NB BY YEAR");
+                graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
+//                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes())
             }
         });
         createBindings();
@@ -139,47 +141,8 @@ public class GraphicsPageController extends BorderPane {
         /* Intensity Filter */
         dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
-        /* Moyennes */
-        /*DoubleBinding averageBinding = Bindings.createDoubleBinding(() -> {
-            double sum = 0;
-            for (String value : intensity) {
-                double doubleValue = Double.parseDouble(value);
-                sum += doubleValue;
-            }
-            return sum / intensity.size();
-        }, values);*/
 
-        /* Labels */
-        // Liaison dynamique entre le nombre total de séismes et le texte des Labels (les rectangles bleus)
-//        StringBinding totalSeismBinding = Bindings.createStringBinding(()-> {
-//            int size = dataEarthquakes.getFilteredEarthquakes().size();
-//            return "Nombre total de séismes: " + size;
-//        }, dataEarthquakes.getFilteredEarthquakes());
-//
-//        // Liaison dynamique entre l'année avec le plus de séismes et le texte du 5ème label
-//        int yearWithMostSeisms = YearWithMostSeisms(dataEarthquakes.getFilteredEarthquakes());
-//        StringBinding yearWithMostSeismsBinding = Bindings.createStringBinding(()-> {
-//                    return "Année avec le plus de séismes : " + yearWithMostSeisms;
-//        },dataEarthquakes.getFilteredEarthquakes());
-
-        //numberLabel1.textProperty().bind(ObservableValueof(dataEarthquakes.getAllEarthquakes()));
- //       numberLabel1.textProperty().bind(totalSeismBinding);
-//        numberLabel5.textProperty().bind(yearWithMostSeismsBinding);
-        // Liaison du texte du Label avec la valeur moyenne
-//        numberLabel2.textProperty().bind(averageBinding.asString("Average: %.2f"));
-        // ---------- BINDINGS - DASHBOARD ----------
-//        dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<>() {
-//            @Override
-//            public void onChanged(Change<? extends Earthquake> change) {
-//                graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
-//                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
-//            }
-//        });
     }
-   /* private ObservableValue<String> ObservableValueof(ObservableList<Earthquake> allEarthquakes) {
-        dataEarthquakes.getAllEarthquakes();
-        return ObservableValueof(allEarthquakes);
-    }*/
 
     public void initialize() throws IOException {
         System.out.println("GraphicsPageController initialized");
@@ -217,7 +180,6 @@ public class GraphicsPageController extends BorderPane {
             series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf(m.getValue().toString())));
         }
         lineChartSeismPerYear.setData(FXCollections.observableArrayList(series));
-        //lineChartSeismPerYear.getData().add(series);
     }
     public void graphicsIntensityPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
