@@ -60,8 +60,7 @@
             <Menu text="Qualité">
                 <CustomMenuItem>
                     <content>
-                        <VBox fx:id="qualityFilter" prefHeight="200.0" prefWidth="100.0" styleClass="quality">
-                        </VBox>
+                        <VBox fx:id="qualityFilter" prefHeight="200.0" prefWidth="100.0" styleClass="quality"/>
                     </content>
                 </CustomMenuItem>
             </Menu>
@@ -77,17 +76,17 @@
             </Menu>
         </MenuBar>
     </top>
-   <center>
-      <TableView fx:id="table" maxWidth="520.0" minWidth="520.0" prefWidth="520.0" BorderPane.alignment="CENTER">
+   <left>
+      <TableView fx:id="table"  minWidth="630.0" BorderPane.alignment="CENTER">
         <columns>
             <TableColumn minWidth="80.0" text="Id" fx:id="idColumn"/>
             <TableColumn fx:id="dateColumn" minWidth="110.0" prefWidth="110.0" text="Date" />
-            <TableColumn fx:id="zoneColumn" minWidth="250.0" prefWidth="250.0" text="Région" />
+            <TableColumn fx:id="zoneColumn" minWidth="200.0" prefWidth="200.0" text="Région" />
             <TableColumn fx:id="intensityColumn" minWidth="80.0" text="Intensité" />
             <TableColumn fx:id="qualityColumn" minWidth="80.0" text="Qualité" />
         </columns>
       </TableView>
-   </center>
+   </left>
     <bottom>
         <HBox fx:id="footer" styleClass="bottom">
             <Button fx:id="graphicsButton" onAction="#changingToGraphicsPage" styleClass="newFile" text="Graphiques" />
@@ -96,7 +95,7 @@
    <right>
       <StackPane alignment="BOTTOM_RIGHT" maxWidth="-Infinity" minWidth="680.0" prefWidth="680.0">
          <children>
-             <MapView fx:id="mapView" minWidth="680.0" />
+             <MapView fx:id="mapView" minWidth="720.0" />
             <Button maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#zoomIn" prefHeight="30.0" prefWidth="30.0" text="+">
                <StackPane.margin>
                   <Insets bottom="50.0" right="10.0" />

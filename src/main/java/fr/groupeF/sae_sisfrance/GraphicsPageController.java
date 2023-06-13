@@ -16,7 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 import java.util.*;
-import java.io.IOException;
 
 /**
  * GraphicsPageController is a controller class for the graphics page.
@@ -91,7 +90,7 @@ public class GraphicsPageController extends BorderPane {
                 zones.add(0, "ZONE");
                 zoneFilter.setValue("ZONE");
                 zoneFilter.setItems(zones);
-                // init des options des checkbox de qualité
+                // init des options des checkbox de qualitÃ©
                 qualityCheckboxs = new ArrayList<>();
                 qualityLabels = new ArrayList<>();
                 ObservableList<String> quality = FXCollections.observableArrayList();
@@ -115,14 +114,14 @@ public class GraphicsPageController extends BorderPane {
         dataEarthquakes.filterAppliedProperty().addListener((observable, oldValue, newValue) -> {
             if (dataEarthquakes.filterAppliedProperty().getValue() == true) {
                 /* Change Labels values */
-                numberLabel1.setText(StatCalcul.totalNumberOfEarthquakes(dataFilter) + "\nNB TOTAL");
-                numberLabel2.setText(StatCalcul.globalAverageIntensity(dataFilter) + "\nAVG INTENSITY");
-                numberLabel3.setText(StatCalcul.mostAffectedZone(dataFilter).getKey() + "\nMOST AFFECTED REGION (" + StatCalcul.mostAffectedZone(dataFilter).getValue() + ")");
-                numberLabel4.setText(StatCalcul.globalAverageEarthquakeByZone(dataFilter) + "\nAVG NB BY REGION");
-                numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter) + "\nMOST AFFECTED YEAR");
-                numberLabel6.setText(StatCalcul.globalAverageEarthquakesByYear(dataFilter) + "\nAVG NB BY YEAR");
-                graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
-                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
+                numberLabel1.setText(Integer.toString(StatCalcul.totalNumberOfEarthquakes(dataFilter)));
+                numberLabel2.setText(Double.toString(StatCalcul.globalAverageIntensity(dataFilter)));
+                numberLabel3.setText(StatCalcul.mostAffectedZone(dataFilter).getKey() + "(" + StatCalcul.mostAffectedZone(dataFilter).getValue() + ")");
+                numberLabel4.setText(Double.toString(StatCalcul.globalAverageEarthquakeByZone(dataFilter)));
+                numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter).getKey().toString() + "(" + StatCalcul.mostAffectedYear(dataFilter).getValue().toString() + ")");
+                numberLabel6.setText(Double.toString(StatCalcul.globalAverageEarthquakesByYear(dataFilter)));
+                graphicsSeismPerYear();
+                graphicsIntensityPerYear();
             }
         });
         createBindings();
@@ -152,50 +151,24 @@ public class GraphicsPageController extends BorderPane {
 
     /**
      * Displays the number of seismes per year chart based on the provided earthquake data.
-     * @param dataGraphics The earthquake data for the chart.
      */
-    public void graphicsSeismPerYear(ObservableList<Earthquake> dataGraphics){
+    public void graphicsSeismPerYear(){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        HashMap<String, Integer> nbEarthquakesDuringAYear = new HashMap<>();
-        for (Earthquake element : dataGraphics) {
-            if (nbEarthquakesDuringAYear.containsKey(element.getYear().toString())) {
-                nbEarthquakesDuringAYear.put(element.getYear().toString(), nbEarthquakesDuringAYear.get(element.getYear().toString()) + 1);
-            } else {
-                nbEarthquakesDuringAYear.put(element.getYear().toString(), 0);
-            }
-        }
-        // TreeMap permet de trier une hashMap selon les clés
-        Map<String, Integer> sortedMap = new TreeMap<>(nbEarthquakesDuringAYear);
-        //Parcour de la Hashmap
-        for (Map.Entry m : sortedMap.entrySet()) {
-            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf(m.getValue().toString())));
+        TreeMap<Integer, Integer> nbEarthquakeByYear = StatCalcul.yearOcc(dataEarthquakes);
+        for (Map.Entry entry : nbEarthquakeByYear.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey().toString(), Integer.valueOf(entry.getValue().toString())));
         }
         lineChartSeismPerYear.setData(FXCollections.observableArrayList(series));
     }
 
     /**
      * Displays the intensity per year chart based on the provided earthquake data.
-     * @param dataGraphics The earthquake data for the chart.
      */
-    public void graphicsIntensityPerYear(ObservableList<Earthquake> dataGraphics){
+    public void graphicsIntensityPerYear(){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        HashMap<String, Double> averageIntensityPerYear = new HashMap<>();
-
-        // Somme des intensités pr chaque année
-        for (Earthquake element : dataGraphics) {
-            String year = element.getYear().toString();
-            double intensity = Double.parseDouble(element.getIntensity());
-
-            if (averageIntensityPerYear.containsKey(year)) {
-                averageIntensityPerYear.put(year, averageIntensityPerYear.get(year).doubleValue() + intensity);
-            } else {
-                averageIntensityPerYear.put(year, intensity);
-            }
-        }
-        // TreeMap permet de trier une hashMap selon les clés
-        Map<String, Double> sortedMap = new TreeMap<>(averageIntensityPerYear);
-        for (Map.Entry m : sortedMap.entrySet()) {
-            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Double.valueOf(m.getValue().toString())));
+        TreeMap<Integer, Double> averageIntensityPerYear = StatCalcul.globalAverageintensityByYear(dataEarthquakes);
+        for (Map.Entry entry : averageIntensityPerYear.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey().toString(), Double.valueOf(entry.getValue().toString())));
         }
         lineChartIntensityPerYear.setData(FXCollections.observableArrayList(series));
     }
@@ -207,6 +180,4 @@ public class GraphicsPageController extends BorderPane {
     public void applyFilter() {
         dataEarthquakes.applyFilter();
     }
-
-
 }

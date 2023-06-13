@@ -13,6 +13,8 @@
     -fx-alignment: center;
 }
 .menu-bar{
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #71b4ef;
     -fx-spacing: 20;
 }
 .menu:hover{
@@ -63,8 +65,8 @@
 }
 
 .table-view .column-header {
-    -fx-border-color: rgb(143, 161, 229);
-    -fx-border-width: 1 1 1 0;
+    -fx-border-color: #71b4ef;
+    -fx-border-width: 0 1 1 0;
     -fx-background-color: #9AC8EB;
     -fx-font-weight: bold;
     -fx-alignment: center;
@@ -100,6 +102,8 @@
 /*2ème version*/
 
 .bottom{
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #71b4ef;
     -fx-min-height: 35;
     -fx-spacing: 20;
 }
@@ -114,18 +118,28 @@
     -fx-cursor: hand;
 }
 
-/*#rectangle1 {*/
-/*    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);*/
-/*    -fx-background-radius: 16;*/
-/*}*/
+.stat {
+    -fx-hgap: 20;
+    -fx-vgap: 50;
+    -fx-alignment: center;
 
-/*#rectangle1:hover {*/
+}
+.rectangleStat {
+    -fx-font: 18px "Segoe UI Semibold";
+    -fx-background-color: linear-gradient(to bottom, #a8daf5, #9ac8eb);
+    -fx-background-radius: 16;
+    -fx-pref-width: 300;
+    -fx-pref-height: 150;
+    -fx-alignment: center;
+}
+
+/*.rectangleStat:hover {*/
 /*    -fx-background-insets: 0,1,1;*/
 /*    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );*/
 /*    -fx-font-size: 16;*/
-/*    -fx-pref-width: 250;*/
 /*    -fx-translate-y: -2;*/
 /*}*/
+
 /*#rectangle2 {*/
 /*    -fx-background-color: linear-gradient(to bottom, #0078D7, #004C8C);*/
 /*    -fx-background-radius: 10;*/

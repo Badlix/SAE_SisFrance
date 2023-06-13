@@ -39,9 +39,9 @@ public class Main extends Application {
         GraphicsPageController graphicsPageController = graphicsPageLoader.getController();
 
         // CREATION OF ALL SCENES
-        Scene uploadPageScene = new Scene(uploadPageLoader.getRoot(), 1200, 740);
-        Scene dataPageScene = new Scene(dataPageLoader.getRoot(), 1200, 740);
-        Scene graphicsPageScene = new Scene(graphicsPageLoader.getRoot(), 1200, 740);
+        Scene uploadPageScene = new Scene(uploadPageLoader.getRoot(), 1350, 740);
+        Scene dataPageScene = new Scene(dataPageLoader.getRoot(), 1350, 740);
+        Scene graphicsPageScene = new Scene(graphicsPageLoader.getRoot(), 1350, 740);
 
         // LINK SCENES AND CONTROLLERS
         dataPageController.setGraphicsPageScene(graphicsPageScene);
