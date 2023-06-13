@@ -55,7 +55,7 @@ class DataFilterTest {
     @Test
     public void testintensityFilter() {
         DataFilter data = new DataFilter(testEartquakeList());
-        data.setSelectedMinIntensity(0);
+        data.setSelectedMinIntensity(2);
         data.setSelectedMaxIntensity(4);
         ObservableList<Earthquake> expectedList = FXCollections.observableArrayList();
         expectedList.add(testEartquakeList().get(2));
