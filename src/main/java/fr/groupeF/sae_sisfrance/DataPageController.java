@@ -37,6 +37,8 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     TableColumn<Object, Object> intensityColumn;
     @FXML
+    TableColumn<Object, Object> qualityColumn;
+    @FXML
     ComboBox<String> zoneFilter;
     @FXML
     TextField longFilter;
@@ -71,6 +73,7 @@ public class DataPageController extends BorderPane implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         zoneColumn.setCellValueFactory(new PropertyValueFactory<>("zone"));
         intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
+        qualityColumn.setCellValueFactory(new PropertyValueFactory<>("quality"));
         initMapView();
     }
 

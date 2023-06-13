@@ -80,6 +80,7 @@
             <TableColumn fx:id="dateColumn" minWidth="110.0" prefWidth="110.0" text="Date" />
             <TableColumn fx:id="zoneColumn" minWidth="250.0" prefWidth="250.0" text="Région" />
             <TableColumn fx:id="intensityColumn" minWidth="80.0" text="Intensité" />
+            <TableColumn fx:id="qualityColumn" minWidth="80.0" text="Qualité" />
         </columns>
       </TableView>
    </center>
