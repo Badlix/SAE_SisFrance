@@ -107,7 +107,6 @@ public class GraphicsPageController extends BorderPane {
                     hBox.setSpacing(5);
                     qualityFilter.getChildren().add(hBox);
                 }
-                dataFilter.setSelectedQuality(quality);
                 createBindings();
             }
         });
