@@ -9,21 +9,22 @@ public class StatCalcul {
         return dataFilter.getAllEarthquakes().size();
     }
 
-    static public float globalAverageIntensity(DataFilter dataFilter) {
-        int nbEartquakes = 0;
-        int sumIntensity = 0;
+    static public double globalAverageIntensity(DataFilter dataFilter) {
+        int nbEarthquakes = 0;
+        double sumIntensity = 0;
         for (Earthquake earthquake : dataFilter.getAllEarthquakes()) {
             if (!earthquake.getIntensity().isEmpty()) {
-                ++nbEartquakes;
-                sumIntensity += Float.valueOf(earthquake.getIntensity());
+                ++nbEarthquakes;
+                sumIntensity += Float.parseFloat(earthquake.getIntensity());
             }
         }
-        return sumIntensity/nbEartquakes;
+        double res = sumIntensity /nbEarthquakes;
+        return Math.round(res * 100.0) / 100.0;
     }
 
     static public Map.Entry<String, Integer> mostAffectedRegion(DataFilter dataFilter) {
         TreeMap<String, Integer> regionOcc = regionOcc(dataFilter);
-        Map.Entry<String, Integer> result = new AbstractMap.SimpleEntry<String, Integer>(regionOcc.firstEntry());
+        Map.Entry<String, Integer> result = new AbstractMap.SimpleEntry<>(regionOcc.firstEntry());
         for (Map.Entry<String, Integer> entry : regionOcc.entrySet()) {
             if (entry.getValue() > result.getValue()) {
                 result = entry;
@@ -32,15 +33,16 @@ public class StatCalcul {
         return result;
     }
 
-    static public float globalAverageEartquakeByRegion(DataFilter dataFilter) {
+    static public double globalAverageEarthquakeByRegion(DataFilter dataFilter) {
         TreeMap<String, Integer> regionOcc = regionOcc(dataFilter);
         int sum = regionOcc.values().stream().mapToInt(Integer::intValue).sum();
-        return sum/regionOcc.size();
+        double res = sum / Double.valueOf(regionOcc.size());
+        return Math.round(res * 100.0) / 100.0;
     }
 
     static public Map.Entry<Integer, Integer> mostAffectedYear(DataFilter dataFilter) {
         TreeMap<Integer, Integer> yearOcc = yearOcc(dataFilter);
-        Map.Entry<Integer, Integer> result = new AbstractMap.SimpleEntry<Integer, Integer>(yearOcc.firstEntry());;
+        Map.Entry<Integer, Integer> result = new AbstractMap.SimpleEntry<>(yearOcc.firstEntry());
         for (Map.Entry<Integer, Integer> entry : yearOcc.entrySet()) {
             if (entry.getValue() > result.getValue()) {
                 result = entry;
@@ -49,22 +51,29 @@ public class StatCalcul {
         return result;
     }
 
-    static public float globalAverageEartquakesByYear(DataFilter dataFilter) {
+    static public double globalAverageEarthquakesByYear(DataFilter dataFilter) {
         TreeMap<Integer, Integer> yearOcc = yearOcc(dataFilter);
-        int sumEarthquake = 0;
-        int nbYear = yearOcc.lastKey() - 1000; // There is not enough data about earthquakes that happened before the year 1000
+        float sumEarthquake = 0;
+        float nbYear = 0;
+        // There is not enough data in any csv about earthquakes that happened before the year 1000
+        if (yearOcc.firstKey() < 1000) {
+            nbYear = yearOcc.lastKey()+1 - 1000;
+        } else {
+            nbYear = yearOcc.lastKey()+1 - yearOcc.firstKey();
+        }
         for(Map.Entry<Integer, Integer> entry : yearOcc.entrySet()) {
             if (entry.getKey() >= 1000) {
-                ++sumEarthquake;
+                sumEarthquake += entry.getValue();
             }
         }
-        return sumEarthquake/nbYear;
+        double res = sumEarthquake /nbYear;
+        return Math.round(res * 100.0) / 100.0;
     }
 
-    // ---------- GET OCCURENCES MAP ----------
+    // ---------- GET OCCURRENCES MAP ----------
 
     static private TreeMap<String, Integer> regionOcc(DataFilter dataFilter) {
-        TreeMap<String, Integer> regionOcc = new TreeMap<String, Integer>();
+        TreeMap<String, Integer> regionOcc = new TreeMap<>();
         for (Earthquake earthquake : dataFilter.getAllEarthquakes()) {
             if (!earthquake.getRegion().isEmpty()) {
                 if (regionOcc.containsKey(earthquake.getRegion())) {
@@ -78,12 +87,12 @@ public class StatCalcul {
     }
 
     static private TreeMap<Integer, Integer> yearOcc(DataFilter dataFilter) {
-        TreeMap<Integer, Integer> yearOcc = new TreeMap<Integer, Integer>();
+        TreeMap<Integer, Integer> yearOcc = new TreeMap<>();
         for (Earthquake earthquake : dataFilter.getAllEarthquakes()) {
-            if (yearOcc.containsKey(earthquake.getDate().getYear())) {
-                yearOcc.replace(earthquake.getDate().getYear(), yearOcc.get(earthquake.getDate().getYear()) + 1);
+            if (yearOcc.containsKey(earthquake.getYear())) {
+                yearOcc.replace(earthquake.getYear(), yearOcc.get(earthquake.getYear()) + 1);
             } else {
-                yearOcc.put(earthquake.getDate().getYear(), 1);
+                yearOcc.put(earthquake.getYear(), 1);
             }
         }
         return yearOcc;

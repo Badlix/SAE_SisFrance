@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import org.controlsfx.control.RangeSlider;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class UploadPageController extends BorderPane {
@@ -62,10 +61,10 @@ public class UploadPageController extends BorderPane {
         return dataEarthquakes;
     }
 
-    public void initialize() throws IOException {
+    public void initialize() {
         dataEarthquakes = new DataFilter(FXCollections.observableArrayList());
         System.out.println("UploadPageController initialized");
-        // ---------- BINDING BETWEEN FILTERS AND dataEartquakes ----------
+        // ---------- BINDING BETWEEN FILTERS AND dataEarthquakes ----------
 
         /* Region Filter */
         regionFilter.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -90,7 +89,7 @@ public class UploadPageController extends BorderPane {
         dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
 
-        // ---------- BINDING BETWEEN RegionFilter options AND dataEartquakes ----------
+        // ---------- BINDING BETWEEN RegionFilter options AND dataEarthquakes ----------
 
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
@@ -112,18 +111,18 @@ public class UploadPageController extends BorderPane {
     @FXML
     public void upload(){
 
-        // Ouvrir une boîte de dialogue de sélection de fichier
+        // Open a file selection dialog box
 
         FileChooser fileChooser = new FileChooser();
         Stage stage = (Stage) uploadButton.getScene().getWindow();
-        fileChooser.setTitle("Sélectionner un fichier");
+        fileChooser.setTitle("Selectionner un fichier");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Fichier csv", "*.csv"),
                 new FileChooser.ExtensionFilter("Fichiers texte", "*.txt"),
                 new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
         );
 
-        // Obtenir le fichier sélectionné
+        // Obtain the selected file
 
         File selectedFile = fileChooser.showOpenDialog(stage);
 
@@ -143,10 +142,10 @@ public class UploadPageController extends BorderPane {
             fileReadableLabel.setText("file not uploaded");
             fileReadableLabel.setStyle("-fx-text-fill: red");
         }
-    };
+    }
     @FXML
     public void changingToDataPage(ActionEvent event) {
-        // TEMPORAIRE
+        // TEMPORARY
         dataEarthquakes.applyFilter();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
