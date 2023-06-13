@@ -24,8 +24,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class GraphicsPageController extends BorderPane {
-    private FXMLLoader dataPageLoader;
-    private FXMLLoader uploadPageLoader;
     private Scene dataPageScene;
     private DataFilter dataEarthquakes;
     @FXML
@@ -71,14 +69,6 @@ public class GraphicsPageController extends BorderPane {
         this.dataPageScene = dataPageScene;
     }
 
-    public void setDataPageLoad(FXMLLoader dataPageLoader) {
-        this.dataPageLoader = dataPageLoader;
-    }
-
-    public void setUploadPageLoad(FXMLLoader uploadPageLoader) {
-        this.uploadPageLoader = uploadPageLoader;
-    }
-
     public void setDataEarthquakes(DataFilter dataFilter) {
         dataEarthquakes = dataFilter;
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<>() {
@@ -100,13 +90,13 @@ public class GraphicsPageController extends BorderPane {
             public void onChanged(Change<? extends Earthquake> change) {
                 System.out.println("CHANGED : SIZE = " + dataFilter.getFilteredEarthquakes().size());
                 /* Change Labels values */
-                numberLabel1.setText(StatCalcul.totalNumberOfEarthquakes(dataFilter) + "\nNB TOTAL");
-                numberLabel2.setText(StatCalcul.globalAverageIntensity(dataFilter) + "\nAVG INTENSITY");
-                numberLabel3.setText(StatCalcul.mostAffectedRegion(dataFilter).getKey() + "\nMOST AFFECTED REGION (" + StatCalcul.mostAffectedRegion(dataFilter).getValue() + ")");
-                numberLabel4.setText(StatCalcul.globalAverageEarthquakeByRegion(dataFilter) + "\nAVG NB BY REGION");
-                numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter) + "\nMOST AFFECTED YEAR");
-                numberLabel6.setText(StatCalcul.globalAverageEarthquakesByYear(dataFilter) + "\nAVG NB BY YEAR");
-                graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
+//                numberLabel1.setText(StatCalcul.totalNumberOfEarthquakes(dataFilter) + "\nNB TOTAL");
+//                numberLabel2.setText(StatCalcul.globalAverageIntensity(dataFilter) + "\nAVG INTENSITY");
+//                numberLabel3.setText(StatCalcul.mostAffectedRegion(dataFilter).getKey() + "\nMOST AFFECTED REGION (" + StatCalcul.mostAffectedRegion(dataFilter).getValue() + ")");
+//                numberLabel4.setText(StatCalcul.globalAverageEarthquakeByRegion(dataFilter) + "\nAVG NB BY REGION");
+//                numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter) + "\nMOST AFFECTED YEAR");
+//                numberLabel6.setText(StatCalcul.globalAverageEarthquakesByYear(dataFilter) + "\nAVG NB BY YEAR");
+//                graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
 //                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes())
             }
         });
@@ -141,7 +131,6 @@ public class GraphicsPageController extends BorderPane {
         /* Intensity Filter */
         dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
-
     }
 
     public void initialize() throws IOException {
@@ -161,7 +150,6 @@ public class GraphicsPageController extends BorderPane {
     }
     @FXML
     public void newFile(){
-
     }
     public void graphicsSeismPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();

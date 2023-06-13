@@ -30,6 +30,8 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     TableView<Earthquake> table;
     @FXML
+    TableColumn<Object, Object> idColumn;
+    @FXML
     TableColumn<Object, Object> dateColumn;
     @FXML
     TableColumn<Object, Object> regionColumn;
@@ -56,26 +58,21 @@ public class DataPageController extends BorderPane implements Initializable {
     @FXML
     MapView mapView;
     CustomMapLayer mapLayer;
+    private Scene graphicsPageScene;
     private static DataFilter dataEarthquakes;
 
-    public static DataFilter getDataEarthquakes() {
-        return dataEarthquakes;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("DataPageController initialized");
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("identifiant"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
+        intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
+        initMapView();
     }
-
-    private Scene graphicsPageScene;
-    private FXMLLoader graphicsPageLoader;
-    private FXMLLoader uploadPageLoader;
 
     public void setGraphicsPageScene(Scene graphicsPageScene) {
         this.graphicsPageScene = graphicsPageScene;
-    }
-
-    public void setGraphicsPageLoad(FXMLLoader graphicsPageLoader) {
-        this.graphicsPageLoader = graphicsPageLoader;
-    }
-
-    public void setUploadPageLoad(FXMLLoader uploadPageLoader) {
-        this.uploadPageLoader = uploadPageLoader;
     }
 
     public void setDataEarthquakes(DataFilter dataFilter) {
@@ -94,11 +91,11 @@ public class DataPageController extends BorderPane implements Initializable {
                 table.setItems(dataEarthquakes.getFilteredEarthquakes());
             }
         });
-        // --------- BNDING DES VALEURS DU TABLEAU ET DE LA MAP ---------------
+
+//         --------- BINDING DES VALEURS DU TABLEAU ET DE LA MAP ---------------
         dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<Earthquake>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
-                table.setItems(dataEarthquakes.getFilteredEarthquakes());
                 changeEarthquakesOnMap();
             }
         });
@@ -136,19 +133,6 @@ public class DataPageController extends BorderPane implements Initializable {
         dataEarthquakes.selectedMinIntensensityProperty().bindBidirectional(intensityFilter.lowValueProperty());
         dataEarthquakes.selectedMaxIntensensityProperty().bindBidirectional(intensityFilter.highValueProperty());
 
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("DataPageController initialized");
-        table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("identifiant"));
-        table.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("date"));
-        table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("region"));
-        table.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("intensity"));
-        //dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        //regionColumn.setCellValueFactory(new PropertyValueFactory<>("region"));
-        //intensityColumn.setCellValueFactory(new PropertyValueFactory<>("intensity"));
-        initMapView();
     }
 
     public void initMapView() {

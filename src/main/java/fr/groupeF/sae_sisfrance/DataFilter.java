@@ -34,6 +34,7 @@ public class DataFilter {
         selectedEndDate = new MyDate("");
         selectedMinIntensity = new SimpleDoubleProperty(2);
         selectedMaxIntensity = new SimpleDoubleProperty(12);
+
         /* Listener allow the region filter to update the filtered list
         without having to click on the button "Filtrer" */
         selectedRegion.addListener((observable, oldValue, newValue) -> {
