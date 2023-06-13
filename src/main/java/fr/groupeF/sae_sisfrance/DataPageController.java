@@ -164,8 +164,8 @@ public class DataPageController extends BorderPane implements Initializable {
         mapLayer.clear();
         for (Earthquake earthquake : dataEarthquakes.getFilteredEarthquakes()) {
             if (!earthquake.getLatitude().isEmpty() && !earthquake.getLongitude().isEmpty() && !earthquake.getIntensity().isEmpty()) {
-                MapPoint mapPoint = new MapPoint(Float.valueOf(earthquake.getLatitude()),Float.valueOf(earthquake.getLongitude()));
-                mapLayer.addMapPoint(mapPoint, Float.valueOf(earthquake.getIntensity()));
+                MapPoint mapPoint = new MapPoint(Float.parseFloat(earthquake.getLatitude()),Float.parseFloat(earthquake.getLongitude()));
+                mapLayer.addMapPoint(mapPoint, Float.parseFloat(earthquake.getIntensity()));
             }
         }
         mapLayer.update();

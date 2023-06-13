@@ -29,11 +29,11 @@ public class MyDate {
         }
 
         if (numbers.length >= 1 && !numbers[0].isEmpty()) {
-            year = Integer.valueOf(numbers[0]);
+            year = Integer.parseInt(numbers[0]);
         } if (numbers.length >= 2) {
-            month = Integer.valueOf(numbers[1]);
+            month = Integer.parseInt(numbers[1]);
             if (numbers.length >= 3) {
-                day = Integer.valueOf(numbers[2]);
+                day = Integer.parseInt(numbers[2]);
             } else {
                 day = 0;
             }

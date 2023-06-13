@@ -3,6 +3,7 @@ package fr.groupeF.sae_sisfrance;
 import javafx.beans.property.SimpleIntegerProperty;
 
 import java.time.Year;
+import java.util.List;
 
 public class Earthquake {
     private final String identifiant; // Identifiant du tremblement de terre
@@ -19,19 +20,19 @@ public class Earthquake {
     private final String quality; // Qualité des données relatives au tremblement de terre
 
     // Constructeur de la classe Earthquake
-public Earthquake(String[] data) {
-    this.identifiant = data[0].replace("\"", "");
-    this.date = new MyDate(data[1].replace("\"", ""));
-    this.hour = data[2].replace("\"", "");
-    this.name = data[3].replace("\"", "");
-    this.region = data[4].replace("\"", "");
-    this.shock = data[5].replace("\"", "");
-    this.xRGF = data[6].replace("\"", "");
-    this.yRGF = data[7].replace("\"", "");
-    this.latitude = data[8].replace("\"", "");
-    this.longitude = data[9].replace("\"", "");
-    this.intensity = data[10].replace("\"", "");
-    this.quality = data[11].replace("\"", "");
+public Earthquake(List<String> data) {
+    this.identifiant = data.get(0).replace("\"", "");
+    this.date = new MyDate(data.get(1).replace("\"", ""));
+    this.hour = data.get(2).replace("\"", "");
+    this.name = data.get(3).replace("\"", "");
+    this.region = data.get(4).replace("\"", "");
+    this.shock = data.get(5).replace("\"", "");
+    this.xRGF = data.get(6).replace("\"", "");
+    this.yRGF = data.get(7).replace("\"", "");
+    this.latitude = data.get(8).replace("\"", "");
+    this.longitude = data.get(9).replace("\"", "");
+    this.intensity = data.get(10).replace("\"", "");
+    this.quality = data.get(11).replace("\"", "");
 }
 
     public String getIdentifiant() {
