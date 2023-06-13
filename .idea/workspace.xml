@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/StatCalcul.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/CustomMapLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/CustomMapLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataImporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/MyDate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +154,8 @@
       <workItem from="1686172600066" duration="3853000" />
       <workItem from="1686177072097" duration="26000" />
       <workItem from="1686218189915" duration="3320000" />
+      <workItem from="1686613333002" duration="164000" />
+      <workItem from="1686633782968" duration="3660000" />
     </task>
     <task id="LOCAL-00001" summary="page upload file">
       <created>1686162058523</created>
