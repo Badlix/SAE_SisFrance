@@ -102,7 +102,6 @@ public class DataPageController extends BorderPane implements Initializable {
                     if (!quality.contains(earthquake.getQuality()) && !earthquake.getQuality().isEmpty())
                         quality.add(earthquake.getQuality());
                 }
-                System.out.println(qualityCheckboxs.size());
                 quality.sort(String::compareToIgnoreCase);
                 for (String str : quality) {
                     CheckBox checkbox = new CheckBox();

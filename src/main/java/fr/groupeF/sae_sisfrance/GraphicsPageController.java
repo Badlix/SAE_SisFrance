@@ -84,9 +84,14 @@ public class GraphicsPageController extends BorderPane {
                 regions.sort(String::compareToIgnoreCase);
                 regions.add(0, "");
                 regionFilter.setItems(regions);
-                ObservableList<String> quality = FXCollections.observableArrayList();
+                // init des options de la combo box des régions
                 qualityCheckboxs = new ArrayList<>();
                 quelityLabels = new ArrayList<>();
+                ObservableList<String> quality = FXCollections.observableArrayList();
+                for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
+                    if (!quality.contains(earthquake.getQuality()) && !earthquake.getQuality().isEmpty())
+                        quality.add(earthquake.getQuality());
+                }
                 quality.sort(String::compareToIgnoreCase);
                 for (String str : quality) {
                     CheckBox checkbox = new CheckBox();
@@ -94,8 +99,8 @@ public class GraphicsPageController extends BorderPane {
                     quelityLabels.add(str);
                     qualityFilter.getChildren().add(new HBox(checkbox, new Label(str)));
                 }
-                System.out.println("ok");
                 dataFilter.setSelectedQuality(quality);
+                // init des elements de la table
                 createBindings();
             }
 
@@ -111,7 +116,7 @@ public class GraphicsPageController extends BorderPane {
                 numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter) + "\nMOST AFFECTED YEAR");
                 numberLabel6.setText(StatCalcul.globalAverageEarthquakesByYear(dataFilter) + "\nAVG NB BY YEAR");
                 graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
-//                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes())
+                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
             }
         });
 
@@ -169,8 +174,7 @@ public class GraphicsPageController extends BorderPane {
             double intensity = Double.parseDouble(element.getIntensity());
 
             if (averageIntensityPerYear.containsKey(year)) {
-                double sum = averageIntensityPerYear.get(year) + intensity;
-                averageIntensityPerYear.put(year, sum);
+                averageIntensityPerYear.put(year, averageIntensityPerYear.get(year).doubleValue() + intensity);
             } else {
                 averageIntensityPerYear.put(year, intensity);
             }
@@ -178,10 +182,11 @@ public class GraphicsPageController extends BorderPane {
         // TreeMap permet de trier une hashMap selon les clés
         Map<String, Double> sortedMap = new TreeMap<>(averageIntensityPerYear);
         for (Map.Entry m : sortedMap.entrySet()) {
-            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf(m.getValue().toString())));
+            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Double.valueOf(m.getValue().toString())));
         }
 
-        System.out.println("Intensité moyenne globale : " + StatCalcul.globalAverageIntensityPerYear((DataFilter) dataEarthquakes.getFilteredEarthquakes()));
+        System.out.println(averageIntensityPerYear.size());
+        System.out.println(sortedMap.size());
         lineChartIntensityPerYear.setData(FXCollections.observableArrayList(series));
         }
 

@@ -21,6 +21,7 @@ public class StatCalcul {
         double res = sumIntensity /nbEarthquakes;
         return Math.round(res * 100.0) / 100.0;
     }
+
 /*    static public double globalAverageIntensityPerYear(DataFilter dataFilter) {
         HashMap<String, Double> sumIntensityPerYear = new HashMap<>();
         HashMap<String, Integer> nbEarthquakesPerYear = new HashMap<>();

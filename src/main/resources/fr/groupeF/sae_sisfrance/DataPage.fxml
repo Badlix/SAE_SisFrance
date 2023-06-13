@@ -106,7 +106,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Unspecified Menu">
               <items>
-                  <CustomMenuItem mnemonicParsing="false" text="Unspecified Action">
+                  <CustomMenuItem mnemonicParsing="false" text="Qualité">
                      <content>
                          <VBox fx:id="qualityFilter"></VBox>
                      </content>
