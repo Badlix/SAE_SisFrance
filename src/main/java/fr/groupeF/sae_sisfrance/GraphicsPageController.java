@@ -111,7 +111,7 @@ public class GraphicsPageController extends BorderPane {
                 numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter) + "\nMOST AFFECTED YEAR");
                 numberLabel6.setText(StatCalcul.globalAverageEarthquakesByYear(dataFilter) + "\nAVG NB BY YEAR");
                 graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
-//                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes())
+                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
             }
         });
         createBindings();
@@ -127,8 +127,6 @@ public class GraphicsPageController extends BorderPane {
 
     public void initialize() throws IOException {
         System.out.println("GraphicsPageController initialized");
-        // Ajoutez des options supplémentaires au ChoiceBox si nécessaire
-        //choiceBox.getItems().addAll("Option 1", "Option 2", "Option 3");
     }
 
     @FXML
@@ -136,9 +134,6 @@ public class GraphicsPageController extends BorderPane {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(dataPageScene);
         stage.show();
-        // graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
-        // graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
-        // graphicsSeismPerZone(dataEarthquakes.getFilteredEarthquakes());
     }
     @FXML
     public void newFile(){
@@ -171,8 +166,7 @@ public class GraphicsPageController extends BorderPane {
             double intensity = Double.parseDouble(element.getIntensity());
 
             if (averageIntensityPerYear.containsKey(year)) {
-                double sum = averageIntensityPerYear.get(year) + intensity;
-                averageIntensityPerYear.put(year, sum);
+                averageIntensityPerYear.put(year, averageIntensityPerYear.get(year).doubleValue() + intensity);
             } else {
                 averageIntensityPerYear.put(year, intensity);
             }
@@ -180,49 +174,13 @@ public class GraphicsPageController extends BorderPane {
         // TreeMap permet de trier une hashMap selon les clés
         Map<String, Double> sortedMap = new TreeMap<>(averageIntensityPerYear);
         for (Map.Entry m : sortedMap.entrySet()) {
-            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf(m.getValue().toString())));
+            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Double.valueOf(m.getValue().toString())));
         }
 
-        System.out.println("Intensité moyenne globale : " + StatCalcul.globalAverageIntensityPerYear((DataFilter) dataEarthquakes.getFilteredEarthquakes()));
+        System.out.println(averageIntensityPerYear.size());
+        System.out.println(sortedMap.size());
         lineChartIntensityPerYear.setData(FXCollections.observableArrayList(series));
-        }
-
-
-    /*public void graphicsSeismPerZone(ObservableList<Earthquake> dataGraphics){
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        for (Earthquake element : dataGraphics) {
-            series.getData().add(new XYChart.Data<>(String.valueOf(element.getShock()),Double.valueOf(element.getZone())));
-        lineChartSeismPerZone.getData().add(series);
     }
-    public void showGraphics() {
-        String selectedOption = choiceBox.getValue().toString();
-
-        ObservableList<Earthquake> dataGraphics = getDataForOption(selectedOption);
-
-        // Efface les données
-        lineChart.getData().clear();
-
-        // Génère le graphique avec les nouvelles données
-        graphicsIntensityPerZone(dataGraphics);
-    }
-*/
-/*    private ObservableList<Earthquake> getDataForOption(String selectedOption) {
-        ObservableList<Earthquake> data = FXCollections.observableArrayList();
-
-        if (selectedOption.equals("Option 1")) {
-            graphicsIntensityPerZone(DataFilter.getFilteredEarthquakes());
-
-        } else if (selectedOption.equals("Option 2")) {
-            graphicsDatePerIntensity(DataFilter.getFilteredEarthquakes());
-
-        } else if (selectedOption.equals("Option 3")) {
-            graphicsSeismPerZone(DataFilter.getFilteredEarthquakes());
-
-        }
-
-        return data;
-    }
-*/
 
     @FXML
     public void applyFilter() {

@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="correction de bug">
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="ajout de la colonne qualité au tableau">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/DataPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/groupeF/sae_sisfrance/DataPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -442,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686666039408</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="ajout de la colonne qualité au tableau">
+      <created>1686666301254</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1686666301254</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,7 +466,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Binding du filtre region" />
     <MESSAGE value="Binding du filtre coordonnées fonctionne" />
     <MESSAGE value="Suppression de la fonction atualizeFilter qui est entrain d'être remplacé par des bindings" />
     <MESSAGE value="Amélioration du binding des coordonées" />
@@ -485,6 +490,7 @@
     <MESSAGE value="correction du merge" />
     <MESSAGE value="commentaire javadoc fichier Coordinate, CustomeMapLayer, DataFilter" />
     <MESSAGE value="correction de bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction de bug" />
+    <MESSAGE value="ajout de la colonne qualité au tableau" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout de la colonne qualité au tableau" />
   </component>
 </project>
