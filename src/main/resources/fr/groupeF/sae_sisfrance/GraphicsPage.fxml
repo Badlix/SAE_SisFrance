@@ -17,7 +17,6 @@
             <menus>
                 <Menu>
                     <graphic>
-
                         <ComboBox promptText="ZONE" fx:id="zoneFilter" prefHeight="10.0" />
                     </graphic>
                 </Menu>
