@@ -37,10 +37,6 @@ public class Main extends Application {
         graphicsPageController.setDataPageScene(dataPageScene);
         uploadPageController.setDataPageScene(dataPageScene);
 
-        // SET PAGE LOADER FOR SCENES NAVIGATION
-        uploadPageController.setDataPageLoad(dataPageLoader);
-        uploadPageController.setGraphicsPageLoad(graphicsPageLoader);
-
         // LINK DATA BETWEEN SCENES
         dataPageController.setDataEarthquakes(uploadPageController.getDataEarthquakes());
         graphicsPageController.setDataEarthquakes(uploadPageController.getDataEarthquakes());
