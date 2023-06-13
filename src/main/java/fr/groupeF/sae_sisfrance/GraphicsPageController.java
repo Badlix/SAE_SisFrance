@@ -1,7 +1,6 @@
 package fr.groupeF.sae_sisfrance;
 
 import javafx.beans.binding.Bindings;
-import javafx.beans.binding.StringBinding;
 import javafx.scene.control.ListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -85,6 +84,7 @@ public class GraphicsPageController extends BorderPane {
         dataEarthquakes.getAllEarthquakes().addListener(new ListChangeListener<>() {
             @Override
             public void onChanged(Change<? extends Earthquake> change) {
+                /* Region comBox Options */
                 ObservableList<String> regions = FXCollections.observableArrayList();
                 for (Earthquake earthquake : dataEarthquakes.getAllEarthquakes()) {
                     if (!regions.contains(earthquake.getRegion()))
@@ -93,6 +93,19 @@ public class GraphicsPageController extends BorderPane {
                 regions.sort(String::compareToIgnoreCase);
                 regions.add(0, "");
                 regionFilter.setItems(regions);
+            }
+        });
+        dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<>() {
+            @Override
+            public void onChanged(Change<? extends Earthquake> change) {
+                System.out.println("CHANGED : SIZE = " + dataFilter.getFilteredEarthquakes().size());
+                /* Change Labels values */
+                numberLabel1.setText(StatCalcul.totalNumberOfEarthquakes(dataFilter) + "\nNB TOTAL");
+                numberLabel2.setText(StatCalcul.globalAverageIntensity(dataFilter) + "\nAVG INTENSITY");
+                numberLabel3.setText(StatCalcul.mostAffectedRegion(dataFilter).getKey() + "\nMOST AFFECTED REGION (" + StatCalcul.mostAffectedRegion(dataFilter).getValue() + ")");
+                numberLabel4.setText(StatCalcul.globalAverageEarthquakeByRegion(dataFilter) + "\nAVG NB BY REGION");
+                numberLabel5.setText(StatCalcul.mostAffectedYear(dataFilter) + "\nMOST AFFECTED YEAR");
+                numberLabel6.setText(StatCalcul.globalAverageEarthquakesByYear(dataFilter) + "\nAVG NB BY YEAR");
             }
         });
         createBindings();
@@ -136,63 +149,32 @@ public class GraphicsPageController extends BorderPane {
             return sum / intensity.size();
         }, values);*/
 
-/*        private void calculateAverage() {
-            List<Double> intensities = Earthquake.getIntensity();
-
-            if (!intensities.isEmpty()) {
-                double sum = 0;
-                for (double intensity : intensities) {
-                    sum += intensity;
-                }
-                double average = sum / intensities.size();
-                numberLabel2.setText("Moyenne : " + average);
-            } else {
-                numberLabel2.setText("Moyenne :");
-            }
-        }
-
-        private List<Double> getIntensity() {
-            List<Double> intensities = new ArrayList<>();
-            intensities.addAll(listView.getItems());
-            return intensities;
-        }
-*/
-       /* private String calculateSum(String[] intensityValues) {
-            String sum = "";
-            for (String intensity : intensityValues) {
-                sum += intensity + " ";
-            }
-            return sum;
-        }*/
-
         /* Labels */
         // Liaison dynamique entre le nombre total de séismes et le texte des Labels (les rectangles bleus)
-        StringBinding totalSeismBinding = Bindings.createStringBinding(()-> {
-            int size = dataEarthquakes.getFilteredEarthquakes().size();
-            return "Nombre total de séismes: " + size;
-        }, dataEarthquakes.getFilteredEarthquakes());
-
-        // Liaison dynamique entre l'année avec le plus de séismes et le texte du 5ème label
-        int yearWithMostSeisms = YearWithMostSeisms(dataEarthquakes.getFilteredEarthquakes());
-        StringBinding yearWithMostSeismsBinding = Bindings.createStringBinding(()-> {
-                    return "Année avec le plus de séismes : " + yearWithMostSeisms;
-        },dataEarthquakes.getFilteredEarthquakes());
-
-
+//        StringBinding totalSeismBinding = Bindings.createStringBinding(()-> {
+//            int size = dataEarthquakes.getFilteredEarthquakes().size();
+//            return "Nombre total de séismes: " + size;
+//        }, dataEarthquakes.getFilteredEarthquakes());
+//
+//        // Liaison dynamique entre l'année avec le plus de séismes et le texte du 5ème label
+//        int yearWithMostSeisms = YearWithMostSeisms(dataEarthquakes.getFilteredEarthquakes());
+//        StringBinding yearWithMostSeismsBinding = Bindings.createStringBinding(()-> {
+//                    return "Année avec le plus de séismes : " + yearWithMostSeisms;
+//        },dataEarthquakes.getFilteredEarthquakes());
 
         //numberLabel1.textProperty().bind(ObservableValueof(dataEarthquakes.getAllEarthquakes()));
-        numberLabel1.textProperty().bind(totalSeismBinding);
-        numberLabel5.textProperty().bind(yearWithMostSeismsBinding);
+ //       numberLabel1.textProperty().bind(totalSeismBinding);
+//        numberLabel5.textProperty().bind(yearWithMostSeismsBinding);
         // Liaison du texte du Label avec la valeur moyenne
 //        numberLabel2.textProperty().bind(averageBinding.asString("Average: %.2f"));
         // ---------- BINDINGS - DASHBOARD ----------
-        dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<>() {
-            @Override
-            public void onChanged(Change<? extends Earthquake> change) {
-                graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
-                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
-            }
-        });
+//        dataEarthquakes.getFilteredEarthquakes().addListener(new ListChangeListener<>() {
+//            @Override
+//            public void onChanged(Change<? extends Earthquake> change) {
+//                graphicsSeismPerYear(dataEarthquakes.getFilteredEarthquakes());
+//                graphicsIntensityPerYear(dataEarthquakes.getFilteredEarthquakes());
+//            }
+//        });
     }
    /* private ObservableValue<String> ObservableValueof(ObservableList<Earthquake> allEarthquakes) {
         dataEarthquakes.getAllEarthquakes();
@@ -218,35 +200,9 @@ public class GraphicsPageController extends BorderPane {
     public void newFile(){
 
     }
-    public int YearWithMostSeisms(ObservableList<Earthquake> dataGraphics) {
-        HashMap<Integer, Integer> nbEarthquakesDuringAYear = new HashMap<>();
-
-        // Compter le nombre de séismes pour chaque année
-        for (Earthquake element : dataGraphics) {
-            int year = element.getYear();
-            nbEarthquakesDuringAYear.put(year, nbEarthquakesDuringAYear.getOrDefault(year, 0) + 1);
-        }
-
-        // Trouver l'année avec le nombre maximal de séismes
-        int maxCount = 0;
-        int maxYear = 0;
-        // TreeMap permet de trier une hashMap selon les clés
-        Map<Integer, Integer> sortedMap = new TreeMap<>(nbEarthquakesDuringAYear);
-        // Parcourir la Map et trouver l'année avec le plus de séismes
-        for (Map.Entry<Integer, Integer> entry : sortedMap.entrySet()) {
-            int year = entry.getKey();
-            int count = entry.getValue();
-            if (count > maxCount) {
-                maxCount = count;
-                maxYear = year;
-            }
-        }
-
-        return maxYear;
-    }
     public void graphicsSeismPerYear(ObservableList<Earthquake> dataGraphics){
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        HashMap<String, Integer> nbEarthquakesDuringAYear = new HashMap<String, Integer>();
+        HashMap<String, Integer> nbEarthquakesDuringAYear = new HashMap<>();
         for (Earthquake element : dataGraphics) {
             if (nbEarthquakesDuringAYear.containsKey(element.getYear().toString())) {
                 nbEarthquakesDuringAYear.put(element.getYear().toString(), nbEarthquakesDuringAYear.get(element.getYear().toString()) + 1);
@@ -258,7 +214,7 @@ public class GraphicsPageController extends BorderPane {
         Map<String, Integer> sortedMap = new TreeMap<>(nbEarthquakesDuringAYear);
         //Parcour de la Hashmap
         for (Map.Entry m : sortedMap.entrySet()) {
-            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf((String) m.getValue().toString())));
+            series.getData().add(new XYChart.Data<>(m.getKey().toString(), Integer.valueOf(m.getValue().toString())));
         }
         lineChartSeismPerYear.setData(FXCollections.observableArrayList(series));
         //lineChartSeismPerYear.getData().add(series);

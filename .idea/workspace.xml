@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Ajout de la classe StatCalcul (nom temporaire) qui contient des fonctions de calcul de différentes données">
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/groupeF/sae_sisfrance/StatCalculTest.java" afterDir="false" />
+    <list default="true" id="2832042d-4f75-429d-ae98-b89f18a7649e" name="Changes" comment="Modification du Binding sur Graphics Page et ajout des valeurs des labels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/DataImporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/GraphicsPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/StatCalcul.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/StatCalcul.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/groupeF/sae_sisfrance/UploadPageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +44,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mathieu/IdeaProjects/SAE_SisFrance&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -55,6 +56,19 @@
   }
 }</component>
   <component name="RunManager" selected="JUnit.StatCalculTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.Main" />
+      <module name="SAE_SisFrance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StatCalculTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SAE_SisFrance" />
       <extension name="coverage">
@@ -66,22 +80,6 @@
       <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
       <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.StatCalculTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StatCalculTest.testGlobalAverageEarthquakeByRegion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SAE_SisFrance" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.groupeF.sae_sisfrance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.groupeF.sae_sisfrance" />
-      <option name="MAIN_CLASS_NAME" value="fr.groupeF.sae_sisfrance.StatCalculTest" />
-      <option name="METHOD_NAME" value="testGlobalAverageEarthquakeByRegion" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,10 +135,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.StatCalculTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.StatCalculTest.testMostAffectedYear" />
         <item itemvalue="JUnit.StatCalculTest.testMostAffectedRegion" />
         <item itemvalue="JUnit.StatCalculTest.testGlobalAverageEarthquakeByYear" />
-        <item itemvalue="JUnit.StatCalculTest.testGlobalAverageEarthquakeByRegion" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +158,9 @@
       <workItem from="1686177072097" duration="26000" />
       <workItem from="1686218189915" duration="3320000" />
       <workItem from="1686613333002" duration="164000" />
-      <workItem from="1686633782968" duration="8131000" />
+      <workItem from="1686633782968" duration="9631000" />
+      <workItem from="1686643464069" duration="54000" />
+      <workItem from="1686643519373" duration="3011000" />
     </task>
     <task id="LOCAL-00001" summary="page upload file">
       <created>1686162058523</created>
@@ -379,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686637548912</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Ajout des fonctions de test de la classe StatCalcul">
+      <created>1686641916285</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1686641916285</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,8 +404,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Rectification des valeurs du RangeSlider -&gt; l'intensité maximum d'un seisme est 12 et non 10" />
-    <MESSAGE value="Ajout de tout les filtres sur la page Upload" />
     <MESSAGE value="Les filtres et boutons de la page Upload sont désactivé tant qu'un fichier csv n'a pas été selectionné" />
     <MESSAGE value="Les valeurs de la comboBox de la page Upload se mettent à jour en fonction des régions présentes dans le fichier csv selectionné" />
     <MESSAGE value="Ajout d'un type MyDate avec les tests qui correspondent" />
@@ -422,6 +427,8 @@
     <MESSAGE value="Ajout des points sur la carte" />
     <MESSAGE value="Modification de la taille des fenêtres (temporaire ?)" />
     <MESSAGE value="Ajout de la classe StatCalcul (nom temporaire) qui contient des fonctions de calcul de différentes données" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de la classe StatCalcul (nom temporaire) qui contient des fonctions de calcul de différentes données" />
+    <MESSAGE value="Ajout des fonctions de test de la classe StatCalcul" />
+    <MESSAGE value="Modification du Binding sur Graphics Page et ajout des valeurs des labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modification du Binding sur Graphics Page et ajout des valeurs des labels" />
   </component>
 </project>
